@@ -24,7 +24,8 @@
 
 	  <!-- 매퍼 생성시 매퍼 위치 작성 -->
 	  <mappers>
-	    <mapper resource="mybatis/mapper/매퍼이름.xml"/>
+	    <mapper resource="mybatis/mapper/UserMapper.xml"/>
+	    <mapper resource="mybatis/mapper/ManagerMapper.xml"/>
 	  </mappers>
 
 </configuration>
