@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="../resources/css/reservation.css">
+    <link rel="stylesheet" href="../css/reservation.css">
 
     <!-- 웹폰트 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
@@ -20,7 +19,7 @@
     <header>
         헤더
     </header>
-    <div class="container">
+    <div class="res-wrap">
         <div class="res-search">
             <form action="#" method="post">
                 <fieldset>
@@ -49,7 +48,7 @@
         <div class="res-loca">
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../img/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -71,7 +70,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../img/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -93,7 +92,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../img/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -115,7 +114,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../img/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -137,7 +136,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../img/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -159,7 +158,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../img/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -181,7 +180,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../img/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -203,7 +202,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../img/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -225,7 +224,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../img/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>

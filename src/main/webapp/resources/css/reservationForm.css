@@ -1,0 +1,134 @@
+@charset "EUC-KR";
+@import url(default.css);
+
+.resForm-wrap {max-width: 1280px; margin: 0 auto; border: 0px solid #777; box-sizing: border-box;}
+.resForm-wrap > h3 {
+    font-family: 'NanumSquareNeoExtraBold';
+    font-size: 1.2rem;
+}
+.resForm-wrap .resForm-top {margin-top: 20px;}
+.resForm-wrap .resForm-top > h3 {
+    padding: 20px 0 20px 60px;
+    font-size: 1.5rem;
+}
+.resForm-wrap .resForm-top .resForm-top-loca {
+    padding: 40px 60px; 
+    width: 100%; 
+    max-height: 600px; 
+    background: linear-gradient(
+        to right,
+        #9CD9D9 50%,
+        #9cd9d9af 75%,
+        #9cd9d95b 90%,
+        #9cd9d900 100%
+    ), linear-gradient(
+        to bottom,
+        #9CD9D9 25%,
+        #9cd9d9af 50%,
+        #9cd9d95b 75%,
+        #9cd9d900 100%
+    );
+    border-top: 1px solid #e2e2e2;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.resForm-wrap .resForm-top .resForm-top-loca .resForm-top-loca-right {float: right; width: 60%; padding-left: 5%;}
+.resForm-wrap .resForm-top .resForm-top-loca .resForm-top-loca-right > img {
+    border-radius: 10px;    
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: var(--photo-height);
+}
+
+.resForm-wrap .resForm-top .resForm-top-loca .resForm-top-loca-left {float: left; width: 34%;}
+.resForm-wrap .resForm-top .resForm-top-loca > h3 {
+    padding: 10px 0 30px 10px;    
+}
+.resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info > ul {
+    border-top: 2px solid #777;
+    padding: 20px;
+    padding-bottom: calc();
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    background-color: #fff;
+    height: calc(var(--photo-height));
+    display: block;
+    height: 100%;
+}
+.resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info > ul > li {
+    padding: 15px 5px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e2e2e2;
+    margin-bottom: 0px;
+    overflow: hidden;
+}
+.resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info > ul > li:last-child {
+    margin-bottom: 0;
+    border: none;
+}
+.resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info > ul > li > b {
+    font-family: 'NanumSquareNeo';
+    display: inline-block;
+    width: 25%;
+    min-width: 64px;
+    position: relative;
+    font-size: 14px;
+}
+
+.resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info  > ul > li > b::after {
+    content: "";
+    display: block;
+    width: 3px;
+    height: 9px;
+    background-image: url("../images/reservation_images/icon_col.png");
+    position: absolute;
+    top: 4px;
+    right: -5px;
+    
+}
+.resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info > ul > li > p {
+    display: inline-block;
+    margin-left: 15px;
+    
+    font-size: 14px;
+    font-weight: 500;
+    width: 60%;
+    min-width: 100px;
+}
+
+
+.resForm-mid {overflow: hidden; padding: 40px 60px; margin-top: 20px;}
+.resForm-mid .resForm-mid-left {float: left; width: 60%;}
+.resForm-mid .resForm-mid-right {float: right; width: 30%; padding: 0 30px;}
+.resForm-mid .resForm-mid-right > form {padding: 50px 30px;}
+.resForm-mid .resForm-mid-right > form > input {
+    display: block; 
+    width: 100%; 
+    height: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'NanumSquareRound';
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.resForm-mid .resForm-mid-right > form > input[type=submit] {
+    background-color: #5fd7ff41;
+    color: #333;
+    border: 1px solid #5fd7ff;
+    margin-bottom: 20px;
+}
+.resForm-mid .resForm-mid-right > form > input[type=submit]:hover {
+    border: none;
+    color: #e2e2e2;
+    background-color: #5fd7ff;
+}
+.resForm-mid .resForm-mid-right > form > input[type=button] {
+    border: 1px solid #a2a2a2;
+    background-color: #7777772f;
+    color: #333;
+}
+.resForm-mid .resForm-mid-right > form > input[type=button]:hover {
+    background-color: #777777;
+    color: #e2e2e2;
+}
