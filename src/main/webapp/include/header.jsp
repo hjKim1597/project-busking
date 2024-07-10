@@ -8,14 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-         <!-- 부트스트랩 css 링크 -->
-         <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css">
-         <!-- 제이쿼리(부트스트랩보다 먼저 링크해야함) -->
-         <script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
-         <!-- 부트스트랩 js링크 -->
-         <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
-
-         <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
+	<!-- 부트스트랩 css 링크 -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css">
+	<!-- 제이쿼리(부트스트랩보다 먼저 링크해야함) -->
+	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
+	<!-- 부트스트랩 js링크 -->
+	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
+	
+	<!-- 예약페이지 css 링크 -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/reservation.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/reservationForm.css">
+	
+	<!-- 웹폰트 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 
 </head>
 <body>

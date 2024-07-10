@@ -1,104 +1,69 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <!-- ºÎÆ®½ºÆ®·¦ css ¸µÅ© -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- css ¸µÅ© -->
-    <link rel="stylesheet" href="../css/reservationForm.css">
-
-    <!-- jQuery ¸µÅ© (jsº¸´Ù ¸ÕÀú ¸µÅ©) -->
-    <script src="js/jquery.3.7.1.js"></script>
-
-    <!-- ºÎÆ®½ºÆ®·¦ js ¸µÅ© -->
-     <script src="js/bootstrap.min.js"></script>
-
-    <!-- À¥ÆùÆ® -->
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-
-</head>
-<body>
-
-    <header>
-        Çì´õ
-    </header>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="../include/header.jsp" %>
     
     <div class="resForm-wrap">
         <div class="resForm-top">
-            <h3>¿¹¾à ÆäÀÌÁö</h3>
+            <h3>ì˜ˆì•½ íŽ˜ì´ì§€</h3>
             <div class="resForm-top-loca">
-                <h3>Àå¼ÒÀÌ¸§</h3>
+                <h3>ìž¥ì†Œì´ë¦„</h3>
                 <div class="resForm-top-loca-left">
                     
                     <div class="resForm-top-loca-info">
                         <ul>
                             <li>
-                                <b>Àå¼Ò</b>
-                                <p>ÁÖ¼ÒÇ¥±â</p>
+                                <b>ìž¥ì†Œ</b>
+                                <p>ì£¼ì†Œí‘œê¸°</p>
                             </li>
                             <li>
-                                <b>¼±º°¹æ¹ý</b>
-                                <p>¼±Âø¼ø</p>
+                                <b>ì„ ë³„ë°©ë²•</b>
+                                <p>ì„ ì°©ìˆœ</p>
                             </li>
                             <li>
-                                <b>¸ðÁýÁ¤¿ø</b>
-                                 <p>1ÆÀ</p>
+                                <b>ëª¨ì§‘ì •ì›</b>
+                                 <p>1íŒ€</p>
                             </li>
                             <li>
-                                <b>°üÈ°±¸¿ª</b>
-                                <p>°üÇÒ±¸¿ª</p>
+                                <b>ê´€í™œêµ¬ì—­</b>
+                                <p>ê´€í• êµ¬ì—­</p>
                             </li>
                             <li>
-                                <b>¹®ÀÇÀüÈ­</b>
-                                <p>ÀüÈ­¹øÈ£</p>
+                                <b>ë¬¸ì˜ì „í™”</b>
+                                <p>ì „í™”ë²ˆí˜¸</p>
                             </li>
                             <li>
-                                <b>ÀÌ¸ÞÀÏ</b>
-                                <p>ÀÌ¸ÞÀÏ</p>
+                                <b>ì´ë©”ì¼</b>
+                                <p>ì´ë©”ì¼</p>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="resForm-top-loca-right">
-                    <img src="../images/reservation_images/±¤³ª·ç_¹ö½ºÅ·1_ÃµÈ£´ë±³ ³²´Ü1.jpg" alt="»çÁø">
-                    
+                    <img src="${pageContext.request.contextPath }/resources/images/reservation_images/ê´‘ë‚˜ë£¨_ë²„ìŠ¤í‚¹1_ì²œí˜¸ëŒ€êµ ë‚¨ë‹¨1.jpg" alt="ì‚¬ì§„"> 
                 </div>                
             </div>
         </div>
         <div class="resForm-mid">
             <div class="resForm-mid-left">
-                ´Þ·Â...
+                ë‹¬ë ¥...
             </div>
             <div class="resForm-mid-right">
                 <form action="#" method="post">
-                    <input type="submit" value="¿¹¾àÇÏ±â">
-                    <input type="button" value="¸ñ·ÏÀ¸·Î">
+                    <input type="submit" value="ì˜ˆì•½í•˜ê¸°">
+                    <input type="button" value="ëª©ë¡ìœ¼ë¡œ">
                 </form>
             </div>
         </div>
         <div class="bottom">
             <div class="nav">
                 <ul>
-                    <li><a href="#">ÀÌ¿ë¾È³»</a></li>
-                    <li><a href="#">Àå¼Ò¾È³»</a></li>
-                    <li><a href="#">ÀÌ¿ëÈÄ±â</a></li>
+                    <li><a href="#">ì´ìš©ì•ˆë‚´</a></li>
+                    <li><a href="#">ìž¥ì†Œì•ˆë‚´</a></li>
+                    <li><a href="#">ì´ìš©í›„ê¸°</a></li>
                 </ul>
             </div>
         </div>
 
     </div>
 
-    <footer>
-        Ç²ÅÍ
-    </footer>
-    
-</body>
-</html>
+<%@ include file="../include/footer.jsp" %>

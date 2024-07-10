@@ -1,11 +1,11 @@
-@charset "EUC-KR";
-@import url(default.css);
+@charset "UTF-8";
+@import url('default.css');
 
 .res-wrap {
     max-width: 1280px; margin: 0 auto;
 }
 
-/* °Ë»ö ¿µ¿ª ½ºÅ¸ÀÏ */
+/* ê²€ìƒ‰ ì˜ì—­ ìŠ¤íƒ€ì¼ */
 .res-search {
     /* border: 1px solid #777;  */
     margin: 40px 0;
@@ -88,7 +88,7 @@
     border: 0;
 }
 
-/* ¿¹¾à Àå¼Ò ¼±ÅÃ ¿µ¿ª ½ºÅ¸ÀÏ */
+/* ì˜ˆì•½ ì¥ì†Œ ì„ íƒ ì˜ì—­ ìŠ¤íƒ€ì¼ */
 .res-wrap .res-loca {
     overflow: hidden; 
     border-top: 1px solid #ddd;
@@ -97,23 +97,23 @@
 .res-loca .loca-box > a {
     display: inline-block;
     margin: 10px;
-    border: 1px solid #ddd; /* ±âº» border¸¦ 1px·Î ¼³Á¤ */
+    border: 1px solid #ddd; /* ê¸°ë³¸ borderë¥¼ 1pxë¡œ ì„¤ì • */
     border-radius: 10px;
     overflow: hidden;
-    position: relative; /* °¡»ó ¿ä¼Ò¸¦ À§ÇÑ »ó´ë À§Ä¡ */
+    position: relative; /* ê°€ìƒ ìš”ì†Œë¥¼ ìœ„í•œ ìƒëŒ€ ìœ„ì¹˜ */
     transition: all 0.3s;
 }
 .res-loca .loca-box > a::after {
     content: '';
     position: absolute;
-    top: -1px; /* ¿ø·¡ Å×µÎ¸®¿Í µ¿ÀÏÇÑ À§Ä¡ Á¶Á¤ */
+    top: -1px; /* ì›ë˜ í…Œë‘ë¦¬ì™€ ë™ì¼í•œ ìœ„ì¹˜ ì¡°ì • */
     left: -1px;
     right: -1px;
     bottom: -1px;
     border: 2px solid transparent;
     border-radius: 10px;
     transition: border-color 0.3s;
-    pointer-events: none; /* °¡»ó ¿ä¼Ò°¡ Å¬¸¯À» ¹æÇØÇÏÁö ¾Êµµ·Ï ÇÔ */
+    pointer-events: none; /* ê°€ìƒ ìš”ì†Œê°€ í´ë¦­ì„ ë°©í•´í•˜ì§€ ì•Šë„ë¡ í•¨ */
 }
 .res-loca .loca-box > a:hover {box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);}
 /* .loca-box a:hover::after {
@@ -173,7 +173,7 @@
     min-height: 1.4em;
 }
 
-/* 1240px ÀÌ»ó (À¥) */
+/* 1240px ì´ìƒ (ì›¹) */
 @media(min-width: 1240px) {
     .res-search .select-loca {width: 120px;}
     .res-search .search-text {width: 35%;}
@@ -183,7 +183,7 @@
     .res-loca .loca-box {width: 33.3333%;}
 }
 
-/* 767px ÀÌ»ó 1239px ÀÌÇÏ (ÅÂºí¸´) */
+/* 767px ì´ìƒ 1239px ì´í•˜ (íƒœë¸”ë¦¿) */
 @media(min-width: 767px) and (max-width: 1239px) {
     .res-search .select-loca {width: 120px;}
     .res-search .search-text {width: 35%;}
@@ -193,7 +193,7 @@
     .res-loca .loca-box {width: 50%;}
 }
 
-/* 766px ÀÌÇÏ (¸ğ¹ÙÀÏ) */
+/* 766px ì´í•˜ (ëª¨ë°”ì¼) */
 @media(max-width: 766px) {
 
     .res-search .select-loca {width: 20%; box-sizing: border-box; margin: 0;}

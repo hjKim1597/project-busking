@@ -1,15 +1,17 @@
-@charset "EUC-KR";
-@import url(default.css);
+@charset "UTF-8";
+@import url('default.css');
+
 
 .resForm-wrap {max-width: 1280px; margin: 0 auto; border: 0px solid #777; box-sizing: border-box;}
 .resForm-wrap > h3 {
     font-family: 'NanumSquareNeoExtraBold';
-    font-size: 1.2rem;
+    font-size: 2rem;
 }
+
 .resForm-wrap .resForm-top {margin-top: 20px;}
 .resForm-wrap .resForm-top > h3 {
     padding: 20px 0 20px 60px;
-    font-size: 1.5rem;
+    font-family: 'NanumSquareNeoExtraBold';
 }
 .resForm-wrap .resForm-top .resForm-top-loca {
     padding: 40px 60px; 
@@ -42,7 +44,8 @@
 
 .resForm-wrap .resForm-top .resForm-top-loca .resForm-top-loca-left {float: left; width: 34%;}
 .resForm-wrap .resForm-top .resForm-top-loca > h3 {
-    padding: 10px 0 30px 10px;    
+	font-family: 'NanumSquareNeoBold';
+    padding: 10px 0 30px 10px;  
 }
 .resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info > ul {
     border-top: 2px solid #777;
@@ -72,7 +75,6 @@
     width: 25%;
     min-width: 64px;
     position: relative;
-    font-size: 14px;
 }
 
 .resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info  > ul > li > b::after {
@@ -90,7 +92,7 @@
     display: inline-block;
     margin-left: 15px;
     
-    font-size: 14px;
+	font-family: 'NanumSquareRound';
     font-weight: 500;
     width: 60%;
     min-width: 100px;
@@ -105,7 +107,6 @@
     display: block; 
     width: 100%; 
     height: 50px;
-    font-size: 1rem;
     font-weight: 600;
     font-family: 'NanumSquareRound';
     box-sizing: border-box;
