@@ -1,104 +1,75 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <!-- ∫Œ∆ÆΩ∫∆Æ∑¶ css ∏µ≈© -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- css ∏µ≈© -->
-    <link rel="stylesheet" href="../css/reservationForm.css">
-
-    <!-- jQuery ∏µ≈© (js∫∏¥Ÿ ∏’¿˙ ∏µ≈©) -->
-    <script src="js/jquery.3.7.1.js"></script>
-
-    <!-- ∫Œ∆ÆΩ∫∆Æ∑¶ js ∏µ≈© -->
-     <script src="js/bootstrap.min.js"></script>
-
-    <!-- ¿•∆˘∆Æ -->
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-
-</head>
-<body>
-
-    <header>
-        «Ï¥ı
-    </header>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="../include/header.jsp" %>
     
     <div class="resForm-wrap">
         <div class="resForm-top">
-            <h3>øπæ‡ ∆‰¿Ã¡ˆ</h3>
+            <h3>Ïû•ÏÜåÏù¥Î¶Ñ</h3>
             <div class="resForm-top-loca">
-                <h3>¿Âº“¿Ã∏ß</h3>
                 <div class="resForm-top-loca-left">
-                    
                     <div class="resForm-top-loca-info">
                         <ul>
                             <li>
-                                <b>¿Âº“</b>
-                                <p>¡÷º“«•±‚</p>
+                                <b>Ïû•ÏÜå</b>
+                                <p>Ï£ºÏÜåÌëúÍ∏∞</p>
                             </li>
                             <li>
-                                <b>º±∫∞πÊπ˝</b>
-                                <p>º±¬¯º¯</p>
+                                <b>ÏÑ†Î≥ÑÎ∞©Î≤ï</b>
+                                <p>ÏÑ†Ï∞©Ïàú</p>
                             </li>
                             <li>
-                                <b>∏¡˝¡§ø¯</b>
-                                 <p>1∆¿</p>
+                                <b>Î™®ÏßëÏ†ïÏõê</b>
+                                 <p>1ÌåÄ</p>
                             </li>
                             <li>
-                                <b>∞¸»∞±∏ø™</b>
-                                <p>∞¸«“±∏ø™</p>
+                                <b>Í¥ÄÌôúÍµ¨Ïó≠</b>
+                                <p>Í¥ÄÌï†Íµ¨Ïó≠</p>
                             </li>
                             <li>
-                                <b>πÆ¿«¿¸»≠</b>
-                                <p>¿¸»≠π¯»£</p>
+                                <b>Î¨∏ÏùòÏ†ÑÌôî</b>
+                                <p>Ï†ÑÌôîÎ≤àÌò∏</p>
                             </li>
                             <li>
-                                <b>¿Ã∏ﬁ¿œ</b>
-                                <p>¿Ã∏ﬁ¿œ</p>
+                                <b>Ïù¥Î©îÏùº</b>
+                                <p>Ïù¥Î©îÏùº</p>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="resForm-top-loca-right">
-                    <img src="../images/reservation_images/±§≥™∑Á_πˆΩ∫≈∑1_√µ»£¥Î±≥ ≥≤¥‹1.jpg" alt="ªÁ¡¯">
-                    
+                    <div class="resForm-top-loca-img">
+                        <img src="${pageContext.request.contextPath }/resources/images/reservation_images/Í¥ëÎÇòÎ£®_Î≤ÑÏä§ÌÇπ1_Ï≤úÌò∏ÎåÄÍµê ÎÇ®Îã®1.jpg" alt="ÏÇ¨ÏßÑ"> 
+                    </div>
+                    <div class="resForm-top-loca-img-hover">
+                        <div class="resForm-img-gradient-left"></div>
+                        <strong>ÏûêÏÑ∏Ìûà Î≥¥Í∏∞</strong>
+                        <div class="resForm-img-gradient-right"></div>
+                    </div>
+                    </div>
                 </div>                
             </div>
         </div>
         <div class="resForm-mid">
             <div class="resForm-mid-left">
-                ¥ﬁ∑¬...
+                Îã¨Î†•...
             </div>
             <div class="resForm-mid-right">
                 <form action="#" method="post">
-                    <input type="submit" value="øπæ‡«œ±‚">
-                    <input type="button" value="∏Ò∑œ¿∏∑Œ">
+                    <input type="submit" value="ÏòàÏïΩÌïòÍ∏∞">
+                    <input type="button" value="Î™©Î°ùÏúºÎ°ú">
                 </form>
             </div>
         </div>
-        <div class="bottom">
-            <div class="nav">
-                <ul>
-                    <li><a href="#">¿ÃøÎæ»≥ª</a></li>
-                    <li><a href="#">¿Âº“æ»≥ª</a></li>
-                    <li><a href="#">¿ÃøÎ»ƒ±‚</a></li>
+        <div class="resForm-bottom">
+            <div class="resForm-bottom-nav">
+                <ul class="nav nav-tabs resForm-bottom-nav-list">
+                    <li><a href="#">Menu 1</a></li>
+                    <li><a href="#">Menu 2</a></li>
+                    <li><a href="#">Menu 3</a></li>
                 </ul>
             </div>
         </div>
 
     </div>
 
-    <footer>
-        «≤≈Õ
-    </footer>
-    
-</body>
-</html>
+<%@ include file="../include/footer.jsp" %>

@@ -1,46 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
-    <link rel="stylesheet" href="../css/reservation.css">
-
-    <!-- À¥ÆùÆ® -->
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-</head>
-<body>
-    
-    <header>
-        Çì´õ
-    </header>
+<%@ include file="../include/header.jsp" %>
     <div class="res-wrap">
         <div class="res-search">
             <form action="#" method="post">
                 <fieldset>
-                    <legend class="hide">°Ë»ö¿µ¿ª</legend>
+                    <legend class="hide">ê²€ìƒ‰ì˜ì—­</legend>
                     <select name="locations" id="locations" class="select-loca">
-                        <option value="*">ÀüÃ¼</option>
-                        <option value="±¤³ª·ç">±¤³ª·ç</option>
-                        <option value="Àá½Ç">Àá½Ç</option>
-                        <option value="¶Ò¼¶">¶Ò¼¶</option>
-                        <option value="Àá¿ø">Àá¿ø</option>
-                        <option value="ÀÌÃÌ">ÀÌÃÌ</option>
-                        <option value="¹ÝÆ÷">¹ÝÆ÷</option>
-                        <option value="¸Á¿ø">¸Á¿ø</option>
-                        <option value="¿©ÀÇµµ">¿©ÀÇµµ</option>
-                        <option value="³­Áö">³­Áö</option>
-                        <option value="¾çÈ­">¾çÈ­</option>
-                        <option value="°­¼­">°­¼­</option>
+                        <option value="*">ì „ì²´</option>
+                        <option value="ê´‘ë‚˜ë£¨">ê´‘ë‚˜ë£¨</option>
+                        <option value="ìž ì‹¤">ìž ì‹¤</option>
+                        <option value="ëšì„¬">ëšì„¬</option>
+                        <option value="ìž ì›">ìž ì›</option>
+                        <option value="ì´ì´Œ">ì´ì´Œ</option>
+                        <option value="ë°˜í¬">ë°˜í¬</option>
+                        <option value="ë§ì›">ë§ì›</option>
+                        <option value="ì—¬ì˜ë„">ì—¬ì˜ë„</option>
+                        <option value="ë‚œì§€">ë‚œì§€</option>
+                        <option value="ì–‘í™”">ì–‘í™”</option>
+                        <option value="ê°•ì„œ">ê°•ì„œ</option>
                     </select>
 
-                    <input type="text" class="search-text" name="search_text" placeholder="°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä">
-                    <input type="submit" class="search-btn" value="°Ë»ö">
+                    <input type="text" class="search-text" name="search_text" placeholder="ê²€ìƒ‰ì–´ë¥¼ ìž…ë ¥í•˜ì„¸ìš”">
+                    <input type="submit" class="search-btn" value="ê²€ìƒ‰">
                 </fieldset>
             </form>
         </div>
@@ -48,21 +31,21 @@
         <div class="res-loca">
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../images/reservation_images/±¤³ª·ç_¹ö½ºÅ·1_ÃµÈ£´ë±³ ³²´Ü1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/ê´‘ë‚˜ë£¨_ë²„ìŠ¤í‚¹1_ì²œí˜¸ëŒ€êµ ë‚¨ë‹¨1.jpg" alt=""></div>
                     <div class="loca-cont-box">
-                        <h4>Àå¼ÒÀÌ¸§</h4>
+                        <h4>ìž¥ì†Œì´ë¦„</h4>
                         <ul>
                             <li>
-                                <b>°üÇÒ±¸¿ª</b>
-                                <div>±¸¿ªÀÌ¸§</div>
+                                <b>ê´€í• êµ¬ì—­</b>
+                                <div>êµ¬ì—­ì´ë¦„</div>
                             </li>
                             <li>
-                                <b>»ó¼¼ÁÖ¼Ò</b>
-                                <div>ÁÖ¼Ò³»¿ë</div>
+                                <b>ìƒì„¸ì£¼ì†Œ</b>
+                                <div>ì£¼ì†Œë‚´ìš©</div>
                             </li>
                             <li>
-                                <b>°ü¸®ÀÚÀÌ¸ÞÀÏ</b>
-                                <div>ÀÌ¸ÞÀÏ</div>
+                                <b>ê´€ë¦¬ìžì´ë©”ì¼</b>
+                                <div>ì´ë©”ì¼</div>
                             </li>
                         </ul>
                     </div>
@@ -70,21 +53,21 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../images/reservation_images/±¤³ª·ç_¹ö½ºÅ·1_ÃµÈ£´ë±³ ³²´Ü1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/ê´‘ë‚˜ë£¨_ë²„ìŠ¤í‚¹1_ì²œí˜¸ëŒ€êµ ë‚¨ë‹¨1.jpg" alt=""></div>
                     <div class="loca-cont-box">
-                        <h4>Àå¼ÒÀÌ¸§</h4>
+                        <h4>ìž¥ì†Œì´ë¦„</h4>
                         <ul>
                             <li>
-                                <b>°üÇÒ±¸¿ª</b>
-                                <div>±¸¿ªÀÌ¸§</div>
+                                <b>ê´€í• êµ¬ì—­</b>
+                                <div>êµ¬ì—­ì´ë¦„</div>
                             </li>
                             <li>
-                                <b>»ó¼¼ÁÖ¼Ò</b>
-                                <div>ÁÖ¼Ò³»¿ë</div>
+                                <b>ìƒì„¸ì£¼ì†Œ</b>
+                                <div>ì£¼ì†Œë‚´ìš©</div>
                             </li>
                             <li>
-                                <b>°ü¸®ÀÚÀÌ¸ÞÀÏ</b>
-                                <div>ÀÌ¸ÞÀÏ</div>
+                                <b>ê´€ë¦¬ìžì´ë©”ì¼</b>
+                                <div>ì´ë©”ì¼</div>
                             </li>
                         </ul>
                     </div>
@@ -92,21 +75,21 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../images/reservation_images/±¤³ª·ç_¹ö½ºÅ·1_ÃµÈ£´ë±³ ³²´Ü1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/ê´‘ë‚˜ë£¨_ë²„ìŠ¤í‚¹1_ì²œí˜¸ëŒ€êµ ë‚¨ë‹¨1.jpg" alt=""></div>
                     <div class="loca-cont-box">
-                        <h4>Àå¼ÒÀÌ¸§</h4>
+                        <h4>ìž¥ì†Œì´ë¦„</h4>
                         <ul>
                             <li>
-                                <b>°üÇÒ±¸¿ª</b>
-                                <div>±¸¿ªÀÌ¸§</div>
+                                <b>ê´€í• êµ¬ì—­</b>
+                                <div>êµ¬ì—­ì´ë¦„</div>
                             </li>
                             <li>
-                                <b>»ó¼¼ÁÖ¼Ò</b>
-                                <div>ÁÖ¼Ò³»¿ë</div>
+                                <b>ìƒì„¸ì£¼ì†Œ</b>
+                                <div>ì£¼ì†Œë‚´ìš©</div>
                             </li>
                             <li>
-                                <b>°ü¸®ÀÚÀÌ¸ÞÀÏ</b>
-                                <div>ÀÌ¸ÞÀÏ</div>
+                                <b>ê´€ë¦¬ìžì´ë©”ì¼</b>
+                                <div>ì´ë©”ì¼</div>
                             </li>
                         </ul>
                     </div>
@@ -114,21 +97,21 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../images/reservation_images/±¤³ª·ç_¹ö½ºÅ·1_ÃµÈ£´ë±³ ³²´Ü1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/ê´‘ë‚˜ë£¨_ë²„ìŠ¤í‚¹1_ì²œí˜¸ëŒ€êµ ë‚¨ë‹¨1.jpg" alt=""></div>
                     <div class="loca-cont-box">
-                        <h4>Àå¼ÒÀÌ¸§</h4>
+                        <h4>ìž¥ì†Œì´ë¦„</h4>
                         <ul>
                             <li>
-                                <b>°üÇÒ±¸¿ª</b>
-                                <div>±¸¿ªÀÌ¸§</div>
+                                <b>ê´€í• êµ¬ì—­</b>
+                                <div>êµ¬ì—­ì´ë¦„</div>
                             </li>
                             <li>
-                                <b>»ó¼¼ÁÖ¼Ò</b>
-                                <div>ÁÖ¼Ò³»¿ë</div>
+                                <b>ìƒì„¸ì£¼ì†Œ</b>
+                                <div>ì£¼ì†Œë‚´ìš©</div>
                             </li>
                             <li>
-                                <b>°ü¸®ÀÚÀÌ¸ÞÀÏ</b>
-                                <div>ÀÌ¸ÞÀÏ</div>
+                                <b>ê´€ë¦¬ìžì´ë©”ì¼</b>
+                                <div>ì´ë©”ì¼</div>
                             </li>
                         </ul>
                     </div>
@@ -136,21 +119,21 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../images/reservation_images/±¤³ª·ç_¹ö½ºÅ·1_ÃµÈ£´ë±³ ³²´Ü1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/ê´‘ë‚˜ë£¨_ë²„ìŠ¤í‚¹1_ì²œí˜¸ëŒ€êµ ë‚¨ë‹¨1.jpg" alt=""></div>
                     <div class="loca-cont-box">
-                        <h4>Àå¼ÒÀÌ¸§</h4>
+                        <h4>ìž¥ì†Œì´ë¦„</h4>
                         <ul>
                             <li>
-                                <b>°üÇÒ±¸¿ª</b>
-                                <div>±¸¿ªÀÌ¸§</div>
+                                <b>ê´€í• êµ¬ì—­</b>
+                                <div>êµ¬ì—­ì´ë¦„</div>
                             </li>
                             <li>
-                                <b>»ó¼¼ÁÖ¼Ò</b>
-                                <div>ÁÖ¼Ò³»¿ë</div>
+                                <b>ìƒì„¸ì£¼ì†Œ</b>
+                                <div>ì£¼ì†Œë‚´ìš©</div>
                             </li>
                             <li>
-                                <b>°ü¸®ÀÚÀÌ¸ÞÀÏ</b>
-                                <div>ÀÌ¸ÞÀÏ</div>
+                                <b>ê´€ë¦¬ìžì´ë©”ì¼</b>
+                                <div>ì´ë©”ì¼</div>
                             </li>
                         </ul>
                     </div>
@@ -158,21 +141,21 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../images/reservation_images/±¤³ª·ç_¹ö½ºÅ·1_ÃµÈ£´ë±³ ³²´Ü1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/ê´‘ë‚˜ë£¨_ë²„ìŠ¤í‚¹1_ì²œí˜¸ëŒ€êµ ë‚¨ë‹¨1.jpg" alt=""></div>
                     <div class="loca-cont-box">
-                        <h4>Àå¼ÒÀÌ¸§</h4>
+                        <h4>ìž¥ì†Œì´ë¦„</h4>
                         <ul>
                             <li>
-                                <b>°üÇÒ±¸¿ª</b>
-                                <div>±¸¿ªÀÌ¸§</div>
+                                <b>ê´€í• êµ¬ì—­</b>
+                                <div>êµ¬ì—­ì´ë¦„</div>
                             </li>
                             <li>
-                                <b>»ó¼¼ÁÖ¼Ò</b>
-                                <div>ÁÖ¼Ò³»¿ë</div>
+                                <b>ìƒì„¸ì£¼ì†Œ</b>
+                                <div>ì£¼ì†Œë‚´ìš©</div>
                             </li>
                             <li>
-                                <b>°ü¸®ÀÚÀÌ¸ÞÀÏ</b>
-                                <div>ÀÌ¸ÞÀÏ</div>
+                                <b>ê´€ë¦¬ìžì´ë©”ì¼</b>
+                                <div>ì´ë©”ì¼</div>
                             </li>
                         </ul>
                     </div>
@@ -180,21 +163,21 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../images/reservation_images/±¤³ª·ç_¹ö½ºÅ·1_ÃµÈ£´ë±³ ³²´Ü1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/ê´‘ë‚˜ë£¨_ë²„ìŠ¤í‚¹1_ì²œí˜¸ëŒ€êµ ë‚¨ë‹¨1.jpg" alt=""></div>
                     <div class="loca-cont-box">
-                        <h4>Àå¼ÒÀÌ¸§</h4>
+                        <h4>ìž¥ì†Œì´ë¦„</h4>
                         <ul>
                             <li>
-                                <b>°üÇÒ±¸¿ª</b>
-                                <div>±¸¿ªÀÌ¸§</div>
+                                <b>ê´€í• êµ¬ì—­</b>
+                                <div>êµ¬ì—­ì´ë¦„</div>
                             </li>
                             <li>
-                                <b>»ó¼¼ÁÖ¼Ò</b>
-                                <div>ÁÖ¼Ò³»¿ë</div>
+                                <b>ìƒì„¸ì£¼ì†Œ</b>
+                                <div>ì£¼ì†Œë‚´ìš©</div>
                             </li>
                             <li>
-                                <b>°ü¸®ÀÚÀÌ¸ÞÀÏ</b>
-                                <div>ÀÌ¸ÞÀÏ</div>
+                                <b>ê´€ë¦¬ìžì´ë©”ì¼</b>
+                                <div>ì´ë©”ì¼</div>
                             </li>
                         </ul>
                     </div>
@@ -202,21 +185,21 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../images/reservation_images/±¤³ª·ç_¹ö½ºÅ·1_ÃµÈ£´ë±³ ³²´Ü1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/ê´‘ë‚˜ë£¨_ë²„ìŠ¤í‚¹1_ì²œí˜¸ëŒ€êµ ë‚¨ë‹¨1.jpg" alt=""></div>
                     <div class="loca-cont-box">
-                        <h4>Àå¼ÒÀÌ¸§</h4>
+                        <h4>ìž¥ì†Œì´ë¦„</h4>
                         <ul>
                             <li>
-                                <b>°üÇÒ±¸¿ª</b>
-                                <div>±¸¿ªÀÌ¸§</div>
+                                <b>ê´€í• êµ¬ì—­</b>
+                                <div>êµ¬ì—­ì´ë¦„</div>
                             </li>
                             <li>
-                                <b>»ó¼¼ÁÖ¼Ò</b>
-                                <div>ÁÖ¼Ò³»¿ë</div>
+                                <b>ìƒì„¸ì£¼ì†Œ</b>
+                                <div>ì£¼ì†Œë‚´ìš©</div>
                             </li>
                             <li>
-                                <b>°ü¸®ÀÚÀÌ¸ÞÀÏ</b>
-                                <div>ÀÌ¸ÞÀÏ</div>
+                                <b>ê´€ë¦¬ìžì´ë©”ì¼</b>
+                                <div>ì´ë©”ì¼</div>
                             </li>
                         </ul>
                     </div>
@@ -224,39 +207,27 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../images/reservation_images/±¤³ª·ç_¹ö½ºÅ·1_ÃµÈ£´ë±³ ³²´Ü1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/ê´‘ë‚˜ë£¨_ë²„ìŠ¤í‚¹1_ì²œí˜¸ëŒ€êµ ë‚¨ë‹¨1.jpg" alt=""></div>
                     <div class="loca-cont-box">
-                        <h4>Àå¼ÒÀÌ¸§</h4>
+                        <h4>ìž¥ì†Œì´ë¦„</h4>
                         <ul>
                             <li>
-                                <b>°üÇÒ±¸¿ª</b>
-                                <div>±¸¿ªÀÌ¸§</div>
+                                <b>ê´€í• êµ¬ì—­</b>
+                                <div>êµ¬ì—­ì´ë¦„</div>
                             </li>
                             <li>
-                                <b>»ó¼¼ÁÖ¼Ò</b>
-                                <div>ÁÖ¼Ò³»¿ë</div>
+                                <b>ìƒì„¸ì£¼ì†Œ</b>
+                                <div>ì£¼ì†Œë‚´ìš©</div>
                             </li>
                             <li>
-                                <b>°ü¸®ÀÚÀÌ¸ÞÀÏ</b>
-                                <div>ÀÌ¸ÞÀÏ</div>
+                                <b>ê´€ë¦¬ìžì´ë©”ì¼</b>
+                                <div>ì´ë©”ì¼</div>
                             </li>
                         </ul>
                     </div>
                 </a>    
             </div>
-            
-            
-            
+ 
         </div>
     </div>
-    
-
-
-
-    <footer>
-        Ç²ÅÍ
-    </footer>
-
-
-</body>
-</html>
+<%@ include file="../include/footer.jsp" %>
