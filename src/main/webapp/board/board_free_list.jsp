@@ -28,8 +28,8 @@
                     </thead>
 <!--                     <tbody>
                         데이터 받아오기
-                        <td>글번호</td>
-                        <td>작성자</td>
+                        <td>번호</td>
+                        <td>작성</td>
                         <td><a href="board_content.html">제목</a></td> 제목을 누르면 글 내용으로 이동함
                         <td>날짜</td>
                         <td>조회수</td>

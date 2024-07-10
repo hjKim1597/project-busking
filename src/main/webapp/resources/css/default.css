@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 @charset "EUC-KR";
+
 /* ÀüÃ¼ °øÅëÀûÀ¸·Î Àû¿ëµÉ µðÀÚÀÎ Á¤ÀÇ */
 * {padding: 0; margin: 0;}
 ul, li, ol, dl, dd {list-style: none;}
 img {max-width: 100%; height: auto;}
-=======
-/* ì „ì²´ ê³µí†µì ìœ¼ë¡œ ì ìš©ë  ë””ìžì¸ ì •ì˜ */
-* {padding: 0; margin: 0;}
-ul, li, ol, dl, dd {list-style: none;}
-img {max-width: 100%; height: auto;}
->>>>>>> 2c25fe142945e837880631a6400095bc974514a0
