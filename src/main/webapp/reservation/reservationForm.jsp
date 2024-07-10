@@ -4,11 +4,9 @@
     
     <div class="resForm-wrap">
         <div class="resForm-top">
-            <h3>예약 페이지</h3>
+            <h3>장소이름</h3>
             <div class="resForm-top-loca">
-                <h3>장소이름</h3>
                 <div class="resForm-top-loca-left">
-                    
                     <div class="resForm-top-loca-info">
                         <ul>
                             <li>
@@ -39,7 +37,15 @@
                     </div>
                 </div>
                 <div class="resForm-top-loca-right">
-                    <img src="${pageContext.request.contextPath }/resources/images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt="사진"> 
+                    <div class="resForm-top-loca-img">
+                        <img src="${pageContext.request.contextPath }/resources/images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt="사진"> 
+                    </div>
+                    <div class="resForm-top-loca-img-hover">
+                        <div class="resForm-img-gradient-left"></div>
+                        <strong>자세히 보기</strong>
+                        <div class="resForm-img-gradient-right"></div>
+                    </div>
+                    </div>
                 </div>                
             </div>
         </div>
@@ -54,12 +60,12 @@
                 </form>
             </div>
         </div>
-        <div class="bottom">
-            <div class="nav">
-                <ul>
-                    <li><a href="#">이용안내</a></li>
-                    <li><a href="#">장소안내</a></li>
-                    <li><a href="#">이용후기</a></li>
+        <div class="resForm-bottom">
+            <div class="resForm-bottom-nav">
+                <ul class="nav nav-tabs resForm-bottom-nav-list">
+                    <li><a href="#">Menu 1</a></li>
+                    <li><a href="#">Menu 2</a></li>
+                    <li><a href="#">Menu 3</a></li>
                 </ul>
             </div>
         </div>
