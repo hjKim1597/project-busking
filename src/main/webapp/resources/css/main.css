@@ -1,0 +1,195 @@
+@charset "UTF-8";
+
+@import url(default_main.css);
+
+/* ----------------------------------------------font---------------------------------------------- */
+@font-face {
+    font-family: 'NanumSquare';
+    src: url(font/nanum-square/NanumSquare_acB.ttf) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.wrap .header {
+    font-family: 'NanumSquare';
+}
+
+/* ----------------------------------------------header---------------------------------------------- */
+.header .header-wrap {
+    border-bottom: 1px solid #e3e3e3;
+    margin: 0 200px 0 100px;
+}
+
+.header .header-wrap .top {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header .top {
+    overflow: hidden;
+    position: relative;
+}
+
+.header .header-wrap .top .top-img {
+    float: left;
+    width: 100px;
+}
+
+
+.header .header-wrap .top .top-left {
+    float: left;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+
+.header .header-wrap .menu {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+
+
+}
+.menu>ul>li {
+    display: inline;
+    margin-bottom: 10px;
+}
+.menu>ul>li>a {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    margin: 40px 30px 15px 30px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 150%;
+    color: black;
+    padding-left: 60px;
+}
+
+.menu>ul>li>a:hover {
+    border-bottom: 3px solid #003566;
+}
+
+
+
+.header .top .top-right {
+    float: right;
+    margin-top: -70px;
+
+}
+
+.top-right>ul>li>a>img {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 2%;
+    top: 40%;
+}
+
+
+
+.top-right>ul>li {
+    display: inline;
+    border-left: 1px solid #999;
+
+}
+
+.top-right>ul>li>a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+    text-align: center;
+}
+
+.top-right>ul>li:nth-child(1) {
+    border: none;
+}
+/* ----------------------------------------------content---------------------------------------------- */
+
+/*배너 좌우 그림자  */
+.carousel-control.right,
+.carousel-control.left {
+    background-image: none;
+}
+
+.carousel-caption > p {
+    font-size: 20px;
+    text-shadow: none;
+}
+
+
+
+
+
+/* ----------------------------------------------footer---------------------------------------------- */
+.footer {
+    margin-top: 100%;
+    overflow: hidden;
+}
+
+.footer>.footer-top {
+    margin-bottom: 100px;
+    padding: 0 300px 0 300px;
+
+    font-size: 15px;
+}
+
+.footer>.footer-top>.footer-service {
+    color: black;
+    float: left;
+
+}
+
+.footer-service>ul>li>a {
+    color: #999;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+.footer>.footer-top>.footer-faq {
+    color: black;
+    float: left;
+    padding-left: 20px;
+}
+
+.footer-faq>ul>li>a {
+    color: #999;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+
+.footer>.footer-top>.footer-cscenter {
+    color: black;
+    float: left;
+    padding-left: 20px;
+}
+
+.footer-cscenter>p {
+    color: #999;
+}
+
+
+
+.footer>.footer-top>.footer-familysite {
+    float: right;
+}
+
+.footer>.footer-mid {
+    padding: 15px 300px 15px 300px;
+    background-color: #BAD98B;
+    color: #999;
+}
+
+
+
+.footer>.footer-bottom {
+    padding: 50px 300px 50px 300px;
+    background-color: #4F8C6F;
+    color: #999;
+}
