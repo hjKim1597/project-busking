@@ -1,0 +1,205 @@
+@charset "EUC-KR";
+@import url(default.css);
+
+.container {
+    max-width: 1280px; margin: 0 auto;
+}
+
+/* 검색 영역 스타일 */
+.res-search {
+    /* border: 1px solid #777;  */
+    margin: 40px 0;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+}
+
+.res-search form {
+    display: block;
+}
+.res-search form fieldset {
+    border: none;
+}
+
+.res-search form select {
+    height: 44px;
+    padding: 0 25px 0 10px;
+    color: #222;
+    background: #fff url(../img/select_down.png) no-repeat right 10px center;
+    text-align: left;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid #cacfd3;
+    font-size: 16px;
+  
+}
+
+.search-text {
+    height: 44px;
+    margin-left: 8px;
+    padding: 0 10px;
+    border:1px solid #CACFD3;
+    border-radius: 3px;
+    outline: none;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    background-color: #fff;
+}
+.search-text:focus {
+    border-color: #777;
+}
+
+.search-btn {
+    appearance: none;
+    height: 44px;
+    background-color: #9cd9d9;
+    
+    font-size: 18px;
+    border-radius: 3px;
+    color: #fff;
+  
+    vertical-align: middle;
+    cursor: pointer;
+    border: 0 none;
+}
+
+.select-loca {
+    appearance: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    outline: none;
+  
+    border: 1px solid #CACFD3;
+}
+.select-loca:focus {
+    border-color: #777;
+}
+.select-loca > option {font-family: 'NanumSquareNeo';}
+
+.hide {
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    overflow: hidden;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+/* 예약 장소 선택 영역 스타일 */
+.res-loca {
+    overflow: hidden; 
+    border-top: 1px solid #ddd;
+}
+.res-loca .loca-box {float: left; transition: 0.2s ease-in;}
+.res-loca .loca-box a {
+    display: inline-block;
+    margin: 10px;
+    border: 1px solid #ddd; /* 기본 border를 1px로 설정 */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative; /* 가상 요소를 위한 상대 위치 */
+    transition: all 0.3s;
+}
+.res-loca .loca-box a::after {
+    content: '';
+    position: absolute;
+    top: -1px; /* 원래 테두리와 동일한 위치 조정 */
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: border-color 0.3s;
+    pointer-events: none; /* 가상 요소가 클릭을 방해하지 않도록 함 */
+}
+.loca-box a:hover {box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);}
+/* .loca-box a:hover::after {
+    border-color: #777;
+} */
+
+.loca-box a:hover .loca-img-box img{
+    transform: scale(1.1);
+}
+
+.loca-img-box {
+    height: 40%;
+    position: relative;
+    overflow: hidden;
+}
+.loca-img-box img {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.loca-cont-box {
+    padding: 30px;
+  
+}
+.loca-cont-box > h4 {
+    display: block;
+    margin-bottom: 10px;
+    height: 40px;
+    line-height: 40px;    
+    font-size: 20px;
+    font-weight: bold;
+    overflow: hidden;
+     
+}
+
+.loca-cont-box > ul > li {overflow: hidden;}
+.loca-cont-box > ul > li > b,
+.loca-cont-box > ul > li > div {float: left; font-family: 'NanumSquareNeo';}
+
+.loca-cont-box > ul > li {
+    margin-bottom: 10px;
+    padding-left: 120px;
+    position: relative;
+  
+}
+.loca-cont-box > ul > li b {
+    display: block;
+    color: #0379d5;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.loca-cont-box > ul > li div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-height: 1.4em;
+}
+
+/* 1240px 이상 (웹) */
+@media(min-width: 1240px) {
+    .select-loca {width: 120px;}
+    .search-text {width: 35%;}
+    .search-btn {padding: 0 35px; margin-left: 8px;}
+
+    .res-loca {padding: 20px 200px}
+    .res-loca .loca-box {width: 33.3333%;}
+}
+
+/* 767px 이상 1239px 이하 (태블릿) */
+@media(min-width: 767px) and (max-width: 1239px) {
+    .select-loca {width: 120px;}
+    .search-text {width: 35%;}
+    .search-btn {padding: 0 35px; margin-left: 8px;}
+
+    .res-loca {padding: 20px 100px}
+    .res-loca .loca-box {width: 50%;}
+}
+
+/* 766px 이하 (모바일) */
+@media(max-width: 766px) {
+
+    .select-loca {width: 20%; box-sizing: border-box; margin: 0;}
+    .search-text {width: 60%; box-sizing: border-box; margin-left: 1%;}
+    .search-btn {display: block; margin-top: 5px; width: 82%; margin: 0 auto; margin-top: 5px; box-sizing: border-box;}
+
+    .res-loca {padding: 20px}
+    .res-loca .loca-box {width: 100%;}
+}
