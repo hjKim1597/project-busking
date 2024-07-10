@@ -26,11 +26,11 @@
                             <th class="nth5">조회수</th>
                         </tr>
                     </thead>
-<!--                     <tbody>
+				 <!--  <tbody>
                         데이터 받아오기
                         <td>번호</td>
                         <td>작성</td>
-                        <td><a href="board_content.html">제목</a></td> 제목을 누르면 글 내용으로 이동함
+                        <td><a href="board_content.jsp">제목</a></td> 제목을 누르면 글 내용으로 이동함
                         <td>날짜</td>
                         <td>조회수</td>
                     </tbody> -->
@@ -48,7 +48,7 @@
                             <li><a href="마지막페이지"><img src="../resources/imges/ico_last.gif" alt="마지막페이지"></a></li>
                         </ul>
                         <form action="board_write.html" class="right">
-                            <button value="글쓰기" onclick="board_write.html">글쓰기</button>  
+                            <button value="작성" onclick="board_write.jsp">글쓰기</button>  
                         </form>   
                     </div>                     
                 <div class="board_free_search">
