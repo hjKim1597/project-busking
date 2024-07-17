@@ -1,19 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<head>
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-<script src="../resources/js/jquery-3.7.1.min.js"></script>
-<script src="../resourcesjs/bootstrap.min.js"></script>
-<link rel="stylesheet" href="../resources/css/custom-reset.css">
-<link rel="stylesheet" href="../resources/css/board_css/board_free_content.css">
-<link rel="stylesheet" href="../resources/css/board_css/board_nav.css">
-</head>
+<%@ include file="../include/header.jsp" %>
 
 
 <section id="board_content">
 
-    <nav class="board_nav">
+    <nav class="board_nav">s
         <div id="board_nav_wrap">
             <h1>BOARD</h1>
             <ul class="menu">
@@ -97,3 +90,4 @@
     }
 
 </script>
+<%@ include file="../include/footer.jsp" %>
