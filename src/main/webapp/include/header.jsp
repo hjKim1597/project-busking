@@ -15,49 +15,80 @@
 	<!-- 부트스트랩 js링크 -->
 	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
 	
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
-	
-	<!-- 예약페이지 css 링크 -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/reservation.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/reservationForm.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/index.css">
 	
 	<!-- 웹폰트 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 
+
 </head>
 <body>
     
-    <header class="header">
-        <div class="header-wrap">
-            <div class="top">
-
-                <div class="top-img">
-                    <img src="${pageContext.request.contextPath }/resources/img/project_logo.png" style="max-width: 100%; height: auto;" alt="로고사진">
+   <nav class="navbar navbar-inverse index-header">
+        <div style="background-color: white;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand index-menu" href="#">사이트 명</a>
                 </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
 
-                <div class="top-left">
-                    사이트명
-                </div>
+                        <li class="active index-menu"><a href="#">Main</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle index-menu" data-toggle="dropdown" href="#">게시판
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">NEWS</a></li>
+                                <li><a href="#">자유게시판</a></li>
+                                <li><a href="#">팀원 모집</a></li>
+                                <li><a href="#">Q % A</a></li>
+                            </ul>
+                        </li>
+                        <li class="header-res"><a href="#" class="index-menu">예약하기</a></li>
+                        <li><a href="#" class="index-menu">마이페이지</a></li>
+                        <li><a href="#" class="index-menu">고객센터</a></li>
 
-                <div class="menu">
-                    <ul>
-                        <li><a href="#">Main</a></li>
-                        <li><a href="#">예약하기</a></li>
-                        <li><a href="#">자유게시판</a></li>
-                        <li><a href="#">고객센터</a></li>
-                        <li><a href="#">마이페이지</a></li>
+
+
                     </ul>
-                </div>
-
-                <div class="top-right">
-                    <ul>
-                        <li><a href="#">로그인</a></li>
-                        <li><a href="#">회원가입</a></li>
-
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" class="header-right"><span class="glyphicon glyphicon-user"></span>
+                                로그인</a></li>
+                        <li><a href="#" class="header-right"><span class="glyphicon glyphicon-log-in"></span>
+                                회원가입</a>
+                        </li>
                     </ul>
+
                 </div>
             </div>
         </div>
-    </header>
+
+    </nav>
+
+
+    
+	<script type="text/javascript">
+		var uri = '${pageContext.request.requestURI}';
+		var pages = uri.split('/');
+		var page = pages[pages.length - 1];
+		var cssFile = page.substring(0, page.length - 3);
+		var folder = pages[pages.length - 2];
+		//console.log('${pageContext.request.contextPath }/resources/css/' + folder + "/" + cssFile + "css");
+		
+		var link = document.createElement("link");
+		link.rel = "stylesheet";
+		link.href = "${pageContext.request.contextPath }/resources/css/" + folder + "/" + cssFile + "css";
+
+		document.querySelector("head").appendChild(link);
+		
+	</script>    
+    
+    
+

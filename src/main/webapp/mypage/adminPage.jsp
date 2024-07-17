@@ -2,56 +2,9 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-    <script src="../resources/js/jquery-3.7.1.min.js"></script>
-    <script src="../resources/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../resources/css/mypage/adminPage.css">
-    <link rel="stylesheet" href="../resources/css/headerfooter/default_main.css">
-    <link rel="stylesheet" href="../resources/css/headerfooter/main.css">
-
-    <style>
-        /* Add your custom CSS styles here */
-    </style>
-</head>
+<%@ include file="../include/header.jsp" %>
 <body>
-    <header class="index-header">
-        <div class="header-wrap">
-            <div class="index-top">
     
-                <div class="top-img">
-                    <img src="img/project_logo.png" style="max-width: 100%; height: auto;" alt="로고사진">
-                </div>
-    
-                <div class="top-left">
-                    사이트명
-                </div>
-    
-                <div class="index-menu">
-                    <ul>
-                        <li><a href="#">Main</a></li>
-                        <li><a href="#">자유게시판</a></li>
-                        <li><a href="#">예약하기</a></li>
-                        <li><a href="#">마이페이지</a></li>
-                        <li><a href="#">고객센터</a></li>
-    
-    
-                    </ul>
-                </div>
-    
-                <div class="index-top-right">
-                    <ul>
-                        <li><a href="#">로그인</a></li>
-                        <li><a href="#">회원가입</a></li>
-    
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
     <div class="jinseok-wrap">
         <div class="sum">
             <h3>예약 관리 페이지</h3>
@@ -220,5 +173,4 @@
         });
     </script>
     
-</body>
-</html>
+<%@ include file="../include/footer.jsp" %>

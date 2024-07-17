@@ -1,4 +1,5 @@
 @import url('../default.css');
+@import url(https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css);
 @font-face {
     font-family: 'NanumSquareRoundExtraBold';
     src: url(/Busking/MYPAGE/fonts/NanumSquareRoundEB.ttf);
