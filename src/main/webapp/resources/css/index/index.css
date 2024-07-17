@@ -304,6 +304,9 @@
 .navbar-inverse .navbar-toggle {
     border-color: #fff;
 }
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover {
+	color: #9d9d9d;
+}
 
 /* --------------------------------------------- */
 
@@ -363,9 +366,9 @@
     border-bottom: 1px solid #ddd;
 }
 
-#myCarousel {
+/* #myCarousel {
     margin-top: 80px;
-}
+} */
 
 /* ----------------------------------------------content---------------------------------------------- */
 .index-wrap {
