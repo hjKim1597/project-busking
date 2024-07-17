@@ -1,0 +1,310 @@
+@import url(../css/customer_center_default.css);
+
+
+
+/* ----------------------------------------------font---------------------------------------------- */
+@font-face {
+    font-family: 'NanumSquare';
+    src: url(font/nanum-square/NanumSquare_acB.ttf) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body,
+html {
+    font-family: 'NanumSquare';
+}
+
+/* ----------------------------------------------header---------------------------------------------- */
+.index-header .header-wrap {
+    border-bottom: 1px solid #e3e3e3;
+    /* margin: 0 200px 0 100px; */
+
+    
+}
+
+.index-header .header-wrap .index-top {
+    width: 100%;
+    margin: 0 auto;
+    
+    
+
+}
+
+.index-header .index-top {
+    overflow: hidden;
+    position: relative;
+
+    
+}
+
+.index-header .header-wrap .index-top .top-img {
+    float: left;
+    width: 100px;
+}
+
+
+.index-header .header-wrap .index-top .top-left {
+    float: left;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+
+.index-header .header-wrap .index-menu {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+
+
+}
+
+.index-menu>ul>li {
+    display: inline;
+    margin-bottom: 10px;
+}
+
+.index-menu>ul>li>a {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    margin: 40px 30px 15px 30px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 150%;
+    color: black;
+    padding: 0 30px 0 30px;
+}
+
+.index-menu>ul>li>a:hover {
+    color: skyblue;
+    position: static;
+
+}
+
+
+
+.index-header .index-top .index-top-right {
+    float: right;
+    margin-top: -85px;
+
+}
+
+/* 로그인 완료시 프로필 사진 */
+.index-top-right>ul>li>a>img {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 2%;
+    top: 40%;
+}
+
+
+
+.index-top-right>ul>li {
+    display: inline;
+    border-left: 1px solid #999;
+
+}
+
+.index-top-right>ul>li>a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 100;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    letter-spacing: 2px;
+
+}
+
+.index-top-right>ul>li:nth-child(1) {
+    border: none;
+}
+
+.dropdown {
+    z-index: 1;
+}
+
+/* ----------------------------------------------content---------------------------------------------- */
+/*배너 좌우 그림자  */
+.carousel-control.right,
+.carousel-control.left {
+    background-image: none;
+}
+
+.carousel-caption>p {
+    font-size: 20px;
+    text-shadow: none;
+}
+
+#myCarousel {
+    margin-bottom: 150px;
+}
+
+.index-content>.carousel>.carousel-inner>.item>img {
+    z-index: 0;
+}
+
+.carousel-inner>.item>.carousel-caption>.banner-left {
+    float: left;
+}
+
+.carousel-inner>.item>.carousel-caption>.banner-title {
+    font-size: 40px;
+    margin-left: 30px;
+}
+
+.carousel-inner>.item>.carousel-caption>.banner-content {
+    margin-top: 80px;
+}
+
+
+/* ----미리보기 */
+.index-preview {
+    margin: 0 auto;
+
+}
+
+.index-preview>.row {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.index-preview>.location-color {
+    background-color: #e3e3e3;
+}
+
+
+.index-preview>.row>.preview-box {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    padding: 30px 1px;
+    margin: 100px 20px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.index-preview>.row>.preview-box>.preview-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.index-preview>.row>.preview-box>.preview-content {
+    font-size: 20px;
+}
+
+/* 게시판  */
+.index-board {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.index-board tr th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+.index-board tr:nth-child(even) {
+    background-color: #e3e3e3;
+}
+.index-board tr th {
+    font-size: 20px;
+    text-align: center;
+}
+/* 이미지 크기 수정 */
+.location-color > .preview-box > .preview-title > img {
+    /* 해야함 */
+}
+
+
+
+
+/* ----------------------------------------------footer---------------------------------------------- */
+.index-footer {
+    margin-top: 50%;
+    overflow: hidden;
+}
+
+.index-footer>.index-footer-top {
+    margin-bottom: 100px;
+    padding: 0 200px 0 300px;
+
+    font-size: 15px;
+}
+
+.index-footer>.index-footer-top>.footer-service {
+    color: black;
+    float: left;
+
+}
+
+.footer-service>ul>li>a {
+    color: #999;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+.index-footer>.index-footer-top>.footer-faq {
+    color: black;
+    float: left;
+    padding-left: 20px;
+}
+
+.footer-faq>ul>li>a {
+    color: #999;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+
+.index-footer>.index-footer-top>.footer-cscenter {
+    color: black;
+    float: left;
+    padding-left: 20px;
+}
+
+.footer-cscenter>p {
+    color: #999;
+}
+
+
+
+.index-footer>.index-footer-top>.footer-familysite {
+    float: right;
+}
+
+.index-footer>.footer-mid {
+    padding: 15px 300px 15px 300px;
+    background-color: #BAD98B;
+    color: #999;
+    width: 100%;
+    overflow: hidden;
+}
+
+.footer-mid>div>p {
+    float: left;
+}
+
+
+
+.index-footer>.footer-bottom {
+    padding: 50px 300px 50px 300px;
+    background-color: #4F8C6F;
+    color: #999;
+    width: 100%;
+
+}
+
+.footer-bottom>.footer-info>p>.footer-icon {
+    color: #999;
+    text-decoration: none;
+}
