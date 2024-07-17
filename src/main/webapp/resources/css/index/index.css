@@ -124,6 +124,9 @@
     .carousel-inner>.item>img {
         margin-top: 0.4%;
     }
+    .index-content>.carousel>.carousel-inner>.item>img {
+    	margin-top: 6%;
+    }
 
     .index-footer-top {
         display: flex;
@@ -146,12 +149,16 @@
     }
 
     .location-pic>h2 {
-        margin: 100px 20px 100px 20px;
+        margin: 0px 20px 0px 20px;
+    }
+    .location-pic {
+    	margin-top: 0px;
     }
 
     #board-three {
         margin-bottom: 300px;
     }
+   
 
 
     /* .carousel-caption > h2 ,
@@ -176,101 +183,6 @@
 
 
 /* ----------------------------------------------header---------------------------------------------- */
-/* .navbar {
-    padding: 15px;
-}
-
-.navbar-inverse .navbar-brand {
-    color: #000;
-    font-weight: 900;
-}
-
-.navbar-inverse {
-    background-color: #fff;
-    border-color: #fff;
-    border-radius: 0;
-    text-align: center;
-}
-
-.nav>li>a {
-    font-size: 21px;
-    font-weight: 900;
-    padding-left: 40px;
-}
-
-#myNavbar>ul>li>a:hover {
-    color: #9be0e0;
-}
-
-
-
-
-.container-fluid {
-    padding: 0 40px;
-}
-
-
-.navbar-inverse .navbar-nav>.active>a,
-.navbar-inverse .navbar-nav>.active>a,
-.navbar-inverse .navbar-nav>.active>a:focus,
-.navbar-inverse .navbar-nav>.active>a:hover,
-.navbar-inverse .navbar-nav>li>a {
-    background-color: #fff;
-    color: black;
-
-}
-
-.navbar-inverse .navbar-brand:focus,
-.navbar-inverse .navbar-brand:hover {
-    color: black;
-}
-
-
-.navbar-inverse .navbar-brand:focus,
-.navbar-inverse .navbar-brand:hover {
-    color: #999;
-}
-
-
-.navbar-inverse .navbar-nav>li>a:focus,
-.navbar-inverse .navbar-nav>li>a:hover {
-    color: #000;
-    background-color: transparent;
-}
-
-.navbar-inverse .navbar-toggle {
-    border-color: #fff;
-}
-
-.navbar-inverse .navbar-toggle:focus,
-.navbar-inverse .navbar-toggle:hover {
-    border-color: #fff;
-    background-color: #fff;
-}
-
-
-.navbar-inverse .navbar-toggle .icon-bar {
-    background-color: #000;
-}
-
-.navbar-inverse .navbar-toggle:focus,
-.navbar-inverse .navbar-toggle:hover {
-    background-color: #e3e3e3;
-}
-
-.navbar-right>li>.header-right {
-    font-size: 17px;
-    padding: 15px 15px;
-
-}
-
-
-.navbar-inverse .navbar-nav>.open>a,
-.navbar-inverse .navbar-nav>.open>a:focus,
-.navbar-inverse .navbar-nav>.open>a:hover {
-    color: black;
-    background-color: white;
-} */
 
 .navbar-inverse {
     background-color: white;
@@ -391,6 +303,12 @@
     font-size: 43px;
     font-weight: bold;
 }
+.middle-name {
+	margin-top: 100px;
+}
+.middle-row {
+	margin-top: 100px;
+}
 
 .index-preview>.middle-content {
     text-align: center;
@@ -451,7 +369,9 @@
     background-position: center;
 
 }
-
+.row > element.style {
+	margin: 0 0 40% 0;	
+}
 
 /* ----미리보기 */
 .index-preview {
@@ -543,6 +463,10 @@ td {
 }
 
 /*  --------로케이션 사진------------ */
+.location-pic {
+	margin-top: 200px;
+}
+
 
 .location-pic>h2 {
     color: #032587;
@@ -575,49 +499,13 @@ td {
     font-size: 20px;
 }
 
-*/
-
-/* .location-pic {
-    overflow: hidden;
-}
-
-.location-pic>.loca-left {
-    width: 60%;
-    float: left;
-    padding-right: 20px;
-
-}
-
-.location-pic>.loca-left>div>img {
-    border-radius: 3px;
-}
-
-
-.location-pic>.loca-right {
-    border: 1px solid #e3e3e3;
-    border-radius: 30px;
-    float: right;
-    width: 40%;
-    height: 100%;
-    text-align: center;
-
-}
-
-.location-pic>.loca-right>div>div {
-
-    margin: 30px 0;
-
-}
-
-
-
 
 /* ----------------------------------------------footer---------------------------------------------- */
 .index-footer {
-    margin-top: auto;
+    margin-top: 200px;
     overflow: hidden;
     font-weight: 900;
-    width: 80%;
+    width: auto;
 
 }
 
