@@ -1,22 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="../resources/css/board_css/board_free_write.css">
-<!-- 부트스트랩 css링크 -->
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-<!-- 제이쿼리(부스트랩보다 먼저 링크) -->
-<script src="../resources/js/jquery-3.7.1.min.js"></script>
-<!-- 부트스트랩 js링크 -->
-<script src="../resources/js/bootstrap.min.js"></script>
-<!-- 커스터마이징 한 css 디자인 추가 -->
-<link rel="stylesheet" href="../resources/css/custom-reset.css">
-<link rel="stylesheet" href="../resources/css/board_css/board_nav.css">
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-</head>
+    
+<%@ include file="../include/header.jsp" %>
 
 <section id="board_write_wrap">
 
@@ -72,3 +57,5 @@
         document.getElementById('content').value = quill.root.innerHTML;
     };
 </script>
+
+<%@ include file="../include/footer.jsp" %>

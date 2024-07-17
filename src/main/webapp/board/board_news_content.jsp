@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<head>
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-<script src="../resources/js/jquery-3.7.1.min.js"></script>
-<script src="../resourcesjs/bootstrap.min.js"></script>
-<link rel="stylesheet" href="../resources/css/custom-reset.css">
-<link rel="stylesheet" href="../resources/css/board_css/board_news_content.css">
-<link rel="stylesheet" href="../resources/css/board_css/board_nav.css">
-</head>
+<%@ include file="../include/header.jsp" %>
 
 
 <section id="board_content">
@@ -67,15 +60,21 @@
                         <button class="list_button" type="button" onclick="location.href='board_free_list.jsp'">목록</button>
                     </div>
                 </div>
-                <div class="comment_box">
-                    <iframe src="board_comment.jsp" frameborder="0" width="100%" height="100%"></iframe>
-                </div>
+				<div class="comment_box">
+	                <iframe src="board_comment.jsp" frameborder="0" scrolling="no"></iframe>
+				</div>
             </div>
         </div>
     </div>
 </section>
 
-<script>
+<script type="text/javascript">
+	// iframe 높이 자동 조절
+	var iframe = document.querySelector('.comment_box > iframe');
+	
+	iframe.addEventListener('load', function() {
+		iframe.style.height = iframe.contentDocument.body.scrollHeight + 'px';
+	});
     // 페이지 로드 시 하트 수 초기화
     document.addEventListener("DOMContentLoaded", function() {
         const countElement = document.getElementById('likeCount');
@@ -97,3 +96,4 @@
     }
 
 </script>
+<%@ include file="../include/footer.jsp" %>

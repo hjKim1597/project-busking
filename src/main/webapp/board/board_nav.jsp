@@ -6,7 +6,7 @@
 <script src="../resources/js/jquery-3.7.1.min.js"></script>
 <script src="../resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="../resources/css/custom-reset.css">
-<link rel="stylesheet" href="../resources/css/board_css/board_nav.css">
+<link rel="stylesheet" href="../resources/css/board/board_nav.css">
 </head>
 
     
