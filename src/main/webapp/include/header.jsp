@@ -8,14 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-         <!-- 부트스트랩 css 링크 -->
-         <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css">
-         <!-- 제이쿼리(부트스트랩보다 먼저 링크해야함) -->
-         <script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
-         <!-- 부트스트랩 js링크 -->
-         <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+	<!-- 부트스트랩 css 링크 -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css">
+	<!-- 제이쿼리(부트스트랩보다 먼저 링크해야함) -->
+	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
+	<!-- 부트스트랩 js링크 -->
+	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+	
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/index.css">
+	
+	<!-- 웹폰트 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 
-         <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/index.css">
 
 </head>
 <body>
@@ -63,4 +69,26 @@
                 </div>
             </div>
         </div>
+
     </nav>
+
+
+    
+	<script type="text/javascript">
+		var uri = '${pageContext.request.requestURI}';
+		var pages = uri.split('/');
+		var page = pages[pages.length - 1];
+		var cssFile = page.substring(0, page.length - 3);
+		var folder = pages[pages.length - 2];
+		//console.log('${pageContext.request.contextPath }/resources/css/' + folder + "/" + cssFile + "css");
+		
+		var link = document.createElement("link");
+		link.rel = "stylesheet";
+		link.href = '${pageContext.request.contextPath }/resources/css/' + folder + "/" + cssFile + "css";
+
+		document.querySelector("head").appendChild(link);
+		
+	</script>    
+    
+    
+

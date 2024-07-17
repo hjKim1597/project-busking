@@ -1,0 +1,497 @@
+@charset "UTF-8";
+@import url(../default.css);
+
+* {
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+    font-family: 'NanumSquare';
+}
+.resForm-wrap {
+    margin: 0 auto; 
+    margin-top: 20px; 
+    transition: 0.3s ease-in-out;
+}
+
+.resForm-wrap .resForm-top > h3 {
+    padding: 20px 0 20px 60px;
+    font-family: 'NanumSquareNeoExtraBold';
+}
+.resForm-wrap .resForm-top .resForm-top-loca {
+    width: 100%;
+    padding: 4% 68px;
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.resForm-wrap .resForm-top .resForm-top-loca .resForm-top-loca-left {
+    float: left;    
+    display: block;
+    width: 35%;
+    border-top: 2px solid #777;
+    box-sizing: border-box;
+}
+
+.resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info > ul > li {
+    padding: 15px 5px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e2e2e2;
+    overflow: hidden;
+    height: 50px;
+    line-height: 20px;
+}
+.resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info > ul > li:last-child {
+    margin-bottom: 0;
+    border: none;
+
+}
+.resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info > ul > li > b {
+    font-family: 'NanumSquareNeo';
+    display: inline-block;
+    width: 25%;
+    white-space: nowrap;
+    position: relative;
+}
+
+.resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info  > ul > li > b::after {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 9px;
+    background-image: url("../images/reservation_images/icon_col.png");
+    position: absolute;
+    top: 4px;
+    right: -5px;
+    
+}
+.resForm-top .resForm-top-loca .resForm-top-loca-left .resForm-top-loca-info > ul > li > p {
+    display: inline-block;
+    margin-left: 15px;
+	font-family: 'NanumSquareRound';
+    font-weight: 500;
+    width: 60%;
+    min-width: 100px;
+    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.resForm-wrap .resForm-top .resForm-top-loca .resForm-top-loca-right {
+    float: right; 
+    width: 60%;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s ease-in-out;
+}
+.resForm-top-loca .resForm-top-loca-right .resForm-top-loca-img {
+    overflow: hidden;
+    border-radius: 3px;    
+}
+.resForm-top-loca .resForm-top-loca-right .resForm-top-loca-img-hover {
+    transition: 0.2s;
+    opacity: 0;
+}
+
+.resForm-top-loca .resForm-top-loca-right .resForm-top-loca-img-hover > strong {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 20px;
+}
+.resForm-top .resForm-top-loca .resForm-top-loca-right .resForm-top-loca-img > img {
+    transition: 0.2s ease;
+}
+.resForm-top .resForm-top-loca .resForm-top-loca-right:hover .resForm-top-loca-img > img {
+    transform: scale(1.1);
+}
+.resForm-top .resForm-top-loca .resForm-top-loca-right:hover .resForm-top-loca-img-hover {
+    opacity: 1;
+}
+
+
+/* 중간 section (달력, 버튼) */
+.resForm-wrap .resForm-mid {
+    overflow: hidden; 
+    padding: 40px 0; 
+    margin: 0 auto;
+    margin-top: 20px;
+    transition: 0.3s ease-in-out;
+}
+/* 달력부분 */
+.resForm-mid .resForm-mid-left {
+    float: left; 
+    width: 50%;
+    border-radius: 3px;
+    padding: 0px 20px 20px 20px;
+    box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.12);
+
+}
+.resForm-mid .resForm-mid-left #calendar > table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: unset;
+}
+.resForm-mid .resForm-mid-left #calendar > table > caption {
+    font-family: 'NanumSquare';
+    font-size: 24px; 
+    font-weight: bolder; 
+    color: #000; 
+    text-align: left; 
+    padding-left: 30px;
+    
+}
+.resForm-mid .resForm-mid-left #calendar > table > thead > tr {
+    border-bottom: 1px solid #e3e3e3;
+}
+.resForm-mid .resForm-mid-left #calendar > table > thead > tr > th {
+    text-align: center;
+    font-size: 16px;
+    padding: 20px 0;
+}
+.resForm-mid .resForm-mid-left #calendar > table > thead > tr > th:first-child {
+    color: red;
+}
+.resForm-mid .resForm-mid-left #calendar > table > tbody > tr > td {
+    padding: 24px; 
+    text-align: center; 
+    cursor: pointer;
+    border: 1px solid #fff;
+}
+.resForm-mid .resForm-mid-left #calendar > table > tbody > tr > td:hover {
+    border: none;
+    font-weight: bold; 
+    background-color: #5fd7ff41;
+    color: #333;
+    border: 1px solid #5fd7ff;
+    border-radius: 3px;
+}
+.resForm-mid .resForm-mid-left #calendar > table > tbody > tr > td > span {
+    display: block;
+    font-family: 'NanumSquare';
+    font-weight: 600;
+}
+
+.resForm-mid .resForm-mid-left #calendar > table > tbody > tr > td.selected {
+    font-weight: bold; 
+    color: white; 
+    background-color: #5fd7ff; 
+    border-radius: 3px;
+}
+
+/* 버튼 부분 */
+.resForm-mid .resForm-mid-right {
+    float: right; 
+    width: 30%; 
+    padding: 0 30px;
+}
+.resForm-mid .resForm-mid-right > form {padding: 50px 30px;}
+.resForm-mid .resForm-mid-right > form > input {
+    display: block; 
+    width: 100%; 
+    height: 50px;
+    font-weight: 600;
+    font-family: 'NanumSquareRound';
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.resForm-mid .resForm-mid-right > form > input[type=submit] {
+    background-color: #5fd7ff41;
+    color: #333;
+    border: 1px solid #5fd7ff;
+    margin-bottom: 20px;
+}
+.resForm-mid .resForm-mid-right > form > input[type=submit]:hover {
+    border: none;
+    color: #fff;
+    background-color: #5fd7ff;
+}
+.resForm-mid .resForm-mid-right > form > input[type=button] {
+    border: 1px solid #a2a2a2;
+    background-color: #7777772f;
+    color: #333;
+}
+.resForm-mid .resForm-mid-right > form > input[type=button]:hover {
+    background-color: #777777;
+    color: #e2e2e2;
+}
+
+.resForm-bottom {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+/* ======탭 스타일====== */
+.resvForm-tab {
+    width: 100%;
+}
+.resvForm-tab > li {
+    width: 33.3333%;
+    text-align: center;
+    font-family: 'NanumSquareNeoBold';
+    font-size: 16px;
+}
+.resvForm-tab > li > a {
+    border: 1px solid #e3e3e3;
+    border-radius: 0;
+    margin: 0;
+    color: #000;
+}
+.resvForm-tab > li:first-child > a {
+    border-top-left-radius: 10px;
+}
+.resvForm-tab > li:last-child > a {
+    border-top-right-radius: 10px;
+}
+.resvForm-tab > li.active > a, 
+.resvForm-tab > li.active > a:focus,
+.resvForm-tab > li.active > a:hover {
+    color: #fff;
+    background-color: #5fd7ff;
+}
+
+.resvForm-tab > li > a:hover {
+    border-color: #5fd7ff;
+    background-color: #5fd7ff41;
+}
+
+.bottom-menu {
+    padding: 20px 0;
+    font-family: 'NanumSquare';
+}
+.bottom-menu-content > h3 {
+    margin: 0;
+    padding-top: 20px;
+    font-family: 'NanumSquareBold';
+}
+.bottom-menu-content > p {
+    font-size: 16px;
+}
+.bottom-menu3-content .loca-cmt-box .cmt-top-box {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e3e3e3;
+}
+.bottom-menu3-content .loca-cmt-box .cmt-top-box .loca-cmt-left{
+    float: left;
+    margin: 0;
+    margin-left: 30px;
+    height: 20px;
+    font-size: 16px;
+    position: relative;
+}
+.cmt-top-box .loca-cmt-left > i {
+    font-size: 20px;
+    position: absolute;
+    left: -30px;
+    top: 0px;
+    color: #555;
+}
+.cmt-top-box .cmt-star {
+    float: right
+}
+.cmt-top-box .cmt-star > ul > li {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+/* 모든 별을 비어 있는 상태로 기본 설정 */
+.cmt-star .star i {
+    font-size: 18px;
+    font-weight: 900;
+    color: gold; /* 필요에 따라 색상을 조정*/
+    cursor: pointer; /* 클릭 가능한 아이콘임을 표시 */
+}
+
+/* 마우스를 올리면 해당 별과 이전 별들을 채워진 상태로 변경 */
+.cmt-star .star:hover i,
+.cmt-star .star:hover ~ .star i {
+    color: gold; /* 필요에 따라 색상을 조정 */
+}
+
+/* 클릭된 별과 그 이전 별들을 채워진 상태로 유지 */
+.cmt-star .star.selected i,
+.cmt-star .star.selected ~ .star i {
+    color: gold; /* 필요에 따라 색상을 조정 */
+}
+
+.loca-cmt-box .cmt-text {
+    resize: none;
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cmt-list-wrap {
+    width: 100%;
+    padding: 18px 30px;
+    background-color: #F0F7FD;
+}
+.cmt-list-wrap .cmt-list-box {
+    width: 100%;
+    border: 1px solid rgb(231, 231, 231);
+    background-color: #fff;
+}
+.cmt-list-top {
+    overflow: hidden;
+}
+.cmt-list-top .cmt-list-left {
+    float: left;
+    padding: 20px 0 10px 25px;
+}
+.cmt-list-top .cmt-list-left .writer {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+    font-family: 'NanumSquareNeo';
+    margin-bottom: 6px;
+}
+.cmt-list-top .cmt-list-left .date {
+    font-size: 12px;
+    color: gray;
+    font-family: 'NanumSquareNeo';
+}
+.cmt-list-top .cmt-list-right {
+    float: right;
+    border: none;
+    background-color: white;
+    padding: 20px 25px 10px 0px;
+    font-size: 18px;
+    
+}
+.cmt-list-top .cmt-list-right > i {
+    color: gold;
+}
+.cmt-list-top .cmt-list-right > p {
+    display: inline-block;
+}
+.cmt-list-content {
+    padding: 10px 20px 25px 20px;
+    font-size: 14px;
+    line-height: 35px;
+    letter-spacing: 0.5px;
+}
+.cmt-list-content > p {
+    padding: 10px 5px 0 25px;
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: 0.5px;
+    font-family: 'NanumSquareNeo';
+}
+
+
+/* ======반응형 웹 디자인====== */
+@media (min-width:1200px) {
+    .resForm-wrap {
+        width: 1170px;
+    }
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+    .resForm-wrap {
+        width: 970px;
+    }
+    .resForm-mid .resForm-mid-left {
+        width: 55%;
+    }
+    .resForm-mid .resForm-mid-right {
+        width: 35%;
+    }
+
+    .resvForm-bottom-box {
+        padding: 0;
+    }
+
+}
+@media (min-width:768px) and (max-width:991px) {
+    .resForm-wrap {
+        width: 750px;
+    }
+    .resForm-wrap .resForm-top .resForm-top-loca .resForm-top-loca-right {
+        float: left;
+        display: block;
+        width: 100%;
+    }
+    .resForm-wrap .resForm-top .resForm-top-loca .resForm-top-loca-left {
+        float: left;
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border-top: none;
+        margin-top: 10px;
+    }
+    .resForm-mid .resForm-mid-left {
+        width: 100%;
+    }
+    .resForm-mid .resForm-mid-right {
+        display: block;
+        float: left;
+        width: 100%;
+        padding: 0;
+    }
+    .resForm-mid .resForm-mid-right > form {
+        padding: 20px 0;
+        overflow: hidden;
+    }
+    .resForm-mid .resForm-mid-right > form > input[type=submit] {
+        float: left;
+        width: 48%;
+        margin: 0;
+    }
+    .resForm-mid .resForm-mid-right > form > input[type=button] {
+        float: right;
+        width: 48%;
+    }
+    .resvForm-bottom-box {
+        padding: 0;
+    }
+    
+
+}
+@media (max-width:767px) {
+    .resForm-wrap {
+        width: 550px;
+        padding: 20px;
+    }
+    .resForm-wrap .resForm-top .resForm-top-loca {
+        padding: 4% 30px;
+    }
+    .resForm-wrap .resForm-top .resForm-top-loca .resForm-top-loca-right {
+        float: left;
+        display: block;
+        width: 100%;
+    }
+    .resForm-wrap .resForm-top .resForm-top-loca .resForm-top-loca-left {
+        float: left;
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border-top: none;
+        margin-top: 10px;
+    }
+
+    .resForm-mid .resForm-mid-left {
+        width: 100%;
+    }
+    .resForm-mid .resForm-mid-right {
+        float: left;
+        width: 100%;
+        padding: 20px 0;
+    }
+    .resForm-mid .resForm-mid-right > form {
+        padding: 20px 0;
+    }
+    .resForm-mid .resForm-mid-right > form > input[type=submit] {
+        margin-bottom: 10px;
+    }
+
+    .resvForm-bottom-box {
+        padding: 0;
+    }
+
+}
