@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @import url(default.css);
 
 @font-face {
@@ -17,11 +19,19 @@
 
 * {font-family: 'NanumSquareNeo';}
 
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+thead th, tbody td {
+    border: 1px solid black;
+}
+
 @media (min-width:1200px) {
     .resForm-wrap {
         width: 1170px;
     }
-
 }
 
 @media (min-width:992px) and (max-width:1199px) {
@@ -32,7 +42,6 @@
     #board_free_list_wrap {
         padding: 10px 20px !important;
         margin-top: 20px !important;
-
     }
 
     #board_free_list_wrap .board_nav #board_nav_wrap {
@@ -72,8 +81,6 @@
     .board_free_search {
         padding: 0px !important;
     }
-    
-    
 }
 
 @media (max-width:991px) {
@@ -84,7 +91,6 @@
     #board_free_list_wrap {
         padding: 10px 20px !important;
         margin-top: 20px !important;
-
     }
 
     #board_free_list_wrap .board_nav #board_nav_wrap {
@@ -114,7 +120,7 @@
 
     #board_content .board_content_box .inner_box {
         padding: 0 !important;
-        margin-left: 0px !important; 
+        margin-left: 0px !important;
     }
 
     .wrap_board_free_list .page_nav {
@@ -124,12 +130,9 @@
     .board_free_search {
         padding: 0px !important;
     }
-    
-
 }
 
 #board_free_list_wrap {
-    /* display: flex; */
     padding: 100px;
 }
 
@@ -137,15 +140,17 @@
     float: left;
 }
 
-#board_free_list_wrap .board_nav #board_nav_wrap.h1{
+#board_free_list_wrap .board_nav #board_nav_wrap.h1 {
     font-family: 'nanumsquare';
 }
 
-#board_free_list_wrap .wrap_board_free {padding: 30px; margin: 0 auto;}
+#board_free_list_wrap .wrap_board_free {
+    padding: 30px; 
+    margin: 0 auto;
+}
 
 #board_free_list_wrap .wrap_board_free .wrap_board_free_list {
     margin-left: 170px;
-    
 }
 
 #board_free_list_wrap .wrap_board_free .wrap_board_free_list .wrap_board_free_list_title {
@@ -165,7 +170,6 @@
 }
 
 .wrap_board_free > .wrap_board_free_list .board_free_list_box {
-    /* float: left; */
     width: 100%;
     margin-top: 40px;
     padding: 0px 70px;
@@ -178,15 +182,15 @@
 
 .wrap_board_free > .wrap_board_free_list .board_free_list_content th,
 .wrap_board_free > .wrap_board_free_list .board_free_list_content td {
-    border: 1px solid #cccccc; /* 테두리 설정 */
-    border-left: none;
-    border-right: none;
+    border: 1px solid #cccccc;
     padding: 8px;
     text-align: center;
     font-size: 18px;
-    white-space: nowrap; /* 줄 바꿈 방지 */
-    overflow: hidden; /* 넘치는 내용 숨기기 */
-    text-overflow: ellipsis; /* 넘치는 내용 생략 표시 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-left: none;
+    border-right: none;
 }
 
 .wrap_board_free > .wrap_board_free_list .board_free_list_content th {
@@ -194,42 +198,54 @@
     height: 45px;
 }
 
-.wrap_board_free > .wrap_board_free_list .board_free_list_content td {height: 40px;}
+.wrap_board_free > .wrap_board_free_list .board_free_list_content td {
+    height: 40px;
+}
 
-.wrap_board_free > .wrap_board_free_list .board_free_list_content th.nth1 {width: 10%;}
+.wrap_board_free > .wrap_board_free_list .board_free_list_content th.nth1 {
+    width: 10%;
+}
 
-.wrap_board_free > .wrap_board_free_list .board_free_list_content th.nth2 {width: 10%}
+.wrap_board_free > .wrap_board_free_list .board_free_list_content th.nth2 {
+    width: 10%;
+}
 
-.wrap_board_free > .wrap_board_free_list .board_free_list_content th.nth3 {width: 60%}
+.wrap_board_free > .wrap_board_free_list .board_free_list_content th.nth3 {
+    width: 60%;
+}
 
-.wrap_board_free > .wrap_board_free_list .board_free_list_content th.nth4 {width: 10%}
+.wrap_board_free > .wrap_board_free_list .board_free_list_content th.nth4 {
+    width: 10%;
+}
 
-.wrap_board_free > .wrap_board_free_list .board_free_list_content th.nth5 {width: 10%;}
+.wrap_board_free > .wrap_board_free_list .board_free_list_content th.nth5 {
+    width: 10%;
+}
 
 .wrap_board_free_list .page_nav {
     margin-top: 25px; 
     padding: 0px 70px;
-    justify-content: space-between; 
-    text-align: center; /* 추가 */
-    justify-content: center; /* 변경 */
+    justify-content: space-between;
+    text-align: center;
+    justify-content: center;
 }
+
 .wrap_board_free_list .page_nav .center {
     display: flex;
     align-items: center;
     list-style: none;
-    justify-content: center; /* 페이지네이션을 가운데 정렬 */
+    justify-content: center;
     padding: 0;
-   
-    margin: auto; /* 추가 */
+    margin: auto;
 }
 
 .wrap_board_free_list .page_nav ul li {
-    margin: 0 5px; /* 좌우 여백 */
+    margin: 0 5px;
 }
 
 .wrap_board_free_list .page_nav ul li a {
-    text-decoration: none; /* 링크 밑줄 제거 */
-    color: #000; /* 링크 색상 */
+    text-decoration: none;
+    color: #000;
     font-size: 17px;
     padding: 5px;
 }
@@ -248,11 +264,11 @@
 }
 
 .wrap_board_free_list .page_nav .right {
-    margin-left: auto; /* 버튼을 오른쪽으로 밀어줍니다 */
+    margin-left: auto;
 }
 
 .wrap_board_free_list .page_nav .right button {
-    float:right;
+    float: right;
     display: inline-block;
     font-size: 17px;
     text-align: center;
@@ -260,7 +276,7 @@
     width: 75px;
     background-color: #5FD7FF;
     color: white;
-    border: 0px solid #e6eaecf3;
+    border: 0;
     cursor: pointer;
     border-radius: 3px;
 }
@@ -274,23 +290,23 @@
 
 .board_free_search .board_free_search_box {
     height: 39px;
-    font-size: 17px; 
+    font-size: 17px;
     padding-left: 10px;
 }
 
 .board_free_search > input {
     height: 39px;
     margin-left: 10px;
-    width: 100%;;
+    width: 100%;
     padding-left: 13px;
-    font-size: 17px; 
+    font-size: 17px;
     border-radius: 3px;
     border: 1px solid #c9cccef3;
 }
 
 .board_free_search > input:focus {
-    border: 1.5px solid #5FD7FF; 
-    outline: none; 
+    border: 1.5px solid #5FD7FF;
+    outline: none;
     color: #000000;
 }
 
@@ -301,8 +317,8 @@
     width: 75px;
     background-color: white;
     border: 1px solid #c9cccef3;
-    outline: none; /* 포커스 시 테두리 제거 */
-    box-shadow: none; /* 그림자 제거 */
+    outline: none;
+    box-shadow: none;
 }
 
 .board_free_search .btn:hover {
@@ -315,7 +331,6 @@
 .board_free_search .btn:focus,
 .board_free_search .btn:active,
 .board_free_search .btn:active:focus {
-    outline: none; 
-    /* border: 1px solid #5FD7FF;  */
-    box-shadow: none; 
+    outline: none;
+    box-shadow: none;
 }
