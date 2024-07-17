@@ -8,14 +8,15 @@
   
     <div class="jinseok-wrap">
       <div class="sum">
-          <div class="nav">
-            <ul>
-                    <li><a href="userInfo.jsp" class="tap">내 정보</a></li>
-                    <li><a href="reservationCheck.jsp">예약 현황</a></li>
-                    <li><a href="deleteUser.jsp">회원 탈퇴</a></li>
-                </ul>
-            </div>
-            
+		<div class="nav">
+              <ul>
+               	 <li><span class="nav-title">마이페이지</span></li>
+                 <li><a href="userInfo.jsp" class="tap">내 정보</a></li>
+                 <li><a href="reservationCheck.jsp">예약 현황</a></li>
+                 <li><a href="deleteUser.jsp">회원 탈퇴</a></li>
+             </ul>
+         </div>
+
             <div class="user-info">
                 <p>내 정보</p>
                 <div class="info-content">
