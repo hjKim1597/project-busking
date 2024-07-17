@@ -2,17 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-    <script src="../resources/js/jquery-3.7.1.min.js"></script>
-    <script src="../resources/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../resources/css/mypage/userInfo.css">
-
-
-</head>
+<%@ include file="../include/header.jsp" %>
 <body>
   
   
@@ -76,5 +66,4 @@
           
     </div>
     
-</body>
-</html>
+<%@ include file="../include/footer.jsp" %>
