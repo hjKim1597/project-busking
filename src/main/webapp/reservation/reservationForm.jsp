@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
-    
+
     <div class="resForm-wrap">
         <div class="resForm-top">
             <h3>장소이름</h3>
@@ -133,7 +133,7 @@
                                 </ul>
                             </div>
                             <div class="tab-pane fade" id="menu2" role="tabpanel" aria-labelledby="map-tab">
-                                <div id="mapContainer" style="width:100%;height:400px;"></div>
+                                <div id="map" style="width:100%;height:400px;"></div>
                             </div>
                             <div id="menu3" class="tab-pane bottom-menu3-content bottom-menu-content">
                                 <h3>장소후기</h3>
@@ -183,7 +183,7 @@
         </div>
 
     </div>
-
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e128e18b3b784844e96c9c2db2a8e6a"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e128e18b3b784844e96c9c2db2a8e6a"></script>
+    
 
 <%@ include file="../include/footer.jsp" %>
