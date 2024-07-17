@@ -1,0 +1,106 @@
+@import url('../default.css');
+@import url(https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css);
+@media (min-width:1200px) {
+    .jinseok-wrap {
+        width: 1170px;
+    }
+}
+@media (min-width:992px) and (max-width:1199px) {
+    .jinseok-wrap {
+        width: 970px;
+    }
+}
+@media (min-width:768px) and (max-width:991px) {
+    .jinseok-wrap {
+        width: 750px;
+    }
+}
+@font-face {
+    font-family: 'NanumSquareRoundExtraBold';
+    src: url(/Busking/MYPAGE/fonts/NanumSquareRoundEB.ttf);
+}
+.form-control {border-radius: 3px;}
+.form-control:focus  {border: 2px solid red; border-color: #5fd7ff; box-shadow: none;}
+.jinseok-button {border-radius: 3px; background-color: #5fd7ff; }
+
+.jinseok-wrap {
+    margin: 0 auto;
+    background-color: white;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-top: 30px;
+}
+.jinseok-wrap > .login-wrap {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px 0px;
+    border: 1px solid rgb(200, 205, 224);
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    width: 420px;
+    margin: 0 auto;
+    padding: 35px;
+}
+.jinseok-wrap .login-wrap-border {
+    border-bottom: 1px solid rgb(200, 205, 224);
+}
+.jinseok-wrap > .login-wrap p {
+    font-size: 25px;
+    font-weight: 800;
+    text-align: center;
+    
+}
+.jinseok-wrap > .login-wrap form {
+    margin: 30px;
+}
+.jinseok-wrap > .login-wrap form > .pw {
+    margin-top: 15px;
+}
+.jinseok-wrap > .login-wrap form > .sub-wrap {
+    margin: 10px 5px;
+    text-decoration: none;
+    text-align: center;
+    
+}
+.jinseok-wrap > .login-wrap form > .sub-wrap > a {
+    color: #a0a0a0;
+    font-size: 12px;
+    
+}
+.jinseok-wrap > .login-wrap form > .sub-wrap > a
+
+.jinseok-wrap > .login-wrap > .social-login {
+    width: 40%;
+    margin: 0 auto;    
+}
+
+.jinseok-wrap > .login-wrap > p {
+    font-size: 13px;
+    font-weight: 100;
+    color: #a0a0a0;
+    margin-top: 5px;
+}
+.jinseok-wrap > .login-wrap form .input-group-addon {
+    border-radius: 0px;
+}
+
+.jinseok-wrap > .login-wrap > .social-login > .icon-all {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 5px;
+    justify-content: space-between;
+    width: 50%;
+}
+.jinseok-wrap > .login-wrap > .social-login > .icon-all > a {
+    margin: 5px;
+}
+.jinseok-wrap > .login-wrap > .social-login > .icon-all > .google {
+    width: 57.5%;
+
+}
+.jinseok-wrap .login-wrap .jinseok-button {
+    border-radius: 3px; 
+    background-color: #5fd7ff; 
+    border: 0px;
+    width: 100%;
+    height: 30px;
+    color: white;
+    }

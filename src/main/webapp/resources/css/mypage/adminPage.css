@@ -1,0 +1,123 @@
+@import url(https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css);@import url('../default.css');
+@media (min-width:1200px) {
+    .jinseok-wrap {
+        width: 1170px;
+    }
+}
+@media (min-width:992px) and (max-width:1199px) {
+    .jinseok-wrap {
+        width: 970px;
+    }
+}
+@media (min-width:768px) and (max-width:991px) {
+    .jinseok-wrap {
+        width: 750px;
+    }
+}
+
+.form-control {border-radius: 3px;}
+.form-control:focus  {border: 2px solid red; border-color: #5fd7ff; box-shadow: none;}
+.jinseok-button {border-radius: 3px; background-color: #5fd7ff; }
+
+.jinseok-wrap {
+    margin: 0 auto;
+    background-color: white;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-top: 30px;
+}
+.jinseok-wrap .sum h3 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.jinseok-wrap .admin-page {
+    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px 0px;
+    border: 1px solid rgb(200, 205, 224);
+    background-color: rgb(255, 255, 255);
+    min-width: 30%;
+    padding: 30px;
+    min-height: 40vh;
+    position: relative;
+}
+
+.jinseok-wrap .admin-page .main-content {
+    width: 100%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.jinseok-wrap .admin-page h1 {
+    text-align: center;
+    color: #333;
+}
+
+.jinseok-wrap .admin-page .controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.jinseok-wrap .admin-page #search {
+    width: 70%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.jinseok-wrap .admin-page #filter {
+    width: 28%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.jinseok-wrap .admin-page table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.jinseok-wrap .admin-page thead {
+    background: #f0f7fd;
+    color: black;
+}
+
+.jinseok-wrap .admin-page th, .admin-page td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.jinseok-wrap .admin-page button {
+    padding: 8px 12px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.jinseok-wrap .admin-page button.approve {
+    background: #28a745;
+    color: #fff;
+}
+
+.jinseok-wrap .admin-page button.reject {
+    background: #dc3545;
+    color: #fff;
+}
+
+.jinseok-wrap .admin-page .pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.jinseok-wrap .admin-page .pagination button {
+    padding: 8px 16px;
+    margin: 0 5px;
+}
+
+.jinseok-wrap .admin-page .pagination span {
+    font-size: 16px;
+}
