@@ -57,7 +57,7 @@
                             </ul>
                         </li>
                         <li class="header-res"><a href="#" class="index-menu">예약하기</a></li>
-                        <li><a href="#" class="index-menu">마이페이지</a></li>
+                        <li><a href="../mypage/userInfo.jsp" class="index-menu">마이페이지</a></li>
                         <li><a href="#" class="index-menu">고객센터</a></li>
 
 
