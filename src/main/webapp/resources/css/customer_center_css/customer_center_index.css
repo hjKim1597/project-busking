@@ -1,14 +1,4 @@
-@font-face {
-    font-family: 'NanumSquareNeoBold';
-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.eot);
-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.ttf) format("truetype");
-}
 
-* {
-    padding: 0;
-    margin: 0;
-    font-family: NanumSquareNeoBold;
-}
 
 ul,
 li,
@@ -107,14 +97,14 @@ body {}
     float: left;
     padding: 40px 10px;
     overflow: hidden;
-    width: 150px;
+    width: 180px;
     background-color: #e1e9ee9d;
     /* background-color: #D8EFEF; */
     /* border-top-right-radius: 30px; */
     border-bottom-right-radius: 50px;
-    scale: 1.2;
 
     transform-origin: top left;
+    
 
 }
 
@@ -185,7 +175,7 @@ body {}
 }
 
 .container .row .content li .service_menu .menu li strong a {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 

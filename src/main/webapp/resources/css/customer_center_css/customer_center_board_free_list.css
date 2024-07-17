@@ -1,19 +1,6 @@
 @import url(default.css);
 
-@font-face {
-    font-family: 'nanumsquare';
-    src: url('fonts/nanum-square/NanumSquare_acEB.ttf');
-}
 
-@font-face {
-    font-family: 'NanumSquareNeo';
-    src: url('fonts/NanumSquareNeo/NanumSquareNeo/TTF/NanumSquareNeo-bRg.ttf');
-}
-
-@font-face {
-    font-family: 'NanumSquareNeoB';
-    src: url('fonts/NanumSquareNeo/NanumSquareNeo/TTF/NanumSquareNeo-eHv.ttf');
-}
 
 /* 
 @media (min-width:1200px) {
