@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-	<link rel="stylesheet" href="../resources/css/main.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/index.css">
 	
-    <footer class="footer">
-        <div class="footer-top">
+     <footer class="index-footer">
+        <div class="index-footer-top">
             <div class="footer-service">
                 <h4>서비스</h4>
                 <ul>
@@ -44,13 +44,16 @@
                 <p>(회사명) / (팀명) / (주소) / (팀원명)</p>
                 <p>(사이트명) 사이트의 모든 콘텐츠, 정보, UI, HTML 소스 등에 대한 무단 복제, 전송, 배포, 크롤링, 스크래핑 등의 행위를 거부하며, 이러한 행위는 관련 법령에 의해
                     엄격히 금지됩니다.</p>
-                <p><a href="#" style="color: #999; text-decoration: none;">개인정보 처리방침</a> | <a href="#"
-                        style="color: #999; text-decoration: none;">이용약관</a> | (사이트명) </p>
+                <p><a href="https://icons8.kr/icons" class="footer-icon">Designed by Agency. Icons by Icons8</a> |
+                    <a href="#" style="color: #999; text-decoration: none;">개인정보 처리방침</a> | <a href="#"
+                        style="color: #999; text-decoration: none;">이용약관</a> | (사이트명)
+                </p>
 
 
             </div>
         </div>
     </footer>
+    
 
 </body>
 </html>
