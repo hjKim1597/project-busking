@@ -47,10 +47,23 @@
                 <p><a href="#" style="color: #999; text-decoration: none;">개인정보 처리방침</a> | <a href="#"
                         style="color: #999; text-decoration: none;">이용약관</a> | (사이트명) </p>
 
-
             </div>
         </div>
     </footer>
+    
+    <script type="text/javascript">
+		var uri = '${pageContext.request.requestURI}';
+		var pages = uri.split('/');
+		var page = pages[pages.length - 1];
+		var jsFile = page.substring(0, page.length - 3);
+		var folder = pages[pages.length - 2];
+		//console.log('${pageContext.request.contextPath }/resources/css/' + folder + "/" + cssFile + "css");
+		
+		var script = document.createElement("script");
+		script.src = '${pageContext.request.contextPath }/resources/js/' + folder + "/" + jsFile + "js";
+
+		document.querySelector("body").appendChild(script);
+	</script> 
 
 </body>
 </html>
