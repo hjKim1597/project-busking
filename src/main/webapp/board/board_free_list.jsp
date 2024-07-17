@@ -103,7 +103,7 @@
                             <li><a href="마지막페이지"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
                         </ul>
                         <form action="board_write.jsp" class="right">
-                            <button value="글쓰기" onclick="location.href='board_write.jsp'">작성</button>  
+                            <button value="글쓰기" onclick="location.href='board_free_write.jsp'">작성</button>  
                         </form>   
                     </div>                     
                 <div class="board_free_search">
