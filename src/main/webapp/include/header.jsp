@@ -21,7 +21,6 @@
 	<!-- 고객센터 index css -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/customer_center_css/customer_center_index.css">
 	
-	
 	<!-- 웹폰트 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">

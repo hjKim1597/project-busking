@@ -9,7 +9,7 @@
 
 .res-wrap {
     max-width: 1280px; margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 /* ========검색 영역 스타일======== */
@@ -39,7 +39,7 @@
 
     font-family: 'NanumSquareNeo';
     height: 44px;
-    padding: 14px 10px;
+    padding: 13px 10px;
     color: #222;
     background: #fff url('../images/reservation_images/select_down.png') no-repeat right 10px center;
     text-align: left;
