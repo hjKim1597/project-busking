@@ -1,0 +1,271 @@
+@charset "UTF-8";
+@import url(../default.css);
+
+* {
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+    font-family: 'NanumSquare';
+}
+
+.res-wrap {
+    max-width: 1280px; margin: 0 auto;
+}
+
+/* ========검색 영역 스타일======== */
+.res-search {
+    /* border: 1px solid #777;  */
+    margin: 30px 0;
+    text-align: center;
+    position: relative;
+    
+}
+
+.res-search > form {
+    padding: 0 100px;
+    display: block;
+    width: 100%;
+}
+.res-search > form > fieldset {
+    padding: 0 5%;
+    border: none;
+}
+
+.select-loca {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+
+    font-family: 'NanumSquareNeo';
+    height: 44px;
+    padding: 14px 10px;
+    color: #222;
+    background: #fff url('../images/reservation_images/select_down.png') no-repeat right 10px center;
+    text-align: left;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid #CACFD3;
+}
+.select-loca:focus {
+    outline: none;
+    border: 2px solid #5fd7ff;
+    padding: 12px 9px;
+    background-position: right 9px center;
+}
+.select-loca > option {
+    font-family: 'NanumSquareNeo';
+    font-size: 14px;
+
+}
+
+.res-search > form > fieldset .search-text {
+    font-family: 'NanumSquareNeo';
+    height: 44px;
+    margin: 0 20px;
+    padding: 0 10px;
+    border: 1px solid #CACFD3;
+    border-radius: 3px;
+    vertical-align: middle;
+    font-size: 16px;
+    background-color: #fff;
+}
+.res-search > form > fieldset .search-text:focus {
+    outline: none;
+    border: 2px solid #5fd7ff;
+    padding: 0 9px;
+}
+
+.res-search > form > fieldset .search-btn {
+    font-family: 'NanumSquareNeo';
+    appearance: none;
+    height: 44px;
+    background-color: #5fd7ff;
+    font-size: 16px;
+    border-radius: 3px;
+    color: #fff;
+  
+    vertical-align: middle;
+    cursor: pointer;
+    border: 0 none;
+
+}
+
+.res-search > form > fieldset .hide {
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    overflow: hidden;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+/* ========예약 장소 선택 영역 스타일======== */
+.res-wrap .res-loca {
+    overflow: hidden; 
+    border-top: 1px solid #ddd;
+}
+.res-loca .loca-box {float: left; transition: 0.2s ease-in;}
+.res-loca .loca-box > a {
+    display: inline-block;
+    /* margin: 10px; */
+    border: 1px solid #ddd; /* 기본 border를 1px로 설정 */
+    border-radius: 3px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+
+.res-loca .loca-box .loca-img-box {
+    position: relative;
+    overflow: hidden;
+}
+.res-loca .loca-box .loca-img-box > img {
+    transition: transform 0.3s ease;
+}
+
+.res-loca .loca-box .loca-cont-box {
+    padding: 30px;
+}
+.res-loca .loca-box .loca-cont-box > h4 {
+    display: block;
+    margin-bottom: 10px;
+    height: 40px;
+    line-height: 40px;    
+    font-size: 20px;
+    font-weight: bold;
+    overflow: hidden;
+    color: #434343;
+     
+}
+
+.res-loca .loca-box .loca-cont-box > ul > li {overflow: hidden;}
+.res-loca .loca-box .loca-cont-box > ul > li > b,
+.res-loca .loca-box .loca-cont-box > ul > li > div {
+    float: left; 
+    font-family: 'NanumSquareNeo';
+}
+
+.res-loca .loca-box .loca-cont-box > ul > li {
+    margin-bottom: 10px;
+    padding-left: 120px;
+    position: relative;
+  
+}
+.res-loca .loca-box .loca-cont-box > ul > li > b {
+    display: block;
+    font-weight: 600;
+    color: #434343;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 14px;
+}
+.res-loca .loca-box .loca-cont-box > ul > li > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-height: 1.4em;
+    color: #434343;
+    font-size: 14px;
+}
+
+.res-loca .loca-box > a:hover .loca-img-box > img{
+    transform: scale(1.1);
+}
+
+/* ========반응형 웹 디자인======== */
+@media (min-width: 1200px) {
+    .res-wrap {
+        width: 1170px;
+    }
+    .res-search > form > fieldset {
+        display: flex;
+        justify-content: space-between;
+    }
+    .res-search .select-loca {
+        flex-grow: 1;
+    }
+    .res-search .search-text {
+        flex-grow: 3;
+    }
+    .res-search .search-btn {
+        flex-grow: 1;
+    }
+
+
+    .res-loca {
+        padding: 30px 100px;
+    }
+    .res-loca .loca-box {
+        width: 33.3333%;
+    }
+    .res-loca .loca-box > a {
+        margin: 10px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .res-wrap {
+        width: 970px;
+    }
+    .res-search > form > fieldset {
+        display: flex;
+        justify-content: space-between;
+    }
+    .res-search .select-loca {
+        flex-grow: 1;
+    }
+    .res-search .search-text {
+        flex-grow: 3;
+    }
+    .res-search .search-btn {
+        flex-grow: 1;
+    }
+
+    .res-loca {
+        padding: 20px 100px;
+    }
+    .res-loca .loca-box {
+        width: 50%;
+    }
+    .res-loca .loca-box > a {
+        margin: 8px;
+    }
+}
+
+@media (max-width: 991px) {
+    .res-wrap {
+        width: 750px;
+    }
+    .res-search > form {
+        padding: 0px 50px;
+    }
+    .res-search > form > fieldset {
+        overflow: hidden;
+    }
+    .res-search > form > fieldset .select-loca {
+        float: left;
+        width: 28%;
+    }
+    .res-search > form > fieldset .search-text {
+        float: right;
+        width: 70%;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+    
+    .res-search .search-btn {
+        display: block;
+        width: 100%;
+    }
+
+    .res-loca {
+        padding: 20px 50px;
+    }
+    .res-loca .loca-box {
+        width: 100%;
+        padding: 10px;
+    }
+}

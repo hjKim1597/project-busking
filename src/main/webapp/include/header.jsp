@@ -17,10 +17,6 @@
 	
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
 	
-	<!-- 예약페이지 css 링크 -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/reservation.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/reservationForm.css">
-	
 	<!-- 웹폰트 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
@@ -61,3 +57,21 @@
             </div>
         </div>
     </header>
+    
+	<script type="text/javascript">
+		var uri = '${pageContext.request.requestURI}';
+		var pages = uri.split('/');
+		var page = pages[pages.length - 1];
+		var cssFile = page.substring(0, page.length - 3);
+		var folder = pages[pages.length - 2];
+		//console.log('${pageContext.request.contextPath }/resources/css/' + folder + "/" + cssFile + "css");
+		
+		var link = document.createElement("link");
+		link.rel = "stylesheet";
+		link.href = '${pageContext.request.contextPath }/resources/css/' + folder + "/" + cssFile + "css";
+
+		document.querySelector("head").appendChild(link);
+		
+	</script>    
+    
+    

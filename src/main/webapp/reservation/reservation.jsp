@@ -31,7 +31,9 @@
         <div class="res-loca">
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt="">
+                    </div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -53,7 +55,9 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt="">
+                    </div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -75,7 +79,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -97,7 +101,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -119,7 +123,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -141,7 +145,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -163,7 +167,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -185,7 +189,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -207,7 +211,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="${pageContext.request.contextPath }/resources/images/reservation_images/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -227,7 +231,9 @@
                     </div>
                 </a>    
             </div>
- 
+            
+            
+            
         </div>
     </div>
 <%@ include file="../include/footer.jsp" %>
