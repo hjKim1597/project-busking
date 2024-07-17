@@ -16,6 +16,7 @@
 	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
 	
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/index.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/board/board_nav.css">
 	
 	<!-- 웹폰트 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">

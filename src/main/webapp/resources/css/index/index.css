@@ -271,7 +271,9 @@
     color: black;
     background-color: white;
 } */
-
+.index-header {
+	padding: 0 80px;
+}
 .navbar-inverse {
     background-color: white;
     border-color: white;
