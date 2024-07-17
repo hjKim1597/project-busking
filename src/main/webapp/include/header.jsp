@@ -84,7 +84,7 @@
 		
 		var link = document.createElement("link");
 		link.rel = "stylesheet";
-		link.href = '${pageContext.request.contextPath }/resources/css/' + folder + "/" + cssFile + "css";
+		link.href = "${pageContext.request.contextPath }/resources/css/" + folder + "/" + cssFile + "css";
 
 		document.querySelector("head").appendChild(link);
 		
