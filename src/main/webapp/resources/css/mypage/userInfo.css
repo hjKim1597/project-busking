@@ -42,67 +42,29 @@
 .jinseok-wrap .nav {
     width: 200px;
     float: left;
-    background-color: #F0F7FD;
+    background-color: #fffefe;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: 0px solid black;
 }
-
-.jinseok-wrap .nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
 .jinseok-wrap .nav ul li {
-    margin-bottom: 20px;
+    margin: 40px 0;
+    padding: 10px 0;
 }
-
-.jinseok-wrap .nav ul li .nav-title {
-    display: block;
-    padding: 10px;
-    text-align: center;
-    color: #333;
-    font-size: 18px;
-    font-weight: bold;
-    border-bottom: 2px solid #5fd7ff;
-    border-radius: 5px 5px 0 0;
+.jinseok-wrap .sum .nav ul li .tap {
+    background-color: #e3e3e3;
 }
-
 .jinseok-wrap .nav ul li a {
     display: block;
-    padding: 10px;
     text-align: center;
-    color: #333;
+    padding: 10px;
+    color: black;
     font-size: 18px;
-    text-decoration: none;
-    border-radius: 0 0 5px 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    border-bottom: 1px solid black;
 }
 
-.jinseok-wrap .nav ul li a:hover {
-    background-color: #f0f0f0;
-}
-
-@media (max-width: 991px) {
-    .jinseok-wrap .nav {
-        width: 100%;
-        float: none;
-        margin-bottom: 20px; /* 모바일에서 여백 추가 */
-    }
-
-    .jinseok-wrap .nav ul li {
-        text-align: center; /* 모바일에서 텍스트 가운데 정렬 */
-    }
-
-    .jinseok-wrap .nav ul li .nav-title {
-        border-radius: 5px; /* 모바일에서 상단 모서리 둥글게 설정 */
-    }
-
-    .jinseok-wrap .nav ul li a {
-        border-radius: 5px; /* 모바일에서 모서리 둥글게 설정 */
-    }
+.jinseok-wrap .sum .nav ul li a:hover {
+    background-color: #e3e3e3;
 }
 
 .jinseok-wrap .user-info {

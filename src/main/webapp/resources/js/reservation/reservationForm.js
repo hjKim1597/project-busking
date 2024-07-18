@@ -49,82 +49,42 @@ html += "</tbody>";
 html += "</table>";
 document.getElementById("calendar").innerHTML = html;
 
-var calendarTdList = document.querySelectorAll("#calendar table tbody td");
-calendarTdList.forEach(function(td) {
-    td.addEventListener('click', function() {
-        calendarTdList.forEach(function(td) {
-            td.classList.remove('selected');
-        });
-        this.classList.add('selected');
-    });
+// 날짜 클릭 이벤트
+document.getElementById("calendar").addEventListener('click', (e) => {
+	if(e.target.tagName != "SPAN") return;
+	if(e.target.innerHTML == "") return;
+	
+	var calendarTdList = document.querySelectorAll("#calendar table tbody td");
+	
+	calendarTdList.forEach(function(td) {
+		if(td.firstElementChild == e.target) return;
+		td.classList.remove('selected');
+	});
+	
+	e.target.parentElement.classList.toggle("selected");
+	
+	
 });
 
 // 지도 스크립트
 // 지도를 담을 영역의 DOM 레퍼런스
-var container = document.getElementById('map');
+var mapContainer = document.querySelector('.map-container #map');
 
 // 지도를 생성할 때 필요한 기본 옵션
-var options = {
+var mapOption = {
     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심 좌표
     level: 3 // 지도의 확대 레벨
 };
 
-// 전역 변수로 지도 객체 선언
-var map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption);
 
-/*setTimeout(function(){ 
-	map.relayout();
-	map.setCenter(new kakao.maps.LatLng(33.450701, 126.570667)); 
-	}, 100);*/
+// 부트스트랩 탭 이벤트 리스너
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     if (e.target.id === 'map-tab') {
         // 지도가 포함된 탭이 활성화될 때, 지도를 리사이즈합니다.
-        if (map) {
-            map.relayout();
-            // 지도의 중심을 재설정합니다.
-            map.setCenter(new kakao.maps.LatLng(33.450701, 126.570667));
-        }
+        map.relayout();
+        // 지도의 중심을 재설정합니다.
+        map.setCenter(new kakao.maps.LatLng(33.450701, 126.570667));
     }
-});
-// 장소 후기 별점 스크립트
-document.addEventListener('DOMContentLoaded', function () {
-    const stars = document.querySelectorAll('.cmt-star .star');
-    let currentRating = 0; // 현재 선택된 별점
-
-    function handleStarSelection(index) {
-        // 현재 선택된 별점 업데이트
-        currentRating = index + 1;
-
-        // 모든 별의 선택 상태를 초기화
-        stars.forEach((s, i) => {
-            if (i <= index) {
-                s.classList.add('selected');
-                s.querySelector('i').classList.remove('glyphicon-star-empty');
-                s.querySelector('i').classList.add('glyphicon-star');
-            } else {
-                s.classList.remove('selected');
-                s.querySelector('i').classList.remove('glyphicon-star');
-                s.querySelector('i').classList.add('glyphicon-star-empty');
-            }
-        });
-    }
-
-    stars.forEach((star, index) => {
-        star.addEventListener('click', () => handleStarSelection(index));
-    });
-
-    // 폼 전송 시 현재 선택된 별점과 함께 데이터 전송
-    const form = document.querySelector('.loca-cmt-box form');
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        
-        // 선택된 별점과 코멘트 가져오기
-        const comment = document.getElementById('comment').value;
-        
-        // 여기서 선택된 별점 (currentRating) 과 comment 를 서버에 전송하면 됩니다.
-        console.log('별점:', currentRating);
-        console.log('코멘트:', comment);
-        
-        // 필요한 경우, 여기에서 서버로 데이터를 전송하는 비동기 요청을 추가할 수 있습니다.
-    });
 });

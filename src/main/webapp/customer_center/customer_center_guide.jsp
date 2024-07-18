@@ -7,10 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/customer_center_css/customer_center_index.css">
+    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_index.css">
 
     <!-- 부트스트랩 css링크 -->
-    <link rel="stylesheet" href="../resources/css/customer_center_css/bootstrap.min.css">
+    <link rel="stylesheet" href="../resources/css/customer_center/bootstrap.min.css">
     <!-- 제이쿼리(부스트랩보다 먼저 링크) -->
     <script src="../resources/js/customer_center_js/jquery-3.7.1.min.js"></script>
     <!-- 부트스트랩 js링크 -->
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../resources/css/center_default.css">
 
     <!-- header,footer -->
-    <link rel="stylesheet" href="../resources/css/customer_center_css/customer_center_header_footer.css">
+    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_header_footer.css">
 
 </head>
 
@@ -135,23 +135,22 @@
                         </p>
                     </div>
 
+                    <!-- 
                     <div class="container">
                         <div class="page-header">
                             <h3>안내3</h3>
                         </div>
                         <p>내용</p>
-                    </div>
+                    </div> 
+                    -->
 
                 </div>
 
+				<!-- 
                 <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 extra">
-                    <!-- 빈칸1 -->
+                    빈칸2
                 </div>
-
-                <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 extra">
-                    <!-- 빈칸2 -->
-                </div>
-
+				 -->
             </div>
         </div>
     </section>
