@@ -4,13 +4,6 @@
 
 <%@ include file="../include/header.jsp" %>
 
-<meta charset="UTF-8">
-<link rel="stylesheet" href="../resources/css/board_css/board_nav.css">
-<link rel="stylesheet" href="../resources/css/board_css/board_team_write.css">
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
-
 <section id="board_write_wrap">
 
     <nav class="board_nav">
@@ -82,3 +75,4 @@
         document.getElementById('content').value = quill.root.innerHTML;
     };
 </script>
+<%@ include file="../include/footer.jsp" %>

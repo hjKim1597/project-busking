@@ -3,10 +3,9 @@
 
 <%@ include file="../include/header.jsp" %>
 
-
 <section id="board_content">
 
-    <nav class="board_nav">s
+    <nav class="board_nav">
         <div id="board_nav_wrap">
             <h1>BOARD</h1>
             <ul class="menu">
@@ -60,15 +59,22 @@
                         <button class="list_button" type="button" onclick="location.href='board_free_list.jsp'">목록</button>
                     </div>
                 </div>
-                <div class="comment_box">
-                    <iframe src="board_comment.jsp" frameborder="0" width="100%" height="100%"></iframe>
-                </div>
+				<div class="comment_box">
+	                <iframe src="board_comment.jsp" frameborder="0" scrolling="no"></iframe>
+				</div>
+
             </div>
         </div>
     </div>
 </section>
 
-<script>
+<script type="text/javascript">
+	// iframe 높이 자동 조절
+	var iframe = document.querySelector('.comment_box > iframe');
+	
+	iframe.addEventListener('load', function() {
+		iframe.style.height = iframe.contentDocument.body.scrollHeight + 'px';
+	});
     // 페이지 로드 시 하트 수 초기화
     document.addEventListener("DOMContentLoaded", function() {
         const countElement = document.getElementById('likeCount');
@@ -88,6 +94,8 @@
         // 로컬 스토리지에 하트 수 저장
         localStorage.setItem('likeCount', count);
     }
+    
+
 
 </script>
 <%@ include file="../include/footer.jsp" %>
