@@ -42,7 +42,7 @@
                         <!--데이터 받아오기-->
                         <td>글번호</td>
                         <td>작성자</td>
-                        <td><a href="board_team_content.jsp">제목</a></td> <!--제목을 누르면 글 내용으로 이동함-->
+                        <td><a href="board_team_content.board?bno=${bno}">제목</a></td> <!--제목을 누르면 글 내용으로 이동함-->
                         <td>날짜</td>
                         <td>모집 인원</td>
                         <td>모집 상태</td>
@@ -63,8 +63,8 @@
                             <li><a href="다음페이지"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
                             <li><a href="마지막페이지"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
                         </ul>
-                        <form action="board_team_write.jsp" class="right">
-                            <button value="글쓰기" onclick="location.href='board_team_write.html'">작성</button>  
+                        <form action="board_team_write.board" class="right">
+                            <button value="글쓰기">작성</button>  
                         </form>   
                     </div>                     
                 <div class="board_team_search">

@@ -50,6 +50,27 @@ public class BoardController extends HttpServlet {
 		} else if(command.equals("/board/board_ask_list.board")) {
 			response.sendRedirect("board_ask_list.jsp");
 			
+		} else if(command.equals("/board/board_free_write.board")) {
+			response.sendRedirect("board_free_write.jsp");
+			
+		} else if(command.equals("/board/board_news_write.board")) {
+			response.sendRedirect("board_news_write.jsp");
+			
+		} else if(command.equals("/board/board_team_write.board")) {
+			response.sendRedirect("board_team_write.jsp");
+			
+		} else if(command.equals("/board/board_ask_write.board")) {
+			response.sendRedirect("board_ask_write.jsp");
+			
+		} else if(command.equals("/board/board_news_content.board")) {
+			response.sendRedirect("board_news_content.jsp");
+			
+		} else if(command.equals("/board/board_free_content.board")) {
+			response.sendRedirect("board_free_content.jsp");
+			
+		} else if(command.equals("/board/board_team_content.board")) {
+			response.sendRedirect("board_team_content.jsp");
+			
 		}
 	}
 }
