@@ -2,7 +2,6 @@
 
 /* ----------------------------------------------font---------------------------------------------- */
 @font-face {
-<<<<<<< HEAD
 	font-family: 'NanumSquareNeo';
 	src:
 		url(../../fonts/NanumSquareNeo/NanumSquareNeo/TTF/NanumSquareNeo-bRg.ttf)
@@ -13,23 +12,6 @@
 
 .index-content, .index-footer, .index-header {
 	font-family: 'NanumSquareNeo';
-=======
-    font-family: 'NanumSquare';
-    src: url(../../fonts/nanum-square/NanumSquare_B.ttf) format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* .index-header {
-    font-family: 'NanumSquare';
-} */
-
-@font-face {
-    font-family: 'NanumSquareNeo';
-    src: url(../../fonts/NanumSquareNeo/NanumSquareNeo/TTF/NanumSquareNeo-bRg.ttf) format('woff');
-    font-weight: normal;
-    font-style: normal;
->>>>>>> b2ffbb742e8b86e80d4a4cccd1c1bedfc71273ea
 }
 
 /* ----------------------------------------------responsive layout---------------------------------------------- */
@@ -99,7 +81,6 @@
 }
 
 /* 767이하 디자인 */
-<<<<<<< HEAD
 @media ( max-width :767px) {
 	/* .carousel-inner>.item>a>img, .carousel-inner>.item>img {
 		margin-top: 0.4%;
@@ -134,62 +115,6 @@
 	.location-pic {
 		margin-top: 0;
 	}
-=======
-@media (max-width:767px) {
-
-    .carousel-inner>.item>a>img,
-    .carousel-inner>.item>img {
-        margin-top: 0.4%;
-    }
-
-    .index-footer-top {
-        display: flex;
-        flex-direction: column;
-
-    }
-
-    .footer-service {
-        padding-left: 20px;
-        margin-bottom: 10px;
-    }
-
-    .footer-familysite>select {
-        margin-left: 20px;
-        margin-top: 10px;
-    }
-
-    .index-preview>.row>.preview-box {
-        margin: 50px 30px !important;
-    }
-
-    .location-pic>h2 {
-        margin: 100px 20px 100px 20px;
-    }
-
-    #board-three {
-        margin-bottom: 300px;
-    }
-
-
-    /* .carousel-caption > h2 ,
-    .carousel-caption > p {
-        font-size: smaller;
-    } */
-}
-
-@media (max-width: 768px) {
-    .carousel-inner>.item>.carousel-caption>.banner-title {
-        display: none;
-    }
-    .index-content>.carousel>.carousel-inner>.item>img{
-        position: relative;
-    }
-    .carousel-inner>.item>.carousel-caption>.banner-content{
-        text-align: center;
-       position: absolute;
-    }
-
->>>>>>> b2ffbb742e8b86e80d4a4cccd1c1bedfc71273ea
 }
 
 /* @media ( max-width : 768px) {
@@ -206,109 +131,10 @@
 } */
 
 /* ----------------------------------------------header---------------------------------------------- */
-<<<<<<< HEAD
 .index-header {
 	padding: 0 80px;
 }
 
-=======
-/* .navbar {
-    padding: 15px;
-}
-
-.navbar-inverse .navbar-brand {
-    color: #000;
-    font-weight: 900;
-}
-
-.navbar-inverse {
-    background-color: #fff;
-    border-color: #fff;
-    border-radius: 0;
-    text-align: center;
-}
-
-.nav>li>a {
-    font-size: 21px;
-    font-weight: 900;
-    padding-left: 40px;
-}
-
-#myNavbar>ul>li>a:hover {
-    color: #9be0e0;
-}
-
-
-
-
-.container-fluid {
-    padding: 0 40px;
-}
-
-
-.navbar-inverse .navbar-nav>.active>a,
-.navbar-inverse .navbar-nav>.active>a,
-.navbar-inverse .navbar-nav>.active>a:focus,
-.navbar-inverse .navbar-nav>.active>a:hover,
-.navbar-inverse .navbar-nav>li>a {
-    background-color: #fff;
-    color: black;
-
-}
-
-.navbar-inverse .navbar-brand:focus,
-.navbar-inverse .navbar-brand:hover {
-    color: black;
-}
-
-
-.navbar-inverse .navbar-brand:focus,
-.navbar-inverse .navbar-brand:hover {
-    color: #999;
-}
-
-
-.navbar-inverse .navbar-nav>li>a:focus,
-.navbar-inverse .navbar-nav>li>a:hover {
-    color: #000;
-    background-color: transparent;
-}
-
-.navbar-inverse .navbar-toggle {
-    border-color: #fff;
-}
-
-.navbar-inverse .navbar-toggle:focus,
-.navbar-inverse .navbar-toggle:hover {
-    border-color: #fff;
-    background-color: #fff;
-}
-
-
-.navbar-inverse .navbar-toggle .icon-bar {
-    background-color: #000;
-}
-
-.navbar-inverse .navbar-toggle:focus,
-.navbar-inverse .navbar-toggle:hover {
-    background-color: #e3e3e3;
-}
-
-.navbar-right>li>.header-right {
-    font-size: 17px;
-    padding: 15px 15px;
-
-}
-
-
-.navbar-inverse .navbar-nav>.open>a,
-.navbar-inverse .navbar-nav>.open>a:focus,
-.navbar-inverse .navbar-nav>.open>a:hover {
-    color: black;
-    background-color: white;
-} */
-
->>>>>>> b2ffbb742e8b86e80d4a4cccd1c1bedfc71273ea
 .navbar-inverse {
 	background-color: white;
 	border-color: white;
@@ -426,7 +252,6 @@
 	font-size: 43px;
 	font-weight: bold;
 }
-<<<<<<< HEAD
 
 .middle-name {
 	margin-top: 100px;
@@ -435,8 +260,6 @@
 .middle-row {
 	margin-top: 100px;
 }
-=======
->>>>>>> b2ffbb742e8b86e80d4a4cccd1c1bedfc71273ea
 
 .index-preview>.middle-content {
 	text-align: center;
@@ -496,12 +319,9 @@
 	background-position: center;
 }
 
-<<<<<<< HEAD
 .row>element.style {
 	margin: 0 0 40% 0;
 }
-=======
->>>>>>> b2ffbb742e8b86e80d4a4cccd1c1bedfc71273ea
 
 /* ----미리보기 */
 .index-preview {
@@ -574,10 +394,6 @@
 }
 
 /*  --------로케이션 사진------------ */
-<<<<<<< HEAD
-=======
-
->>>>>>> b2ffbb742e8b86e80d4a4cccd1c1bedfc71273ea
 .location-pic>h2 {
 	color: #032587;
 	font-weight: 600;
@@ -605,7 +421,6 @@
 	font-size: 20px;
 }
 
-<<<<<<< HEAD
 .contents-pic {
 	margin: 0 auto;
 	text-align: center;
@@ -633,59 +448,12 @@
 }
 
 
-
 /* ----------------------------------------------footer---------------------------------------------- */
 .index-footer {
 	margin-top: 200px;
 	overflow: hidden;
 	font-weight: 900;
 	width: auto;
-=======
-*/
-
-/* .location-pic {
-    overflow: hidden;
-}
-
-.location-pic>.loca-left {
-    width: 60%;
-    float: left;
-    padding-right: 20px;
-
-}
-
-.location-pic>.loca-left>div>img {
-    border-radius: 3px;
-}
-
-
-.location-pic>.loca-right {
-    border: 1px solid #e3e3e3;
-    border-radius: 30px;
-    float: right;
-    width: 40%;
-    height: 100%;
-    text-align: center;
-
-}
-
-.location-pic>.loca-right>div>div {
-
-    margin: 30px 0;
-
-}
-
-
-
-
-/* ----------------------------------------------footer---------------------------------------------- */
-.index-footer {
-    margin-top: auto;
-    overflow: hidden;
-    font-weight: 900;
-    width: 80%;
-
->>>>>>> b2ffbb742e8b86e80d4a4cccd1c1bedfc71273ea
 }
 
 .index-footer>.index-footer-top {
