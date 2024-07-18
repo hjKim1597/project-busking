@@ -9,7 +9,7 @@
     <title>Document</title>
 
     <!-- 부트스트랩 css링크 -->
-    <link rel="stylesheet" href="../resources/css/customer_center_css/bootstrap.min.css">
+    <link rel="stylesheet" href="../resources/css/customer_center/bootstrap.min.css">
     <!-- 제이쿼리(부스트랩보다 먼저 링크) -->
     <script src="../resources/js/customer_center_js/jquery-3.7.1.min.js"></script>
     <!-- 부트스트랩 js링크 -->
@@ -18,9 +18,11 @@
     <!-- 커스터마이징 한 css 디자인 추가 -->
     <link rel="stylesheet" href="../resources/css/custom-reset.css">
     <link rel="stylesheet" href="../resources/css/center_default.css">
-    <link rel="stylesheet" href="../resources/css/customer_center_css/customer_center_board_free_list.css">
+    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_board_free_list.css">
 
-    <link rel="stylesheet" href="../resources/css/customer_center_css/customer_center_index_board.css">
+
+	
+
 
 </head>
 

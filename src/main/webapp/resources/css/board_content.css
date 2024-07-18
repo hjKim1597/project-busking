@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+@import url(default.css);
+
+@font-face {
+    font-family: 'NanumSquareNeo';
+    src: url('../fonts/NanumSquareNeo/NanumSquareNeo/TTF/NanumSquareNeo-bRg.ttf');
+}
+
+@font-face {
+    font-family: 'NanumSquareNeoB';
+    src: url('../fonts/NanumSquareNeo/NanumSquareNeo/TTF/NanumSquareNeo-eHv.ttf');
+}
+
+* {font-family: 'NanumSquareNeo';}
+
+#board_content {
+    width: 1280px; 
+    height: 1900px;
+}
+
+#board_content .board_nav {
+    float: left;
+}
+
+#board_content .board_content_box .inner_box {
+    padding: 2rem 0px 3rem; 
+    margin-left: 190px;
+}
+
+#board_content .board_content_box .inner_box .inner {
+    padding: 0px 1.25rem;
+}
+
+/*색상참고 #98FF98 #98FB98 #90EE90 #3CB371 #00FA9A #228B22 #32CD32 #00FF7F #006400 #7FFF00
+*/
+
+#board_content .board_content_box .inner_box .inner .inner_top .category {
+    /* background-color: rgb(255, 251, 227); */
+    background-color: rgb(250, 250, 217);
+    color: orange;
+    font-size: 15px;
+    line-height: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 0px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_top .title {
+    font-size: 25px;
+    padding: 15px 3px 10px 3px;
+    margin-top: 10px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_top .title .new {
+    font-family: 'NanumSquareNeoB';
+    color: white;
+    background-color: #98FF98;
+    display: inline-block;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    line-height: 100%;
+    border-radius: 10px;
+    padding: 3px 5px;
+    margin-right: 5px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_top .info {
+    float: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 155px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_top .info .writer {
+    font-size: 18px;
+    padding: 8px;
+   
+}
+
+#board_content .board_content_box .inner_box .inner .inner_top .info .date {
+    font-size: 15px;
+    padding: 8px;
+    color: gray;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_mid .content {
+    width: 900px;
+    height: 300px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_mid .like_container {
+    padding: 5px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    border: 3px solid #ebe7e7;
+    width: 70px;
+    border-radius: 20px;
+    margin-top: 15px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_mid .like_container .like_button {
+    background-color: rgb(255, 255, 255);
+    width: 30px;
+    border: 0px;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_mid .like_container .like_count {
+    margin-left: 15px; 
+    font-size: 18px; 
+    display: flex;
+    align-items: center; 
+    height: 30px; 
+}
+
+#board_content .board_content_box .inner_box .inner .inner_mid .content {
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 20px;
+    line-height: 38px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_bottom {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 17px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_bottom div {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_bottom div img {
+    width: 30px;  
+    height: 30px; 
+    margin-right: 5px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_bottom div span {
+    font-size: 17px;
+    margin-left: 10px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_bottom .count span {
+    margin-left: 12px;
+}
+
