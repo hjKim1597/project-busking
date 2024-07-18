@@ -1,0 +1,440 @@
+@charset "UTF-8";
+
+@import url(default.css);
+
+@font-face {
+    font-family: 'nanumsquare';
+    src: url('../../fonts/nanum-square/NanumSquare_acL.ttf');
+}
+
+@font-face {
+    font-family: 'NanumSquareNeo';
+    src: url('../../fonts/NanumSquareNeo/NanumSquareNeo/TTF/NanumSquareNeo-bRg.ttf');
+}
+
+@font-face {
+    font-family: 'NanumSquareNeoB';
+    src: url('../../fonts/NanumSquareNeo/NanumSquareNeo/TTF/NanumSquareNeo-eHv.ttf');
+}
+
+* {
+    font-family: 'NanumSquareNeo';
+}
+
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+thead th, tbody td {
+    border: 1px solid black;
+}
+
+@media (min-width:1200px) {
+    .resForm-wrap {
+        width: 1170px;
+    }
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+    .resForm-wrap {
+        width: 970px;
+    }
+
+    #board_ask_list_wrap {
+        padding: 10px 20px !important;
+        margin-top: 20px !important;
+    }
+
+    #board_ask_list_wrap .board_nav #board_nav_wrap {
+        display: none;
+    }
+
+    .wrap_board_ask > .wrap_board_ask_list {
+        margin-left: 10px !important;
+    }
+
+    #board_ask_list_wrap .wrap_board_ask .wrap_board_ask_list {
+        padding: 0 !important;
+        margin-left: 0px !important; 
+    }
+
+    #board_ask_list_wrap .wrap_board_ask > .wrap_board_ask_list .board_ask_list_box {
+        padding: 0px;
+    }
+
+    #board_ask_list_wrap .wrap_board_ask > .wrap_board_ask_list .wrap_board_ask_list_title {
+        padding: 0px  !important;
+    }
+
+    #board_content .board_content_box {
+        padding: 0px 10px !important;
+    }
+
+    #board_content .board_content_box .inner_box {
+        padding: 0 !important;
+        margin-left: 0px !important; 
+    }
+
+    .wrap_board_ask_list .page_nav {
+        padding: 0px !important;
+    }
+
+    .board_ask_search {
+        padding: 0px !important;
+    }
+
+    #board_ask_list_wrap .board_ask_content_wrap {
+        padding: 20px 0px 0px !important;
+    }
+}
+
+@media (max-width:991px) {
+    .resForm-wrap {
+        width: 750px;
+    }
+
+    #board_ask_list_wrap {
+        padding: 10px 20px !important;
+        margin-top: 20px !important;
+    }
+
+    #board_ask_list_wrap .board_nav #board_nav_wrap {
+        display: none;
+    }
+
+    .wrap_board_ask > .wrap_board_ask_list {
+        margin-left: 10px !important;
+    }
+
+    #board_ask_list_wrap .wrap_board_ask .wrap_board_ask_list {
+        padding: 0 !important;
+        margin-left: 0px !important; 
+    }
+
+    #board_ask_list_wrap .wrap_board_ask > .wrap_board_ask_list .board_ask_list_box {
+        padding: 0px;
+    }
+
+    #board_ask_list_wrap .wrap_board_ask > .wrap_board_ask_list .wrap_board_ask_list_title {
+        padding: 0px  !important;
+    }
+
+    #board_content .board_content_box {
+        padding: 0px 10px !important;
+    }
+
+    #board_content .board_content_box .inner_box {
+        padding: 0 !important;
+        margin-left: 0px !important;
+    }
+
+    .wrap_board_ask_list .page_nav {
+        padding: 0px !important;
+    }
+
+    .board_ask_search {
+        padding: 0px !important;
+    }
+
+    #board_ask_list_wrap .board_ask_content_wrap {
+        padding: 20px 0px 0px!important;
+    }
+}
+
+#board_ask_list_wrap {
+    padding: 100px;
+}
+
+#board_ask_list_wrap .board_nav {
+    float: left;
+}
+
+#board_ask_list_wrap .board_nav #board_nav_wrap.h1 {
+    font-family: 'nanumsquare';
+}
+
+#board_ask_list_wrap .wrap_board_ask {
+    padding: 30px; 
+    margin: 0 auto;
+}
+
+#board_ask_list_wrap .wrap_board_ask .wrap_board_ask_list {
+    margin-left: 170px;
+}
+
+#board_ask_list_wrap .wrap_board_ask .wrap_board_ask_list .wrap_board_ask_list_title {
+    padding: 0 70px;
+}
+
+#board_ask_list_wrap .wrap_board_ask .wrap_board_ask_list .wrap_board_ask_list_title div {
+    font-family: 'nanumsquare';
+    width: 100%;
+    padding: 0 15px 15px;
+    font-size: 25px;
+    letter-spacing: -1px;
+    display: block;
+    border-bottom: 1px solid #cccccc;
+    color: #3a3939;
+    line-height: 1.3;
+}
+
+.wrap_board_ask > .wrap_board_ask_list .board_ask_list_box {
+    width: 100%;
+    margin-top: 40px;
+    padding: 0px 70px;
+}
+
+.wrap_board_ask > .wrap_board_ask_list .board_ask_list_content {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.wrap_board_ask > .wrap_board_ask_list .board_ask_list_content th,
+.wrap_board_ask > .wrap_board_ask_list .board_ask_list_content td {
+    border: 1px solid #cccccc;
+    padding: 8px;
+    text-align: center;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-left: none;
+    border-right: none;
+}
+
+.wrap_board_ask > .wrap_board_ask_list .board_ask_list_content th {
+    background-color: #F0F7FD;
+    height: 45px;
+}
+
+.wrap_board_ask > .wrap_board_ask_list .board_ask_list_content td {
+    height: 40px;
+}
+
+.wrap_board_ask > .wrap_board_ask_list .board_ask_list_content th.nth1 {
+    width: 10%;
+}
+
+.wrap_board_ask > .wrap_board_ask_list .board_ask_list_content th.nth2 {
+    width: 10%;
+}
+
+.wrap_board_ask > .wrap_board_ask_list .board_ask_list_content th.nth3 {
+    width: 60%;
+}
+
+.wrap_board_ask > .wrap_board_ask_list .board_ask_list_content th.nth4 {
+    width: 10%;
+}
+
+.wrap_board_ask > .wrap_board_ask_list .board_ask_list_content th.nth5 {
+    width: 10%;
+}
+
+.wrap_board_ask_list .page_nav {
+    margin-top: 25px; 
+    padding: 0px 70px;
+    justify-content: space-between;
+    text-align: center;
+    justify-content: center;
+}
+
+.wrap_board_ask_list .page_nav .center {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    justify-content: center;
+    padding: 0;
+    margin: auto;
+}
+
+.wrap_board_ask_list .page_nav ul li {
+    margin: 0 5px;
+}
+
+.wrap_board_ask_list .page_nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 17px;
+    padding: 5px;
+}
+
+.wrap_board_ask_list .page_nav ul li a:hover {
+    color: #5FD7FF;
+}
+
+.page_nav ul.center li.active a {
+    font-family: 'NanumSquareNeoB';
+    color: #5FD7FF;
+}
+
+.wrap_board_ask_list .page_nav ul li a img {
+    width: 7px;
+    height: 7px;
+}
+
+.wrap_board_ask_list .page_nav .right {
+    margin-left: auto;
+}
+
+.wrap_board_ask_list .page_nav .right button {
+    float: right;
+    font-size: 17px;
+    text-align: center;
+    height: 38px;
+    width: 75px;
+    background-color: #5FD7FF;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.board_ask_search {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0px 70px;
+}
+
+.board_ask_search .board_ask_search_box {
+    height: 39px;
+    font-size: 17px;
+    padding-left: 10px;
+    border: 1px solid #c9cccef3;
+    border-radius: 3px;
+}
+
+.board_ask_search > input {
+    height: 39px;
+    margin-left: 10px;
+    width: 100%;
+    padding-left: 13px;
+    font-size: 17px;
+    border-radius: 3px;
+    border: 1px solid #c9cccef3;
+}
+
+.board_ask_search > input:focus {
+    border: 1.5px solid #5FD7FF;
+    outline: none;
+    color: #000000;
+}
+
+.board_ask_search .btn {
+    margin-left: 10px;
+    font-size: 17px;
+    height: 38px;
+    width: 75px;
+    background-color: white;
+    border: 1px solid #c9cccef3;
+    outline: none;
+    box-shadow: none;
+    border-radius: 3px;
+}
+
+.board_ask_search .btn:hover {
+    background-color: #5fd7ff52;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.board_ask_search .btn:focus,
+.board_ask_search .btn:active,
+.board_ask_search .btn:active:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.post .comment-section {
+    display: none;
+}
+
+#board_ask_list_wrap .board_ask_content_wrap {
+    padding: 40px 70px 10px;
+}
+
+/* 추가한 CSS 부분 */
+#board_ask_list_wrap .post {
+    border: 1px solid #cfebf336;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    background-color: #e2f4fccb;
+    display: flex;
+    flex-direction: column; /* 댓글 입력창을 아래로 배치하기 위해 column으로 설정 */
+}
+
+#board_ask_list_wrap .post .post_box {
+    display: inline;
+}
+
+#board_ask_list_wrap .post .question-content {
+    font-size: 23px;
+    padding: 20px;
+    float: left;
+}
+
+#board_ask_list_wrap .post .info {
+    flex-direction: column; /* 작성자와 날짜를 세로로 배치합니다. */
+    align-items: flex-end; /* 오른쪽 정렬 */
+    padding: 15px;
+    float: right;
+}
+
+
+#board_ask_list_wrap .post .info .writer {
+    font-size: 18px;
+    color: #555;
+    /* margin-left: auto; 작성자를 오른쪽으로 이동시킵니다. */
+}
+
+
+#board_ask_list_wrap .post .info .date {
+    font-size: 15px;
+    color: #555;
+
+}
+
+#board_ask_list_wrap .post .comment-section {
+    margin-top: 10px;
+    width: 100%;
+}
+
+#board_ask_list_wrap .post .comment-section .comment {
+    width: 100%;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+#board_ask_list_wrap .comment textarea {
+    width: calc(100% - 115px);
+    height: 60px;
+    border: 1px solid #c9cccef3;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 14px;
+    resize: none;
+    margin-right: 10px;
+    float: left;
+}
+
+#board_ask_list_wrap .comment textarea:focus {
+    border: 2px solid #5FD7FF; /* 하늘색 보더 */
+    outline: none; /* 기본 outline 제거 */
+}
+
+#board_ask_list_wrap .submit-comment {
+    width: 75px;
+    height: 60px; /* 높이를 텍스트 입력창에 맞춤 */
+    background-color: #5FD7FF;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
