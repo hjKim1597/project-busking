@@ -1,5 +1,4 @@
-@import url('../default.css');
-@import url(https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css);
+@import url(https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css);@import url('../default.css');
 @media (min-width:1200px) {
     .jinseok-wrap {
         width: 1170px;

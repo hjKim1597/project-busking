@@ -7,10 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/customer_center_css/customer_center_index.css">
+    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_index.css">
 
     <!-- 부트스트랩 css링크 -->
-    <link rel="stylesheet" href="../resources/css/customer_center_css/bootstrap.min.css">
+    <link rel="stylesheet" href="../resources/css/customer_center/bootstrap.min.css">
     <!-- 제이쿼리(부스트랩보다 먼저 링크) -->
     <script src="../resources/js/customer_center_js/jquery-3.7.1.min.js"></script>
     <!-- 부트스트랩 js링크 -->
@@ -21,10 +21,10 @@
     <link rel="stylesheet" href="../resources/css/center_default.css">
 
     <!-- header,footer -->
-    <link rel="stylesheet" href="../resources/css/customer_center_css/customer_center_header_footer.css">
+    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_header_footer.css">
 
     <!-- 글 수정 스타일 -->
-    <link rel="stylesheet" href="../resources/css/customer_center_css/customer_center_index_board.css">
+    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_index_board.css">
 
 
 </head>

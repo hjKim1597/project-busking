@@ -58,34 +58,26 @@ calendarTdList.forEach(function(td) {
         this.classList.add('selected');
     });
 });
-
-// 지도 스크립트
-// 지도를 담을 영역의 DOM 레퍼런스
-var container = document.getElementById('map');
-
-// 지도를 생성할 때 필요한 기본 옵션
-var options = {
-    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심 좌표
+// 지도 script
+var mapContainer = document.getElementById('mapContainer'), // 지도를 표시할 div
+mapOption = { 
+    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
     level: 3 // 지도의 확대 레벨
 };
 
-// 전역 변수로 지도 객체 선언
-var map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption);
 
-/*setTimeout(function(){ 
-	map.relayout();
-	map.setCenter(new kakao.maps.LatLng(33.450701, 126.570667)); 
-	}, 100);*/
+// 부트스트랩 탭 이벤트 리스너
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     if (e.target.id === 'map-tab') {
         // 지도가 포함된 탭이 활성화될 때, 지도를 리사이즈합니다.
-        if (map) {
-            map.relayout();
-            // 지도의 중심을 재설정합니다.
-            map.setCenter(new kakao.maps.LatLng(33.450701, 126.570667));
-        }
+        map.relayout();
+        // 지도의 중심을 재설정합니다.
+        map.setCenter(new kakao.maps.LatLng(33.450701, 126.570667));
     }
 });
+
 // 장소 후기 별점 스크립트
 document.addEventListener('DOMContentLoaded', function () {
     const stars = document.querySelectorAll('.cmt-star .star');
