@@ -1,20 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>   
 <%@ include file="../include/header.jsp" %>
     
 <section id="board_news_list_wrap">  
   
-<nav class="board_nav">
-    <div id="board_nav_wrap">
-        <h1>BOARD</h1>
-        <ul class="menu">
-            <li class="nth1 active"><strong><a href="board_news_list.jsp">NEWS</a></strong></li>
-            <li class="nth2"><strong><a href="board_free_list.jsp">자유게시판</a></strong></li>
-            <li class="nth3"><strong><a href="board_team_list.jsp">팀원 모집</a></strong></li>
-            <li class="nth4"><strong><a href="board_ask_list.jsp">Q & A</a></strong></li>
-        </ul>
-    </div>
-</nav>
+    <nav class="board_nav">
+	    <div id="board_nav_wrap">
+	        <h1>BOARD</h1>
+	        <ul class="menu">
+	            <li class="nth1 active"><strong><a href="board_news_list.board">NEWS</a></strong></li>
+	            <li class="nth2"><strong><a href="board_free_list.board">자유게시판</a></strong></li>
+	            <li class="nth3"><strong><a href="board_team_list.board">팀원 모집</a></strong></li>
+	            <li class="nth4"><strong><a href="board_ask_list.board">Q & A</a></strong></li>
+	        </ul>
+	    </div>
+	</nav>
 
         <div class="wrap_board_news">              
             <div class="wrap_board_news_list">
@@ -42,6 +44,7 @@
                         <td><a href="board_news_content.jsp">뉴스 제목</a></td> <!--제목을 누르면 글 내용으로 이동함-->
                         <td>날짜</td>
                         <td>조회수</td>
+                        
     
                         </tbody>
                     </table> 
