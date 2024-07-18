@@ -22,7 +22,7 @@
         <div class="inner_box">
             <div class="inner">
                 <div class="inner_top">
-                    <div class="category">게시판정보</div>
+                    <div class="category">NEWS</div>
                     <h1 class="title">
                         <strong>글 제목</strong>
                         <span class="new">N</span>

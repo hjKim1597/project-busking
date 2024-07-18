@@ -1,6 +1,4 @@
-@charset "UTF-8";
-
-@import url(../default.css);
+@import url(default.css);
 
 @font-face {
     font-family: 'NanumSquareNeo';
@@ -90,10 +88,15 @@
     margin-bottom: 50px;
 }
 
+#board_write_wrap .board_write_content .form_group {
+    /* display: inline-block; */
+}
+
 #board_write_wrap .board_write_content .form_group .title_text {
     font-size: 17px;
     margin-bottom: 9px;
-    position: relative;
+    /* margin-top: 10px; */
+    /* position: relative; */
 }
 
 #board_write_wrap .board_write_content .form_group .title_text::after {
@@ -103,15 +106,17 @@
 }
 
 #board_write_wrap .board_write_content .form_group .title_box {
-    display: block;
+    /* display: block; */
     box-shadow: none; /* 그림자 제거 */
     border: 1px solid rgb(209, 209, 209);
     border-radius: 3px;
     width: 100%;
-    height: 33px;
+    height: 40px;
     font-size: 15px;
     padding: 10px;
     letter-spacing: 0.5px;
+    margin-right: 10px; /* 간격 추가 */
+    margin-bottom: 10px; /* 간격 추가 */;
 } 
 
 #board_write_wrap .board_write_content .form_group .title_box:focus {
@@ -119,19 +124,11 @@
     outline: none; 
 }
 
-#board_write_wrap .board_write_content .board_team_box {
-    
-}
-
-#board_write_wrap .board_write_content .board_team_box .board_team_people {
-
-}
-
 #board_write_wrap .board_write_content .form_group .content_text {
     font-size: 17px;
     margin-bottom: 12px;
     margin-top: 15px;
-    position: relative;
+    /* position: relative; */
 }
 
 #board_write_wrap .board_write_content .form_group .content_text::after {
@@ -172,4 +169,10 @@
     background-color: #5FD7FF;
     color: white;
     font-weight: 500;
+}
+
+.title_team_box select:focus {
+    border: 1px solid rgb(209, 209, 209) !important; /* 기존 테두리 유지 */
+    box-shadow: none !important; /* 파란색 그림자 제거 */
+    outline: none !important; /* 기본 포커스 아웃라인 제거 */
 }
