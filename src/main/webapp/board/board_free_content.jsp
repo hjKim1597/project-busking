@@ -23,12 +23,12 @@
                 <div class="inner_top">
                     <div class="category">자유게시판</div>
                     <h1 class="title">
-                        <strong>글 제목</strong>
+                        <strong>${dto.freeTitle} </strong>
                         <span class="new">N</span>
                     </h1>
                     <div class="info">
-                        <div class="writer">ABC12341</div>
-                        <div class="date">24.7.7.12:00</div>
+                        <div class="writer">${dto.freeWriter}</div>
+                        <div class="date">${dto.freeRegdate }</div>
                     </div>
                 </div>
                 <div class="inner_mid">
@@ -36,21 +36,21 @@
                         <button class="like_button" onclick="increaseLikes()">
                             <img src="../resources/img/board_img/like.png" alt="좋아요">
                         </button>
-                        <span class="like_count" id="likeCount">0</span>
+                        <span class="like_count" id="likeCount">${dto.freeLikeCount }</span>
                     </div>
                     <div class="content">
-                        글 내용글 내용글 내용글 내용글 내용글 내용글 내용글 내용글 내용글 내용글 내용글 내용글 내용글 내용글 내용글 내용글 내용글 내용글 내용
+                        
                     </div>
                 </div>
                 <div class="inner_bottom">
                     <div class="inner_bottom_left">
                         <div class="count" title="조회수">
                             <img src="../resources/img/board_img/count.png" alt="조회수">
-                            <span>0</span>
+                            <span>${dto.freeHit }</span>
                         </div>
                         <div class="comment_count" title="댓글수">
                             <img src="../resources/img/board_img/comment.png" alt="댓글수">
-                            <span>0</span>
+                            <span>${dto.freeCmtCount }</span>
                         </div>
                     </div>
                     <div class="inner_bottom_right">
