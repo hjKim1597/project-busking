@@ -12,7 +12,7 @@
                 <form>
                     <label for="id">아이디</label>
                     <div class="input-group id-content">
-                        <input type="text" class="form-control write-box" id="id-content" placeholder="6~20자 영문, 숫자">
+                        <input type="text" class="form-control write-box" id="id-content" placeholder="6~20자 영문, 숫자" required="required" pattern="[0-9A-Za-z]{6,20}">
                         <div class="input-group-btn">
                           <button class="btn btn-default" type="submit">중복확인</button>
                         </div>
@@ -20,28 +20,28 @@
                 </form>
                 <div class="form-group">
                     <label for="pwd">비밀번호</label>
-                    <input type="password" class="form-control write-box" placeholder="8~12자 영문, 숫자">
+                    <input type="password" class="form-control write-box" placeholder="8~12자 영문, 숫자" required="required" pattern="[0-9A-Za-z]{8,12}">
                 </div>
                 <div class="form-group">
                     <label for="name">이름</label>
-                    <input type="text" class="form-control write-box" id="name" value="">
+                    <input type="text" class="form-control write-box" id="name" value="" required="required">
                 </div>
                 <div class="form-group">
                     <label for="phone-num">연락처</label>
-                    <input type="text" class="form-control write-box" id="phone-num" value="" placeholder="010 1234 5678">
+                    <input type="text" class="form-control write-box" id="phone-num" value="" placeholder="010 1234 5678" required="required">
                 </div>
                 
                 <label for="address">주소</label> <br>
                                     <!-- 우편찾기 주소 -->
                 <div class="input-group id-content">
-                    <input type="text" class="form-control write-box" id="sample6_postcode" placeholder="우편번호">
+                    <input type="text" class="form-control write-box" id="sample6_postcode" placeholder="우편번호" required="required">
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="button" onclick="sample6_execDaumPostcode()">우편번호 찾기</button>
                     </div>
                 </div>
-                <input type="text" id="sample6_address" class="form-control write-box" placeholder="주소" style="margin-top: 5px;">
-                <input type="text" id="sample6_extraAddress" class="form-control write-box" placeholder="참고항목" style="margin-top: 5px;">
-                <input type="text" id="sample6_detailAddress" class="form-control write-box" placeholder="상세주소" style="margin-top: 5px; margin-bottom: 15px;">
+                <input type="text" id="sample6_address" class="form-control write-box" placeholder="주소" style="margin-top: 5px;" required="required">
+                <input type="text" id="sample6_extraAddress" class="form-control write-box" placeholder="참고항목" style="margin-top: 5px;" required="required">
+                <input type="text" id="sample6_detailAddress" class="form-control write-box" placeholder="상세주소" style="margin-top: 5px; margin-bottom: 15px;" required="required">
 
                 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
                 <script>
@@ -96,7 +96,7 @@
                 
                 <div class="form-group">
                     <label for="email">이메일</label>
-                    <input type="email" class="form-control write-box" id="email" value="">
+                    <input type="email" class="form-control write-box" id="email" value="" required="required">
                 </div>
                 <!-- <div class="form-group form-sum">
                     <label for="birth-id">주민등록번호</label>
@@ -112,7 +112,7 @@
                     <option>변화</option>
                     </select>
                 </div>
-                <input type="button" class="jinseok-button" value="회원가입"></input>
+                <input type="submit" class="jinseok-button" value="회원가입"></input>
 
             </div>
         </div>
