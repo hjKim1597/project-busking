@@ -5,5 +5,8 @@
 	
 <mapper namespace="com.busking.board.model.BoardMapper">
 
+	<select id="getList" resultType="com.busking.board.model.BoardDTO">
+		SELECT * FROM BOARD_FREE ORDER BY FREE_NUM DESC
+	</select>
 
 </mapper>

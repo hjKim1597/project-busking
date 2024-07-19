@@ -38,8 +38,9 @@ public class BoardController extends HttpServlet {
 		BoardService service;
 		
 		if(command.equals("/board/board_free_list.board")) {
-//			service = new BoardServiceImpl();
-			response.sendRedirect("board_free_list.jsp");
+			service = new BoardServiceImpl();
+			service.getList(request, response);
+//			response.sendRedirect("board_free_list.jsp");
 			
 		} else if(command.equals("/board/board_news_list.board")) {
 			response.sendRedirect("board_news_list.jsp");
