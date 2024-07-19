@@ -192,6 +192,8 @@
 #board_content .board_content_box .inner_box .inner .inner_mid .content {
     margin-top: 30px;
     padding: 10px;
+    width: 100%;
+    height: auto;
     font-size: 18px;
     line-height: 38px;
     letter-spacing: 0.5px;

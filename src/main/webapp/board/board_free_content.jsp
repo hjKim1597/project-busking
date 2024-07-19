@@ -39,7 +39,9 @@
                         <span class="like_count" id="likeCount">${dto.freeLikeCount }</span>
                     </div>
                     <div class="content">
-                        
+                    	<div class="content-box">
+                    		${dto.freeContent }
+                    	</div>
                     </div>
                 </div>
                 <div class="inner_bottom">
