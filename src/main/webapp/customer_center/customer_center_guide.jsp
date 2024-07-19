@@ -133,22 +133,9 @@
                         </p>
                     </div>
 
-                    <!-- 
-                    <div class="container">
-                        <div class="page-header">
-                            <h3>안내3</h3>
-                        </div>
-                        <p>내용</p>
-                    </div> 
-                    -->
 
                 </div>
 
-				<!-- 
-                <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 extra">
-                    빈칸2
-                </div>
-				 -->
             </div>
         </div>
     </section>

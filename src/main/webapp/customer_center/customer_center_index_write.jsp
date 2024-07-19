@@ -30,9 +30,9 @@
     
 </head>
 
-<%@ include file="../include/header.jsp"%>
 
 <body>
+<%@ include file="../include/header.jsp"%>
 
     <!-- 중앙 레이아웃 -->
     <section class="container customer-center-width" id="change">

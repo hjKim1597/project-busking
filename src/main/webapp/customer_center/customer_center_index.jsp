@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../resources/css/default.css">
     <link rel="stylesheet" href="../resources/css/customer_center/customer_center_board_free_list.css">
 
-	
+
 
 
 </head>

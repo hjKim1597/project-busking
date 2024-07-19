@@ -19,6 +19,8 @@
     <!-- 커스터마이징 한 css 디자인 추가 -->
     <link rel="stylesheet" href="../resources/css/custom-reset.css">
     <link rel="stylesheet" href="../resources/css/center_default.css">
+    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_index_board.css">
+
 
     <!-- header,footer -->
     <link rel="stylesheet" href="../resources/css/customer_center/customer_center_header_footer.css">
@@ -30,8 +32,7 @@
 
 <body>
 
-
-    <!-- 레이아웃 -->
+    <!-- 중앙 레이아웃 -->
     <section class="container customer-center-width" id="change">
         <div class="row">
 
@@ -59,80 +60,71 @@
                 </li>
             </div>
 
-            <!-- 공지사항 게시판 -->
+            <!-- 공지사항 게시판 > 게시글 내용 보는 곳 -->
             <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 board">
                 <div class="service-board">
                     <div class="container">
                         <div class="page-header">
-                            <h2>자주묻는질문(FAQ)</h2>
+                            <h2>공지사항</h2>
+                        </div>
+                        <p>게시글 내용 보는 페이지</p>
+
+                        <!-- 글 내용 -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">글 제목</div>
+                            <div class="panel-body">
+                                <p>
+                                    내용 예시
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    It has survived not only five centuries, but also the leap into electronic
+                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
+                                    Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
+                                    an unknown printer took a galley of type and scrambled it to make a type specimen
+                                    book. It has survived not only five centuries, but also the leap into electronic
+                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
+                                    Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
+                                    an unknown printer took a galley of type and scrambled it to make a type specimen
+                                    book. It has survived not only five centuries, but also the leap into electronic
+                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
+                                    Ipsum.
+
+                                </p>
+                            </div>
+
+                            <!-- 글 목록, 수정, 삭제 버튼-->
+                            <div class="board_button_set">
+                                <div class="board-button">
+                                    <a href="customer_center_FAQ.jsp"><button type="button"
+                                            class="btn btn-default">목록</button></a>
+                                </div>
+
+                                <div class="board-button">
+                                    <a href="customer_center_index_content_modify.jsp"><button type="button"
+                                            class="btn btn-default">수정</button></a>
+                                </div>
+
+                                <div class="board-button">
+                                    <button type="button" class="btn btn-default"
+                                        onclick="alert('삭제되었습니다');">삭제</button>
+                                </div>
+                            </div>
 
                         </div>
-                        <p>글번호, 제목, 내용, 회원이 글작성 가능, 관리자만 답글 작성 가능, 답변 완료기능</p>
-
-                        <!-- 자주묻는질문 게시판 -->
-                        
-                        <!-- 자주묻는질문FAQ 아코디언 버전-->
-
-                        <!-- <div class="panel-group" id="accordion">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                                            Collapsible Group 1</a>
-                                    </h4>
-                                </div>
-                                <div id="collapse1" class="panel-collapse collapse in">
-                                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat.</div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                                            Collapsible Group 2</a>
-                                    </h4>
-                                </div>
-                                <div id="collapse2" class="panel-collapse collapse">
-                                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat.</div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                                            Collapsible Group 3</a>
-                                    </h4>
-                                </div>
-                                <div id="collapse3" class="panel-collapse collapse">
-                                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat.</div>
-                                </div>
-                            </div>
-                        </div> 
-                        -->
-
-
-
 
                     </div>
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 extra">
-            <!-- 빈칸1 -->
-            </div>
-
-            <!-- <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 extra">
-                빈칸2
-            </div> -->
 
         </div>
     </section>
