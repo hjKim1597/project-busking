@@ -1,5 +1,14 @@
 package com.busking.board.service;
 
-public interface BoardService {
+import java.io.IOException;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public interface BoardService {
+	
+	void 
+	
+	void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }
