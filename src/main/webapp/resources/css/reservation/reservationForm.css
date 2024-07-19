@@ -356,7 +356,9 @@
     font-size: 14px;
     font-weight: 600;
 }
-
+.bottom-menu3-content .loca-cmt-box {
+	margin: 0;
+}
 .loca-cmt-box .cmt-top-box #cmt-btn {
 	outline: none;
 	border: 1px solid #5fd7ff;
