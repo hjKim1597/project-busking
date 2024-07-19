@@ -70,6 +70,7 @@ public class BoardServiceImpl implements BoardService {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
 		
+		mapper.increaseHit(freeNum);
 		dto = mapper.getFreeContent(freeNum);
 		
 		// response

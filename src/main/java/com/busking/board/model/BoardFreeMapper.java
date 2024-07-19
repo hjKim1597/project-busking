@@ -12,4 +12,7 @@ public interface BoardFreeMapper {
 	
 	// 글 조회
 	public BoardFreeDTO getFreeContent(String freeNum);
+	
+	// 글 조회수 증가
+	public void increaseHit(String freeNum);
 }
