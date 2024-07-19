@@ -55,7 +55,7 @@
                                 <li><a href="#">NEWS</a></li>
                                 <li><a href="#">자유게시판</a></li>
                                 <li><a href="#">팀원 모집</a></li>
-                                <li><a href="#">Q % A</a></li>
+                                <li><a href="#">Q & A</a></li>
                             </ul>
                         </li>
                         <li class="header-res"><a href="#" class="index-menu">예약하기</a></li>
