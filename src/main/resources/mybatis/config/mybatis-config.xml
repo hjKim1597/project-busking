@@ -10,7 +10,7 @@
 	  <setting name="mapUnderscoreToCamelCase" value="true"/> 
 	</settings>
 	
-	  <environments default="development">
+	 <environments default="development">
 	    <environment id="development">
 	      <transactionManager type="JDBC"/>
 	      <dataSource type="POOLED">
@@ -24,8 +24,9 @@
 
 	  <!-- 매퍼 생성시 매퍼 위치 작성 -->
 	  <mappers>
-	    <mapper resource="mybatis/mapper/UserMapper.xml"/>
-	    <mapper resource="mybatis/mapper/ManagerMapper.xml"/>
+	  	<!-- 게시판 매퍼 위치 -->
+	    <mapper resource="mybatis/mapper/BoardMapper.xml"/>
+	    
 	  </mappers>
 
 </configuration>

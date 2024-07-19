@@ -7,17 +7,17 @@
 <section id="board_free_list_wrap">  
 
     
-<nav class="board_nav">
-    <div id="board_nav_wrap">
-        <h1>BOARD</h1>
-        <ul class="menu">
-            <li class="nth1"><strong><a href="board_news_list.jsp">NEWS</a></strong></li>
-            <li class="nth2 active"><strong><a href="board_free_list.jsp">자유게시판</a></strong></li>
-            <li class="nth3"><strong><a href="board_team_list.jsp">팀원 모집</a></strong></li>
-            <li class="nth4"><strong><a href="board_ask_list.jsp">Q & A</a></strong></li>
-        </ul>
-    </div>
-</nav>
+    <nav class="board_nav">
+	    <div id="board_nav_wrap">
+	        <h1>BOARD</h1>
+	        <ul class="menu">
+	            <li class="nth1"><strong><a href="board_news_list.board">NEWS</a></strong></li>
+	            <li class="nth2 active"><strong><a href="board_free_list.board">자유게시판</a></strong></li>
+	            <li class="nth3"><strong><a href="board_team_list.board">팀원 모집</a></strong></li>
+	            <li class="nth4"><strong><a href="board_ask_list.board">Q & A</a></strong></li>
+	        </ul>
+	    </div>
+	</nav>
 
         <div class="wrap_board_free">              
             <div class="wrap_board_free_list">
@@ -42,7 +42,7 @@
                         <!--데이터 받아오기-->
                         <td>글번호</td>
                         <td>작성자</td>
-                        <td><a href="board_free_content.jsp">제목</a></td> <!--제목을 누르면 글 내용으로 이동함-->
+                        <td><a href="board_free_content.board?bno=${bno}">제목</a></td> <!--제목을 누르면 글 내용으로 이동함-->
                         <td>날짜</td>
                         <td>조회수</td>
     
@@ -83,7 +83,7 @@
                         <ul class="center">
                             <li><a href="첫페이지"><img src="../resources/img/board_img/ico_first.gif" alt="처음페이지"></a></li>
                             <li><a href="이전페이지"><img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>
-                            <li class="active"><a href="board_free_list.jsp" title="1페이지(선택됨)">1</a></li>
+                            <li class="active"><a href="board_free_list.board?bno=${bno} " title="1페이지(선택됨)">1</a></li>
                             <li><a href="2페이지링크" title="2페이지">2</a></li>
                             <li><a href="3페이지링크" title="3페이지">3</a></li>
                             <li><a href="4페이지링크" title="4페이지">4</a></li>
@@ -91,8 +91,8 @@
                             <li><a href="다음페이지"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
                             <li><a href="마지막페이지"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
                         </ul>
-                        <form action="board_free_write.jsp" class="right">
-                            <button value="글쓰기" onclick="location.href='board_free_write.jsp'">작성</button>  
+                        <form action="board_free_write.board" class="right">
+                            <button value="글쓰기">작성</button>  
                         </form>   
                     </div>                     
                 <div class="board_free_search">
