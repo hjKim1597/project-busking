@@ -165,7 +165,7 @@
 						<div>
 							<img
 								src="${pageContext.request.contextPath }/resources/img/index/1.jpg"
-								alt="결과" width="100%">
+								alt="결과" class="main-image" width="100%">
 							<div></div>
 						</div>
 					</div>
@@ -189,15 +189,29 @@
 
 				<script>
 					var list = document.querySelector(".list");
-					var result = document.querySelector(".result > div > img");
+					var mainImage = document.querySelector(".main-image");
 
-					list.onclick = function() {
-
+					list.onclick = function(event) {
 						if (event.target.tagName != "IMG")
 							return;
-						result.src = event.target.src;
 
-					}
+						// 기존 이미지에 fade-out 클래스 추가
+						mainImage.classList.add("fade-out");
+
+						// transition 시간이 지난 후 이미지 src 변경 및 fade-out 클래스 제거
+						setTimeout(function() {
+							mainImage.src = event.target.src;
+							mainImage.classList.remove("fade-out");
+
+							// 새 이미지에 fade-in 클래스 추가
+							mainImage.classList.add("fade-in");
+
+							// fade-in 애니메이션 완료 후 fade-in 클래스 제거
+							setTimeout(function() {
+								mainImage.classList.remove("fade-in");
+							}, 500); 
+						}, 500);
+					};
 				</script>
 
 			</div>

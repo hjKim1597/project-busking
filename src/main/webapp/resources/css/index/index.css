@@ -43,8 +43,6 @@
 	.col-md-4 {
 		width: auto;
 	}
-
-
 }
 
 /* 991이하 디자인 */
@@ -90,8 +88,6 @@
 	.index-header {
 		border-bottom: 1px solid #ddd;
 	}
-	
-
 	.index-footer-top {
 		display: flex;
 		flex-direction: column;
@@ -127,7 +123,6 @@
 		margin-top: 125px;
 	}
 }
-
 
 /* ----------------------------------------------header---------------------------------------------- */
 .index-header {
@@ -178,7 +173,7 @@
 	margin-right: 30px;
 }
 
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
 	border-color: #e3e3e3;
 }
 
@@ -195,9 +190,11 @@
 	.navbar-inverse .navbar-nav>.active>a:hover {
 	font-size: 19px;
 }
+
 .navbar-inverse .navbar-brand {
 	color: #000;
 }
+
 .navbar-inverse .navbar-nav>.active>a {
 	color: #000;
 }
@@ -206,7 +203,7 @@
 	color: #000;
 }
 
-.myNavbar > ul >  li > a :hover {
+.myNavbar>ul>li>a :hover {
 	color: #9CD9D9;
 }
 /* --------------------------------------------- */
@@ -482,17 +479,52 @@
 	height: 5%;
 	background-color: rgba(0, 0, 0, 0.7);
 }
-.location-pic > .contents-pic > .result > div > img {
-	animation: fadeIn 0.5s ease-in-out;
+
+.result img {
+	width: 100%;
+	transition: opacity 0.3s ease-in-out;
 }
+
+.fade-out {
+	opacity: 0;
+}
+
+.list {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	gap: 10px;
+}
+
+.list li {
+	flex: 1;
+}
+
+.list img {
+	width: 100%;
+	cursor: pointer;
+	transition: transform 0.1s;
+}
+
+.list img:hover {
+	transform: scale(1.06);
+}
+
+/* 애니메이션 정의 */
 @keyframes fadeIn {
-	from {
-		opacity: 0;
-		margin-left: -100px;
-	} to { 
-		opacity: 1;
-		margin-left: 0px;
-	}
+	from { 
+	opacity:0;
+	margin-left: -100px;
+}
+
+to {
+	opacity: 1;
+	margin-left: 0px;
+}
+
+}
+.fade-in {
+	animation: fadeIn 0.2s ease-in-out;
 }
 
 /* ----------------------------------------------footer---------------------------------------------- */
@@ -551,7 +583,6 @@
 
 .index-footer>.footer-mid {
 	padding: 15px 25%;
-
 	color: #999;
 	width: 100%;
 	overflow: hidden;
@@ -571,5 +602,4 @@
 .footer-bottom>.footer-info>p>.footer-icon {
 	color: #999;
 	text-decoration: none;
-}
 }
