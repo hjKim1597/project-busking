@@ -54,7 +54,7 @@
 				<h4>최고의 버스킹 장소를 발견하고, 당신의 음악 여정을 시작하세요.</h4>
 			</div>
 
-			
+
 
 			<!-- 콘텐츠 공지사항/게시판 미리보기 -->
 			<div class="row middle-row" style="margin: 0 10%">
@@ -157,45 +157,39 @@
 				<h2>Book Your Busking Spot</h2>
 				<p>최고의 버스킹 장소를 발견하고, 당신의 음악 여정을 시작하세요.</p>
 
-				<div class="col-md-4">
-					<div class="thumbnail">
-						<a
-							href="${pageContext.request.contextPath }/resources/img/index/location_pic.png"
-							target="_blank"> <img
-							src="${pageContext.request.contextPath }/resources/img/index/location_pic.png"
-							alt="Lights" style="width: 100%" />
-							<div class="caption">
-								<p class="pic-margin">광나루 버스킹 1 천호대교 남단</p>
+				<div class="contents-pic">
+					
+					<div class="result">
+						<div>
+							<img src="${pageContext.request.contextPath }/resources/img/index/1.jpg" alt="결과" width="100%">
+							<div>
+								
 							</div>
-						</a>
+						</div>
 					</div>
+
+					<ul class="list">
+						<li><img src="${pageContext.request.contextPath }/resources/img/index/1.jpg" alt="1" width="100"></li>
+						<li><img src="${pageContext.request.contextPath }/resources/img/index/2.jpg" alt="1" width="100"></li>
+						<li><img src="${pageContext.request.contextPath }/resources/img/index/3.jpg" alt="1" width="100"></li>
+						<li><img src="${pageContext.request.contextPath }/resources/img/index/4.jpg" alt="1" width="100"></li>
+					</ul>
+
 				</div>
-				<div class="col-md-4">
-					<div class="thumbnail">
-						<a
-							href="${pageContext.request.contextPath }/resources/img/index/location_pic.png"
-							target="_blank"> <img
-							src="${pageContext.request.contextPath }/resources/img/index/1.jpg"
-							alt="Nature" style="width: 100%" />
-							<div class="caption">
-								<p>서울특별시 송파구 풍납동</p>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="thumbnail">
-						<a
-							href="${pageContext.request.contextPath }/resources/img/index/location_pic.png"
-							target="_blank"> <img
-							src="${pageContext.request.contextPath }/resources/img/index/3.jpg"
-							alt="Fjords" style="width: 100%" />
-							<div class="caption">
-								<p>서울특별시 송파구 풍납동</p>
-							</div>
-						</a>
-					</div>
-				</div>
+
+				<script>
+					var list = document.querySelector(".list");
+					var result = document.querySelector(".result > div > img");
+
+					list.onclick = function() {
+
+						if (event.target.tagName != "IMG")
+							return;
+						result.src = event.target.src;
+
+					}
+				</script>
+
 			</div>
 		</div>
 

@@ -52,10 +52,12 @@
                             <a class="dropdown-toggle index-menu" data-toggle="dropdown" href="#">게시판
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">NEWS</a></li>
-                                <li><a href="#">자유게시판</a></li>
-                                <li><a href="#">팀원 모집</a></li>
-                                <li><a href="#">Q % A</a></li>
+
+                                <li><a href="${pageContext.request.contextPath }/board/board_news_list.board">NEWS</a></li>
+                                <li><a href="${pageContext.request.contextPath }/board/board_free_list.board">자유게시판</a></li>
+                                <li><a href="${pageContext.request.contextPath }/board/board_team_list.board">팀원 모집</a></li>
+                                <li><a href="${pageContext.request.contextPath }/board/board_ask_list.board">Q &amp; A</a></li>
+
                             </ul>
                         </li>
                         <li class="header-res"><a href="#" class="index-menu">예약하기</a></li>

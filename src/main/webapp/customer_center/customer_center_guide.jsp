@@ -27,9 +27,7 @@
 
 <%@ include file="../include/header.jsp"%>
 
-
 <body>
-
 
     <!-- 레이아웃 -->
     <section class="container customer-center-width" id="change">

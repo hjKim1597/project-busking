@@ -1,20 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>   
 <%@ include file="../include/header.jsp" %>
     
 <section id="board_news_list_wrap">  
   
-<nav class="board_nav">
-    <div id="board_nav_wrap">
-        <h1>BOARD</h1>
-        <ul class="menu">
-            <li class="nth1 active"><strong><a href="board_news_list.jsp">NEWS</a></strong></li>
-            <li class="nth2"><strong><a href="board_free_list.jsp">자유게시판</a></strong></li>
-            <li class="nth3"><strong><a href="board_team_list.jsp">팀원 모집</a></strong></li>
-            <li class="nth4"><strong><a href="board_ask_list.jsp">Q & A</a></strong></li>
-        </ul>
-    </div>
-</nav>
+    <nav class="board_nav">
+	    <div id="board_nav_wrap">
+	        <h1>BOARD</h1>
+	        <ul class="menu">
+	            <li class="nth1 active"><strong><a href="board_news_list.board">NEWS</a></strong></li>
+	            <li class="nth2"><strong><a href="board_free_list.board">자유게시판</a></strong></li>
+	            <li class="nth3"><strong><a href="board_team_list.board">팀원 모집</a></strong></li>
+	            <li class="nth4"><strong><a href="board_ask_list.board">Q & A</a></strong></li>
+	        </ul>
+	    </div>
+	</nav>
 
         <div class="wrap_board_news">              
             <div class="wrap_board_news_list">
@@ -39,38 +41,10 @@
                         <!--데이터 받아오기-->
                         <td>글번호</td>
                         <td>작성자</td>
-                        <td><a href="board_news_content.jsp">뉴스 제목</a></td> <!--제목을 누르면 글 내용으로 이동함-->
+                        <td><a href="board_news_content.board?bno=${bno}">뉴스 제목</a></td> <!--제목을 누르면 글 내용으로 이동함-->
                         <td>날짜</td>
                         <td>조회수</td>
-    
-                                <!-- <script>
-            // 예시 데이터
-            const boardData = [
-                { id: 1, writer: '작성자1', title: '제목1', date: '2024-07-01', views: 123, comments: 4 },
-                { id: 2, writer: '작성자2', title: '제목2', date: '2024-07-02', views: 456, comments: 2 },
-                { id: 3, writer: '작성자3', title: '제목3', date: '2024-07-03', views: 789, comments: 5 },
-            ];
-    
-            // 게시글 데이터를 HTML로 변환하여 테이블에 삽입
-            function loadBoardData() {
-                const tbody = document.getElementById('boardContent');
-                tbody.innerHTML = '';
-                boardData.forEach(post => {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${post.id}</td>
-                        <td>${post.writer}</td>
-                        <td><a href="board_content.html">${post.title} <span>(${post.comments} 댓글)</span></a></td>
-                        <td>${post.date}</td>
-                        <td>${post.views}</td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            } -->
-    
-            <!-- // 페이지 로드 시 게시글 데이터를 불러옴
-            window.onload = loadBoardData; -->
-    
+                        
     
                         </tbody>
                     </table> 
@@ -88,8 +62,8 @@
                             <li><a href="다음페이지"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
                             <li><a href="마지막페이지"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
                         </ul>
-                        <form action="board_news_write.jsp" class="right">
-                            <button value="글쓰기" onclick="location.href='board_news_write.jsp'">작성</button>  
+                        <form action="board_news_write.board" class="right">
+                            <button value="글쓰기">작성</button>  
                         </form>  
                     </div>                     
                 <div class="board_news_search">

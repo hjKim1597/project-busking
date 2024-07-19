@@ -6,22 +6,22 @@
 <section id="board_content">
 
     <nav class="board_nav">
-        <div id="board_nav_wrap">
-            <h1>BOARD</h1>
-            <ul class="menu">
-                <li class="nth1"><strong><a href="board_news_list.jsp">NEWS</a></strong></li>
-                <li class="nth2 active"><strong><a href="board_free_list.jsp">자유게시판</a></strong></li>
-                <li class="nth3"><strong><a href="board_team_list.jsp">팀원 모집</a></strong></li>
-                <li class="nth4"><strong><a href="board_ask_list.jsp">Q & A</a></strong></li>
-            </ul>
-        </div>
-    </nav>
+	    <div id="board_nav_wrap">
+	        <h1>BOARD</h1>
+	        <ul class="menu">
+	            <li class="nth1"><strong><a href="board_news_list.board">NEWS</a></strong></li>
+	            <li class="nth2 active"><strong><a href="board_free_list.board">자유게시판</a></strong></li>
+	            <li class="nth3"><strong><a href="board_team_list.board">팀원 모집</a></strong></li>
+	            <li class="nth4"><strong><a href="board_ask_list.board">Q & A</a></strong></li>
+	        </ul>
+	    </div>
+	</nav>
 
     <div class="board_content_box">      
         <div class="inner_box">
             <div class="inner">
                 <div class="inner_top">
-                    <div class="category">게시판정보</div>
+                    <div class="category">자유게시판</div>
                     <h1 class="title">
                         <strong>글 제목</strong>
                         <span class="new">N</span>
@@ -56,7 +56,7 @@
                     <div class="inner_bottom_right">
                         <button class="delete_button" onclick="삭제기능">삭제</button>
                         <button class="edit_button" onclick="수정기능">수정</button>
-                        <button class="list_button" type="button" onclick="location.href='board_free_list.jsp'">목록</button>
+                        <button class="list_button" type="button" onclick="location.href='board_free_list.board'">목록</button>
                     </div>
                 </div>
 				<div class="comment_box">
