@@ -21,7 +21,7 @@
         <h1>
             <strong>게시글 작성</strong>
         </h1>
-        <form class="board_write_content" action="submit.php" method="post">
+        <form class="board_write_content" action="board_free_writeForm.board" method="post">
             <div class="form_group">
                 <label class="title_text" for="title">제목</label>
                 <input class="title_box" type="text" id="title" name="title" required>
@@ -33,7 +33,7 @@
             </div>
             <div class="button_box">
                 <button type="button" class="button_cancle" onclick="history.back()">취소</button>
-                <button type="submit" class="button_registration" onclick="location.href='board_free_list.jsp'">등록</button>
+                <input type="submit" class="button_registration" value="제출">
             </div>
         </form>
     </div>

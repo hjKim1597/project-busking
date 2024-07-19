@@ -39,7 +39,7 @@ public class BoardController extends HttpServlet {
 		
 		if(command.equals("/board/board_free_list.board")) {
 			service = new BoardServiceImpl();
-			service.getList(request, response);
+			service.getFreeList(request, response);
 //			response.sendRedirect("board_free_list.jsp");
 			
 		} else if(command.equals("/board/board_news_list.board")) {
@@ -67,11 +67,15 @@ public class BoardController extends HttpServlet {
 			response.sendRedirect("board_news_content.jsp");
 			
 		} else if(command.equals("/board/board_free_content.board")) {
-			response.sendRedirect("board_free_content.jsp");
+			service = new BoardServiceImpl();
+			service.getFreeContent(request, response);
 			
 		} else if(command.equals("/board/board_team_content.board")) {
 			response.sendRedirect("board_team_content.jsp");
 			
+		} else if(command.equals("/board/board_free_writeForm.board")) {
+			service = new BoardServiceImpl();
+			service.writeFree(request, response);
 		}
 	}
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.busking.board.model.BoardFreeMapper">
+
+	<select id="getFreeList" resultType="com.busking.board.model.BoardFreeDTO">
+		SELECT * FROM BOARD_FREE ORDER BY FREE_NUM DESC
+	</select>
+	
+	<insert id="writeFree" parameterType="com.busking.board.model.BoardFreeDTO">
+		INSERT INTO BOARD_FREE(FREE_NUM, 
+							   FREE_WRITER, 
+							   FREE_TITLE,
+							   FREE_CONTENT,
+							   FREE_REGDATE) 
+		VALUES('FREE_' || BOARD_FREE_SEQ.NEXTVAL,
+		       #{freeWriter},
+		       #{freeTitle},
+		       #{freeContent},
+		       SYSDATE)
+	</insert>
+	
+	<select id="getFreeContent" resultType="com.busking.board.model.BoardFreeDTO" parameterType="String">
+		SELECT FREE_TITLE, FREE_LIKE_COUNT, FREE_WRITER, FREE_REGDATE, FREE_CONTENT, FREE_HIT, FREE_CMT_COUNT 
+		FROM BOARD_FREE 
+		WHERE FREE_NUM = #{freeNum}
+	</select>
+
+</mapper>

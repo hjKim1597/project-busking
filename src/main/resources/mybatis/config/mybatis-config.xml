@@ -25,7 +25,7 @@
 	  <!-- 매퍼 생성시 매퍼 위치 작성 -->
 	  <mappers>
 	  	<!-- 게시판 매퍼 위치 -->
-	    <mapper resource="mybatis/mapper/BoardMapper.xml"/>
+	    <mapper resource="mybatis/mapper/BoardFreeMapper.xml"/>
 	    <mapper resource="mybatis/mapper/MypageMapper.xml"/>
 	    
 	  </mappers>
