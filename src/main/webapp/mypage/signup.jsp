@@ -98,11 +98,11 @@
                     <label for="email">이메일</label>
                     <input type="email" class="form-control write-box" id="email" value="">
                 </div>
-                <div class="form-group form-sum">
+                <!-- <div class="form-group form-sum">
                     <label for="birth-id">주민등록번호</label>
                     <input type="text" class="form-control write-box" id="birth-id" value=""> - 
                     <input type="password" class="form-control write-box" id="birth-id" value="">
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="sel1">성별</label>
                     <select class="form-control write-box" id="sel1">
