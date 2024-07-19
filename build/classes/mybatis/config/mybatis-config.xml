@@ -26,6 +26,7 @@
 	  <mappers>
 	  	<!-- 게시판 매퍼 위치 -->
 	    <mapper resource="mybatis/mapper/BoardMapper.xml"/>
+	    <mapper resource="mybatis/mapper/MypageMapper.xml"/>
 	    
 	  </mappers>
 
