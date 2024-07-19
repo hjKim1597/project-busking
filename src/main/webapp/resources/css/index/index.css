@@ -44,8 +44,7 @@
 		width: auto;
 	}
 
-	/* .carousel-inner>.item>a>img,
-    .carousel-inner>.item>img {} */
+
 }
 
 /* 991이하 디자인 */
@@ -80,14 +79,19 @@
 	}
 }
 
+@media ( min-width :768px) and (max-width:853px) {
+	.navbar-inverse .navbar-brand {
+		display: none;
+	}
+}
+
 /* 767이하 디자인 */
 @media ( max-width :767px) {
-	/* .carousel-inner>.item>a>img, .carousel-inner>.item>img {
-		margin-top: 0.4%;
+	.index-header {
+		border-bottom: 1px solid #ddd;
 	}
-	.index-content>.carousel>.carousel-inner>.item>img {
-		margin-top: 6%;
-	} */
+	
+
 	.index-footer-top {
 		display: flex;
 		flex-direction: column;
@@ -117,18 +121,13 @@
 	}
 }
 
-/* @media ( max-width : 768px) {
-	.carousel-inner>.item>.carousel-caption>.banner-title {
-		display: none;
-	}
+/* 1032이하 디자인 */
+@media ( max-width :1032px) {
 	.index-content>.carousel>.carousel-inner>.item>img {
-		position: relative;
+		margin-top: 125px;
 	}
-	.carousel-inner>.item>.carousel-caption>.banner-content {
-		text-align: center;
-		position: absolute;
-	}
-} */
+}
+
 
 /* ----------------------------------------------header---------------------------------------------- */
 .index-header {
@@ -138,6 +137,11 @@
 .navbar-inverse {
 	background-color: white;
 	border-color: white;
+}
+
+.navbar-brand {
+	padding: 27px 50px 15px 0px;
+	font-size: 23px
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus,
@@ -154,7 +158,7 @@
 
 .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover
 	{
-	color: #9d9d9d;
+	color: #000;
 }
 
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover
@@ -168,6 +172,18 @@
 
 .navbar-inverse .navbar-toggle {
 	border-color: #fff;
+	margin-top: 20px;
+	margin-right: 0px;
+	float: left;
+	margin-right: 30px;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+	border-color: #e3e3e3;
+}
+
+.navbar-nav>li>a {
+	font-size: 19px;
 }
 
 .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover
@@ -175,6 +191,24 @@
 	color: #9d9d9d;
 }
 
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus,
+	.navbar-inverse .navbar-nav>.active>a:hover {
+	font-size: 19px;
+}
+.navbar-inverse .navbar-brand {
+	color: #000;
+}
+.navbar-inverse .navbar-nav>.active>a {
+	color: #000;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: #000;
+}
+
+.myNavbar > ul >  li > a :hover {
+	color: #9CD9D9;
+}
 /* --------------------------------------------- */
 .dropdown-menu>li>a {
 	color: #000;
@@ -183,6 +217,7 @@
 
 .dropdown-menu>li>a:hover {
 	background-color: #999;
+	color: #fff;
 }
 
 /* 로그인 완료시 프로필 사진 */
@@ -224,12 +259,13 @@
 	top: 0;
 	width: 100%;
 	z-index: 1000;
-	border-bottom: 1px solid #ddd;
+	height: 125px;
+	padding-top: 23px;
 }
 
-/* #myCarousel {
-    margin-top: 80px;
-} */
+.container-fluid>.navbar-collapse {
+	margin-top: 13px;
+}
 
 /* ----------------------------------------------content---------------------------------------------- */
 .index-wrap {
@@ -294,7 +330,7 @@
 
 .index-content>.carousel>.carousel-inner>.item>img {
 	z-index: 0;
-	margin-top: 50px;
+	margin-top: 141px;
 }
 
 .carousel-inner>.item>.carousel-caption>.banner-left {
@@ -446,7 +482,18 @@
 	height: 5%;
 	background-color: rgba(0, 0, 0, 0.7);
 }
-
+.location-pic > .contents-pic > .result > div > img {
+	animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		margin-left: -100px;
+	} to { 
+		opacity: 1;
+		margin-left: 0px;
+	}
+}
 
 /* ----------------------------------------------footer---------------------------------------------- */
 .index-footer {
@@ -504,7 +551,7 @@
 
 .index-footer>.footer-mid {
 	padding: 15px 25%;
-	/* background-color: #E0F7FA; */
+
 	color: #999;
 	width: 100%;
 	overflow: hidden;
@@ -524,4 +571,5 @@
 .footer-bottom>.footer-info>p>.footer-icon {
 	color: #999;
 	text-decoration: none;
+}
 }

@@ -67,11 +67,12 @@
 
 						<table class="index-board">
 							<tr>
-								<div class="index-board-bottom"
-									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-									<td><a href="#">2024년 7월 한강공원 내 야구장</a></td>
-									<td>24.07.09</td>
-								</div>
+
+								<td class="index-board-bottom"
+									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0"><a
+									href="#">2024년 7월 한강공원 내 야구장</a></td>
+								<td>24.07.09</td>
+
 							</tr>
 							<tr>
 								<td><a href="#">서울시 공공서비스 예약 홈페이지 서비스</a></td>
@@ -98,11 +99,11 @@
 
 						<table class="index-board">
 							<tr>
-								<div class="index-board-bottom"
+								<td class="index-board-bottom"
 									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-									<td><a href="#">2024년 7월 한강공원 내 야구장</a></td>
-									<td>24.07.09</td>
-								</div>
+									<a href="#">2024년 7월 한강공원 내 야구장</a>
+								</td>
+								<td>24.07.09</td>
 							</tr>
 							<tr>
 								<td><a href="#">서울시 공공서비스 예약 홈페이지 서비스</a></td>
@@ -129,11 +130,12 @@
 
 						<table class="index-board" id="board-three">
 							<tr>
-								<div class="index-board-bottom"
-									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-									<td><a href="#">2024년 7월 한강공원 내 야구장</a></td>
-									<td>24.07.09</td>
-								</div>
+
+								<td class="index-board-bottom"
+									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0"><a
+									href="#">2024년 7월 한강공원 내 야구장</a></td>
+								<td>24.07.09</td>
+
 							</tr>
 							<tr>
 								<td><a href="#">서울시 공공서비스 예약 홈페이지 서비스</a></td>
@@ -158,21 +160,29 @@
 				<p>최고의 버스킹 장소를 발견하고, 당신의 음악 여정을 시작하세요.</p>
 
 				<div class="contents-pic">
-					
+
 					<div class="result">
 						<div>
-							<img src="${pageContext.request.contextPath }/resources/img/index/1.jpg" alt="결과" width="100%">
-							<div>
-								
-							</div>
+							<img
+								src="${pageContext.request.contextPath }/resources/img/index/1.jpg"
+								alt="결과" width="100%">
+							<div></div>
 						</div>
 					</div>
 
 					<ul class="list">
-						<li><img src="${pageContext.request.contextPath }/resources/img/index/1.jpg" alt="1" width="100"></li>
-						<li><img src="${pageContext.request.contextPath }/resources/img/index/2.jpg" alt="1" width="100"></li>
-						<li><img src="${pageContext.request.contextPath }/resources/img/index/3.jpg" alt="1" width="100"></li>
-						<li><img src="${pageContext.request.contextPath }/resources/img/index/4.jpg" alt="1" width="100"></li>
+						<li><img
+							src="${pageContext.request.contextPath }/resources/img/index/1.jpg"
+							alt="1" width="100"></li>
+						<li><img
+							src="${pageContext.request.contextPath }/resources/img/index/2.jpg"
+							alt="1" width="100"></li>
+						<li><img
+							src="${pageContext.request.contextPath }/resources/img/index/3.jpg"
+							alt="1" width="100"></li>
+						<li><img
+							src="${pageContext.request.contextPath }/resources/img/index/4.jpg"
+							alt="1" width="100"></li>
 					</ul>
 
 				</div>
