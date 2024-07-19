@@ -42,7 +42,6 @@
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css"
 	rel="stylesheet">
 
-
 </head>
 <body>
 
@@ -108,7 +107,6 @@
 								<li><a
 									href="${pageContext.request.contextPath }/board/board_ask_list.board">자주묻는질문</a></li>
 							</ul></li>
-
 
 
 					</ul>

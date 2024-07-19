@@ -17,11 +17,10 @@
 
     <!-- 커스터마이징 한 css 디자인 추가 -->
     <link rel="stylesheet" href="../resources/css/custom-reset.css">
-    <link rel="stylesheet" href="../resources/css/center_default.css">
+    <link rel="stylesheet" href="../resources/css/default.css">
     <link rel="stylesheet" href="../resources/css/customer_center/customer_center_board_free_list.css">
 
 
-	
 
 
 </head>
@@ -45,11 +44,11 @@
                                 <div class="span"></div>
                                 <h1>고객센터</h1>
                                 <ul class="menu">
-                                    <li class="nth1"><strong><a href="customer_center_index.jsp">공지사항</a></strong>
+                                    <li class="nth1"><strong><a href="customer_center_index.jsp"><span>공지사항</span></a></strong>
                                     </li>
-                                    <li class="nth2"><strong><a href="customer_center_month.jsp">이달의예약</a></strong>
+                                    <li class="nth2"><strong><a href="customer_center_month.jsp"><span>이달의예약</span></a></strong>
                                     </li>
-                                    <li class="nth3"><strong><a href="customer_center_guide.jsp">이용안내</a></strong>
+                                    <li class="nth3"><strong><a href="customer_center_guide.jsp"><span>이용안내</span></a></strong>
                                     </li>
                                     <li class="nth4"><strong><a href="customer_center_FAQ.jsp"><span>자주묻는질문(FAQ)</span></a></strong>
                                     </li>
