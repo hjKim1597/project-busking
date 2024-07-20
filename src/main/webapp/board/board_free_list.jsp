@@ -61,14 +61,9 @@
                             <c:if test="${pageVO.prev }">
 	                            <li id="page_prev"><a href="board_free_list.board?page=${pageVO.pageNum - 1 }"><img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>                            
                             </c:if>
-                            <c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.startPage + 4 }" step="1">
+                            <c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
                             	<li class="page_li" data-page="${i }"><a href="board_free_list.board?page=${i }" title="1페이지">${i }</a></li>	
                             </c:forEach>
-                            
-                            <li class="page_li" data-page="2"><a href="board_free_list.board?page=2" title="2페이지">2</a></li>
-                            <li class="page_li" data-page="3"><a href="board_free_list.board?page=3" title="3페이지">3</a></li>
-                            <li class="page_li" data-page="4"><a href="board_free_list.board?page=4" title="4페이지">4</a></li>
-                            <li class="page_li" data-page="5"><a href="board_free_list.board?page=5" title="5페이지">5</a></li>
                             <c:if test="${pageVO.next }">
 	                            <li id="page_next"><a href="board_free_list.board?page=${pageVO.pageNum + 1 }"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
                             </c:if>
