@@ -5,11 +5,20 @@
 	
 <mapper namespace="com.busking.board.model.BoardFreeMapper">
 
-	<select id="getFreeList" parameterType="int" resultType="com.busking.board.model.BoardFreeDTO">
-		SELECT * 
-		FROM BOARD_FREE 
-		WHERE TO_NUMBER(SUBSTR(FREE_NUM, 5)) >= #{pageFirst} AND #{pageFirst} + 19 >= TO_NUMBER(SUBSTR(FREE_NUM, 5))  
-		ORDER BY FREE_NUM DESC
+	<select id="getFreeList" parameterType="com.busking.util.paging.PageVO" resultType="com.busking.board.model.BoardFreeDTO">
+		
+		SELECT FREE_NUM, FREE_TITLE, FREE_WRITER, FREE_REGDATE, FREE_HIT 
+		FROM (
+			SELECT ROWNUM RN,
+			       B.* 
+			FROM BOARD_FREE B 
+			ORDER BY FREE_NUM DESC 
+		) 
+		WHERE RN > (#{pageNum} - 1) * #{amount} and RN <= #{pageNum} * #{amount} 				
+	</select>
+	
+	<select id="getFreeTotal" resultType="int">
+		SELECT COUNT(*) FROM BOARD_FREE;
 	</select>
 	
 	<insert id="writeFree" parameterType="com.busking.board.model.BoardFreeDTO">

@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.busking.board.model.BoardFreeDTO;
 import com.busking.board.model.BoardFreeMapper;
 import com.busking.util.mybatis.MybatisUtil;
+import com.busking.util.paging.PageVO;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,20 +24,21 @@ public class BoardServiceImpl implements BoardService {
 		
 		// request
 		String page = (String)request.getAttribute("page");
-		int pageFirst = Integer.parseInt(page) * 20 - 19;
-		
+		int pageNum = Integer.parseInt(page);
 		// DTO
 		ArrayList<BoardFreeDTO> list = new ArrayList<>();
 		
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
-		
-		list = mapper.getFreeList(pageFirst);
+		list = mapper.getFreeList();
+		int total = mapper.getFreeTotal();
 		sql.close();
+		PageVO pageVO = new PageVO(pageNum, total);
 		// response
 		request.setAttribute("freeList", list);
-		request.getRequestDispatcher("board_free_list.jsp?page=" + page).forward(request, response);
+		request.setAttribute("pageVO", pageVO);
+		request.getRequestDispatcher("board_free_list.jsp").forward(request, response);
 	}
 	
 	@Override
