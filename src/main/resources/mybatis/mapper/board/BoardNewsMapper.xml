@@ -31,7 +31,7 @@
 		       #{newsWriter},
 		       #{newsTitle},
 		       #{newsContent},
-		       SYSDATE)
+		       SYSDATE) 
 	</insert>
 	
 	<select id="getContent" resultType="com.busking.board.model.BoardNewsDTO" parameterType="String">
