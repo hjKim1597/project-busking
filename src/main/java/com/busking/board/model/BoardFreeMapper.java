@@ -2,10 +2,12 @@ package com.busking.board.model;
 
 import java.util.ArrayList;
 
+import com.busking.util.paging.PageVO;
+
 public interface BoardFreeMapper {
 	
 	// 글 목록 조회
-	public ArrayList<BoardFreeDTO> getFreeList();
+	public ArrayList<BoardFreeDTO> getFreeList(PageVO pageVO);
 	
 	// 글 개수 조회
 	public int getFreeTotal();

@@ -31,10 +31,10 @@ public class BoardServiceImpl implements BoardService {
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
-		list = mapper.getFreeList();
 		int total = mapper.getFreeTotal();
 		sql.close();
 		PageVO pageVO = new PageVO(pageNum, total);
+		list = mapper.getFreeList(pageVO);
 		
 		// response
 		request.setAttribute("freeList", list);
