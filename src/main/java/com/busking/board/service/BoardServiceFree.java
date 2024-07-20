@@ -15,12 +15,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class BoardServiceImpl implements BoardService {
+public class BoardServiceFree implements BoardService {
 	
 	SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
 	
 	@Override
-	public void getFreeList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
 		String page = (String)request.getAttribute("page");
@@ -31,9 +31,9 @@ public class BoardServiceImpl implements BoardService {
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
-		int total = mapper.getFreeTotal();
+		int total = mapper.getTotal();
 		PageVO pageVO = new PageVO(pageNum, total);
-		list = mapper.getFreeList(pageVO);
+		list = mapper.getList(pageVO);
 		sql.close();
 		
 		// response
@@ -43,7 +43,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public void writeFree(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void write(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
 		String freeTitle = request.getParameter("title");
@@ -57,13 +57,13 @@ public class BoardServiceImpl implements BoardService {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
 		
-		mapper.writeFree(dto);
+		mapper.write(dto);
 		// response
 		response.sendRedirect("board_free_list.board");
 	}
 	
 	@Override
-	public void getFreeContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void getContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
 		String freeNum = request.getParameter("freeNum");
@@ -76,7 +76,7 @@ public class BoardServiceImpl implements BoardService {
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
 		
 		mapper.increaseHit(freeNum);
-		dto = mapper.getFreeContent(freeNum);
+		dto = mapper.getContent(freeNum);
 		
 		// response
 		request.setAttribute("dto", dto);

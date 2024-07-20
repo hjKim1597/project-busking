@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 import com.busking.util.paging.PageVO;
 
-public interface BoardFreeMapper {
+public interface BoardNewsMapper {
 	
 	// 글 목록 조회
-	public ArrayList<BoardFreeDTO> getList(PageVO pageVO);
+	public ArrayList<BoardNewsDTO> getList(PageVO pageVO);
 	
 	// 글 개수 조회
 	public int getTotal();
 	
 	// 글 작성
-	public void write(BoardFreeDTO dto);
+	public void write(BoardNewsDTO dto);
 	
 	// 글 조회
-	public BoardFreeDTO getContent(String freeNum);
+	public BoardNewsDTO getContent(String newsNum);
 	
 	// 글 조회수 증가
-	public void increaseHit(String freeNum);
+	public void increaseHit(String newsNum);
 }

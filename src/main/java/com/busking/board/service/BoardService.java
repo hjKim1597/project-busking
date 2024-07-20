@@ -8,9 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public interface BoardService {
 	
-	void writeFree(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	void write(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
-	void getFreeList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
-	void getFreeContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	void getContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

@@ -5,7 +5,7 @@
 	
 <mapper namespace="com.busking.board.model.BoardFreeMapper">
 
-	<select id="getFreeList" parameterType="com.busking.util.paging.PageVO" resultType="com.busking.board.model.BoardFreeDTO">
+	<select id="getList" parameterType="com.busking.util.paging.PageVO" resultType="com.busking.board.model.BoardFreeDTO">
 		
 		SELECT FREE_NUM, FREE_TITLE, FREE_WRITER, FREE_REGDATE, FREE_HIT 
 		FROM (
@@ -17,11 +17,11 @@
 		WHERE RN > (#{pageNum} - 1) * #{amount} and #{pageNum} * #{amount} >= RN 				
 	</select>
 	
-	<select id="getFreeTotal" resultType="int">
+	<select id="getTotal" resultType="int">
 		SELECT COUNT(*) FROM BOARD_FREE 
 	</select>
 	
-	<insert id="writeFree" parameterType="com.busking.board.model.BoardFreeDTO">
+	<insert id="write" parameterType="com.busking.board.model.BoardFreeDTO">
 		INSERT INTO BOARD_FREE(FREE_NUM, 
 							   FREE_WRITER, 
 							   FREE_TITLE,
@@ -34,7 +34,7 @@
 		       SYSDATE)
 	</insert>
 	
-	<select id="getFreeContent" resultType="com.busking.board.model.BoardFreeDTO" parameterType="String">
+	<select id="getContent" resultType="com.busking.board.model.BoardFreeDTO" parameterType="String">
 		SELECT FREE_TITLE, FREE_LIKE_COUNT, FREE_WRITER, FREE_REGDATE, FREE_CONTENT, FREE_HIT, FREE_CMT_COUNT 
 		FROM BOARD_FREE 
 		WHERE FREE_NUM = #{freeNum}

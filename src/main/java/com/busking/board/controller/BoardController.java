@@ -3,7 +3,8 @@ package com.busking.board.controller;
 import java.io.IOException;
 
 import com.busking.board.service.BoardService;
-import com.busking.board.service.BoardServiceImpl;
+import com.busking.board.service.BoardServiceFree;
+import com.busking.board.service.BoardServiceNews;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -42,12 +43,16 @@ public class BoardController extends HttpServlet {
 			if(page == null) page = "1";
 			request.setAttribute("page", page);
 			
-			service = new BoardServiceImpl();
-			service.getFreeList(request, response);
-//			response.sendRedirect("board_free_list.jsp");
+			service = new BoardServiceFree();
+			service.getList(request, response);
 			
 		} else if(command.equals("/board/board_news_list.board")) {
-			response.sendRedirect("board_news_list.jsp");
+			String page = request.getParameter("page");
+			if(page == null) page = "1";
+			request.setAttribute("page", page);
+			
+			service = new BoardServiceNews();
+			service.getList(request, response);
 			
 		} else if(command.equals("/board/board_team_list.board")) {
 			response.sendRedirect("board_team_list.jsp");
@@ -68,18 +73,22 @@ public class BoardController extends HttpServlet {
 			response.sendRedirect("board_ask_write.jsp");
 			
 		} else if(command.equals("/board/board_news_content.board")) {
-			response.sendRedirect("board_news_content.jsp");
+			service = new BoardServiceNews();
+			service.getContent(request, response);
 			
 		} else if(command.equals("/board/board_free_content.board")) {
-			service = new BoardServiceImpl();
-			service.getFreeContent(request, response);
+			service = new BoardServiceFree();
+			service.getContent(request, response);
 			
 		} else if(command.equals("/board/board_team_content.board")) {
 			response.sendRedirect("board_team_content.jsp");
 			
 		} else if(command.equals("/board/board_free_writeForm.board")) {
-			service = new BoardServiceImpl();
-			service.writeFree(request, response);
+			service = new BoardServiceFree();
+			service.write(request, response);
+		} else if(command.equals("/board/board_news_writeForm.board")) {
+			service = new BoardServiceNews();
+			service.write(request, response);
 		}
 	}
 }
