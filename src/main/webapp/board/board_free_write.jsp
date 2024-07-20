@@ -39,23 +39,6 @@
     </div>
 </section>
 
-<script>
-    const quill = new Quill('#editor', {
-        theme: 'snow',
-        modules: {
-            toolbar: [
-                [{ 'header': [1, 2, false] }],
-                ['bold', 'italic', 'underline'],
-                ['link', 'image'],
-                ['clean']
-            ]
-        }
-    });
-
-    document.querySelector('form').onsubmit = function() {
-        // 에디터의 내용을 hidden input에 저장
-        document.getElementById('content').value = quill.root.innerHTML;
-    };
-</script>
+<script src="${pageContext.request.contextPath }/resources/js/board/board_write.js"></script>
 
 <%@ include file="../include/footer.jsp" %>

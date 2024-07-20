@@ -11,7 +11,7 @@
 	        <h1>BOARD</h1>
 	        <ul class="menu">
 	            <li class="nth1 active"><strong><a href="board_news_list.board">NEWS</a></strong></li>
-	            <li class="nth2"><strong><a href="board_news_list.board">자유게시판</a></strong></li>
+	            <li class="nth2"><strong><a href="board_free_list.board">자유게시판</a></strong></li>
 	            <li class="nth3"><strong><a href="board_team_list.board">팀원 모집</a></strong></li>
 	            <li class="nth4"><strong><a href="board_ask_list.board">Q & A</a></strong></li>
 	        </ul>
@@ -89,7 +89,7 @@
         </div>
     </section>
     
-	<script src="${pageContext.request.contextPath }/resources/js/board/board.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/board/board_list.js"></script>
     
 <%@ include file="../include/footer.jsp" %>
 

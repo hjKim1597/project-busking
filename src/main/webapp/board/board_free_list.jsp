@@ -90,7 +90,7 @@
         </div>
 	
 	</section>
-	<script src="${pageContext.request.contextPath }/resources/js/board/board.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/board/board_list.js"></script>
 
     
 <%@ include file="../include/footer.jsp" %>
