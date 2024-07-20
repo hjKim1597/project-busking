@@ -35,6 +35,7 @@ public class BoardServiceImpl implements BoardService {
 		int total = mapper.getFreeTotal();
 		sql.close();
 		PageVO pageVO = new PageVO(pageNum, total);
+		
 		// response
 		request.setAttribute("freeList", list);
 		request.setAttribute("pageVO", pageVO);

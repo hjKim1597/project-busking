@@ -39,7 +39,6 @@ public class BoardController extends HttpServlet {
 		
 		if(command.equals("/board/board_free_list.board")) {
 			String page = request.getParameter("page");
-			System.out.println(page);
 			if(page == null) page = "1";
 			request.setAttribute("page", page);
 			

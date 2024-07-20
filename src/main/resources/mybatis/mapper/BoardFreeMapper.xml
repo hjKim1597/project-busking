@@ -14,7 +14,7 @@
 			FROM BOARD_FREE B 
 			ORDER BY FREE_NUM DESC 
 		) 
-		WHERE RN > (#{pageNum} - 1) * #{amount} and RN <= #{pageNum} * #{amount} 				
+		WHERE RN > (#{pageNum} - 1) * #{amount} and #{pageNum} * #{amount} >= RN 				
 	</select>
 	
 	<select id="getFreeTotal" resultType="int">
