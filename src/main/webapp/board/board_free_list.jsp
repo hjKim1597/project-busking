@@ -46,7 +46,7 @@
 									<td>${dto.freeNum }</td>
 									<td>${dto.freeWriter }</td>
 									<td><a href="board_free_content.board?freeNum=${dto.freeNum }">${dto.freeTitle }</a></td>
-									<td><fmt:formatDate value="${dto.freeRegdate }" pattern="yyyy.MM.dd HH:mm"/></td>
+									<td><fmt:formatDate value="${dto.freeRegdate }" pattern="yy.MM.dd"/></td>
 									<td>${dto.freeHit }</td>
 								</tr>
 							</c:forEach>
