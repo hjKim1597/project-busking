@@ -18,7 +18,7 @@
 	</select>
 	
 	<select id="getFreeTotal" resultType="int">
-		SELECT COUNT(*) FROM BOARD_FREE;
+		SELECT COUNT(*) FROM BOARD_FREE 
 	</select>
 	
 	<insert id="writeFree" parameterType="com.busking.board.model.BoardFreeDTO">
