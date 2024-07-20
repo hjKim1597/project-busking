@@ -22,6 +22,8 @@ public class BoardServiceImpl implements BoardService {
 	public void getFreeList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
+		String page = (String)request.getAttribute("page");
+		int pageFirst = Integer.parseInt(page) * 20 - 19;
 		
 		// DTO
 		ArrayList<BoardFreeDTO> list = new ArrayList<>();
@@ -30,11 +32,11 @@ public class BoardServiceImpl implements BoardService {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
 		
-		list = mapper.getFreeList();
+		list = mapper.getFreeList(pageFirst);
 		sql.close();
 		// response
 		request.setAttribute("freeList", list);
-		request.getRequestDispatcher("board_free_list.jsp").forward(request, response);
+		request.getRequestDispatcher("board_free_list.jsp?page=" + page).forward(request, response);
 	}
 	
 	@Override

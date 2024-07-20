@@ -223,7 +223,11 @@
 
 
 
-
+<script>
+	addEventListener
+	event.preventDefault
+	pageUl.querySelectorAll(".page_li").forEach((li) => li.value == pageNum ? li.classList.add("active") : li);
+</script>
 
 
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public interface BoardFreeMapper {
 	
 	// 글 목록 조회
-	public ArrayList<BoardFreeDTO> getFreeList();
+	public ArrayList<BoardFreeDTO> getFreeList(int pageFirst);
 	
 	// 글 작성
 	public void writeFree(BoardFreeDTO dto);

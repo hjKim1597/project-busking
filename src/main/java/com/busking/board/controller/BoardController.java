@@ -38,6 +38,11 @@ public class BoardController extends HttpServlet {
 		BoardService service;
 		
 		if(command.equals("/board/board_free_list.board")) {
+			String page = request.getParameter("page");
+			System.out.println(page);
+			if(page == null) page = "1";
+			request.setAttribute("page", page);
+			
 			service = new BoardServiceImpl();
 			service.getFreeList(request, response);
 //			response.sendRedirect("board_free_list.jsp");

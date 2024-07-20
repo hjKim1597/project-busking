@@ -5,8 +5,11 @@
 	
 <mapper namespace="com.busking.board.model.BoardFreeMapper">
 
-	<select id="getFreeList" resultType="com.busking.board.model.BoardFreeDTO">
-		SELECT * FROM BOARD_FREE ORDER BY FREE_NUM DESC
+	<select id="getFreeList" parameterType="int" resultType="com.busking.board.model.BoardFreeDTO">
+		SELECT * 
+		FROM BOARD_FREE 
+		WHERE TO_NUMBER(SUBSTR(FREE_NUM, 5)) >= #{pageFirst} AND #{pageFirst} + 19 >= TO_NUMBER(SUBSTR(FREE_NUM, 5))  
+		ORDER BY FREE_NUM DESC
 	</select>
 	
 	<insert id="writeFree" parameterType="com.busking.board.model.BoardFreeDTO">
@@ -15,7 +18,7 @@
 							   FREE_TITLE,
 							   FREE_CONTENT,
 							   FREE_REGDATE) 
-		VALUES('FREE_' || BOARD_FREE_SEQ.NEXTVAL,
+		VALUES('FREE_' || LPAD(BOARD_FREE_SEQ.NEXTVAL, 8, '0'),
 		       #{freeWriter},
 		       #{freeTitle},
 		       #{freeContent},
