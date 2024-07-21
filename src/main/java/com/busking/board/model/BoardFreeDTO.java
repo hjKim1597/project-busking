@@ -1,8 +1,8 @@
 package com.busking.board.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
-public class BoardDTO {
+public class BoardFreeDTO {
 	
 	private String freeNum;
 	private String freeWriter;
@@ -13,10 +13,10 @@ public class BoardDTO {
 	private int freeCmtCount;
 	private int freeLikeCount;
 	
-	public BoardDTO() {
+	public BoardFreeDTO() {
 	}
 
-	public BoardDTO(String freeNum, String freeWriter, String freeTitle, String freeContent, Timestamp freeRegdate,
+	public BoardFreeDTO(String freeNum, String freeWriter, String freeTitle, String freeContent, Timestamp freeRegdate,
 			int freeHit, int freeCmtCount, int freeLikeCount) {
 		super();
 		this.freeNum = freeNum;

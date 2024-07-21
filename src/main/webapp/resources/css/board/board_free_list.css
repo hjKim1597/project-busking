@@ -254,7 +254,7 @@ thead th, tbody td {
     color: #daeede;
 }
 
-.page_nav ul.center li.active a {
+.page_nav .center .page_li.active > a {
     font-family: 'NanumSquareNeoB';
 }
 
