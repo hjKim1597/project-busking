@@ -54,14 +54,14 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand index-menu" href="#">사이트 명</a>
+					<a class="navbar-brand index-menu" href="${pageContext.request.contextPath }/index.jsp">사이트 명</a>
 				</div>
 				<div class="collapse navbar-collapse main-color" id="myNavbar">
 					<ul class="nav navbar-nav">
 
-						<li class="active index-menu"><a href="#">Main</a></li>
+						<li class="active index-menu"><a href="${pageContext.request.contextPath }/index.jsp">Main</a></li>
 
-						<li class="header-res"><a href="#" class="index-menu">예약하기</a></li>
+						<li class="header-res"><a href="${pageContext.request.contextPath }/reservation/reservation.jsp" class="index-menu">예약하기</a></li>
 
 						<!-- 게시판 -->
 						<li class="dropdown"><a class="dropdown-toggle index-menu"

@@ -195,18 +195,18 @@
 						if (event.target.tagName != "IMG")
 							return;
 
-						// 기존 이미지에 fade-out 클래스 추가
+						
 						mainImage.classList.add("fade-out");
 
-						// transition 시간이 지난 후 이미지 src 변경 및 fade-out 클래스 제거
+						
 						setTimeout(function() {
 							mainImage.src = event.target.src;
 							mainImage.classList.remove("fade-out");
 
-							// 새 이미지에 fade-in 클래스 추가
+							
 							mainImage.classList.add("fade-in");
 
-							// fade-in 애니메이션 완료 후 fade-in 클래스 제거
+							
 							setTimeout(function() {
 								mainImage.classList.remove("fade-in");
 							}, 500); 
