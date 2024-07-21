@@ -34,7 +34,7 @@
 		       SYSDATE)
 	</insert>
 	
-	<select id="getContent" resultType="com.busking.board.model.BoardFreeDTO" parameterType="String">
+	<select  id="getContent" resultType="com.busking.board.model.BoardFreeDTO" parameterType="String">
 		SELECT FREE_TITLE, FREE_LIKE_COUNT, FREE_WRITER, FREE_REGDATE, FREE_CONTENT, FREE_HIT, FREE_CMT_COUNT 
 		FROM BOARD_FREE 
 		WHERE FREE_NUM = #{freeNum}

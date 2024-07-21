@@ -2,6 +2,7 @@ package com.busking.mypage.controller;
 
 import java.io.IOException;
 
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -27,7 +28,19 @@ public class MypageController extends HttpServlet {
 		doAction(request, response);
 	}
 	protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		
+		String uri = request.getRequestURI();
+		String path = request.getContextPath();
+		String command = uri.substring(path.length());
+		
+		System.out.println(command);
+		// BoardService 선언
+		
+		
+		if(command.equals("/mypage/signup.mypage")) {
+			System.out.println(request.getParameter("id"));
+		}
 	}
 	
 	
