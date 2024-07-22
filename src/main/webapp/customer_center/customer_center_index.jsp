@@ -94,29 +94,8 @@
                                                         <!--데이터 받아오기-->
                                                         <td>글번호</td>
                                                         <td>작성자</td>
-                                                        <td><a href="customer_center_index_content.jsp">공지사항</a></td>
+                                                        <td><a href="customer_center_index_content.customer_board">공지사항</a></td>
                                                         <!--제목을 누르면 글 내용으로 이동함-->
-                                                        <td>날짜</td>
-                                                        <td>조회수</td>
-                                                    </tbody>
-                                                    <tbody>
-                                                        <td>글번호</td>
-                                                        <td>작성자</td>
-                                                        <td><a href="customer_center_index_content.jsp">제목2</a></td>
-                                                        <td>날짜</td>
-                                                        <td>조회수</td>
-                                                    </tbody>
-                                                    <tbody>
-                                                        <td>글번호</td>
-                                                        <td>작성자</td>
-                                                        <td><a href="customer_center_index_content.jsp">제목1</a></td>
-                                                        <td>날짜</td>
-                                                        <td>조회수</td>
-                                                    </tbody>
-                                                    <tbody>
-                                                        <td>글번호</td>
-                                                        <td>작성자</td>
-                                                        <td><a href="customer_center_index_content.jsp">제목1</a></td>
                                                         <td>날짜</td>
                                                         <td>조회수</td>
                                                     </tbody>
