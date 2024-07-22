@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+	<mapper namespace="com.busking.board.model.BoardCustomerMapper">
+
+	<select id="now" resultType="string">
+		<!-- 여기에 sql적는다, string 타입으로 반환 받겠다 세미콜론 안씀 이제 서비스impl에서 호출하러간다 -->
+		SELECT SYSDATE FROM DUAL
+	</select>
+
+	<select id="getList" resultType="com.myweb.board.model.BoardDTO">
+		SELECT * FROM BOARD ORDER BY BNO DESC
+	</select>
+	
+	<!--  -->
+	<insert id="regist" parameterType="com.busking.board.model.BoardCustomerDTO">
+		INSERT INTO NOTICE(NOTICE_NUM, MANAGER_ID, NOTICE_TITLE, NOTICE_CONTENT)
+		VALUES(BOARD_SEQ.NEXTVAL, #{writer}, #{title}, #{content})
+	</insert>
+	
+	<select id="getContent" resultType="com.myweb.board.model.BoasrdDTO">
+		SELECT * FROM BOARD WHERE BNO = #{bno}
+	</select>
+	
+	<update id="update" parameterType="com.myweb.board.model.BoardDTO">
+		UPDATE BOARD SET TITLE = #{title}, CONTENT = #{content} 
+		WHERE BNO = #{bno}
+	</update>
+	
+	<delete id="delete" parameterType="string">
+		DELETE FROM BOARD WHERE BNO = #{bno}
+	</delete>
+	
+	<update id="increaseHit" parameterType="string">
+		UPDATE BOARD SET HIT = HIT + 1 WHERE BNO = #{bno}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
