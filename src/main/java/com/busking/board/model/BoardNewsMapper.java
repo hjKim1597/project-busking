@@ -20,4 +20,7 @@ public interface BoardNewsMapper {
 	
 	// 글 조회수 증가
 	public void increaseHit(String newsNum);
+	
+	// 글 삭제
+	public int delete(String newsNum);
 }

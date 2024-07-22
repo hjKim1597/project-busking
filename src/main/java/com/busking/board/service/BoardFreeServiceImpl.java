@@ -1,6 +1,7 @@
 package com.busking.board.service;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,7 +16,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class BoardServiceFree implements BoardService {
+public class BoardFreeServiceImpl implements BoardFreeService {
 	
 	SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
 	
@@ -58,6 +59,7 @@ public class BoardServiceFree implements BoardService {
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
 		
 		mapper.write(dto);
+		sql.close();
 		// response
 		response.sendRedirect("board_free_list.board");
 	}
@@ -77,11 +79,36 @@ public class BoardServiceFree implements BoardService {
 		
 		mapper.increaseHit(freeNum);
 		dto = mapper.getContent(freeNum);
-		
+		dto.setFreeNum(freeNum);
+		sql.close();
 		// response
 		request.setAttribute("dto", dto);
 		request.getRequestDispatcher("board_free_content.jsp").forward(request, response);
 		
 	}
 
+	@Override
+	public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// request
+		String freeNum = request.getParameter("freeNum");
+		// DTO
+		
+		// Mybatis
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
+		int result = mapper.delete(freeNum);
+		sql.close();
+		// response
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(result != 0) {
+			out.println("alert('글이 삭제되었습니다.');");
+		} else {
+			out.println("alert('글이 삭제되지 않았습니다.');");
+		}
+		out.println("location.href='board_free_list.boardFree';");
+		out.println("</script>");
+	}
 }

@@ -43,5 +43,9 @@
 	<update id="increaseHit" parameterType="String">
 		UPDATE BOARD_NEWS SET NEWS_HIT = NEWS_HIT + 1 WHERE NEWS_NUM = #{newsNum}
 	</update>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM BOARD_NEWS WHERE NEWS_NUM = #{newsNum}
+	</delete>
 
 </mapper>

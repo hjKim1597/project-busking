@@ -2,6 +2,8 @@
  * 
  */
 
+
+
 // iframe 높이 자동 조절
 var iframe = document.querySelector('.comment_box > iframe');
 
@@ -27,3 +29,4 @@ function increaseLikes() {
     // 로컬 스토리지에 하트 수 저장
     localStorage.setItem('likeCount', count);
 }
+

@@ -68,14 +68,14 @@
 							data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_news_list.board">NEWS</a></li>
+									href="${pageContext.request.contextPath }/board/board_news_list.boardNews">NEWS</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_free_list.board">자유게시판</a></li>
+									href="${pageContext.request.contextPath }/board/board_free_list.boardFree">자유게시판</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_team_list.board">팀원
+									href="${pageContext.request.contextPath }/board/board_team_list.boardTeam">팀원
 										모집</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_ask_list.board">Q
+									href="${pageContext.request.contextPath }/board/board_ask_list.boardAsk">Q
 										& A</a></li>
 							</ul></li>
 

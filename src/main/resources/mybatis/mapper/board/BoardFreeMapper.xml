@@ -43,5 +43,9 @@
 	<update id="increaseHit" parameterType="String">
 		UPDATE BOARD_FREE SET FREE_HIT = FREE_HIT + 1 WHERE FREE_NUM = #{freeNum}
 	</update>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM BOARD_FREE WHERE FREE_NUM = #{freeNum}
+	</delete>
 
 </mapper>

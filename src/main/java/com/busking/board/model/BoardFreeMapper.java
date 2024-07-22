@@ -20,4 +20,7 @@ public interface BoardFreeMapper {
 	
 	// 글 조회수 증가
 	public void increaseHit(String freeNum);
+	
+	// 글 삭제
+	public int delete(String freeNum);
 }
