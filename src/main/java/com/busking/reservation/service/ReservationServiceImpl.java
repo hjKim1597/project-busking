@@ -1,5 +1,5 @@
 package com.busking.reservation.service;
 
-public class ReservationLocationService {
+public class ReservationServiceImpl {
 
 }
