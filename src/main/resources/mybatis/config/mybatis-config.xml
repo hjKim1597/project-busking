@@ -27,6 +27,7 @@
 	  	<!-- 게시판 매퍼 위치 -->
 	    <mapper resource="mybatis/mapper/board/BoardFreeMapper.xml"/>
 	    <mapper resource="mybatis/mapper/board/BoardNewsMapper.xml"/>
+	    <mapper resource="mybatis/mapper/board/BoardTeamMapper.xml"/>
 	    
 	    <!-- 마이페이지 매퍼 위치 -->
 	    <mapper resource="mybatis/mapper/mypage/MypageMapper.xml"/>
