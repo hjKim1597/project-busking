@@ -18,23 +18,24 @@
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
 				<div class="item active">
-					<img
+					<a href="${pageContext.request.contextPath }/reservation/reservation.jsp"> <img
 						src="${pageContext.request.contextPath }/resources/img/index/banner1.png"
-						alt="res" />
+						alt="res">
+					</a>
 					<div class="carousel-caption"></div>
 				</div>
 
 				<div class="item">
-					<img
+					<a href="${pageContext.request.contextPath }/board/board_news_list.board"><img
 						src="${pageContext.request.contextPath }/resources/img/index/banner2.png"
-						alt="issue" />
+						alt="issue"></a>
 					<div class="carousel-caption"></div>
 				</div>
 
 				<div class="item">
-					<img
+					<a href="${pageContext.request.contextPath }/customer_center/customer_center_guide.jsp"><img
 						src="${pageContext.request.contextPath }/resources/img/index/banner3.png"
-						alt="guide" />
+						alt="guide"></a>
 					<div class="carousel-caption"></div>
 				</div>
 			</div>
@@ -62,7 +63,7 @@
 					<div class="preview-title">
 						<!-- 게시판 -->
 						<h3>
-							<a href="#">공지사항</a>
+							<a href="${pageContext.request.contextPath }/customer_center/customer_center_index.jsp">공지사항</a>
 						</h3>
 
 						<table class="index-board">
@@ -94,7 +95,7 @@
 					<div class="preview-title">
 						<!-- 게시판 -->
 						<h3>
-							<a href="#">게시판</a>
+							<a href="${pageContext.request.contextPath }/board/board_news_list.jsp">소식게시판</a>
 						</h3>
 
 						<table class="index-board">
@@ -125,7 +126,7 @@
 					<div class="preview-title">
 						<!-- 게시판 -->
 						<h3>
-							<a href="#">게시판</a>
+							<a href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.jsp">FAQ</a>
 						</h3>
 
 						<table class="index-board" id="board-three">
@@ -163,9 +164,10 @@
 
 					<div class="result">
 						<div>
-							<img
+							<a id="mainImageLink" href="#"> <img
 								src="${pageContext.request.contextPath }/resources/img/index/1.jpg"
 								alt="결과" class="main-image" width="100%">
+							</a>
 							<div></div>
 						</div>
 					</div>
@@ -173,16 +175,19 @@
 					<ul class="list">
 						<li><img
 							src="${pageContext.request.contextPath }/resources/img/index/1.jpg"
-							alt="1" width="100"></li>
+							alt="1" width="100"
+							data-link="${pageContext.request.contextPath }/reservation/reservation.jsp"></li>
 						<li><img
 							src="${pageContext.request.contextPath }/resources/img/index/2.jpg"
-							alt="1" width="100"></li>
+							alt="1" width="100"
+							data-link="${pageContext.request.contextPath }/reservation/reservationForm.jsp"></li>
 						<li><img
 							src="${pageContext.request.contextPath }/resources/img/index/3.jpg"
-							alt="1" width="100"></li>
+							alt="1" width="100"
+							data-link="${pageContext.request.contextPath }/reservation/reservationPost.jsp"></li>
 						<li><img
 							src="${pageContext.request.contextPath }/resources/img/index/4.jpg"
-							alt="1" width="100"></li>
+							alt="1" width="100" data-link="#"></li>
 					</ul>
 
 				</div>
@@ -190,26 +195,27 @@
 				<script>
 					var list = document.querySelector(".list");
 					var mainImage = document.querySelector(".main-image");
+					var mainImageLink = document
+							.getElementById("mainImageLink");
 
 					list.onclick = function(event) {
 						if (event.target.tagName != "IMG")
 							return;
 
-						
 						mainImage.classList.add("fade-out");
 
-						
 						setTimeout(function() {
 							mainImage.src = event.target.src;
 							mainImage.classList.remove("fade-out");
 
-							
 							mainImage.classList.add("fade-in");
 
-							
+							mainImageLink.href = event.target
+									.getAttribute("data-link");
+
 							setTimeout(function() {
 								mainImage.classList.remove("fade-in");
-							}, 500); 
+							}, 500);
 						}, 500);
 					};
 				</script>
