@@ -29,11 +29,12 @@
 	    <mapper resource="mybatis/mapper/board/BoardNewsMapper.xml"/>
 	    
 	    <!-- 마이페이지 매퍼 위치 -->
-	    <mapper resource="mybatis/mapper/MypageMapper.xml"/>
+	    <mapper resource="mybatis/mapper/mypage/MypageMapper.xml"/>
 	    
 	    <!-- 홈페이지 매퍼 위치 -->
 	     <mapper resource="mybatis/mapper/IndexMapper.xml"/>
 	    
 	  </mappers>
+	  
 
 </configuration>

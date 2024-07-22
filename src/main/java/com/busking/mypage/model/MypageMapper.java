@@ -5,6 +5,6 @@ import java.util.ArrayList;
 
 public interface MypageMapper {
 
-	public int signup(MypageDTO dto);
+	int signup(MypageDTO dto);
 
 }

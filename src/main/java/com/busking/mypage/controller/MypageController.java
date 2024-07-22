@@ -2,6 +2,8 @@ package com.busking.mypage.controller;
 
 import java.io.IOException;
 
+import com.busking.mypage.service.MypageService;
+import com.busking.mypage.service.MypageServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,7 +18,7 @@ public class MypageController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	private MypageService mypageService = new MypageServiceImpl();
 	public MypageController() {
 	}
 	@Override
@@ -35,12 +37,11 @@ public class MypageController extends HttpServlet {
 		String command = uri.substring(path.length());
 		
 		System.out.println(command);
-		// BoardService 선언
 		
 		
-		if(command.equals("/mypage/signup.mypage")) {
-			System.out.println(request.getParameter("id"));
-		}
+		 if (command.equals("/mypage/signup.mypage")) {
+			 mypageService.signup(request, response);
+	     }
 	}
 	
 	

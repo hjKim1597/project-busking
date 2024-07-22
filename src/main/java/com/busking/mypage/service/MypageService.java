@@ -8,6 +8,5 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public interface MypageService {
 
-	public void signup(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
-
+	void signup(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }
