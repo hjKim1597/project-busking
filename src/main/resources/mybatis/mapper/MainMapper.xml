@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.busking.main.model.MainMapper">
+
+	<!-- 공지사항 최신글 4개 -->
+	<select id="getList" resultType="com.busking.board.model.BoardDTO">
+		SELECT NOTICE_TITLE, NOTICE_REGDATE FROM NOTICE ORDER BY NOTICE_REGDATE DESC LIMIT 4;
+	</select>
+
+	<!-- 소식게시판 최신글 4개 -->
+	<select id="getList" resultType="com.busking.board.model.BoardDTO">
+		SELECT NEWS_TITLE, NEWS_REGDATE FROM BOARD_NEWS ORDER BY NEWS_REGDATE DESC LIMIT 4;
+	</select>
+
+	<!-- FAQ 최신글 4개 -->
+	<select id="getList" resultType="com.busking.board.model.BoardDTO">
+		SELECT FAQ_TITLE, FAQ_REGDATE FROM FAQ ORDER BY FAQ_REGDATE DESC LIMIT 4;
+	</select>
+
+
+</mapper>
