@@ -10,10 +10,10 @@
 	    <div id="board_nav_wrap">
 	        <h1>BOARD</h1>
 	        <ul class="menu">
-	            <li class="nth1"><strong><a href="board_news_list.board">NEWS</a></strong></li>
-	            <li class="nth2"><strong><a href="board_free_list.board">자유게시판</a></strong></li>
-	            <li class="nth3 active"><strong><a href="board_team_list.board">팀원 모집</a></strong></li>
-	            <li class="nth4"><strong><a href="board_ask_list.board">Q & A</a></strong></li>
+	            <li class="nth1"><strong><a href="board_news_list.boardNews">NEWS</a></strong></li>
+	            <li class="nth2"><strong><a href="board_free_list.boardFree">자유게시판</a></strong></li>
+	            <li class="nth3 active"><strong><a href="board_team_list.boardTeam">팀원 모집</a></strong></li>
+	            <li class="nth4"><strong><a href="board_ask_list.boardAsk">Q & A</a></strong></li>
 	        </ul>
 	    </div>
 	</nav>
@@ -39,13 +39,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <!--데이터 받아오기-->
-                        <td>글번호</td>
-                        <td>작성자</td>
-                        <td><a href="board_team_content.board?bno=${bno}">제목</a></td> <!--제목을 누르면 글 내용으로 이동함-->
-                        <td>날짜</td>
-                        <td>모집 인원</td>
-                        <td>모집 상태</td>
+	                        <!--데이터 받아오기-->
+	                        <c:forEach var="dto" items="${teamList }">
+								<tr>
+									<td>${dto.newsNum }</td>
+									<td>${dto.newsWriter }</td>
+									<td><a href="board_news_content.boardNews?newsNum=${dto.newsNum }">${dto.newsTitle }</a></td>
+									<td><fmt:formatDate value="${dto.newsRegdate }" pattern="yy.MM.dd"/></td>
+									<td>${dto.newsHit }</td>
+								</tr>
+							</c:forEach>
 
                         </tbody>
                     </table> 
