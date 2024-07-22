@@ -10,7 +10,7 @@ public class BoardTeamDTO {
 	private String teamContent;
 	private Timestamp teamRegdate;
 	private int teamHit;
-	private char teamResult;
+	private String teamResult;
 	private int teamCount;
 	private int teamCmtCount;
 	private int teamLikeCount;
@@ -19,7 +19,7 @@ public class BoardTeamDTO {
 	}
 
 	public BoardTeamDTO(String teamNum, String teamWriter, String teamTitle, String teamContent, Timestamp teamRegdate,
-			int teamHit, char teamResult, int teamCount, int teamCmtCount, int teamLikeCount) {
+			int teamHit, String teamResult, int teamCount, int teamCmtCount, int teamLikeCount) {
 		super();
 		this.teamNum = teamNum;
 		this.teamWriter = teamWriter;
@@ -81,11 +81,11 @@ public class BoardTeamDTO {
 		this.teamHit = teamHit;
 	}
 
-	public char getTeamResult() {
+	public String getTeamResult() {
 		return teamResult;
 	}
 
-	public void setTeamResult(char teamResult) {
+	public void setTeamResult(String teamResult) {
 		this.teamResult = teamResult;
 	}
 

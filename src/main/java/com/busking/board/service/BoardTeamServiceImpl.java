@@ -49,11 +49,15 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		// request
 		String teamTitle = request.getParameter("title");
 		String teamContent = request.getParameter("content");
+		String teamCount = request.getParameter("teamCount");
+		String teamResult = request.getParameter("teamResult");
 		// DTO
 		BoardTeamDTO dto = new BoardTeamDTO();
 		dto.setTeamWriter("홍길동");
 		dto.setTeamTitle(teamTitle);
 		dto.setTeamContent(teamContent);
+		dto.setTeamCount(Integer.parseInt(teamCount));
+		dto.setTeamResult(teamResult);
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardTeamMapper mapper = sql.getMapper(BoardTeamMapper.class);

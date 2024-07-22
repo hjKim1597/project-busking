@@ -3,15 +3,15 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace="com.busking.board.model.BoardTEAMMapper">
+<mapper namespace="com.busking.board.model.BoardTeamMapper">
 
 	<select id="getList" parameterType="com.busking.util.paging.PageVO" resultType="com.busking.board.model.BoardTeamDTO">
 		
-		SELECT TEAM_NUM, TEAM_TITLE, TEAM_WRITER, TEAM_REGDATE, TEAM_HIT 
+		SELECT TEAM_NUM, TEAM_TITLE, TEAM_WRITER, TEAM_REGDATE, TEAM_HIT, TEAM_COUNT, TEAM_RESULT  
 		FROM (
 			SELECT ROWNUM RN,
-			       N.* 
-			FROM BOARD_TEAM N 
+			       T.* 
+			FROM BOARD_TEAM T 
 			ORDER BY TEAM_NUM DESC 
 		) 
 		WHERE RN > (#{pageNum} - 1) * #{amount} and #{pageNum} * #{amount} >= RN 				
@@ -26,16 +26,28 @@
 							   TEAM_WRITER, 
 							   TEAM_TITLE,
 							   TEAM_CONTENT,
-							   TEAM_REGDATE) 
+							   TEAM_REGDATE,
+							   TEAM_COUNT,
+							   TEAM_RESULT) 
 		VALUES('TEAM_' || LPAD(BOARD_TEAM_SEQ.NEXTVAL, 8, '0'),
 		       #{teamWriter},
 		       #{teamTitle},
 		       #{teamContent},
-		       SYSDATE) 
+		       SYSDATE,
+		       #{teamCount},
+		       #{teamResult}) 
 	</insert>
 	
 	<select id="getContent" resultType="com.busking.board.model.BoardTeamDTO" parameterType="String">
-		SELECT TEAM_TITLE, TEAM_LIKE_COUNT, TEAM_WRITER, TEAM_REGDATE, TEAM_CONTENT, TEAM_HIT, TEAM_CMT_COUNT 
+		SELECT TEAM_TITLE, 
+		       TEAM_LIKE_COUNT, 
+		       TEAM_WRITER, 
+		       TEAM_REGDATE, 
+		       TEAM_CONTENT, 
+		       TEAM_HIT, 
+		       TEAM_CMT_COUNT, 
+		       TEAM_RESULT, 
+		       TEAM_COUNT 
 		FROM BOARD_TEAM 
 		WHERE TEAM_NUM = #{teamNum}
 	</select>

@@ -35,7 +35,12 @@
                     <div class="team_container">
                         <div class="team_count_box">
                             <div class="team_count">모집 인원</div>
-                            <div class="team_countData">${dto.teamCount }명</div> <!--모집인원받아오기-->
+                            <div class="team_countData">
+                            	<c:choose>
+									<c:when test="${dto.teamCount == 6 }">기타</c:when>
+									<c:otherwise>${dto.teamCount }명</c:otherwise>
+								</c:choose>
+							</div> <!--모집인원받아오기-->
                         </div>
                         <div class="team_status_box">
                             <div class="team_status">모집 상태</div>
@@ -60,7 +65,7 @@
                     <div class="inner_bottom_right">
                         <button class="delete_button" type="button" data-bno="${dto.teamNum }">삭제</button>
                         <button class="edit_button" onclick="수정기능">수정</button>
-                        <button class="list_button" type="button" onclick="location.href='board_team_list.boardTeam">목록</button>
+                        <button class="list_button" type="button" onclick="location.href='board_team_list.boardTeam';">목록</button>
                     </div>
                 </div>
                 <div class="comment_box">
@@ -76,7 +81,7 @@
 		    //e.preventDefault(); // 기본 동작(예: 폼 제출) 방지
 		    if (confirm('삭제 하시겠습니까?')) {
 		        // e.target.dataset.bno을 사용하여 data-bno 값을 가져옴
-		        location.href = "board_news_delete.boardTeam?teamNum=" + e.target.dataset.bno;
+		        location.href = "board_team_delete.boardTeam?teamNum=" + e.target.dataset.bno;
 		    } else {
 		        // 아무 동작도 하지 않음
 		        return;

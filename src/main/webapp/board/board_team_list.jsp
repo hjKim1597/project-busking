@@ -46,7 +46,12 @@
 									<td>${dto.teamWriter }</td>
 									<td><a href="board_team_content.boardTeam?teamNum=${dto.teamNum }">${dto.teamTitle }</a></td>
 									<td><fmt:formatDate value="${dto.teamRegdate }" pattern="yy.MM.dd"/></td>
-									<td>${dto.teamCount }명</td>
+									<td>
+										<c:choose>
+											<c:when test="${dto.teamCount == 6 }">기타</c:when>
+											<c:otherwise>${dto.teamCount }명</c:otherwise>
+										</c:choose>
+									</td>
 									<td>
 										${dto.teamResult == 'T' ? '모집중' : '모집완료' }
 									</td>
