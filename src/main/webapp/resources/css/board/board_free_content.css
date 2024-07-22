@@ -1,4 +1,4 @@
-@import url(default.css);
+@import url(../default.css);
 
 @font-face {
     font-family: 'NanumSquareNeo';
@@ -77,7 +77,7 @@
 
 #board_content .board_content_box {
     width: 100%;
-    max-height: 100%;  
+    max-height: 100%;
 }
 
 #board_content .board_content_box .inner_box {
@@ -192,6 +192,8 @@
 #board_content .board_content_box .inner_box .inner .inner_mid .content {
     margin-top: 30px;
     padding: 10px;
+    width: 100%;
+    height: auto;
     font-size: 18px;
     line-height: 38px;
     letter-spacing: 0.5px;
@@ -267,9 +269,13 @@
     margin-right: 10px;
     border: 1px solid rgb(209, 209, 209);
 }
-
 #board_content .board_content_box .inner_box .inner .comment_box {
-    margin-top: 40px;
+	background-color: #F0F7FD;
+	padding-bottom: 20px;
+}
+#board_content .board_content_box .inner_box .inner .comment_box > iframe {
+	width: 100%;
+	height: auto;
     max-height: none; /* 높이 제한 해제 */
-    overflow: auto;
+	overflow: auto;
 }

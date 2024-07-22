@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import url(default.css);
+@import url(../default.css);
 
 @font-face {
     font-family: 'nanumsquare';
@@ -254,7 +254,7 @@ thead th, tbody td {
     color: #daeede;
 }
 
-.page_nav ul.center li.active a {
+.page_nav .center .page_li.active > a {
     font-family: 'NanumSquareNeoB';
 }
 

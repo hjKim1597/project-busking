@@ -3,27 +3,21 @@
 <!DOCTYPE html>
 
 <%@ include file="../include/header.jsp" %>
-
-<meta charset="UTF-8">
-<link rel="stylesheet" href="../resources/css/board_css/board_nav.css">
-<link rel="stylesheet" href="../resources/css/board_css/board_team_write.css">
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
+<link rel="stylesheet" href="board_team_write.css">
 
 <section id="board_write_wrap">
 
-    <nav class="board_nav">
-        <div id="board_nav_wrap">
-            <h1>BOARD</h1>
-            <ul class="menu">
-                <li class="nth1"><strong><a href="board_news_list.jsp">NEWS</a></strong></li>
-                <li class="nth2"><strong><a href="board_free_list.jsp">자유게시판</a></strong></li>
-                <li class="nth3 active"><strong><a href="board_team_list.jsp">팀원 모집</a></strong></li>
-                <li class="nth4"><strong><a href="board_ask_list.jsp">Q & A</a></strong></li>
-            </ul>
-        </div>
-    </nav>
+	<nav class="board_nav">
+	    <div id="board_nav_wrap">
+	        <h1>BOARD</h1>
+	        <ul class="menu">
+	            <li class="nth1"><strong><a href="board_news_list.board">NEWS</a></strong></li>
+	            <li class="nth2"><strong><a href="board_free_list.board">자유게시판</a></strong></li>
+	            <li class="nth3 active"><strong><a href="board_team_list.board">팀원 모집</a></strong></li>
+	            <li class="nth4"><strong><a href="board_ask_list.board">Q & A</a></strong></li>
+	        </ul>
+	    </div>
+	</nav>
 
     <div class="board_write_box">
         <h1>
@@ -32,22 +26,23 @@
         <form class="board_write_content" action="submit.php" method="post">
             <div class="form_group">
                 <label class="title_text" for="title">제목</label>
-                <input class="title_box" type="text" id="title" name="title" required>
-            </div>
-
-            <div class="board_team_box">
-                <select name="" id="board_team_people">
-                    <option value="모집 인원">모집 인원</option>
-                    <option value="1인">1</option>
-                    <option value="2인">2</option>
-                    <option value="3인">3</option>
-                    <option value="4인">4</option>
-                    <option value="5인">5</option>
-                    <option value="기타">기타</option>
-                </select>
-                <div class="board_team_contact">
-                    <label for="board_team_position">연락처</label>
-                    <input type="text" placeholder="핸드폰 번호, 이메일 등">
+                <input class="title_box" type="text" name="title" required style="height: 40px;">
+                <br>
+                <div class="title_team_box">
+                    <select class="title_box" type="text" name="title" required style="height: 40px; width: 110px; float: left;">
+                        <option id="board_team_option" value="">모집 인원</option>
+                        <option value="1인">1</option>
+                        <option value="2인">2</option>
+                        <option value="3인">3</option>
+                        <option value="4인">4</option>
+                        <option value="5인">5</option>
+                        <option value="기타">기타</option>
+                    </select>
+                        <select class="title_box" type="text" name="title" required style="height: 40px; width: 110px;">
+                            <option id="board_team_option" value="">모집 상태</option>
+                            <option value="1인">모집 중</option>
+                            <option value="2인">모집 완료</option>
+                        </select>
                 </div>
             </div>
             
@@ -82,3 +77,4 @@
         document.getElementById('content').value = quill.root.innerHTML;
     };
 </script>
+<%@ include file="../include/footer.jsp" %>

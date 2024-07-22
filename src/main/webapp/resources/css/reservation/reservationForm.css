@@ -1,4 +1,4 @@
-@charset "UTF-8";
+ @charset "UTF-8";
 @import url(../default.css);
 
 * {
@@ -119,15 +119,17 @@
 }
 /* 달력부분 */
 .resForm-mid .resForm-mid-left {
-    float: left; 
+    float: left;
     width: 50%;
-    border-radius: 3px;
-    padding: 0px 20px 20px 20px;
-    box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.12);
-
+}
+.resForm-mid .resForm-mid-left #calendar {
+	width: 100%;
+	padding: 3%;
+	border-radius: 3px;
+	box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.12);
 }
 .resForm-mid .resForm-mid-left #calendar > table {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     border-collapse: unset;
 }
@@ -152,7 +154,7 @@
     color: red;
 }
 .resForm-mid .resForm-mid-left #calendar > table > tbody > tr > td {
-    padding: 24px; 
+    padding: 0; 
     text-align: center; 
     cursor: pointer;
     border: 1px solid #fff;
@@ -167,6 +169,7 @@
 }
 .resForm-mid .resForm-mid-left #calendar > table > tbody > tr > td > span {
     display: block;
+    padding: 24px;
     font-family: 'NanumSquare';
     font-weight: 600;
 }
@@ -184,8 +187,8 @@
     width: 30%; 
     padding: 0 30px;
 }
-.resForm-mid .resForm-mid-right > form {padding: 50px 30px;}
-.resForm-mid .resForm-mid-right > form > input {
+.resForm-mid .resForm-mid-right .resForm-mid-controll > form {padding: 50px 30px;}
+.resForm-mid .resForm-mid-right .resForm-mid-controll > form > input {
     display: block; 
     width: 100%; 
     height: 50px;
@@ -195,28 +198,28 @@
     border-radius: 5px;
     cursor: pointer;
 }
-.resForm-mid .resForm-mid-right > form > input[type=submit] {
+.resForm-mid .resForm-mid-right .resForm-mid-controll > form > input[type=submit] {
     background-color: #5fd7ff41;
     color: #333;
     border: 1px solid #5fd7ff;
     margin-bottom: 20px;
 }
-.resForm-mid .resForm-mid-right > form > input[type=submit]:hover {
+.resForm-mid .resForm-mid-right .resForm-mid-controll > form > input[type=submit]:hover {
     border: none;
     color: #fff;
     background-color: #5fd7ff;
 }
-.resForm-mid .resForm-mid-right > form > input[type=button] {
+.resForm-mid .resForm-mid-right .resForm-mid-controll > form > input[type=button] {
     border: 1px solid #a2a2a2;
     background-color: #7777772f;
     color: #333;
 }
-.resForm-mid .resForm-mid-right > form > input[type=button]:hover {
+.resForm-mid .resForm-mid-right .resForm-mid-controll > form > input[type=button]:hover {
     background-color: #777777;
     color: #e2e2e2;
 }
 
-.resForm-bottom {
+.resvForm-bottom {
     overflow: hidden;
     margin-top: 20px;
 }
@@ -261,16 +264,44 @@
 }
 .bottom-menu-content > h3 {
     margin: 0;
-    padding-top: 20px;
+    padding: 20px 0 10px 20px;
     font-family: 'NanumSquareBold';
 }
-.bottom-menu-content > p {
+.bottom-menu-content p {
     font-size: 16px;
+    margin: 0;
 }
+.bottom-menu1-content .notice-container {
+	padding: 10px 20px;
+}
+.bottom-menu1-content .notice-container > h4 {
+	margin-top: 20px;
+}
+.bottom-menu1-content .notice-container > ul > li {
+	padding-top: 6px;
+	
+}
+.bottom-menu1-content .notice-container .notice-pre {
+	padding: 4px;
+	font-size: 12px;
+	color: grey;
+}
+.bottom-menu1-content .notice-container .notice-table-box {
+	margin: 20px 0;
+}
+.notice-table-box .notice-table > tbody > tr > td{
+	border: 1px solid #e3e3e3;
+	border-collapse: collapse;
+}
+.bottom-menu2-content .map-container {
+	width: 95%;
+	margin: 10px auto;
+}
+
 .bottom-menu3-content .loca-cmt-box .cmt-top-box {
     position: relative;
     overflow: hidden;
-    padding: 20px 0;
+    padding: 20px 30px;
     box-sizing: border-box;
     border-bottom: 1px solid #e3e3e3;
 }
@@ -319,11 +350,28 @@
     color: gold; /* 필요에 따라 색상을 조정 */
 }
 
-.loca-cmt-box .cmt-text {
+.loca-cmt-box .cmt-top-box .cmt-text {
     resize: none;
     padding: 16px;
     font-size: 14px;
     font-weight: 600;
+}
+.bottom-menu3-content .loca-cmt-box {
+	margin: 0;
+}
+.loca-cmt-box .cmt-top-box #cmt-btn {
+	outline: none;
+	border: 1px solid #5fd7ff;
+    background-color: #5fd7ff;
+    color: white;
+    font-size: 14px;
+    padding: 6px 14px;
+    margin-top: 10px;
+    float: right;
+    border-radius: 3px;
+    font-family: "NanumSquare";
+    font-weight: 600;
+    
 }
 
 .cmt-list-wrap {
@@ -402,7 +450,6 @@
     .resForm-mid .resForm-mid-right {
         width: 35%;
     }
-
     .resvForm-bottom-box {
         padding: 0;
     }
@@ -426,7 +473,9 @@
         margin-top: 10px;
     }
     .resForm-mid .resForm-mid-left {
-        width: 100%;
+        width: 95%;
+        float: none;
+        margin: 0 auto;
     }
     .resForm-mid .resForm-mid-right {
         display: block;
@@ -435,7 +484,7 @@
         padding: 0;
     }
     .resForm-mid .resForm-mid-right > form {
-        padding: 20px 0;
+        padding: 40px 20px 0 20px;
         overflow: hidden;
     }
     .resForm-mid .resForm-mid-right > form > input[type=submit] {

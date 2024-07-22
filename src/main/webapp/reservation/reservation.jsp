@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
 <%@ include file="../include/header.jsp" %>
+
     <div class="res-wrap">
         <div class="res-search">
             <form action="#" method="post">
@@ -32,7 +34,7 @@
             <div class="loca-box">
                 <a href="#">
                     <div class="loca-img-box">
-                        <img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt="">
+                        <img src="../resources/img/reservation/loca01.jpg" alt="">
                     </div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
@@ -56,7 +58,7 @@
             <div class="loca-box">
                 <a href="#">
                     <div class="loca-img-box">
-                        <img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt="">
+                        <img src="../resources/img/reservation/loca02.jpg" alt="">
                     </div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
@@ -79,7 +81,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/loca03.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -101,7 +103,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/loca04.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -123,7 +125,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/loca05.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -145,7 +147,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/loca06.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -167,7 +169,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/loca07.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -189,7 +191,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/loca08.jpg" alt=""></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -211,7 +213,7 @@
             </div>
             <div class="loca-box">
                 <a href="#">
-                    <div class="loca-img-box"><img src="../resources/img/reservation/광나루_버스킹1_천호대교 남단1.jpg" alt=""></div>
+                    <div class="loca-img-box"><img src="../resources/img/reservation/loca09.jpg" alt="9"></div>
                     <div class="loca-cont-box">
                         <h4>장소이름</h4>
                         <ul>
@@ -231,9 +233,269 @@
                     </div>
                 </a>    
             </div>
-            
-            
-            
-        </div>
-    </div>
+            <div class="loca-box">
+                <a href="#">
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/loca10.jpg" alt="10">
+                    </div>
+                    <div class="loca-cont-box">
+                        <h4>장소이름</h4>
+                        <ul>
+                            <li>
+                                <b>관할구역</b>
+                                <div>구역이름</div>
+                            </li>
+                            <li>
+                                <b>상세주소</b>
+                                <div>주소내용</div>
+                            </li>
+                            <li>
+                                <b>관리자이메일</b>
+                                <div>이메일</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>    
+            </div>
+            <div class="loca-box">
+                <a href="#">
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/loca11.jpg" alt="11">
+                    </div>
+                    <div class="loca-cont-box">
+                        <h4>장소이름</h4>
+                        <ul>
+                            <li>
+                                <b>관할구역</b>
+                                <div>구역이름</div>
+                            </li>
+                            <li>
+                                <b>상세주소</b>
+                                <div>주소내용</div>
+                            </li>
+                            <li>
+                                <b>관리자이메일</b>
+                                <div>이메일</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>    
+            </div>
+            <div class="loca-box">
+                <a href="#">
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/loca12.jpg" alt="12">
+                    </div>
+                    <div class="loca-cont-box">
+                        <h4>장소이름</h4>
+                        <ul>
+                            <li>
+                                <b>관할구역</b>
+                                <div>구역이름</div>
+                            </li>
+                            <li>
+                                <b>상세주소</b>
+                                <div>주소내용</div>
+                            </li>
+                            <li>
+                                <b>관리자이메일</b>
+                                <div>이메일</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>    
+            </div>
+            <div class="loca-box">
+                <a href="#">
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/loca13.jpg" alt="13">
+                    </div>
+                    <div class="loca-cont-box">
+                        <h4>장소이름</h4>
+                        <ul>
+                            <li>
+                                <b>관할구역</b>
+                                <div>구역이름</div>
+                            </li>
+                            <li>
+                                <b>상세주소</b>
+                                <div>주소내용</div>
+                            </li>
+                            <li>
+                                <b>관리자이메일</b>
+                                <div>이메일</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>    
+            </div>
+            <div class="loca-box">
+                <a href="#">
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/loca14.jpg" alt="14">
+                    </div>
+                    <div class="loca-cont-box">
+                        <h4>장소이름</h4>
+                        <ul>
+                            <li>
+                                <b>관할구역</b>
+                                <div>구역이름</div>
+                            </li>
+                            <li>
+                                <b>상세주소</b>
+                                <div>주소내용</div>
+                            </li>
+                            <li>
+                                <b>관리자이메일</b>
+                                <div>이메일</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>    
+            </div>
+            <div class="loca-box">
+                <a href="#">
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/loca15.jpg" alt="15">
+                    </div>
+                    <div class="loca-cont-box">
+                        <h4>장소이름</h4>
+                        <ul>
+                            <li>
+                                <b>관할구역</b>
+                                <div>구역이름</div>
+                            </li>
+                            <li>
+                                <b>상세주소</b>
+                                <div>주소내용</div>
+                            </li>
+                            <li>
+                                <b>관리자이메일</b>
+                                <div>이메일</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>    
+            </div>
+            <div class="loca-box">
+                <a href="#">
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/loca16.jpg" alt="16">
+                    </div>
+                    <div class="loca-cont-box">
+                        <h4>장소이름</h4>
+                        <ul>
+                            <li>
+                                <b>관할구역</b>
+                                <div>구역이름</div>
+                            </li>
+                            <li>
+                                <b>상세주소</b>
+                                <div>주소내용</div>
+                            </li>
+                            <li>
+                                <b>관리자이메일</b>
+                                <div>이메일</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>    
+            </div>
+            <div class="loca-box">
+                <a href="#">
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/loca17.jpg" alt="17">
+                    </div>
+                    <div class="loca-cont-box">
+                        <h4>장소이름</h4>
+                        <ul>
+                            <li>
+                                <b>관할구역</b>
+                                <div>구역이름</div>
+                            </li>
+                            <li>
+                                <b>상세주소</b>
+                                <div>주소내용</div>
+                            </li>
+                            <li>
+                                <b>관리자이메일</b>
+                                <div>이메일</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>    
+            </div>
+            <div class="loca-box">
+                <a href="#">
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/loca18.jpg" alt="18">
+                    </div>
+                    <div class="loca-cont-box">
+                        <h4>장소이름</h4>
+                        <ul>
+                            <li>
+                                <b>관할구역</b>
+                                <div>구역이름</div>
+                            </li>
+                            <li>
+                                <b>상세주소</b>
+                                <div>주소내용</div>
+                            </li>
+                            <li>
+                                <b>관리자이메일</b>
+                                <div>이메일</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>    
+            </div>
+            <div class="loca-box">
+                <a href="#">
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/loca19.jpg" alt="19">
+                    </div>
+                    <div class="loca-cont-box">
+                        <h4>장소이름</h4>
+                        <ul>
+                            <li>
+                                <b>관할구역</b>
+                                <div>구역이름</div>
+                            </li>
+                            <li>
+                                <b>상세주소</b>
+                                <div>주소내용</div>
+                            </li>
+                            <li>
+                                <b>관리자이메일</b>
+                                <div>이메일</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>    
+            </div>
+            <div class="loca-box">
+                <a href="#">
+                    <div class="loca-img-box">
+                        <img src="../resources/img/reservation/loca20.jpg" alt="20">
+                    </div>
+                    <div class="loca-cont-box">
+                        <h4>장소이름</h4>
+                        <ul>
+                            <li>
+                                <b>관할구역</b>
+                                <div>구역이름</div>
+                            </li>
+                            <li>
+                                <b>상세주소</b>
+                                <div>주소내용</div>
+                            </li>
+                            <li>
+                                <b>관리자이메일</b>
+                                <div>이메일</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>    
+            </div>
+           
 <%@ include file="../include/footer.jsp" %>

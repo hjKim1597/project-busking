@@ -1,37 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="../resources/css/board_css/board_news_list.css">
-<!-- 부트스트랩 css링크 -->
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-<!-- 제이쿼리(부스트랩보다 먼저 링크) -->
-<script src="../resources/js/jquery-3.7.1.min.js"></script>
-<!-- 부트스트랩 js링크 -->
-<script src="../resources/js/bootstrap.min.js"></script>
-<!-- 커스터마이징 한 css 디자인 추가 -->
-<link rel="stylesheet" href="../resources/css/custom-reset.css">
-<link rel="stylesheet" href="../resources/css/board_css/board_nav.css">
-</head>
-
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>   
+<%@ include file="../include/header.jsp" %>
     
 <section id="board_news_list_wrap">  
-
-    
-<nav class="board_nav">
-    <div id="board_nav_wrap">
-        <h1>BOARD</h1>
-        <ul class="menu">
-            <li class="nth1 active"><strong><a href="board_news_list.jsp">NEWS</a></strong></li>
-            <li class="nth2"><strong><a href="board_free_list.jsp">자유게시판</a></strong></li>
-            <li class="nth3"><strong><a href="board_team_list.jsp">팀원 모집</a></strong></li>
-            <li class="nth4"><strong><a href="board_ask_list.jsp">Q & A</a></strong></li>
-        </ul>
-    </div>
-</nav>
+  
+    <nav class="board_nav">
+	    <div id="board_nav_wrap">
+	        <h1>BOARD</h1>
+	        <ul class="menu">
+	            <li class="nth1 active"><strong><a href="board_news_list.boardNews">NEWS</a></strong></li>
+	            <li class="nth2"><strong><a href="board_free_list.boardFree">자유게시판</a></strong></li>
+	            <li class="nth3"><strong><a href="board_team_list.boardTeam">팀원 모집</a></strong></li>
+	            <li class="nth4"><strong><a href="board_ask_list.boardAsk">Q & A</a></strong></li>
+	        </ul>
+	    </div>
+	</nav>
 
         <div class="wrap_board_news">              
             <div class="wrap_board_news_list">
@@ -53,41 +38,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <!--데이터 받아오기-->
-                        <td>글번호</td>
-                        <td>작성자</td>
-                        <td><a href="board_news_content.jsp">뉴스 제목</a></td> <!--제목을 누르면 글 내용으로 이동함-->
-                        <td>날짜</td>
-                        <td>조회수</td>
-    
-                                <!-- <script>
-            // 예시 데이터
-            const boardData = [
-                { id: 1, writer: '작성자1', title: '제목1', date: '2024-07-01', views: 123, comments: 4 },
-                { id: 2, writer: '작성자2', title: '제목2', date: '2024-07-02', views: 456, comments: 2 },
-                { id: 3, writer: '작성자3', title: '제목3', date: '2024-07-03', views: 789, comments: 5 },
-            ];
-    
-            // 게시글 데이터를 HTML로 변환하여 테이블에 삽입
-            function loadBoardData() {
-                const tbody = document.getElementById('boardContent');
-                tbody.innerHTML = '';
-                boardData.forEach(post => {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${post.id}</td>
-                        <td>${post.writer}</td>
-                        <td><a href="board_content.html">${post.title} <span>(${post.comments} 댓글)</span></a></td>
-                        <td>${post.date}</td>
-                        <td>${post.views}</td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            } -->
-    
-            <!-- // 페이지 로드 시 게시글 데이터를 불러옴
-            window.onload = loadBoardData; -->
-    
+	                        <!--데이터 받아오기-->
+	                        <c:forEach var="dto" items="${newsList }">
+								<tr>
+									<td>${dto.newsNum }</td>
+									<td>${dto.newsWriter }</td>
+									<td><a href="board_news_content.boardNews?newsNum=${dto.newsNum }">${dto.newsTitle }</a></td>
+									<td><fmt:formatDate value="${dto.newsRegdate }" pattern="yy.MM.dd"/></td>
+									<td>${dto.newsHit }</td>
+								</tr>
+							</c:forEach>
+                        
     
                         </tbody>
                     </table> 
@@ -95,18 +56,20 @@
                 
                     <div class="page_nav">
                         <ul class="center">
-                            <li><a href="첫페이지"><img src="../resources/img/board_img/ico_first.gif" alt="처음페이지"></a></li>
-                            <li><a href="이전페이지"><img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>
-                            <li class="active"><a href="board_news_list.jsp" title="1페이지(선택됨)">1</a></li>
-                            <li><a href="2페이지링크" title="2페이지">2</a></li>
-                            <li><a href="3페이지링크" title="3페이지">3</a></li>
-                            <li><a href="4페이지링크" title="4페이지">4</a></li>
-                            <li><a href="5페이지링크" title="5페이지">5</a></li>
-                            <li><a href="다음페이지"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
-                            <li><a href="마지막페이지"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
+                            <li id="page_first"><a href="board_news_list.boardNews"><img src="../resources/img/board_img/ico_first.gif" alt="처음페이지"></a></li>
+                            <c:if test="${pageVO.prev }">
+	                            <li id="page_prev"><a href="board_news_list.boardNews?page=${pageVO.pageNum - 1 }"><img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>                            
+                            </c:if>
+                            <c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+                            	<li class="page_li" data-page="${i }"><a href="board_news_list.boardNews?page=${i }" title="1페이지">${i }</a></li>	
+                            </c:forEach>
+                            <c:if test="${pageVO.next }">
+	                            <li id="page_next"><a href="board_news_list.boardNews?page=${pageVO.pageNum + 1 }"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
+                            </c:if>
+                            <li id="page_last"><a href="board_news_list.boardNews?page=${pageVO.endPage }"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
                         </ul>
-                        <form action="board_news_write.jsp" class="right">
-                            <button value="글쓰기" onclick="location.href='board_news_write.jsp'">작성</button>  
+                        <form action="board_news_write.boardNews" class="right">
+                            <button value="글쓰기">작성</button>  
                         </form>  
                     </div>                     
                 <div class="board_news_search">
@@ -126,10 +89,7 @@
         </div>
     </section>
     
-    <script>
-
-    </script>
+	<script src="${pageContext.request.contextPath }/resources/js/board/board_list.js"></script>
     
-</body>
-</html>
+<%@ include file="../include/footer.jsp" %>
 

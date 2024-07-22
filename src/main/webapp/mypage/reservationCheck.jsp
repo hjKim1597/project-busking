@@ -4,16 +4,17 @@
 <html lang="en">
 <%@ include file="../include/header.jsp" %>
 <body>
-  
     <div class="jinseok-wrap">
         <div class="sum">
-            <div class="nav">
-                <ul>
-                    <li><a href="userInfo.jsp">내 정보</a></li>
-                    <li><a href="reservationCheck.jsp" class="tap">예약 현황</a></li>
-                    <li><a href="deleteUser.jsp">회원 탈퇴</a></li>
-                </ul>
-            </div>
+        
+			<div class="nav">
+	            <ul>
+	                <li><span class="nav-title">마이페이지</span></li>
+	                <li><a href="userInfo.jsp">내 정보</a></li>
+	                <li><a href="reservationCheck.jsp" class="tap">예약 현황</a></li>
+	                <li><a href="deleteUser.jsp">회원 탈퇴</a></li>
+	            </ul>
+	        </div>
             
             <div class="reservation-check">
                 <p>예약 현황</p>
