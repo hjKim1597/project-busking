@@ -72,7 +72,7 @@
 
                         </div>
                         <!-- 글작성하기 -->
-                        <form action="" class="form">
+                        <form action="registForm.customerBoard" method="post" class="form">
 
                             <!-- 글 제목 -->
                             <div>
@@ -96,7 +96,7 @@
                                 </div>
 
                                 <div class="board-button">
-                                    <a href="customer_center_index_content_modify.jsp"><button type="button"
+                                    <a href="registForm.customer_board"><button type="button"
                                             class="btn btn-default">완료</button></a>
                                 </div>
                             </div>

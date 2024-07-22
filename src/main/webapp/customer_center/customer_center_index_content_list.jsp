@@ -124,7 +124,7 @@
 
                             <!-- 글작성 버튼 -->
                             <div class="write-button">
-                                <a href="#" ><button type="button" class="btn write1" id="">글작성</button></a>
+                                <a href="#" ><button type="button" class="btn write1" id="" onclick="location.href='list.board';">글작성</button></a>
                             </div>
 
                         </div>
