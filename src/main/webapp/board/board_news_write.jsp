@@ -32,7 +32,7 @@
             </div>
             <div class="button_box">
                 <button type="button" class="button_cancle" onclick="history.back()">취소</button>
-                <input type="submit" class="button_registration" value="제출">
+                <input type="submit" class="button_registration" value="등록">
             </div>
         </form>
     </div>

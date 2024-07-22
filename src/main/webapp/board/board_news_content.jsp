@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@ include file="../include/header.jsp" %>
@@ -59,7 +60,7 @@
 	                    <div class="inner_bottom_right">
 	                        <button class="delete_button" type="button" data-bno="${dto.newsNum }">삭제</button>
 	                        <button class="edit_button" onclick="수정기능">수정</button>
-	                        <button class="list_button" type="button" onclick="location.href='board_news_list.board'">목록</button>
+	                        <button class="list_button" type="button" onclick="location.href='board_news_list.boardNews'">목록</button>
 	                    </div>
 	                </div>
 					<div class="comment_box">

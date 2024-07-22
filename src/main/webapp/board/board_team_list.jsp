@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>   
 <%@ include file="../include/header.jsp" %>
-
-<body>
     
 <section id="board_team_list_wrap">  
  
@@ -42,11 +42,14 @@
 	                        <!--데이터 받아오기-->
 	                        <c:forEach var="dto" items="${teamList }">
 								<tr>
-									<td>${dto.newsNum }</td>
-									<td>${dto.newsWriter }</td>
-									<td><a href="board_news_content.boardNews?newsNum=${dto.newsNum }">${dto.newsTitle }</a></td>
-									<td><fmt:formatDate value="${dto.newsRegdate }" pattern="yy.MM.dd"/></td>
-									<td>${dto.newsHit }</td>
+									<td>${dto.teamNum }</td>
+									<td>${dto.teamWriter }</td>
+									<td><a href="board_team_content.boardTeam?teamNum=${dto.teamNum }">${dto.teamTitle }</a></td>
+									<td><fmt:formatDate value="${dto.teamRegdate }" pattern="yy.MM.dd"/></td>
+									<td>${dto.teamCount }명</td>
+									<td>
+										${dto.teamResult == 'T' ? '모집중' : '모집완료' }
+									</td>
 								</tr>
 							</c:forEach>
 
@@ -56,19 +59,21 @@
                 
                     <div class="page_nav">
                         <ul class="center">
-                            <li><a href="첫페이지"><img src="../resources/img/board_img/ico_first.gif" alt="처음페이지"></a></li>
-                            <li><a href="이전페이지"><img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>
-                            <li class="active"><a href="board_team_list.jsp" title="1페이지(선택됨)">1</a></li>
-                            <li><a href="2페이지링크" title="2페이지">2</a></li>
-                            <li><a href="3페이지링크" title="3페이지">3</a></li>
-                            <li><a href="4페이지링크" title="4페이지">4</a></li>
-                            <li><a href="5페이지링크" title="5페이지">5</a></li>
-                            <li><a href="다음페이지"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
-                            <li><a href="마지막페이지"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
+                            <li id="page_first"><a href="board_team_list.boardTeam"><img src="../resources/img/board_img/ico_first.gif" alt="처음페이지"></a></li>
+                            <c:if test="${pageVO.prev }">
+	                            <li id="page_prev"><a href="board_team_list.boardTeam?page=${pageVO.pageNum - 1 }"><img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>                            
+                            </c:if>
+                            <c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+                            	<li class="page_li" data-page="${i }"><a href="board_team_list.boardTeam?page=${i }" title="1페이지">${i }</a></li>	
+                            </c:forEach>
+                            <c:if test="${pageVO.next }">
+	                            <li id="page_next"><a href="board_team_list.boardTeam?page=${pageVO.pageNum + 1 }"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
+                            </c:if>
+                            <li id="page_last"><a href="board_team_list.boardTeam?page=${pageVO.endPage }"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
                         </ul>
-                        <form action="board_team_write.board" class="right">
+                        <form action="board_team_write.boardTeam" class="right">
                             <button value="글쓰기">작성</button>  
-                        </form>   
+                        </form>    
                     </div>                     
                 <div class="board_team_search">
                     <select class="board_team_search_box">
@@ -91,6 +96,5 @@
 
     </script>
     
-</body>
-</html>
 
+<%@ include file="../include/footer.jsp" %>
