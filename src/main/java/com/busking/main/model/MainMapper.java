@@ -8,9 +8,15 @@ package com.busking.main.model;
 
 import java.util.ArrayList;
 
-import com.busking.board.model.BoardDTO;
+import com.busking.board.model.BoardNewsDTO;
 
 public interface MainMapper {
 	
-	public ArrayList<BoardDTO> getList(); //글 목록 조회
+	//공지사항DTO
+	public ArrayList<공지사항디티오> getList(); 
+	//소식게시판DTO
+	public ArrayList<BoardNewsDTO> getList(); //글 목록 조회
+	//FAQ DTO
+	public ArrayList<에프에이뷰디티오> getList(); 
+	
 }

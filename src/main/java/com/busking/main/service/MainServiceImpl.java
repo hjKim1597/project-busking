@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.busking.board.model.BoardDTO;
+import com.busking.board.model.BoardNewsDTO;
 import com.busking.main.model.MainMapper;
 import com.busking.util.mybatis.MybatisUtil;
 
@@ -40,7 +40,11 @@ public class MainServiceImpl implements MainService{
 		MainMapper Main = sql.getMapper(MainMapper.class);
 		
 		//MainMapper 인터페이스의 getList 메서드를 호출하여 데이터베이스에서 BoardDTO 객체 목록을 가져온다	
-		ArrayList<BoardDTO> list = Main.getList();
+		ArrayList<공지사항디티오> list = Main.getList();
+		ArrayList<BoardNewsDTO> list = Main.getList();
+		ArrayList<에프에이큐디티오> list = Main.getList();
+		
+		
 		sql.close();
 		
 		//역할: list라는 데이터를 request 객체에 담아서 jsp페이지에 전달함
