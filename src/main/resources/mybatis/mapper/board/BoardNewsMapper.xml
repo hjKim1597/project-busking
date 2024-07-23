@@ -47,5 +47,12 @@
 	<delete id="delete" parameterType="String">
 		DELETE FROM BOARD_NEWS WHERE NEWS_NUM = #{newsNum}
 	</delete>
+	
+	<update id="edit" parameterType="com.busking.board.model.BoardNewsDTO">
+		UPDATE BOARD_NEWS 
+		SET NEWS_TITLE = #{newsTitle}, 
+		    NEWS_CONTENT = #{newsContent}
+		WHERE NEWS_NUM = #{newsNum}
+	</update>
 
 </mapper>

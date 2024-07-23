@@ -15,4 +15,10 @@ public interface BoardNewsService {
 	void getContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
 	void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
+	void getBefore(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
+	void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
+	void getCommentList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

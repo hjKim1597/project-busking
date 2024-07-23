@@ -2,6 +2,7 @@ package com.busking.board.controller;
 
 import java.io.IOException;
 
+import com.busking.board.service.BoardFreeServiceImpl;
 import com.busking.board.service.BoardNewsService;
 import com.busking.board.service.BoardNewsServiceImpl;
 
@@ -55,6 +56,14 @@ public class BoardNewsController extends HttpServlet {
 		} else if(command.equals("/board/board_news_content.boardNews")) {
 			service = new BoardNewsServiceImpl();
 			service.getContent(request, response);
+			
+		} else if(command.equals("/board/board_news_edit.boardNews")) {
+			service = new BoardNewsServiceImpl();
+			service.getBefore(request, response);
+			
+		} else if(command.equals("/board/board_news_editForm.boardNews")) {
+			service = new BoardNewsServiceImpl();
+			service.edit(request, response);
 			
 		} else if(command.equals("/board/board_news_delete.boardNews")) {
 			service = new BoardNewsServiceImpl();

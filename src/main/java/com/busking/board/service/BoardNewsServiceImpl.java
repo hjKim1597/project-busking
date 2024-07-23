@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardNewsDTO;
 import com.busking.board.model.BoardNewsMapper;
+import com.busking.board.model.CommentFreeDTO;
+import com.busking.board.model.CommentFreeMapper;
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
 
@@ -111,5 +113,83 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		}
 		out.println("location.href='board_news_list.boardNews';");
 		out.println("</script>");
+	}
+	
+	@Override
+	public void getBefore(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// request
+		String newsNum = request.getParameter("newsNum");
+		
+		// DTO
+		BoardNewsDTO dto = new BoardNewsDTO();
+		
+		// Mybatis
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardNewsMapper mapper = sql.getMapper(BoardNewsMapper.class);
+		dto = mapper.getContent(newsNum);
+		dto.setNewsNum(newsNum);
+		sql.close();
+		
+		// response
+		request.setAttribute("dto", dto);
+		request.getRequestDispatcher("board_news_edit.jsp").forward(request, response);
+		
+	}
+	
+	@Override
+	public void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// request
+		String newsNum = request.getParameter("newsNum");
+		String newsTitle = request.getParameter("title");
+		String newsContent = request.getParameter("content");
+		
+		// DTO
+		BoardNewsDTO dto = new BoardNewsDTO();
+		dto.setNewsNum(newsNum);
+		dto.setNewsTitle(newsTitle);
+		dto.setNewsContent(newsContent);
+		
+		// Mybatis
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardNewsMapper mapper = sql.getMapper(BoardNewsMapper.class);
+		int result = mapper.edit(dto);
+		sql.close();
+		
+		// response
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(result != 0) {
+			out.println("alert('글이 수정되었습니다.');");
+		} else {
+			out.println("alert('글이 수정되지 않았습니다.');");
+		}
+		out.println("location.href='board_news_content.boardNews?newsNum=" + newsNum + "';");
+		out.println("</script>");
+		
+	}
+
+	
+	@Override
+	public void getCommentList(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		// request
+		String newsNum = request.getParameter("newsNum");	
+		System.out.println(newsNum);
+		
+		// DTO
+		ArrayList<CommentFreeDTO> commentList = new ArrayList<>();
+		
+		// Mybatis
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		CommentFreeMapper mapper = sql.getMapper(CommentFreeMapper.class);
+		commentList = mapper.getList(newsNum);
+		sql.close();
+		
+		// response
+		request.setAttribute("commentList",	commentList);
+		request.getRequestDispatcher("board_comment.jsp").forward(request, response);
 	}
 }

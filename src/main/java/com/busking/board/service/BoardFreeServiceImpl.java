@@ -137,6 +137,7 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
 		dto = mapper.getContent(freeNum);
 		dto.setFreeNum(freeNum);
+		sql.close();
 		
 		// response
 		request.setAttribute("dto", dto);
