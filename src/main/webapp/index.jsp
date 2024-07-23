@@ -164,7 +164,7 @@
 
 					<div class="result">
 						<div>
-							<a id="mainImageLink" href="#"> <img
+							<a id="mainImageLink" href="${pageContext.request.contextPath }/reservation/reservation.jsp"> <img
 								src="${pageContext.request.contextPath }/resources/img/index/1.jpg"
 								alt="결과" class="main-image" width="100%">
 							</a>
