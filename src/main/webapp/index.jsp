@@ -63,7 +63,7 @@
 					<div class="preview-title">
 						<!-- 게시판 -->
 						<h3>
-							<a href="${pageContext.request.contextPath }/customer_center/customer_center_index.jsp">공지사항</a>
+							<a href="${pageContext.request.contextPath }/customer_center/customer_center_index.customer">공지사항</a>
 						</h3>
 
 						<table class="index-board">

@@ -26,6 +26,7 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		// request
 		String page = (String)request.getAttribute("page");
 		int pageNum = Integer.parseInt(page);
+		
 		// DTO
 		ArrayList<BoardNewsDTO> list = new ArrayList<>();
 		
