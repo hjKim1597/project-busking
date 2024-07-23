@@ -74,36 +74,15 @@
 						</h3>
 
 						<table class="index-board">
-						
-						<c:out value="${getNewsList }" />
-							<!-- <tr>
-
-								<td class="index-board-bottom"
-									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0"><a
-									href="#">2024년 7월 한강공원 내 야구장</a></td>
-								<td>24.07.09</td>
-
-							</tr>
-							<tr>
-								<td><a href="#">서울시 공공서비스 예약 홈페이지 서비스</a></td>
-								<td>24.07.02</td>
-							</tr>
-							<tr>
-								<td><a href="#">[지방폐교를 활용한 서울캠핑장] '24. 8월</a></td>
-								<td>24.07.01</td>
-							</tr>
-							<tr>
-								<td><a href="#">2024년 7월 한강공원 내 야구장</a></td>
-								<td>24.06.26</td>
-							</tr> -->
-
+					
 							<c:forEach var="dto" items="${CustomerList}">
 								<tr>
-									<td class="index-board-bottom"
+									<td class="index-board-bottom " 
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
 										<a href="#">${dto.noticeTitle}</a>
+										
 									</td>
-									<td><fmt:formatDate value="${dto.noticeRegdate}" pattern="yy.MM.dd"/></td>
+									<td class="preview-date"><fmt:formatDate value="${dto.noticeRegdate}" pattern="yy.MM.dd"/></td>
 								</tr>
 
 							</c:forEach>
@@ -122,33 +101,14 @@
 						</h3>
 
 						<table class="index-board">
-							<!-- <tr>
-								<td class="index-board-bottom"
-									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-									<a href="#">2024년 7월 한강공원 내 야구장</a>
-								</td>
-								<td>24.07.09</td>
-							</tr>
-							<tr>
-								<td><a href="#">서울시 공공서비스 예약 홈페이지 서비스</a></td>
-								<td>24.07.02</td>
-							</tr>
-							<tr>
-								<td><a href="#">[지방폐교를 활용한 서울캠핑장] '24. 8월</a></td>
-								<td>24.07.01</td>
-							</tr>
-							<tr>
-								<td><a href="#">2024년 7월 한강공원 내 야구장</a></td>
-								<td>24.06.26</td>
-							</tr> -->
-
+						
 							<c:forEach var="dto" items="${NewsList}">
 								<tr>
-									<td class="index-board-bottom"
+									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-										<a href="#">${dto.newsTitle}</a>
+										<a href="#" >${dto.newsTitle}</a>
 									</td>
-									<td><fmt:formatDate value="${dto.newsRegdate}" pattern="yy.MM.dd"/></td>
+									<td class="preview-date"><fmt:formatDate value="${dto.newsRegdate}" pattern="yy.MM.dd"/></td>
 								</tr>
 							</c:forEach>
 
@@ -167,36 +127,15 @@
 								href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.jsp">FAQ</a>
 						</h3>
 
-						<table class="index-board" id="board-three">
-							<!-- <tr>
-
-								<td class="index-board-bottom"
-									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0"><a
-									href="#">2024년 7월 한강공원 내 야구장</a></td>
-								<td>24.07.09</td>
-
-							</tr>
-							<tr>
-								<td><a href="#">서울시 공공서비스 예약 홈페이지 서비스</a></td>
-								<td>24.07.02</td>
-							</tr>
-							<tr>
-								<td><a href="#">[지방폐교를 활용한 서울캠핑장] '24. 8월</a></td>
-								<td>24.07.01</td>
-							</tr>
-							<tr>
-								<td><a href="#">2024년 7월 한강공원 내 야구장</a></td>
-								<td>24.06.26</td>
-							</tr> -->
-							
+						<table class="index-board" id="board-three">				
 							
 							<c:forEach var="dto" items="${FAQList}">
 								<tr>
-									<td class="index-board-bottom"
+									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
 										<a href="#">${dto.faqTitle}</a>
 									</td>
-									<td><fmt:formatDate value="${dto.faqRegdate}" pattern="yy.MM.dd"/></td>
+									<td class="preview-date"><fmt:formatDate value="${dto.faqRegdate}" pattern="yy.MM.dd"/></td>
 								</tr>
 							</c:forEach>
 							

@@ -119,7 +119,7 @@
 
 /* 1032이하 디자인 */
 @media ( max-width :1032px) {
-	.index-content>.carousel>.carousel-inner>.item > a>img {
+	.index-content>.carousel>.carousel-inner>.item>a>img {
 		margin-top: 125px;
 	}
 }
@@ -391,6 +391,10 @@
 	font-size: 20px;
 }
 
+.preview-date {
+	text-align: right;
+}
+
 /* 게시판  */
 .index-board {
 	border-collapse: collapse;
@@ -400,6 +404,7 @@
 .index-board tr th, td {
 	text-align: left;
 	padding: 8px;
+	font-size: smaller;
 }
 
 .index-board tr:nth-child() {
@@ -424,6 +429,12 @@
 	border: 1px solid #e3e3e3;
 	margin: 0 auto;
 	margin-bottom: 50px;
+}
+
+.truncate {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 /*  --------로케이션 사진------------ */
@@ -511,9 +522,8 @@
 }
 
 /* 애니메이션 정의 */
-@keyframes fadeIn {
-	from { 
-	opacity:0;
+@
+keyframes fadeIn {from { opacity:0;
 	margin-left: -100px;
 }
 
