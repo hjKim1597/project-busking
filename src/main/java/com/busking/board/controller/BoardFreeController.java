@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.busking.board.service.BoardFreeService;
 import com.busking.board.service.BoardFreeServiceImpl;
+import com.busking.board.service.BoardTeamServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -56,7 +57,15 @@ public class BoardFreeController extends HttpServlet {
 			service = new BoardFreeServiceImpl();
 			service.getContent(request, response);
 			
-		} else if(command.equals("/board/board_free_delete.boardFree")) {
+		} else if(command.equals("/board/board_free_edit.boardFree")) {
+			service = new BoardFreeServiceImpl();
+			service.getBefore(request, response);
+			
+		} else if(command.equals("/board/board_free_editForm.boardFree")) {
+			service = new BoardFreeServiceImpl();
+			service.edit(request, response);
+			
+		}  else if(command.equals("/board/board_free_delete.boardFree")) {
 			service = new BoardFreeServiceImpl();
 			service.delete(request, response);
 			

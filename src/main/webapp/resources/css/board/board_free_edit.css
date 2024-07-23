@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+@import url(../default.css);
+
+@font-face {
+    font-family: 'NanumSquareNeo';
+    src: url('../../fonts/NanumSquareNeo/NanumSquareNeo/TTF/NanumSquareNeo-bRg.ttf');
+}
+
+* {font-family: 'NanumSquareNeo';}
+
+@media (min-width:1200px) {
+    .resForm-wrap {
+        width: 1170px;
+    }
+}
+@media (min-width:992px) and (max-width:1199px) {
+    .resForm-wrap {
+        width: 970px;
+    }
+
+    #board_write_wrap .board_nav #board_nav_wrap {
+        display: none;
+    }
+
+    #board_write_wrap {
+        padding: 10px 50px !important;
+        margin-top: 50px !important;
+    }
+
+    #board_write_wrap .board_write_box  {
+        padding: 0px 10px !important;
+        margin-right: 10px !important; 
+        margin-left: 0px !important;
+    }
+
+    /* #board_write_wrap .board_write_box  .inner_box {
+        padding: 0 !important;
+        margin-left: 0px !important; 
+    } */
+
+}
+
+@media (max-width:991px) {
+    .resForm-wrap {
+        width: 750px;
+    }
+
+    #board_write_wrap .board_nav #board_nav_wrap {
+        display: none;
+    }
+
+    #board_write_wrap {
+        padding: 10px 50px !important;
+        margin-top: 50px !important;
+    }
+
+    #board_write_wrap .board_write_box  {
+        padding: 0px 10px !important;
+        margin-right: 10px !important; 
+        margin-left: 0px !important;
+    }
+
+    /* #board_write_wrap .board_write_box  .inner_box {
+        padding: 0 !important;
+        margin-left: 0px !important; 
+    } */
+}
+
+#board_write_wrap {
+    display: flex;
+    width: 100%; 
+    padding: 100px;
+}
+
+#board_write_wrap .board_nav {
+    float: left;
+}
+
+#board_write_wrap .board_write_box {
+    width: 100%;
+    max-height: 100%;  
+    padding: 2rem 0px 3rem; 
+    margin-right: 100px;
+    margin-left: 150px;
+}
+
+#board_write_wrap .board_write_box h1 {
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+
+#board_write_wrap .board_write_content .form_group .title_text {
+    font-size: 17px;
+    margin-bottom: 9px;
+    position: relative;
+}
+
+#board_write_wrap .board_write_content .form_group .title_text::after {
+    content: "*";
+    color: rgb(240, 61, 12); 
+    margin-left: 2px;
+}
+
+#board_write_wrap .board_write_content .form_group .title_box {
+    display: block;
+    box-shadow: none; /* 그림자 제거 */
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 3px;
+    width: 100%;
+    height: 33px;
+    font-size: 15px;
+    padding: 10px;
+    letter-spacing: 0.5px;
+} 
+
+#board_write_wrap .board_write_content .form_group .title_box:focus {
+    border: 2px solid #5FD7FF; 
+    outline: none; 
+}
+
+#board_write_wrap .board_write_content .form_group .content_text {
+    font-size: 17px;
+    margin-bottom: 12px;
+    margin-top: 15px;
+    position: relative;
+}
+
+#board_write_wrap .board_write_content .form_group .content_text::after {
+    content: "*";
+    color: rgb(240, 61, 12); 
+    margin-left: 2px;
+}
+
+#board_write_wrap #editor {
+    height: 400px;
+    width: 100%;
+    border: 1px solid rgb(209, 209, 209);
+    border-top: none;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+#board_write_wrap .button_box {
+    margin-top: 35px;
+}
+
+#board_write_wrap .button_box .button_cancle {
+    width: 120px;
+    height: 50px;
+    border-radius: 3px;
+    background-color: white;
+    font-size: 20px;
+    margin-right: 20px;
+    border: 1px solid rgb(209, 209, 209);
+}
+
+#board_write_wrap .button_box .button_registration {
+    width: 120px;
+    height: 50px;
+    border-radius: 3px;
+    border: none;
+    font-size: 20px;
+    background-color: #5FD7FF;
+    color: white;
+    font-weight: 500;
+}

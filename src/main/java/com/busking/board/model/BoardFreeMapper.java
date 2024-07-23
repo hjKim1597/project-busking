@@ -23,4 +23,7 @@ public interface BoardFreeMapper {
 	
 	// 글 삭제
 	public int delete(String freeNum);
+	
+	// 글 수정
+	public int edit(BoardFreeDTO dto);
 }

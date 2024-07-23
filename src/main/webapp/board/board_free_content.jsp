@@ -60,7 +60,7 @@
 	                    </div>
                     	<div class="inner_bottom_right">
                         	<button class="delete_button" type="button" data-bno="${dto.freeNum }">삭제</button>
-                        	<button class="edit_button" onclick="수정기능">수정</button>
+                        	<button class="edit_button" type="button" onclick="location.href='board_free_edit.boardFree?freeNum=${dto.freeNum}'">수정</button>
                         	<button class="list_button" type="button" onclick="location.href='board_free_list.boardFree'">목록</button>
                     	</div>
                 	</div>

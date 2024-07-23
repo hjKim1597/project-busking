@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardFreeDTO;
 import com.busking.board.model.BoardFreeMapper;
+import com.busking.board.model.BoardTeamDTO;
+import com.busking.board.model.BoardTeamMapper;
 import com.busking.board.model.CommentFreeDTO;
 import com.busking.board.model.CommentFreeMapper;
 import com.busking.util.mybatis.MybatisUtil;
@@ -28,6 +30,7 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		// request
 		String page = (String)request.getAttribute("page");
 		int pageNum = Integer.parseInt(page);
+		
 		// DTO
 		ArrayList<BoardFreeDTO> list = new ArrayList<>();
 		
@@ -65,9 +68,8 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		mapper.write(dto);
 		sql.close();
 
-
 		// response
-		response.sendRedirect("board_free_list.board");
+		response.sendRedirect("board_free_list.boardFree");
 	}
 	
 	@Override
@@ -87,6 +89,7 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		dto = mapper.getContent(freeNum);
 		dto.setFreeNum(freeNum);
 		sql.close();
+		
 		// response
 		request.setAttribute("dto", dto);
 		request.getRequestDispatcher("board_free_content.jsp").forward(request, response);
@@ -98,6 +101,7 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		
 		// request
 		String freeNum = request.getParameter("freeNum");
+		
 		// DTO
 		
 		// Mybatis
@@ -105,6 +109,7 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
 		int result = mapper.delete(freeNum);
 		sql.close();
+		
 		// response
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -116,6 +121,60 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		}
 		out.println("location.href='board_free_list.boardFree';");
 		out.println("</script>");
+	}
+	
+	@Override
+	public void getBefore(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// request
+		String freeNum = request.getParameter("freeNum");
+		
+		// DTO
+		BoardFreeDTO dto = new BoardFreeDTO();
+		
+		// Mybatis
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
+		dto = mapper.getContent(freeNum);
+		dto.setFreeNum(freeNum);
+		
+		// response
+		request.setAttribute("dto", dto);
+		request.getRequestDispatcher("board_free_edit.jsp").forward(request, response);
+		
+	}
+	
+	@Override
+	public void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// request
+		String freeNum = request.getParameter("freeNum");
+		String freeTitle = request.getParameter("title");
+		String freeContent = request.getParameter("content");
+		
+		// DTO
+		BoardFreeDTO dto = new BoardFreeDTO();
+		dto.setFreeNum(freeNum);
+		dto.setFreeTitle(freeTitle);
+		dto.setFreeContent(freeContent);
+		
+		// Mybatis
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
+		int result = mapper.edit(dto);
+		sql.close();
+		
+		// response
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(result != 0) {
+			out.println("alert('글이 수정되었습니다.');");
+		} else {
+			out.println("alert('글이 수정되지 않았습니다.');");
+		}
+		out.println("location.href='board_free_content.boardFree?freeNum=" + freeNum + "';");
+		out.println("</script>");
+		
 	}
 
 	

@@ -47,5 +47,12 @@
 	<delete id="delete" parameterType="String">
 		DELETE FROM BOARD_FREE WHERE FREE_NUM = #{freeNum}
 	</delete>
+	
+	<update id="edit" parameterType="com.busking.board.model.BoardFreeDTO">
+		UPDATE BOARD_FREE 
+		SET FREE_TITLE = #{freeTitle}, 
+		    FREE_CONTENT = #{freeContent} 
+		WHERE FREE_NUM = #{freeNum}
+	</update>
 
 </mapper>
