@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,28 +21,30 @@
 	    <div class="board_comment_inner">
 	        <h2>댓글</h2>
 	        <div class="board_comment_list"> <!--댓글 리스트 영역-->
-	            <div class="board_comment_list_box">
-	                <div class="board_comment_header">
-	                    <div class="board_comment_info">
-	                        <div class="writer">ABC12341</div>
-	                        <div class="date">24.7.7.12:00</div>
-	                    </div>
-	                    <button class="board_comment_like" onclick="increaseLikes('likeCount1')">
-	                        <img src="../resources/img/board_img/like.png" alt="">
-	                        <span class="like_count" id="likeCount1">0</span>
-	                    </button>
-	                </div>
-	                <div class="board_comment_content">
-	                    댓글내용댓글내용댓글내용댓글내용댓글내용
-	                </div>
-	            </div>
+	        	<c:forEach var="dto" items="${commentList }">
+		            <div class="board_comment_list_box">
+		                <div class="board_comment_header">
+		                    <div class="board_comment_info">
+		                        <div class="writer">${dto.comFreeWriter }</div>
+		                        <div class="date"><fmt:formatDate value="${dto.comFreeRegdate }" pattern="yy.MM.dd"/></div>
+		                    </div>
+		                    <button class="board_comment_like" onclick="increaseLikes('likeCount1')">
+		                        <img src="../resources/img/board_img/like.png" alt="">
+		                        <span class="like_count" id="likeCount1">${dto.comFreeLikeCount }</span>
+		                    </button>
+		                </div>
+		                <div class="board_comment_content">
+		                    ${dto.comFreeContent }
+		                </div>
+		            </div>
+		         </c:forEach>
 	            
 	        </div>
 	        <!--댓글 작성 영역-->
 	        <div class="form-group board_comment_write">
 	            <textarea class="form-control" rows="5" id="comment"></textarea>
 	        </div>
-	        <div class="board_comment_button"><button value="등록버튼">등록</button></div>
+	        <div class="board_comment_button"><button value="등록버튼" type="button" onclick="location.href='board_comment_write.'">등록</button></div>
 	    </div>
 	</section>
 	
