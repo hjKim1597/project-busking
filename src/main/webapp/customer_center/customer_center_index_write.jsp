@@ -72,7 +72,7 @@
 
                         </div>
                         <!-- 글작성하기 -->
-                        <form action="registForm.customerBoard" method="post" class="form">
+                        <form action="registForm.customer_board" method="post" class="form">
 
                             <!-- 글 제목 -->
                             <div>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -92,33 +94,20 @@
                                                     </thead>
                                                     <tbody>
                                                         <!--데이터 받아오기-->
-                                                        <td>글번호</td>
-                                                        <td>작성자</td>
-                                                        <td><a href="customer_center_index_content.jsp">공지사항</a></td>
-                                                        <!--제목을 누르면 글 내용으로 이동함-->
-                                                        <td>날짜</td>
-                                                        <td>조회수</td>
-                                                    </tbody>
-                                                    <tbody>
-                                                        <td>글번호</td>
-                                                        <td>작성자</td>
-                                                        <td><a href="customer_center_index_content.jsp">제목2</a></td>
-                                                        <td>날짜</td>
-                                                        <td>조회수</td>
-                                                    </tbody>
-                                                    <tbody>
-                                                        <td>글번호</td>
-                                                        <td>작성자</td>
-                                                        <td><a href="customer_center_index_content.jsp">제목1</a></td>
-                                                        <td>날짜</td>
-                                                        <td>조회수</td>
-                                                    </tbody>
-                                                    <tbody>
-                                                        <td>글번호</td>
-                                                        <td>작성자</td>
-                                                        <td><a href="customer_center_index_content.jsp">제목1</a></td>
-                                                        <td>날짜</td>
-                                                        <td>조회수</td>
+                                                        
+                                                        
+											
+
+								                        <c:forEach var="dto" items="${noticeList }">
+															<tr>
+																<td>${dto.noticeNum }</td>
+																<td>${dto.managerId }</td>																
+																<td><a href="board_news_content.board?noticeNum=${dto.noticeNum }">${dto.noticeTitle }</a></td>
+																<td><fmt:formatDate value="${dto.noticeRegdate }" pattern="yy.MM.dd"/></td>
+																<td>${dto.noticeHit }</td>
+															</tr>
+														</c:forEach>
+							
                                                     </tbody>
                                                 </div>
                                             </table>

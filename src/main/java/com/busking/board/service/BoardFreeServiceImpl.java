@@ -49,17 +49,21 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		// request
 		String freeTitle = request.getParameter("title");
 		String freeContent = request.getParameter("content");
+		
 		// DTO
 		BoardFreeDTO dto = new BoardFreeDTO();
 		dto.setFreeWriter("홍길동");
 		dto.setFreeTitle(freeTitle);
 		dto.setFreeContent(freeContent);
+		
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
 		
 		mapper.write(dto);
 		sql.close();
+
+
 		// response
 		response.sendRedirect("board_free_list.board");
 	}
