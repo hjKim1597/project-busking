@@ -25,17 +25,20 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("*.main")
 public class MainController extends HttpServlet{
 	
+
+	private static final long serialVersionUID = 1L;
+
 	public MainController() {
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		doAction(request, response);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doAction(request, response);
 	}
 	
 	protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,19 +54,9 @@ public class MainController extends HttpServlet{
 		//MainService 선언
 		MainService service;
 		
-		if(command.equals("/index.main")) { 
-		
+		if(command.equals("/index.main")) { 		
 			service = new MainServiceImpl();
 			service.getList(request, response);
 		}
-		
-	
-	
-	
-	
 	}
-
-
-
-
 }

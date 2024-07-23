@@ -54,7 +54,7 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand index-menu" href="${pageContext.request.contextPath }/index.jsp">사이트 명</a>
+					<a class="navbar-brand index-menu" href="${pageContext.request.contextPath }/index.main">사이트 명</a>
 				</div>
 				<div class="collapse navbar-collapse main-color" id="myNavbar">
 					<ul class="nav navbar-nav">
@@ -120,7 +120,6 @@
 				</div>
 			</div>
 		</div>
-
 	</nav>
 
 

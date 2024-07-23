@@ -59,5 +59,14 @@
 	<delete id="delete" parameterType="String">
 		DELETE FROM BOARD_TEAM WHERE TEAM_NUM = #{teamNum}
 	</delete>
+	
+	<update id="edit" parameterType="com.busking.board.model.BoardTeamDTO">
+		UPDATE BOARD_TEAM 
+		SET TEAM_TITLE = #{teamTitle}, 
+		    TEAM_CONTENT = #{teamContent}, 
+		    TEAM_COUNT = #{teamCount}, 
+		    TEAM_RESULT = #{teamResult} 
+		WHERE TEAM_NUM = #{teamNum} 
+	</update>
 
 </mapper>
