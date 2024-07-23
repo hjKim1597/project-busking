@@ -5,18 +5,24 @@
 <mapper namespace="com.busking.main.model.MainMapper">
 
 	<!-- 공지사항 최신글 4개 -->
-	<select id="getList" resultType="com.busking.board.model.공지사항디티오">
-		SELECT NOTICE_TITLE, NOTICE_REGDATE FROM NOTICE ORDER BY NOTICE_REGDATE DESC LIMIT 4;
+	<select id="getCustomerList"
+		resultType="com.busking.board.model.BoardCustomerDTO">
+		SELECT NOTICE_TITLE, NOTICE_REGDATE FROM NOTICE ORDER BY
+		NOTICE_REGDATE DESC LIMIT 4;
 	</select>
 
 	<!-- 소식게시판 최신글 4개 -->
-	<select id="getList" resultType="com.busking.board.model.BoardNewsDTO">
-		SELECT NEWS_TITLE, NEWS_REGDATE FROM BOARD_NEWS ORDER BY NEWS_REGDATE DESC LIMIT 4;
+	<select id="getNewsList"
+		resultType="com.busking.board.model.BoardNewsDTO">
+		SELECT NEWS_TITLE, NEWS_REGDATE FROM BOARD_NEWS ORDER BY
+		NEWS_REGDATE DESC LIMIT 4;
 	</select>
 
 	<!-- FAQ 최신글 4개 -->
-	<select id="getList" resultType="com.busking.board.model.에프에이큐디티오">
-		SELECT FAQ_TITLE, FAQ_REGDATE FROM FAQ ORDER BY FAQ_REGDATE DESC LIMIT 4;
+	<select id="getFAQList"
+		resultType="com.busking.customercenter.model.FAQDTO">
+		SELECT FAQ_TITLE, FAQ_REGDATE FROM FAQ ORDER BY FAQ_REGDATE
+		DESC LIMIT 4;
 	</select>
 
 
