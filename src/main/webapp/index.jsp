@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 
 <%@ include file="include/header.jsp"%>
 
@@ -18,7 +20,9 @@
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
 				<div class="item active">
-					<a href="${pageContext.request.contextPath }/reservation/reservation.jsp"> <img
+					<a
+						href="${pageContext.request.contextPath }/reservation/reservation.jsp">
+						<img
 						src="${pageContext.request.contextPath }/resources/img/index/banner1.png"
 						alt="res">
 					</a>
@@ -26,14 +30,16 @@
 				</div>
 
 				<div class="item">
-					<a href="${pageContext.request.contextPath }/board/board_news_list.board"><img
+					<a
+						href="${pageContext.request.contextPath }/board/board_news_list.board"><img
 						src="${pageContext.request.contextPath }/resources/img/index/banner2.png"
 						alt="issue"></a>
 					<div class="carousel-caption"></div>
 				</div>
 
 				<div class="item">
-					<a href="${pageContext.request.contextPath }/customer_center/customer_center_guide.jsp"><img
+					<a
+						href="${pageContext.request.contextPath }/customer_center/customer_center_guide.jsp"><img
 						src="${pageContext.request.contextPath }/resources/img/index/banner3.png"
 						alt="guide"></a>
 					<div class="carousel-caption"></div>
@@ -63,11 +69,14 @@
 					<div class="preview-title">
 						<!-- 게시판 -->
 						<h3>
-							<a href="${pageContext.request.contextPath }/customer_center/customer_center_index.jsp">공지사항</a>
+							<a
+								href="${pageContext.request.contextPath }/customer_center/customer_center_index.jsp">공지사항</a>
 						</h3>
 
 						<table class="index-board">
-							<tr>
+						
+						<c:out value="${getNewsList }" />
+							<!-- <tr>
 
 								<td class="index-board-bottom"
 									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0"><a
@@ -86,7 +95,20 @@
 							<tr>
 								<td><a href="#">2024년 7월 한강공원 내 야구장</a></td>
 								<td>24.06.26</td>
-							</tr>
+							</tr> -->
+
+							<c:forEach var="dto" items="${CustomerList}">
+								<tr>
+									<td class="index-board-bottom"
+										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
+										<a href="#">${dto.noticeTitle}</a>
+									</td>
+									<td><fmt:formatDate value="${dto.noticeRegdate}" pattern="yy.MM.dd"/></td>
+								</tr>
+
+							</c:forEach>
+
+
 						</table>
 					</div>
 				</div>
@@ -95,11 +117,12 @@
 					<div class="preview-title">
 						<!-- 게시판 -->
 						<h3>
-							<a href="${pageContext.request.contextPath }/board/board_news_list.jsp">소식게시판</a>
+							<a
+								href="${pageContext.request.contextPath }/board/board_news_list.jsp">소식게시판</a>
 						</h3>
 
 						<table class="index-board">
-							<tr>
+							<!-- <tr>
 								<td class="index-board-bottom"
 									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
 									<a href="#">2024년 7월 한강공원 내 야구장</a>
@@ -117,20 +140,35 @@
 							<tr>
 								<td><a href="#">2024년 7월 한강공원 내 야구장</a></td>
 								<td>24.06.26</td>
-							</tr>
+							</tr> -->
+
+							<c:forEach var="dto" items="${NewsList}">
+								<tr>
+									<td class="index-board-bottom"
+										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
+										<a href="#">${dto.newsTitle}</a>
+									</td>
+									<td><fmt:formatDate value="${dto.newsRegdate}" pattern="yy.MM.dd"/></td>
+								</tr>
+							</c:forEach>
+
+
+
 						</table>
 					</div>
+					
 				</div>
 
 				<div class="col-md-4 preview-box">
 					<div class="preview-title">
 						<!-- 게시판 -->
 						<h3>
-							<a href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.jsp">FAQ</a>
+							<a
+								href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.jsp">FAQ</a>
 						</h3>
 
 						<table class="index-board" id="board-three">
-							<tr>
+							<!-- <tr>
 
 								<td class="index-board-bottom"
 									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0"><a
@@ -149,7 +187,20 @@
 							<tr>
 								<td><a href="#">2024년 7월 한강공원 내 야구장</a></td>
 								<td>24.06.26</td>
-							</tr>
+							</tr> -->
+							
+							
+							<c:forEach var="dto" items="${FAQList}">
+								<tr>
+									<td class="index-board-bottom"
+										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
+										<a href="#">${dto.faqTitle}</a>
+									</td>
+									<td><fmt:formatDate value="${dto.faqRegdate}" pattern="yy.MM.dd"/></td>
+								</tr>
+							</c:forEach>
+							
+							
 						</table>
 					</div>
 				</div>
@@ -164,7 +215,9 @@
 
 					<div class="result">
 						<div>
-							<a id="mainImageLink" href="${pageContext.request.contextPath }/reservation/reservation.jsp"> <img
+							<a id="mainImageLink"
+								href="${pageContext.request.contextPath }/reservation/reservation.jsp">
+								<img
 								src="${pageContext.request.contextPath }/resources/img/index/1.jpg"
 								alt="결과" class="main-image" width="100%">
 							</a>
