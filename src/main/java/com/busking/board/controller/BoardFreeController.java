@@ -60,6 +60,9 @@ public class BoardFreeController extends HttpServlet {
 			service = new BoardFreeServiceImpl();
 			service.delete(request, response);
 			
+		} else if(command.equals("/board/board_comment.boardFree")) {
+			service = new BoardFreeServiceImpl();
+			service.getCommentList(request, response);
 		}
 	}
 }
