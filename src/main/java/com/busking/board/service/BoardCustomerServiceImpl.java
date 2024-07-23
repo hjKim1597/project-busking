@@ -26,9 +26,11 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 	//리스트 가져오기
 	@Override
 	public void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		//글 목록
+		
 		// request
-//		String page = (String) request.getAttribute("page");
+		String page = (String) request.getAttribute("page");
 		int pageNum = 1;
 		
 		// DTO
@@ -76,8 +78,8 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		mapper.regist(dto);
 
 		// response
-		response.sendRedirect("customer_center_index.customer_board");
-
+		request.getRequestDispatcher("customer_center_index.jsp").forward(request, response);
+		
 	}
 
 	// 글 내용
@@ -99,7 +101,7 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		
 		// response
 		request.setAttribute("dto", dto);
-		request.getRequestDispatcher("board_free_content.jsp").forward(request, response);
+		request.getRequestDispatcher("customer_center_index.jsp").forward(request, response);
 		
 	}
 

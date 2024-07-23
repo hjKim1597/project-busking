@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import com.busking.board.service.BoardCustomerService;
 import com.busking.board.service.BoardCustomerServiceImpl;
-import com.busking.board.service.BoardServiceFree;
-import com.busking.board.service.BoardServiceNews;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,7 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("*.customer_board")
+@WebServlet("*.customer")
 public class BoardCustomerController extends HttpServlet {
 
 	@Override
@@ -42,26 +40,29 @@ public class BoardCustomerController extends HttpServlet {
 		BoardCustomerService service;
 		
 		
-		if (command.equals("/customer_center/customer_center_index.customer_board")) {
+		if (command.equals("/customer_center/customer_center_index.customer")) {
 			service = new BoardCustomerServiceImpl();
 			service.regist(request, response);
 			
 			System.out.println("등록기능 요청");
-			//request.getRequestDispatcher("board_write.jsp").forward(request, response);
 
-		} else if(command.equals("/customer_center/customer_center_index.customer_board")) {
+			
+		} else if(command.equals("/customer_center/customer_center_index.customer")) {
 			
 			service = new BoardCustomerServiceImpl();
             service.getList(request, response);
 			System.out.println("공지사항 요청");
 			
-		} else if(command.equals("/customer_center/customer_notice_list.customer_board")) {
+		} else if(command.equals("/customer_center/customer_notice_list.customer")) {
 			//누르면 데이터가 필요하면 서비스
 			//아니면 리다이렉트
 			
+			
+			//데이터 갖고서 이동
 			service = new BoardCustomerServiceImpl();
 			service.getList(request, response);
 			
+			System.out.println("공지 화면 이동");
 		}
 	}
 }
