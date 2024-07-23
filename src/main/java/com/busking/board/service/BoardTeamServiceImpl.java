@@ -115,4 +115,69 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		out.println("location.href='board_team_list.boardTeam';");
 		out.println("</script>");
 	}
+	
+	@Override
+	public void getBefore(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// request
+		String teamNum = request.getParameter("teamNum");
+		
+		// DTO
+		BoardTeamDTO dto = new BoardTeamDTO();
+		
+		// Mybatis
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardTeamMapper mapper = sql.getMapper(BoardTeamMapper.class);
+		dto = mapper.getContent(teamNum);
+		dto.setTeamNum(teamNum);
+		
+		// response
+		request.setAttribute("dto", dto);
+		request.getRequestDispatcher("board_team_edit.jsp").forward(request, response);
+
+	}
+	
+	@Override
+	public void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// request
+		String teamNum = request.getParameter("teamNum");
+		String teamTitle = request.getParameter("title");
+		String teamCount = request.getParameter("teamCount");
+		String teamResult = request.getParameter("teamResult");
+		String teamContent = request.getParameter("content");
+		
+		// DTO
+		BoardTeamDTO dto = new BoardTeamDTO();
+		dto.setTeamNum(teamNum);
+		dto.setTeamTitle(teamTitle);
+		dto.setTeamCount(Integer.parseInt(teamCount));
+		dto.setTeamResult(teamResult);
+		dto.setTeamContent(teamContent);
+		
+		// Mybatis
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardTeamMapper mapper = sql.getMapper(BoardTeamMapper.class);
+		int result = mapper.edit(dto);
+		sql.close();
+		
+		// response
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(result != 0) {
+			out.println("alert('글이 수정되었습니다.');");
+		} else {
+			out.println("alert('글이 수정되지 않았습니다.');");
+		}
+		out.println("location.href='board_team_content.boardTeam?teamNum=" + teamNum + "';");
+		out.println("</script>");
+	}
+	
+	@Override
+	public void getCommentList(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		
+	}
 }

@@ -23,4 +23,7 @@ public interface BoardTeamMapper {
 	
 	// 글 삭제
 	public int delete(String teamNum);
+	
+	// 글 수정
+	public int edit(BoardTeamDTO dto);
 }

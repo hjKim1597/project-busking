@@ -59,17 +59,17 @@
                         </div>
                         <div class="comment_count" title="댓글수">
                             <img src="../resources/img/board_img/comment.png" alt="댓글수">
-                            <span>dto.teamCmtCount</span>
+                            <span>${dto.teamCmtCount }</span>
                         </div>
                     </div>
                     <div class="inner_bottom_right">
                         <button class="delete_button" type="button" data-bno="${dto.teamNum }">삭제</button>
-                        <button class="edit_button" onclick="수정기능">수정</button>
+                       	<button class="edit_button" type="button" onclick="location.href='board_team_edit.boardTeam?teamNum=${dto.teamNum }'">수정</button>
                         <button class="list_button" type="button" onclick="location.href='board_team_list.boardTeam';">목록</button>
                     </div>
                 </div>
                 <div class="comment_box">
-                    <iframe src="board_comment.jsp" frameborder="0" width="100%" height="100%"></iframe>
+                    <iframe src="board_comment.boardTeam" frameborder="0" width="100%" height="100%"></iframe>
                 </div>
             </div>
         </div>
