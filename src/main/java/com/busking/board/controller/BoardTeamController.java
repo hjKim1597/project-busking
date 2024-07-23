@@ -60,6 +60,28 @@ public class BoardTeamController extends HttpServlet {
 			service = new BoardTeamServiceImpl();
 			service.delete(request, response);
 			
+		} else if(command.equals("/board/board_team_edit.boardTeam")) {
+			service = new BoardTeamServiceImpl();
+			service.getBefore(request, response);
+			
+		} else if(command.equals("/board/board_team_editForm.boardTeam")) {
+			service = new BoardTeamServiceImpl();
+			service.edit(request, response);
+			
+		} else if(command.equals("/board/board_comment.boardTeam")) {
+			service = new BoardTeamServiceImpl();
+			service.getCommentList(request, response);
+			
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
