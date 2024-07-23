@@ -25,13 +25,14 @@ public class BoardCustomerDAO {
 		try {
 			// 커넥션 풀에 사용할 객체를 얻어옴
 			InitialContext init = new InitialContext(); // 시작설정 객체
+			
+			//ds = (DataSource) init.lookup("java:comp/env/jdbc/oracle");
+			ds = (DataSource) init.lookup("jdbc:oracle:thin:@172.30.1.10:1521:xe");
 
-			ds = (DataSource) init.lookup("java:comp/env/jdbc/oracle");
 			// context.xml 파일에서 name에 해당하는 값을 넣는다
 
 		} catch (Exception e) {
 			// TODO: handle exception
-
 			System.out.println("커넥션 풀 에러났을때");
 		}
 
@@ -58,10 +59,11 @@ public class BoardCustomerDAO {
 	// 16. 글 등록 메서드 만들기, 매개변수 3개를 받아야한다
 	// 보이드는 리턴값 여부에 따라 적는다 void 반환 없음
 	public void regist(String writer, String title, String content) {
-		String sql = "INSERT INTO BOARD(BNO, WRITER, TITLE, CONTENT) VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?)";
+		String sql = "INSERT INTO NOTICE(NOTICE_NUM, MANAGER_ID, NOTICE_TITLE, NOTICE_CONTENT, ) VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?)";
 		// BNO는 시퀀스가 넣어주고 나머지 2개는 디폴트다
 		// PK숫자이면 시퀀스가 처리해준다
-
+		
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

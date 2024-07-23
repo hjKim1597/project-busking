@@ -7,19 +7,19 @@ import com.busking.util.paging.PageVO;
 public interface BoardCustomerMapper {
 
 	// 글 목록 조회
-	public ArrayList<BoardFreeDTO> getList(PageVO pageVO);
+	public ArrayList<BoardCustomerDTO> getList(PageVO pageVO);
 
 	// 글 개수 조회
 	public int getTotal();
 
 	// 글 작성
-	public void write(BoardFreeDTO dto);
+	public int regist(BoardCustomerDTO dto);
 
 	// 글 조회
-	public BoardFreeDTO getContent(String freeNum);
+	public BoardCustomerDTO getContent(String noticeNum);
 
 	// 글 조회수 증가
-	public void increaseHit(String freeNum);
+	public void increaseHit(String noticeNum);
 
 	// --------------------
 //	// 글 목록 조회

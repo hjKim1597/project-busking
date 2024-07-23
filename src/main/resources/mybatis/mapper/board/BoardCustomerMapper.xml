@@ -7,44 +7,22 @@
 
 <mapper namespace="com.busking.board.model.BoardCustomerMapper">
 
-	<select id="getList" parameterType="com.busking.util.paging.PageVO" resultType="com.busking.board.model.BoardFreeDTO">
+	<select id="getList" resultType="com.busking.board.model.BoardCustomerDTO">
 		
-		SELECT FREE_NUM, FREE_TITLE, FREE_WRITER, FREE_REGDATE, FREE_HIT 
-		FROM (
-			SELECT ROWNUM RN,
-			       B.* 
-			FROM BOARD_FREE B 
-			ORDER BY FREE_NUM DESC 
-		) 
-		WHERE RN > (#{pageNum} - 1) * #{amount} and #{pageNum} * #{amount} >= RN 				
+		SELECT NOTICE_NUM, NOTICE_TITLE, MANAGER_ID, NOTICE_REGDATE, NOTICE_HIT  
+		FROM NOTICE
 	</select>
-	
-	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM BOARD_FREE 
-	</select>
-	
-	<insert id="write" parameterType="com.busking.board.model.BoardFreeDTO">
-		INSERT INTO BOARD_FREE(FREE_NUM, 
-							   FREE_WRITER, 
-							   FREE_TITLE,
-							   FREE_CONTENT,
-							   FREE_REGDATE) 
-		VALUES('FREE_' || LPAD(BOARD_FREE_SEQ.NEXTVAL, 8, '0'),
-		       #{freeWriter},
-		       #{freeTitle},
-		       #{freeContent},
-		       SYSDATE)
+
+	<insert id="regist" parameterType="com.busking.board.model.BoardCustomerDTO">
+		
+		INSERT INTO NOTICE(NOTICE_NUM, MANAGER_ID, NOTICE_TITLE,
+                       NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT)
+    VALUES(#{noticeNum}, #{managerId}, #{noticeTitle},
+           #{noticeContent}, #{noticeRegdate}, #{noticeHit})
+           
 	</insert>
-	
-	<select  id="getContent" resultType="com.busking.board.model.BoardFreeDTO" parameterType="String">
-		SELECT FREE_TITLE, FREE_LIKE_COUNT, FREE_WRITER, FREE_REGDATE, FREE_CONTENT, FREE_HIT, FREE_CMT_COUNT 
-		FROM BOARD_FREE 
-		WHERE FREE_NUM = #{freeNum}
-	</select>
-	
-	<update id="increaseHit" parameterType="String">
-		UPDATE BOARD_FREE SET FREE_HIT = FREE_HIT + 1 WHERE FREE_NUM = #{freeNum}
-	</update>
+
+
 
 </mapper>
 

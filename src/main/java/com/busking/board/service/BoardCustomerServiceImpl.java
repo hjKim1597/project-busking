@@ -20,62 +20,67 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class BoardCustomerServiceImpl implements BoardCustomerService {
-	
+
 	private SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
 
-	
+	//리스트 가져오기
 	@Override
 	public void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		// request
-		String page = (String)request.getAttribute("page");
-		int pageNum = Integer.parseInt(page);
-		// DTO
-		ArrayList<BoardFreeDTO> list = new ArrayList<>();
+//		String page = (String) request.getAttribute("page");
+		int pageNum = 1;
 		
+		// DTO
+		ArrayList<BoardCustomerDTO> list = new ArrayList<>();
+
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardCustomerMapper mapper = sql.getMapper(BoardCustomerMapper.class);
-		int total = mapper.getTotal();
+		int total = 1;
 		PageVO pageVO = new PageVO(pageNum, total);
 		list = mapper.getList(pageVO);
 		sql.close();
-		
+
 		// response
 		request.setAttribute("freeList", list);
 		request.setAttribute("pageVO", pageVO);
 		request.getRequestDispatcher("customer_center_index.jsp").forward(request, response);
 	}
-	
-	//글 등록
+
+	// 글 등록
 	@Override
-	public void write(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public void regist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		// 확인하기
+		System.out.println("글 작성 OK");
+
 		// request
-		String freeTitle = request.getParameter("title");
-		String freeContent = request.getParameter("content");
+		// String managerId = request.getParameter("writer");
+		String noticeTitle = request.getParameter("title");
+		String noticeContent = request.getParameter("content");
+
 		// DTO
-		BoardFreeDTO dto = new BoardFreeDTO();
-		dto.setFreeWriter("홍길동");
-		dto.setFreeTitle(freeTitle);
-		dto.setFreeContent(freeContent);
+		BoardCustomerDTO dto = new BoardCustomerDTO();
+		dto.setManagerId("홍길동");
+		dto.setNoticeTitle(noticeTitle);
+		dto.setNoticeContent(noticeContent);
+
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
-		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
-		
-		//Mapper 실행시 커밋이 반영된다
-		SqlSession sql2 = sqlSessionFactory.openSession(true);
-		BoardCustomerMapper board = sql2.getMapper(BoardCustomerMapper.class);
-		//int result = board.regist(dto);
-		mapper.write(dto);
+		BoardCustomerMapper mapper = sql.getMapper(BoardCustomerMapper.class);
+		// Mapper 실행시 커밋이 반영된다
 
-		
+		// int result = board.regist(dto);
 
-		mapper.write(dto);
+		mapper.regist(dto);
+
 		// response
-		response.sendRedirect("list.customer_board");
+		response.sendRedirect("customer_center_index.customer_board");
+
 	}
-	
+
+	// 글 내용
 	@Override
 	public void getContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -97,7 +102,5 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		request.getRequestDispatcher("board_free_content.jsp").forward(request, response);
 		
 	}
-	
 
-	
 }

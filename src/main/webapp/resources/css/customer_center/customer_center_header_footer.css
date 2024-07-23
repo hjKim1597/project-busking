@@ -282,13 +282,7 @@ td {
     float: right;
 }
 
-.index-footer>.footer-mid {
-    padding: 15px 300px 15px 300px;
-    background-color: #BAD98B;
-    color: #999;
-    width: 100%;
-    overflow: hidden;
-}
+
 
 .footer-mid>div>p {
     float: left;

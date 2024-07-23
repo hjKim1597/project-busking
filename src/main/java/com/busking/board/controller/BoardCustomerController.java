@@ -36,56 +36,32 @@ public class BoardCustomerController extends HttpServlet {
 		String path = request.getContextPath(); // 프로젝트 식별 주소
 		String command = uri.substring(path.length());
 
-		System.out.println(command); // 요청 되는지 보기
+		System.out.println("요청됨 " + command); // 요청 되는지 보기
 
-		// 12. BoardService 선언해두기
+		//BoardService 선언해두기
 		BoardCustomerService service;
-
-//		if (command.equals("/customer_center/registForm.customer_board")) {
-//			
-//			System.out.println("컨트롤러");
-//			
-//			//서비스를 거쳐서 목록이 나온다
-//			service = new BoardCustomerServiceImpl();
-//			service.write(request, response);
-//		} else if (command.equals("/customer_center/list.customer_board")) {
-//			response.sendRedirect("list.customer_board.jsp");
-//		}
-
+		
+		
 		if (command.equals("/customer_center/customer_center_index.customer_board")) {
-			response.sendRedirect("customer_center_index.jsp");
-			System.out.println("index 이동");
+			service = new BoardCustomerServiceImpl();
+			service.regist(request, response);
+			
+			System.out.println("등록기능 요청");
+			//request.getRequestDispatcher("board_write.jsp").forward(request, response);
 
-		} else if (command.equals("/customer_center/customer_center_month.customer_board")) {
-			response.sendRedirect("customer_center_month.jsp");
-
-		} else if (command.equals("/customer_center/customer_center_guide.customer_board")) {
-			response.sendRedirect("customer_center_guide.jsp");
-
-		} else if (command.equals("/customer_center/customer_center_FAQ.customer_board")) {
-			response.sendRedirect("customer_center_FAQ.jsp");
-
-		} else if (command.equals("/customer_center/customer_center_index.customer_board")) {
-			String page = request.getParameter("page");
-			if (page == null)
-				page = "1";
-			request.setAttribute("page", page);
-
+		} else if(command.equals("/customer_center/customer_center_index.customer_board")) {
+			
+			service = new BoardCustomerServiceImpl();
+            service.getList(request, response);
+			System.out.println("공지사항 요청");
+			
+		} else if(command.equals("/customer_center/customer_notice_list.customer_board")) {
+			//누르면 데이터가 필요하면 서비스
+			//아니면 리다이렉트
+			
 			service = new BoardCustomerServiceImpl();
 			service.getList(request, response);
-
-		} else if (command.equals("/customer_center/customer_center_FAQ.customer_board")) {
-			String page = request.getParameter("page");
-			if (page == null)
-				page = "1";
-			request.setAttribute("page", page);
-
-			service = new BoardCustomerServiceImpl();
-			service.getList(request, response);
-
-		} else if(()) {
 			
 		}
-
 	}
 }

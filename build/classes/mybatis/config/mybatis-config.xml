@@ -31,6 +31,9 @@
 	    <!-- 마이페이지 매퍼 위치 -->
 	    <mapper resource="mybatis/mapper/MypageMapper.xml"/>
 	    
+	    <!-- 공지사항 매퍼 위치 -->
+	    <mapper resource="mybatis/mapper/board/BoardCustomerMapper.xml"/>
+	    
 	  </mappers>
 
 </configuration>
