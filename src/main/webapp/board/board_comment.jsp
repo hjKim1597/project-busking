@@ -44,7 +44,7 @@
 	        <div class="form-group board_comment_write">
 	            <textarea class="form-control" rows="5" id="comment"></textarea>
 	        </div>
-	        <div class="board_comment_button"><button value="등록버튼" type="button" onclick="location.href='board_comment_write.'">등록</button></div>
+	        <div class="board_comment_button"><button value="등록버튼" type="button" onclick="location.href='board_comment_write.comment?bno='">등록</button></div>
 	    </div>
 	</section>
 	

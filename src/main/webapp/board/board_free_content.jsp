@@ -65,7 +65,7 @@
                     	</div>
                 	</div>
 					<div class="comment_box">
-	                	<iframe src="board_comment.boardFree?freeNum=${dto.freeNum }" frameborder="0" scrolling="no"></iframe>
+	                	<iframe src="board_comment_list.comment?subject=free&bno=${dto.freeNum }" frameborder="0" scrolling="no"></iframe>
 					</div>
             	</div>
         	</div>

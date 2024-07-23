@@ -9,10 +9,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardFreeDTO;
 import com.busking.board.model.BoardFreeMapper;
-import com.busking.board.model.BoardTeamDTO;
-import com.busking.board.model.BoardTeamMapper;
-import com.busking.board.model.CommentFreeDTO;
-import com.busking.board.model.CommentFreeMapper;
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
 
@@ -176,29 +172,6 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		out.println("location.href='board_free_content.boardFree?freeNum=" + freeNum + "';");
 		out.println("</script>");
 		
-	}
-
-	
-	@Override
-	public void getCommentList(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		// request
-		String freeNum = request.getParameter("freeNum");	
-		System.out.println(freeNum);
-		
-		// DTO
-		ArrayList<CommentFreeDTO> commentList = new ArrayList<>();
-		
-		// Mybatis
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		CommentFreeMapper mapper = sql.getMapper(CommentFreeMapper.class);
-		commentList = mapper.getList(freeNum);
-		sql.close();
-		
-		// response
-		request.setAttribute("commentList",	commentList);
-		request.getRequestDispatcher("board_comment.jsp").forward(request, response);
 	}
 
 }

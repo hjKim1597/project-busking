@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.busking.board.model.BoardCommentMapper">
+
+	<select id="getCommentFreeList" parameterType="String" resultType="com.busking.board.model.CommentFreeDTO">
+		SELECT COM_FREE_WRITER, COM_FREE_CONTENT, COM_FREE_REGDATE, COM_FREE_LIKE_COUNT, COM_FREE_REPLY, COM_FREE_GROUP 
+		FROM COMMENT_FREE 
+		WHERE COM_FREE_BNO = #{comFreeBno} 
+		ORDER BY COM_FREE_GROUP, COM_FREE_NUM
+	</select>
+	
+	<select id="getCommentNewsList" parameterType="String" resultType="com.busking.board.model.CommentNewsDTO">
+		SELECT COM_NEWS_WRITER, COM_NEWS_CONTENT, COM_NEWS_REGDATE, COM_NEWS_LIKE_COUNT, COM_NEWS_REPLY, COM_NEWS_GROUP 
+		FROM COMMENT_NEWS 
+		WHERE COM_NEWS_BNO = #{comNewsBno} 
+		ORDER BY COM_NEWS_GROUP, COM_NEWS_NUM
+	</select>
+	
+	<select id="getCommentTeamList" parameterType="String" resultType="com.busking.board.model.CommentTeamDTO">
+		SELECT COM_TEAM_WRITER, COM_TEAM_CONTENT, COM_TEAM_REGDATE, COM_TEAM_LIKE_COUNT, COM_TEAM_REPLY, COM_TEAM_GROUP 
+		FROM COMMENT_TEAM 
+		WHERE COM_TEAM_BNO = #{comTeamBno} 
+		ORDER BY COM_TEAM_GROUP, COM_TEAM_NUM
+	</select>
+	
+	<insert id="writeCommentFree" parameterType="com.busking.board.model.CommentFreeDTO">
+		
+		
+		
+	</insert>
+
+</mapper>

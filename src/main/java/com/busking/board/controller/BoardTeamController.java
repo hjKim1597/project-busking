@@ -68,20 +68,7 @@ public class BoardTeamController extends HttpServlet {
 			service = new BoardTeamServiceImpl();
 			service.edit(request, response);
 			
-		} else if(command.equals("/board/board_comment.boardTeam")) {
-			service = new BoardTeamServiceImpl();
-			service.getCommentList(request, response);
-			
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

@@ -174,10 +174,4 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		out.println("</script>");
 	}
 	
-	@Override
-	public void getCommentList(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		
-	}
 }

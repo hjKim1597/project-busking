@@ -9,8 +9,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardNewsDTO;
 import com.busking.board.model.BoardNewsMapper;
-import com.busking.board.model.CommentFreeDTO;
-import com.busking.board.model.CommentFreeMapper;
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
 
@@ -170,26 +168,4 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		
 	}
 
-	
-	@Override
-	public void getCommentList(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		// request
-		String newsNum = request.getParameter("newsNum");	
-		System.out.println(newsNum);
-		
-		// DTO
-		ArrayList<CommentFreeDTO> commentList = new ArrayList<>();
-		
-		// Mybatis
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		CommentFreeMapper mapper = sql.getMapper(CommentFreeMapper.class);
-		commentList = mapper.getList(newsNum);
-		sql.close();
-		
-		// response
-		request.setAttribute("commentList",	commentList);
-		request.getRequestDispatcher("board_comment.jsp").forward(request, response);
-	}
 }

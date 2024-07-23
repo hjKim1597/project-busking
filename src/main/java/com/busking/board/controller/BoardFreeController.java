@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import com.busking.board.service.BoardFreeService;
 import com.busking.board.service.BoardFreeServiceImpl;
-import com.busking.board.service.BoardTeamServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -69,9 +68,6 @@ public class BoardFreeController extends HttpServlet {
 			service = new BoardFreeServiceImpl();
 			service.delete(request, response);
 			
-		} else if(command.equals("/board/board_comment.boardFree")) {
-			service = new BoardFreeServiceImpl();
-			service.getCommentList(request, response);
 		}
 	}
 }

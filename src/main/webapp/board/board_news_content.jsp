@@ -64,7 +64,7 @@
 	                    </div>
 	                </div>
 					<div class="comment_box">
-		                <iframe src="board_comment.jsp" frameborder="0" scrolling="no"></iframe>
+		                <iframe src="board_comment_list.comment?subject=news&bno=${dto.newsNum }" frameborder="0" scrolling="no"></iframe>
 					</div>
 	            </div>
 	        </div>
