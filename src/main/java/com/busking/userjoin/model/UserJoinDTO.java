@@ -1,27 +1,25 @@
-package com.busking.mypage.model;
+package com.busking.userjoin.model;
 
-public class MypageDTO {
-	
-	private String userId;
-	private String userPw;
-	private String userName;
-	private String userEmail;
-	private int userPno;
-	private String userAddr;
+public class UserJoinDTO {
+    private String userId;
+    private String userPw;
+    private String userName;
+    private String userEmail;
+    private int userPno;
+    private String userAddr;
+public UserJoinDTO() {
+}
+    public UserJoinDTO(String userId, String userPw, String userName, String userEmail, int userPno, String userAddr) {
+        this.userId = userId;
+        this.userPw = userPw;
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userPno = userPno;
+        this.userAddr = userAddr;
+    }
 
-	public MypageDTO() {
-	}
-	
-	
-	public MypageDTO(String userId, String userPw, String userName, String userEmail, int userPno, String userAddr) {
-		super();
-		this.userId = userId;
-		this.userPw = userPw;
-		this.userName = userName;
-		this.userEmail = userEmail;
-		this.userPno = userPno;
-		this.userAddr = userAddr;
-	}
+    // Getters and Setters
+
 	
 	public String getUserId() {
 		return userId;
