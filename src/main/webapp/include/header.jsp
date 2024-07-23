@@ -99,13 +99,13 @@
 							data-toggle="dropdown" href="#">고객센터 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_news_list.board">공지사항</a></li>
+									href="${pageContext.request.contextPath }/customer_center/customer_notice_list.customer">공지사항</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_free_list.board">이달의예약</a></li>
+									href="${pageContext.request.contextPath }/customer_center/customer_center_month.customer">이달의예약</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_team_list.board">이용안내</a></li>
+									href="${pageContext.request.contextPath }/customer_center/customer_center_guide.customer">이용안내</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_ask_list.board">자주묻는질문</a></li>
+									href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.customer">자주묻는질문</a></li>
 							</ul></li>
 
 

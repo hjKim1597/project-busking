@@ -15,4 +15,7 @@ public interface BoardFreeService {
 	void getContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
 	void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
+	void getCommentList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
 }

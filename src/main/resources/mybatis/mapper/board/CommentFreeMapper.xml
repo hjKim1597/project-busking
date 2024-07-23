@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.busking.board.model.CommentFreeMapper">
+
+	<select id="getList" parameterType="String" resultType="com.busking.board.model.CommentFreeDTO">
+		SELECT COM_FREE_WRITER, COM_FREE_CONTENT, COM_FREE_REGDATE, COM_FREE_LIKE_COUNT, COM_FREE_REPLY, COM_FREE_GROUP 
+		FROM COMMENT_FREE 
+		WHERE COM_FREE_BNO = #{freeNum} 
+		ORDER BY COM_FREE_GROUP, COM_FREE_NUM
+	</select>
+	
+	
+
+</mapper>

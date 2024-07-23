@@ -29,6 +29,9 @@
 	    <mapper resource="mybatis/mapper/board/BoardNewsMapper.xml"/>
 	    <mapper resource="mybatis/mapper/board/BoardTeamMapper.xml"/>
 	    
+	    <!-- 댓글 매퍼 위치 -->
+	    <mapper resource="mybatis/mapper/board/CommentFreeMapper.xml"/>
+	    
 	    <!-- 회원가입 매퍼 위치 -->
 	    <mapper resource="mybatis/mapper/userjoin/UserJoinMapper.xml"/>
 	    
