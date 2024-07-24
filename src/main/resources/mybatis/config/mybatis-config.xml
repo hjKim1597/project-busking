@@ -41,6 +41,9 @@
 	    <!-- 공지사항 매퍼 위치 -->
 	    <mapper resource="mybatis/mapper/board/BoardCustomerMapper.xml"/>
 	    
+	    <!-- 예약 매퍼 위치 -->
+	    <mapper resource="mybatis/mapper/reservation/ReservationLocationMapper.xml"/>
+	    
 	  </mappers>
 	  
 
