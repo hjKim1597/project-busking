@@ -95,9 +95,20 @@
                                                     <tbody>
                                                         <!--데이터 받아오기-->
                                                         
-                                                        
-											
-
+                                                        <%-- <c:forEach var="dto" items="${noticeList }">
+															<tr>
+																<td>${dto.noticeNum }</td>
+																<td>${dto.managerId }</td>
+																<td>
+																	<!-- 17) get으로 값 넘기기 href="getContent.board?키=값" 으로 --> 
+																	<a href="getContent.board?bno=${dto.bno} ">${dto.title }</a>
+																</td>
+																<td><fmt:formatDate value="${dto.regdate }"
+																		pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" /></td>
+																<td>${dto.hit }</td>
+															</tr>
+														</c:forEach> --%>
+                                               
 								                        <c:forEach var="dto" items="${noticeList }">
 															<tr>
 																<td>${dto.noticeNum }</td>

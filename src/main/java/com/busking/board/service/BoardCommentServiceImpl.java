@@ -37,7 +37,8 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		
 		// response
 		request.setAttribute("commentList", commentList);
-		request.getRequestDispatcher("board_comment.jsp").forward(request, response);
+		request.setAttribute("bno", comFreeBno);
+		request.getRequestDispatcher("board_free_comment.jsp").forward(request, response);
 	}
 	
 	public void getCommentNewsList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,7 +57,8 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		
 		// response
 		request.setAttribute("commentList", commentList);
-		request.getRequestDispatcher("board_comment.jsp").forward(request, response);
+		request.setAttribute("bno", comNewsBno);
+		request.getRequestDispatcher("board_news_comment.jsp?bno=" + comNewsBno).forward(request, response);
 	}
 	
 	public void getCommentTeamList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -75,41 +77,85 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		
 		// response
 		request.setAttribute("commentList", commentList);
-		request.getRequestDispatcher("board_comment.jsp").forward(request, response);
+		request.setAttribute("bno", comTeamBno);
+		request.getRequestDispatcher("board_free_comment.jsp?bno=" + comTeamBno).forward(request, response);
 	}
 	
 	@Override
 	public void writeCommentFree(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// request
-		String comTeamBno = request.getParameter("bno");
+		String comFreeBno = request.getParameter("bno");
+		String comFreeContent = request.getParameter("content");
+		String comFreeWriter = "김길동";
 		
 		// DTO
-		ArrayList<CommentTeamDTO> commentList = new ArrayList<>();
+		CommentFreeDTO dto = new CommentFreeDTO();
+		dto.setComFreeBno(comFreeBno);
+		dto.setComFreeContent(comFreeContent);
+		dto.setComFreeWriter(comFreeWriter);
 		
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);
-		commentList = mapper.getCommentTeamList(comTeamBno);
+		mapper.writeCommentFree(dto);
 		sql.close();
 		
 		// response
-		request.setAttribute("commentList", commentList);
-		request.getRequestDispatcher("board_comment.jsp").forward(request, response);
+		request.setAttribute("bno", comFreeBno);
+		request.getRequestDispatcher("board_comment_list.comment?subject=free").forward(request, response);
 		
 	}
 	
 	@Override
 	public void writeCommentNews(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// request
+		String comNewsBno = request.getParameter("bno");
+		String comNewsContent = request.getParameter("content");
+		String comNewsWriter = "김길동";
+		
+		// DTO
+		CommentNewsDTO dto = new CommentNewsDTO();
+		dto.setComNewsBno(comNewsBno);
+		dto.setComNewsContent(comNewsContent);
+		dto.setComNewsWriter(comNewsWriter);
+		
+		// Mapper
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);
+		mapper.writeCommentNews(dto);
+		sql.close();
+		
+		// response
+		request.setAttribute("bno", comNewsBno);
+		request.getRequestDispatcher("board_comment_list.comment?subject=news").forward(request, response);
 		
 	}
 	
 	@Override
 	public void writeCommentTeam(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// request
+		String comTeamBno = request.getParameter("bno");
+		String comTeamContent = request.getParameter("content");
+		String comTeamWriter = "김길동";
+		
+		// DTO
+		CommentTeamDTO dto = new CommentTeamDTO();
+		dto.setComTeamBno(comTeamBno);
+		dto.setComTeamContent(comTeamContent);
+		dto.setComTeamWriter(comTeamWriter);
+		
+		// Mapper
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);
+		mapper.writeCommentTeam(dto);
+		sql.close();
+		
+		// response
+		request.setAttribute("bno", comTeamBno);
+		request.getRequestDispatcher("board_comment_list.comment?subject=team").forward(request, response);
 		
 	}
 	

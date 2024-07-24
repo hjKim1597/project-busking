@@ -27,9 +27,48 @@
 	</select>
 	
 	<insert id="writeCommentFree" parameterType="com.busking.board.model.CommentFreeDTO">
-		
-		
-		
+		INSERT INTO COMMENT_FREE(COM_FREE_NUM,  
+		                         COM_FREE_WRITER,  
+		                         COM_FREE_CONTENT,  
+		                         COM_FREE_REGDATE, 
+		                         COM_FREE_BNO, 
+		                         COM_FREE_GROUP) 
+		VALUES('CF_' || LPAD(COMMENT_FREE_SEQ.NEXTVAL, 8, '0'), 
+		       #{comFreeWriter},  
+		       #{comFreeContent}, 
+		       SYSDATE, 
+		       #{comFreeBno}, 
+		       'CF_' || LPAD(COMMENT_FREE_SEQ.CURRVAL, 8, '0'))	
+	</insert>
+	
+	<insert id="writeCommentNews" parameterType="com.busking.board.model.CommentNewsDTO">
+		INSERT INTO COMMENT_NEWS(COM_NEWS_NUM,  
+		                         COM_NEWS_WRITER,  
+		                         COM_NEWS_CONTENT,  
+		                         COM_NEWS_REGDATE, 
+		                         COM_NEWS_BNO, 
+		                         COM_NEWS_GROUP) 
+		VALUES('CN_' || LPAD(COMMENT_NEWS_SEQ.NEXTVAL, 8, '0'), 
+		       #{comNewsWriter},  
+		       #{comNewsContent}, 
+		       SYSDATE, 
+		       #{comNewsBno}, 
+		       'CN_' || LPAD(COMMENT_NEWS_SEQ.CURRVAL, 8, '0'))	
+	</insert>
+	
+	<insert id="writeCommentTeam" parameterType="com.busking.board.model.CommentTeamDTO">
+		INSERT INTO COMMENT_TEAM(COM_TEAM_NUM,  
+		                         COM_TEAM_WRITER,  
+		                         COM_TEAM_CONTENT,  
+		                         COM_TEAM_REGDATE, 
+		                         COM_TEAM_BNO, 
+		                         COM_TEAM_GROUP) 
+		VALUES('CT_' || LPAD(COMMENT_TEAM_SEQ.NEXTVAL, 8, '0'), 
+		       #{comTeamWriter},  
+		       #{comTeamContent}, 
+		       SYSDATE, 
+		       #{comTeamBno}, 
+		       'CT_' || LPAD(COMMENT_TEAM_SEQ.CURRVAL, 8, '0'))	
 	</insert>
 
 </mapper>

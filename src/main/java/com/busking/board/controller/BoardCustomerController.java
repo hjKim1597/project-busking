@@ -36,33 +36,45 @@ public class BoardCustomerController extends HttpServlet {
 
 		System.out.println("요청됨 " + command); // 요청 되는지 보기
 
-		//BoardService 선언해두기
+		// BoardService 선언해두기
 		BoardCustomerService service;
-		
-		
+
 		if (command.equals("/customer_center/customer_center_index.customer")) {
+			// 누르면 데이터가 필요하면 서비스
+			// 아니면 리다이렉트
+
+			// 데이터 필요한 공지
+			service = new BoardCustomerServiceImpl();
+			service.getList(request, response);
+
+			System.out.println("공지 화면 이동");
+			
+			//response.sendRedirect("customer_center_index.jsp");
+			//response.sendRedirect(request.getContextPath() + "/customer_center_index.jsp");
+
+		} else if (command.equals("/customer_center/customer_center_month.customer")) {
+			//이달의 예약
+			
+			response.sendRedirect("/customer_center/customer_center_month.jsp");
+			
+		} else if (command.equals("/customer_center/customer_center_guide.customer")) {
+			//이용안내
+			
+			response.sendRedirect("/customer_center/customer_center_guide.jsp");
+
+		} else if (command.equals("/customer_center/customer_center_FAQ.customer")) {
+			//자주묻는질문FAQ
+			response.sendRedirect("/customer_center/customer_center_FAQ.jsp");
+
+		} else if (command.equals("/customer_center/registForm.customer")) {
+			//글 등록
+			
 			service = new BoardCustomerServiceImpl();
 			service.regist(request, response);
 			
-			System.out.println("등록기능 요청");
-
+			System.out.println("컨트롤러에서 글 등록 화면으로");
 			
-		} else if(command.equals("/customer_center/customer_center_index.customer")) {
-			
-			service = new BoardCustomerServiceImpl();
-            service.getList(request, response);
-			System.out.println("공지사항 요청");
-			
-		} else if(command.equals("/customer_center/customer_notice_list.customer")) {
-			//누르면 데이터가 필요하면 서비스
-			//아니면 리다이렉트
-			
-			
-			//데이터 갖고서 이동
-			service = new BoardCustomerServiceImpl();
-			service.getList(request, response);
-			
-			System.out.println("공지 화면 이동");
 		}
+
 	}
 }

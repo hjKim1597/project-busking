@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="comment_box">
-                    <iframe src="board_comment_list.comment?subject=team&bno=${dto.teamNum }" frameborder="0" width="100%" height="100%"></iframe>
+                    <iframe src="board_comment_list.comment?subject=team&bno=${dto.teamNum }" frameborder="0" scrolling="no"></iframe>
                 </div>
             </div>
         </div>
