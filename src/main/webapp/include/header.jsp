@@ -61,7 +61,8 @@
 
 						<li class="active index-menu"><a href="${pageContext.request.contextPath }/index.jsp">Main</a></li>
 
-						<li class="header-res"><a href="${pageContext.request.contextPath }/reservation/reservation.jsp" class="index-menu">예약하기</a></li>
+						<!-- 예약 -->
+						<li class="header-res"><a href="${pageContext.request.contextPath }/reservation/reservation.reservation" class="index-menu">예약하기</a></li>
 
 						<!-- 게시판 -->
 						<li class="dropdown"><a class="dropdown-toggle index-menu"
@@ -107,7 +108,7 @@
 								<li><a
 									href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.customer">자주묻는질문</a></li>
 							</ul></li>
-
+							
 
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
