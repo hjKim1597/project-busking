@@ -7,22 +7,41 @@
 	<!-- 공지사항 최신글 4개 -->
 	<select id="getCustomerList"
 		resultType="com.busking.board.model.BoardCustomerDTO">
-		SELECT NOTICE_TITLE, NOTICE_REGDATE FROM NOTICE WHERE 4 >= ROWNUM 
-		ORDER BY NOTICE_REGDATE DESC
+		SELECT NOTICE_TITLE, NOTICE_REGDATE
+		FROM (
+		SELECT
+		NOTICE_TITLE, NOTICE_REGDATE
+		FROM NOTICE
+		ORDER BY NOTICE_NUM DESC
+		)
+		WHERE
+		ROWNUM &lt;= 4
 	</select>
 
 	<!-- 소식게시판 최신글 4개 -->
 	<select id="getNewsList"
 		resultType="com.busking.board.model.BoardNewsDTO">
-		SELECT NEWS_TITLE, NEWS_REGDATE FROM BOARD_NEWS WHERE 4 >= ROWNUM 
-		ORDER BY NEWS_REGDATE DESC
+		SELECT NEWS_TITLE, NEWS_REGDATE
+		FROM (
+			SELECT NEWS_TITLE, NEWS_REGDATE
+			FROM BOARD_NEWS
+			ORDER BY NEWS_NUM DESC
+		)
+		<![CDATA[
+		WHERE ROWNUM <= 4
+		]]>
 	</select>
 
 	<!-- FAQ 최신글 4개 -->
 	<select id="getFAQList"
 		resultType="com.busking.customercenter.model.FAQDTO">
-		SELECT FAQ_TITLE, FAQ_REGDATE FROM FAQ WHERE 4 >= ROWNUM 
-		ORDER BY FAQ_REGDATE DESC
+		SELECT FAQ_TITLE, FAQ_REGDATE
+		FROM (
+		SELECT FAQ_TITLE, FAQ_REGDATE
+		FROM FAQ
+		ORDER BY FAQ_NUM DESC
+		)
+		WHERE ROWNUM &lt;= 4
 	</select>
 
 

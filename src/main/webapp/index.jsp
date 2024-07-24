@@ -78,7 +78,7 @@
 								<tr>
 									<td class="index-board-bottom " 
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-										<a href="#">${dto.noticeTitle}</a>
+										<a href="#"  class="truncate">${dto.noticeTitle}</a>
 										
 									</td>
 									<td class="preview-date"><fmt:formatDate value="${dto.noticeRegdate}" pattern="yy.MM.dd"/></td>
@@ -96,16 +96,19 @@
 						<!-- 게시판 -->
 						<h3>
 							<a
-								href="${pageContext.request.contextPath }/board/board_news_list.jsp">소식게시판</a>
+								href="${pageContext.request.contextPath }/board/board_news_list.boardNews">소식게시판</a>
 						</h3>
 
+
+				
+
 						<table class="index-board">
-						
+														
 							<c:forEach var="dto" items="${NewsList}">
 								<tr>
 									<td class="index-board-bottom "
-										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-										<a href="#" >${dto.newsTitle}</a>
+										style="border-bottom: 1px solid #e3e3e3; margin: 20px;">
+										<a href="#" class="truncate">${dto.newsTitle}</a>
 									</td>
 									<td class="preview-date"><fmt:formatDate value="${dto.newsRegdate}" pattern="yy.MM.dd"/></td>
 								</tr>
@@ -132,7 +135,7 @@
 								<tr>
 									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-										<a href="#">${dto.faqTitle}</a>
+										<a href="#"  class="truncate">${dto.faqTitle}</a>
 									</td>
 									<td class="preview-date"><fmt:formatDate value="${dto.faqRegdate}" pattern="yy.MM.dd"/></td>
 								</tr>
@@ -143,7 +146,6 @@
 					</div>
 				</div>
 			</div>
-
 
 			<div class="container location-pic">
 				<h2>Book Your Busking Spot</h2>

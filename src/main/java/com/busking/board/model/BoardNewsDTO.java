@@ -13,6 +13,15 @@ public class BoardNewsDTO {
 	private int newsCmtCount;
 	private int newsLikeCount;
 	
+	
+	
+	@Override
+	public String toString() {
+		return "BoardNewsDTO [newsNum=" + newsNum + ", newsWriter=" + newsWriter + ", newsTitle=" + newsTitle
+				+ ", newsContent=" + newsContent + ", newsRegdate=" + newsRegdate + ", newsHit=" + newsHit
+				+ ", newsCmtCount=" + newsCmtCount + ", newsLikeCount=" + newsLikeCount + "]";
+	}
+
 	public BoardNewsDTO() {
 	}
 
