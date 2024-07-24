@@ -51,6 +51,7 @@ public class MainController extends HttpServlet{
 		
 		System.out.println(command );
 		
+
 		
 		//MainService 선언
 		MainService service;

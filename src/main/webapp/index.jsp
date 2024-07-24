@@ -78,7 +78,7 @@
 								<tr>
 									<td class="index-board-bottom " 
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-										<a href="#"  class="truncate">${dto.noticeTitle}</a>
+										<a href=""  class="truncate with-style">${dto.noticeTitle}</a>
 										
 									</td>
 									<td class="preview-date"><fmt:formatDate value="${dto.noticeRegdate}" pattern="yy.MM.dd"/></td>
@@ -108,7 +108,7 @@
 								<tr>
 									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px;">
-										<a href="#" class="truncate">${dto.newsTitle}</a>
+										<a href="${pageContext.request.contextPath }/board_news_content.boardNews?newsNum=${dto.newsNum }" class="truncate with-style">${dto.newsTitle}</a>
 									</td>
 									<td class="preview-date"><fmt:formatDate value="${dto.newsRegdate}" pattern="yy.MM.dd"/></td>
 								</tr>
@@ -135,12 +135,11 @@
 								<tr>
 									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-										<a href="#"  class="truncate">${dto.faqTitle}</a>
+										<a href="#"  class="truncate with-style">${dto.faqTitle}</a>
 									</td>
 									<td class="preview-date"><fmt:formatDate value="${dto.faqRegdate}" pattern="yy.MM.dd"/></td>
 								</tr>
 							</c:forEach>
-							
 							
 						</table>
 					</div>
