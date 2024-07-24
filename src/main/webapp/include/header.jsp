@@ -69,7 +69,7 @@
 							data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_news_list.boardNews">NEWS</a></li>
+									href="${pageContext.request.contextPath }/board/board_list.boardNews">NEWS</a></li>
 								<li><a
 									href="${pageContext.request.contextPath }/board/board_free_list.boardFree">자유게시판</a></li>
 								<li><a

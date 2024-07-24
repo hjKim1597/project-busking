@@ -84,6 +84,8 @@ public class UserJoinServiceImpl implements UserJoinService {
             // 세션에 사용자 정보 저장
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
+            session.setAttribute("userId", userId);
+            
             // 로그인 상태 유지 쿠키 설정
             String keepLogin = request.getParameter("keepLogin");
             if ("on".equals(keepLogin)) {
@@ -91,7 +93,7 @@ public class UserJoinServiceImpl implements UserJoinService {
                 loginCookie.setMaxAge(7 * 24 * 60 * 60); // 7일 동안 유지
                 response.addCookie(loginCookie);
             }
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            response.sendRedirect(request.getContextPath() + "/index.main");
         } else {
             response.setContentType("text/html; charset=UTF-8;");
             PrintWriter out = response.getWriter();

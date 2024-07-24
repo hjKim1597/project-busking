@@ -9,12 +9,14 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardTeamDTO;
 import com.busking.board.model.BoardTeamMapper;
+import com.busking.mypage.model.UserJoinDTO;
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class BoardTeamServiceImpl implements BoardTeamService {
 	
@@ -51,9 +53,14 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		String teamContent = request.getParameter("content");
 		String teamCount = request.getParameter("teamCount");
 		String teamResult = request.getParameter("teamResult");
+		
+		HttpSession session = request.getSession();
+		UserJoinDTO user = (UserJoinDTO)session.getAttribute("user");
+		String writer = user.getUserId();
+		
 		// DTO
 		BoardTeamDTO dto = new BoardTeamDTO();
-		dto.setTeamWriter("홍길동");
+		dto.setTeamWriter(writer);
 		dto.setTeamTitle(teamTitle);
 		dto.setTeamContent(teamContent);
 		dto.setTeamCount(Integer.parseInt(teamCount));

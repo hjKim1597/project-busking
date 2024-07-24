@@ -9,12 +9,14 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardFreeDTO;
 import com.busking.board.model.BoardFreeMapper;
+import com.busking.mypage.model.UserJoinDTO;
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class BoardFreeServiceImpl implements BoardFreeService {
 	
@@ -51,9 +53,13 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		String freeTitle = request.getParameter("title");
 		String freeContent = request.getParameter("content");
 		
+		HttpSession session = request.getSession();
+		UserJoinDTO user = (UserJoinDTO)session.getAttribute("user");
+		String writer = user.getUserId();
+		
 		// DTO
 		BoardFreeDTO dto = new BoardFreeDTO();
-		dto.setFreeWriter("홍길동");
+		dto.setFreeWriter(writer);
 		dto.setFreeTitle(freeTitle);
 		dto.setFreeContent(freeContent);
 		

@@ -8,7 +8,7 @@
 	    <div id="board_nav_wrap">
 	        <h1>BOARD</h1>
 	        <ul class="menu">
-	            <li class="nth1 active"><strong><a href="board_news_list.boardNews">NEWS</a></strong></li>
+	            <li class="nth1 active"><strong><a href="board_list.boardNews">NEWS</a></strong></li>
 	            <li class="nth2"><strong><a href="board_free_list.boardFree">자유게시판</a></strong></li>
 	            <li class="nth3"><strong><a href="board_team_list.boardTeam">팀원 모집</a></strong></li>
 	            <li class="nth4"><strong><a href="board_ask_list.boardAsk">Q & A</a></strong></li>
@@ -20,7 +20,7 @@
         <h1>
             <strong>게시글 작성</strong>
         </h1>
-        <form class="board_write_content" action="board_news_writeForm.boardNews" method="post">
+        <form class="board_write_content" action="board_writeForm.boardNews" method="post">
             <div class="form_group">
                 <label class="title_text" for="title">뉴스 제목</label>
                 <input class="title_box" type="text" id="title" name="title" placeholder="기사의 제목을 입력해주세요" required>
