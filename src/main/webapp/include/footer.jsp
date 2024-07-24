@@ -8,8 +8,8 @@
             <div class="footer-service">
                 <h4>서비스</h4>
                 <ul>
-                    <li><a href="#">개발자용 프로그래머스</a></li>
-                    <li><a href="#">기업용 프로그래머스</a></li>
+                    <li><a href="${pageContext.request.contextPath }/reservation/reservation.jsp">예약하기</a></li>
+                    <li><a href="${pageContext.request.contextPath }/customer_center/customer_center_month.jsp">이달의예약</a></li>
                 </ul>
             </div>
 
@@ -29,9 +29,13 @@
             </div>
 
             <div class="footer-familysite">
-                <select>
+                <select onchange="window.open(value,'self');">
                     <option value="">패밀리사이트</option>
+                    <option value="https://hangang.seoul.go.kr/www/main.do" >미래한강본부</option>
                 </select>
+                
+       
+                
             </div>
         </div>
         <div class="footer-mid">
@@ -41,7 +45,7 @@
         </div>
         <div class="footer-bottom">
             <div class="footer-info">
-                <p>(회사명) / (팀명) / 서울특별시 강남구 테헤란로7길 7 에스코빌딩 5~7층 / 백수민, 김명석, 김호진, 심유정, 이진석</p>
+                <p>(팀명) / 서울특별시 강남구 테헤란로7길 7 에스코빌딩 5~7층 / 백수민, 김명석, 김호진, 심유정, 이진석</p>
                 <p>모여락(樂) 사이트의 모든 콘텐츠, 정보, UI, HTML 소스 등에 대한 무단 복제, 전송, 배포, 크롤링, 스크래핑 등의 행위를 거부하며, 이러한 행위는 관련 법령에 의해
                     엄격히 금지됩니다.</p>
                 <p><a href="https://icons8.kr/icons" class="footer-icon">Designed by Agency. Icons by Icons8</a> |
