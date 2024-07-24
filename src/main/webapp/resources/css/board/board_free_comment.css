@@ -92,11 +92,11 @@ body {
     letter-spacing: 0.5px;
 }
 
-#board_comment_wrap .board_comment_inner .board_comment_button {
+#board_comment_wrap .board_comment_inner > form .board_comment_button {
     margin-top: 20px;
 }
 
-#board_comment_wrap .board_comment_inner .board_comment_button > button {
+#board_comment_wrap .board_comment_inner > form .board_comment_button > input[type=submit] {
     float: right;
     background: #5FD7FF;
     border: none;
@@ -108,19 +108,19 @@ body {
     height: 33px;
 }
 
-#board_comment_wrap .board_comment_inner .board_comment_write {
+#board_comment_wrap .board_comment_inner > form .board_comment_write {
     margin-top: 40px;
     border-color: rgb(231, 231, 231);
 }
 
-#board_comment_wrap .board_comment_inner .board_comment_write .form-control {
+#board_comment_wrap .board_comment_inner > form .board_comment_write .form-control {
     resize: none; 
     height: 150px; 
     font-size: 20px;
     padding: 20px;
 }
 
-#board_comment_wrap .board_comment_inner .board_comment_write .form-control:focus {
+#board_comment_wrap .board_comment_inner > form .board_comment_write .form-control:focus {
     border: none;
     border: 2px solid #5FD7FF; 
     /* box-shadow: 0 0 100px rgba(140, 201, 161, 0.5); */

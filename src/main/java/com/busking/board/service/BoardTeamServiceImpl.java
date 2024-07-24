@@ -73,6 +73,7 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		
 		// request
 		String teamNum = request.getParameter("teamNum");
+		System.out.println(teamNum);
 		
 		// DTO
 		BoardTeamDTO dto = new BoardTeamDTO();
