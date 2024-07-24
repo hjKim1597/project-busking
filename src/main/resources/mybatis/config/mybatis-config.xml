@@ -30,11 +30,11 @@
 	    <mapper resource="mybatis/mapper/board/BoardTeamMapper.xml"/>
 	    
 	    <!-- 댓글 매퍼 위치 -->
-	    <mapper resource="mybatis/mapper/board/BoardCommentMapper.xml"/>
-	    
+<!-- 		<mapper resource="mybatis/mapper/board/BoardCommentMapper.xml"/>
+ -->
 	    <!-- 회원가입 매퍼 위치 -->
-	    <mapper resource="mybatis/mapper/userjoin/UserJoinMapper.xml"/>
-	    
+<!-- 		<mapper resource="mybatis/mapper/userjoin/UserJoinMapper.xml"/>
+-->
 	    <!-- 홈페이지 매퍼 위치 -->
 	     <mapper resource="mybatis/mapper/MainMapper.xml"/>
 	    

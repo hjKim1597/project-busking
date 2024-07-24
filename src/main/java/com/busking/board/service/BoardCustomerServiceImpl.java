@@ -30,23 +30,21 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		//글 목록
 		
 		// request
-		String page = (String) request.getAttribute("page");
-		int pageNum = 1;
 		
 		// DTO
-		ArrayList<BoardCustomerDTO> list = new ArrayList<>();
 
-		// Mapper
+		// 호출하기
 		SqlSession sql = sqlSessionFactory.openSession(true);
-		BoardCustomerMapper mapper = sql.getMapper(BoardCustomerMapper.class);
-		int total = 1;
-		PageVO pageVO = new PageVO(pageNum, total);
-		list = mapper.getList(pageVO);
+		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
+		
+		//화면에 리스트 내보내기
+		ArrayList<BoardCustomerDTO> noticeList = boardMapper.getList();
+		System.out.println("화면에 리스트 나타내기 " + noticeList);
+
 		sql.close();
 
 		// response
-		request.setAttribute("freeList", list);
-		request.setAttribute("pageVO", pageVO);
+		request.setAttribute("noticeList", noticeList);
 		request.getRequestDispatcher("customer_center_index.jsp").forward(request, response);
 	}
 
@@ -54,31 +52,34 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 	@Override
 	public void regist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 확인하기
+		// 확인
 		System.out.println("글 작성 OK");
 
 		// request
-		// String managerId = request.getParameter("writer");
+		String managerId = "관리자"; //관리자 아이디 고정
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
 
+		System.out.println(noticeTitle);
+		System.out.println(noticeContent);
 		// DTO
 		BoardCustomerDTO dto = new BoardCustomerDTO();
-		dto.setManagerId("홍길동");
+		dto.setManagerId(managerId);
 		dto.setNoticeTitle(noticeTitle);
 		dto.setNoticeContent(noticeContent);
-
+		dto.setNoticeNum(1);
+		
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
-		BoardCustomerMapper mapper = sql.getMapper(BoardCustomerMapper.class);
+		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
 		// Mapper 실행시 커밋이 반영된다
 
-		// int result = board.regist(dto);
+		// int result = boardMapper.regist(dto);
+		boardMapper.regist(dto);
+		sql.close();
 
-		mapper.regist(dto);
-
-		// response
-		request.getRequestDispatcher("customer_center_index.jsp").forward(request, response);
+		// 목록화면 보내기
+		response.sendRedirect("/customer_center/customer_center_index.customer");
 		
 	}
 
@@ -87,21 +88,21 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 	public void getContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String freeNum = request.getParameter("freeNum");
+		String noticeNum = request.getParameter("noticeNum");
 		
 		// DTO
-		BoardFreeDTO dto = new BoardFreeDTO();
+		BoardCustomerDTO dto = new BoardCustomerDTO();
 		
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
-		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
+		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
 		
-		mapper.increaseHit(freeNum);
-		dto = mapper.getContent(freeNum);
+		boardMapper.increaseHit(noticeNum);
+		dto = boardMapper.getContent(noticeNum);
 		
 		// response
 		request.setAttribute("dto", dto);
-		request.getRequestDispatcher("customer_center_index.jsp").forward(request, response);
+		request.getRequestDispatcher("/customer_center/customer_center_index_content.jsp").forward(request, response);
 		
 	}
 

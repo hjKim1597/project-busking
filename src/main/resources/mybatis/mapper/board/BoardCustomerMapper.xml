@@ -15,11 +15,8 @@
 
 	<insert id="regist" parameterType="com.busking.board.model.BoardCustomerDTO">
 		
-		INSERT INTO NOTICE(NOTICE_NUM, MANAGER_ID, NOTICE_TITLE,
-                       NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT)
-    VALUES(#{noticeNum}, #{managerId}, #{noticeTitle},
-           #{noticeContent}, #{noticeRegdate}, #{noticeHit})
-           
+		INSERT INTO NOTICE (NOTICE_NUM, MANAGER_ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT)
+    	VALUES (#{noticeNum}, #{managerId}, #{noticeTitle}, #{noticeContent}, SYSDATE, 0)
 	</insert>
 
 

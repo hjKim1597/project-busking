@@ -71,6 +71,9 @@
                             <h2>글 작성하기</h2>
 
                         </div>
+                        
+                        
+                        
                         <!-- 글작성하기 -->
                         <form action="registForm.customer" method="post" class="form">
 
@@ -85,20 +88,30 @@
                             <!-- 글 내용 -->
                             <div class="form-group">
                                 <label for="comment">글 내용</label>
-                                <textarea class="form-control" id="comment" placeholder="내용을 입력해주세요"></textarea>
+                                <textarea class="form-control" id="comment" name="content" placeholder="내용을 입력해주세요"></textarea>
                             </div>
 
                             <!-- 완료 버튼-->
                             <div class="board_button_set">
                                 <div class="board-button">
-                                    <a href="customer_center_index.jsp"><button type="button"
+                                    <a href="${pageContext.request.contextPath }/customer_center/customer_center_index.customer"><button type="button"
                                             class="btn btn-default">목록</button></a>
                                 </div>
 
                                 <div class="board-button">
-                                    <a href="registForm.customer_board"><button type="button"
-                                            class="btn btn-default">완료</button></a>
+                                    <%-- <a href="${pageContext.request.contextPath }/customer_center/customer_center_index.customer">
+                                    <button type="button"
+                                            class="btn btn-default">
+                                            완료
+                                    </button>
+                                    
+                                    </a> --%>
+                                    
+                                    <input type="submit" value="완료123" class="btn btn-default">
+                                    
                                 </div>
+                                
+                                
                             </div>
                         </form>
 
