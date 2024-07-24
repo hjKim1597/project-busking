@@ -1,11 +1,12 @@
-package com.busking.userjoin.service;
+package com.busking.mypage.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import com.busking.userjoin.model.UserJoinDTO;
-import com.busking.userjoin.model.UserJoinMapper;
+
+import com.busking.mypage.model.UserJoinDTO;
+import com.busking.mypage.model.UserJoinMapper;
 import com.busking.util.mybatis.MybatisUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -26,10 +27,11 @@ public class UserJoinServiceImpl implements UserJoinService {
         String userPw = request.getParameter("userPw");
         String userName = request.getParameter("userName");
         String userEmail = request.getParameter("userEmail");
-        int userPno = Integer.parseInt(request.getParameter("userPno"));
+        String userPno = request.getParameter("userPno");
         String userAddr = request.getParameter("userAddr");
+        String userGender = request.getParameter("userGender");
 
-        UserJoinDTO dto = new UserJoinDTO(userId, userPw, userName, userEmail, userPno, userAddr);
+        UserJoinDTO dto = new UserJoinDTO(userId, userPw, userName, userEmail, userPno, userAddr, userGender);
 
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
         UserJoinMapper mapper = sqlSession.getMapper(UserJoinMapper.class);
@@ -38,7 +40,7 @@ public class UserJoinServiceImpl implements UserJoinService {
         sqlSession.close();
 
         if (result == 1) {
-            response.sendRedirect("registerSuccess.jsp");
+            response.sendRedirect(request.getContextPath() + "/mypage/registerSuccess.jsp");
         } else {
             response.setContentType("text/html; charset=UTF-8;");
             PrintWriter out = response.getWriter();
@@ -77,10 +79,9 @@ public class UserJoinServiceImpl implements UserJoinService {
     	UserJoinMapper mapper = sqlSession.getMapper(UserJoinMapper.class);
     	UserJoinDTO user = mapper.login(dto);
     	
-    	sqlSession.close();
     	if (user != null) {
+    		
             // 세션에 사용자 정보 저장
-
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             // 로그인 상태 유지 쿠키 설정
@@ -99,5 +100,49 @@ public class UserJoinServiceImpl implements UserJoinService {
             out.println("location.href='" + request.getContextPath() + "/mypage/login.jsp';");
             out.println("</script>");
         }
+    }
+    @Override
+    public void userInfo(HttpServletRequest request, HttpServletResponse response)
+    		throws ServletException, IOException {
+    	
+    }
+    @Override
+    public void findUserId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+
+        UserJoinDTO dto = new UserJoinDTO();
+        dto.setUserEmail(email);
+        dto.setUserPno(phone);
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserJoinMapper mapper = sqlSession.getMapper(UserJoinMapper.class);
+        String foundId = mapper.findUserId(dto);
+        sqlSession.close();
+
+        response.setContentType("text/plain");
+        PrintWriter out = response.getWriter();
+        out.print(foundId != null ? foundId : "정보가 일치하지 않습니다.");
+        out.flush();
+    }
+
+    @Override
+    public void findUserPw(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        String phone = request.getParameter("phone");
+
+        UserJoinDTO dto = new UserJoinDTO();
+        dto.setUserId(id);
+        dto.setUserPno(phone);
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserJoinMapper mapper = sqlSession.getMapper(UserJoinMapper.class);
+        String foundPw = mapper.findUserPw(dto);
+        sqlSession.close();
+
+        response.setContentType("text/plain");
+        PrintWriter out = response.getWriter();
+        out.print(foundPw != null ? foundPw : "정보가 일치하지 않습니다.");
+        out.flush();
     }
 }
