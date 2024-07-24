@@ -34,7 +34,6 @@
 
 	    <!-- 회원가입 매퍼 위치 -->
 	    <mapper resource="mybatis/mapper/mypage/MypageMapper.xml"/>
-	    
 
 	    <!-- 홈페이지 매퍼 위치 -->
 	     <mapper resource="mybatis/mapper/MainMapper.xml"/>

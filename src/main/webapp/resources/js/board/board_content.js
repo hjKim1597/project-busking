@@ -2,8 +2,6 @@
  * 
  */
 
-
-
 // iframe 높이 자동 조절
 var iframe = document.querySelector('.comment_box > iframe');
 

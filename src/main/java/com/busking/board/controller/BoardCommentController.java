@@ -34,32 +34,30 @@ public class BoardCommentController extends HttpServlet {
 		String command = uri.substring(path.length());
 	
 		System.out.println(command);
-		
-		String subject = request.getParameter("subject");
-		
+
 		BoardCommentService service;
 		
-		if(command.equals("/board/board_comment_list.comment") && subject.equals("free")) {
+		if(command.equals("/board/board_comment_free_list.comment")) {
 			service = new BoardCommentServiceImpl();
 			service.getCommentFreeList(request, response);
 			
-		} else if(command.equals("/board/board_comment_list.comment") && subject.equals("news")) {
+		} else if(command.equals("/board/board_comment_news_list.comment")) {
 			service = new BoardCommentServiceImpl();
 			service.getCommentNewsList(request, response);
 			
-		} else if(command.equals("/board/board_comment_list.comment") && subject.equals("team")) {
+		} else if(command.equals("/board/board_comment_team_list.comment")) {
 			service = new BoardCommentServiceImpl();
 			service.getCommentTeamList(request, response);
 			
-		} else if(command.equals("/board/board_comment_write.comment") && subject.equals("free")) {
+		} else if(command.equals("/board/board_comment_free_write.comment")) {
 			service = new BoardCommentServiceImpl();
 			service.writeCommentFree(request, response);
 			
-		} else if(command.equals("/board/board_comment_write.comment") && subject.equals("news")) {
+		} else if(command.equals("/board/board_comment_news_write.comment")) {
 			service = new BoardCommentServiceImpl();
 			service.writeCommentNews(request, response);
 			
-		} else if(command.equals("/board/board_comment_write.comment") && subject.equals("team")) {
+		} else if(command.equals("/board/board_comment_team_write.comment")) {
 			service = new BoardCommentServiceImpl();
 			service.writeCommentTeam(request, response);
 			

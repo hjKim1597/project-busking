@@ -68,5 +68,11 @@
 		    TEAM_RESULT = #{teamResult} 
 		WHERE TEAM_NUM = #{teamNum} 
 	</update>
+	
+	<update id="updateCmtCount" parameterType="com.busking.board.model.BoardTeamDTO">
+		UPDATE BOARD_TEAM  
+		SET TEAM_CMT_COUNT = #{teamCmtCount} 
+		WHERE TEAM_NUM = #{teamNum} 
+	</update>
 
 </mapper>

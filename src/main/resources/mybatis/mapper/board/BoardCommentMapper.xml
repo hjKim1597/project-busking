@@ -70,5 +70,17 @@
 		       #{comTeamBno}, 
 		       'CT_' || LPAD(COMMENT_TEAM_SEQ.CURRVAL, 8, '0'))	
 	</insert>
+	
+	<select id="getCommentFreeCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM COMMENT_FREE WHERE COM_FREE_BNO = #{comFreeBno} 
+	</select>
+	
+	<select id="getCommentNewsCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM COMMENT_NEWS WHERE COM_NEWS_BNO = #{comNewsBno} 
+	</select>
+	
+	<select id="getCommentTeamCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM COMMENT_TEAM WHERE COM_TEAM_BNO = #{comTeamBno} 
+	</select>
 
 </mapper>

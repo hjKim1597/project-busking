@@ -26,4 +26,7 @@ public interface BoardFreeMapper {
 	
 	// 글 수정
 	public int edit(BoardFreeDTO dto);
+	
+	// 글 댓글 개수 수정
+	public void updateCmtCount(BoardFreeDTO dto);
 }

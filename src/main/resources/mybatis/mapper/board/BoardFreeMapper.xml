@@ -54,5 +54,11 @@
 		    FREE_CONTENT = #{freeContent} 
 		WHERE FREE_NUM = #{freeNum}
 	</update>
+	
+	<update id="updateCmtCount" parameterType="com.busking.board.model.BoardFreeDTO">
+		UPDATE BOARD_FREE 
+		SET FREE_CMT_COUNT = #{freeCmtCount} 
+		WHERE FREE_NUM = #{freeNum} 
+	</update>
 
 </mapper>

@@ -60,7 +60,7 @@
 		         </c:forEach>
 	        </div>
 	        <!--댓글 작성 영역-->
-	        <form action="board_comment_write.comment?subject=news" method="post">
+	        <form action="board_comment_news_write.comment" method="post">
 		        <div class="form-group board_comment_write">
 		            <textarea class="form-control" rows="5" id="comment" name="content"></textarea>
 		        </div>
