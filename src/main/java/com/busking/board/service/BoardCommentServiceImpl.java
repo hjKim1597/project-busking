@@ -7,6 +7,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardCommentMapper;
+import com.busking.board.model.BoardFreeDTO;
+import com.busking.board.model.BoardFreeMapper;
+import com.busking.board.model.BoardNewsDTO;
+import com.busking.board.model.BoardNewsMapper;
+import com.busking.board.model.BoardTeamDTO;
+import com.busking.board.model.BoardTeamMapper;
 import com.busking.board.model.CommentFreeDTO;
 import com.busking.board.model.CommentNewsDTO;
 import com.busking.board.model.CommentTeamDTO;
@@ -58,7 +64,7 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		// response
 		request.setAttribute("commentList", commentList);
 		request.setAttribute("bno", comNewsBno);
-		request.getRequestDispatcher("board_news_comment.jsp?bno=" + comNewsBno).forward(request, response);
+		request.getRequestDispatcher("board_news_comment.jsp").forward(request, response);
 	}
 	
 	public void getCommentTeamList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -78,7 +84,7 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		// response
 		request.setAttribute("commentList", commentList);
 		request.setAttribute("bno", comTeamBno);
-		request.getRequestDispatcher("board_free_comment.jsp?bno=" + comTeamBno).forward(request, response);
+		request.getRequestDispatcher("board_team_comment.jsp").forward(request, response);
 	}
 	
 	@Override
@@ -95,15 +101,23 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		dto.setComFreeContent(comFreeContent);
 		dto.setComFreeWriter(comFreeWriter);
 		
+		BoardFreeDTO dtoFree = new BoardFreeDTO();
+		dtoFree.setFreeNum(comFreeBno);
+		
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);
+		BoardFreeMapper mapperFree = sql.getMapper(BoardFreeMapper.class);
+		
 		mapper.writeCommentFree(dto);
+		int total = mapper.getCommentFreeCount(comFreeBno);
+		dtoFree.setFreeCmtCount(total);
+		mapperFree.updateCmtCount(dtoFree);
 		sql.close();
 		
 		// response
 		request.setAttribute("bno", comFreeBno);
-		request.getRequestDispatcher("board_comment_list.comment?subject=free").forward(request, response);
+		request.getRequestDispatcher("board_comment_free_list.comment").forward(request, response);
 		
 	}
 	
@@ -121,15 +135,23 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		dto.setComNewsContent(comNewsContent);
 		dto.setComNewsWriter(comNewsWriter);
 		
+		BoardNewsDTO dtoNews = new BoardNewsDTO();
+		dtoNews.setNewsNum(comNewsBno);
+		
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);
+		BoardNewsMapper mapperNews = sql.getMapper(BoardNewsMapper.class);
+		
 		mapper.writeCommentNews(dto);
+		int total = mapper.getCommentNewsCount(comNewsBno);
+		dtoNews.setNewsCmtCount(total);
+		mapperNews.updateCmtCount(dtoNews);
 		sql.close();
 		
 		// response
 		request.setAttribute("bno", comNewsBno);
-		request.getRequestDispatcher("board_comment_list.comment?subject=news").forward(request, response);
+		request.getRequestDispatcher("board_comment_news_list.comment").forward(request, response);
 		
 	}
 	
@@ -147,15 +169,23 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		dto.setComTeamContent(comTeamContent);
 		dto.setComTeamWriter(comTeamWriter);
 		
+		BoardTeamDTO dtoTeam = new BoardTeamDTO();
+		dtoTeam.setTeamNum(comTeamBno);
+		
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);
+		BoardTeamMapper mapperTeam = sql.getMapper(BoardTeamMapper.class);
+		
 		mapper.writeCommentTeam(dto);
+		int total = mapper.getCommentTeamCount(comTeamBno);
+		dtoTeam.setTeamCmtCount(total);
+		mapperTeam.updateCmtCount(dtoTeam);
 		sql.close();
 		
 		// response
 		request.setAttribute("bno", comTeamBno);
-		request.getRequestDispatcher("board_comment_list.comment?subject=team").forward(request, response);
+		request.getRequestDispatcher("board_comment_team_list.comment").forward(request, response);
 		
 	}
 	

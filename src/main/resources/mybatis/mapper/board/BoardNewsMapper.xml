@@ -54,5 +54,11 @@
 		    NEWS_CONTENT = #{newsContent}
 		WHERE NEWS_NUM = #{newsNum}
 	</update>
+	
+	<update id="updateCmtCount" parameterType="com.busking.board.model.BoardNewsDTO">
+		UPDATE BOARD_NEWS 
+		SET NEWS_CMT_COUNT = #{newsCmtCount} 
+		WHERE NEWS_NUM = #{newsNum} 
+	</update>
 
 </mapper>

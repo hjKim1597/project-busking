@@ -26,4 +26,7 @@ public interface BoardTeamMapper {
 	
 	// 글 수정
 	public int edit(BoardTeamDTO dto);
+	
+	// 글 댓글 개수 수정
+	public void updateCmtCount(BoardTeamDTO dto);
 }

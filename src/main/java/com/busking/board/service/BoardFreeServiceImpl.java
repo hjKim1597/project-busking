@@ -72,7 +72,7 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 	public void getContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String freeNum = request.getParameter("freeNum");
+		String freeNum = request.getParameter("bno");
 		
 		// DTO
 		BoardFreeDTO dto = new BoardFreeDTO();

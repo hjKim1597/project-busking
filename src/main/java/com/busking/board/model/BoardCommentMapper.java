@@ -17,4 +17,11 @@ public interface BoardCommentMapper {
 	public void writeCommentNews(CommentNewsDTO dto);
 	
 	public void writeCommentTeam(CommentTeamDTO dto);
+	
+	// 댓글 개수 조회
+	public int getCommentFreeCount(String comFreeBno);
+	
+	public int getCommentNewsCount(String comNewsBno);
+	
+	public int getCommentTeamCount(String comTeamBno);
 }

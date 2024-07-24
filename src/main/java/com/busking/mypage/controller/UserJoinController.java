@@ -1,15 +1,17 @@
-package com.busking.userjoin.controller;
+package com.busking.mypage.controller;
 
 import java.io.IOException;
-import com.busking.userjoin.service.UserJoinService;
-import com.busking.userjoin.service.UserJoinServiceImpl;
+
+import com.busking.mypage.service.UserJoinService;
+import com.busking.mypage.service.UserJoinServiceImpl;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("*.userjoin")
+@WebServlet("*.mypage")
 public class UserJoinController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -36,14 +38,19 @@ public class UserJoinController extends HttpServlet {
 
         System.out.println(command);
 
-        if (command.equals("/userjoin/signup.userjoin")) {
+        if (command.equals("/userjoin/signup.mypage")) {
             userJoinService.signup(request, response);
-        } else if(command.equals("/userjoin/checkUserId.userjoin")) {
+        } else if(command.equals("/userjoin/checkUserId.mypage")) {
             String userId = request.getParameter("userId");
             userJoinService.checkUserId(userId, response);
-        } else if(command.equals("/userjoin/login.userjoin")) {
+        } else if(command.equals("/userjoin/login.mypage")) {
             userJoinService.login(request, response);
-
+        } else if(command.equals("/userjoin/userInfo.mypage")) {
+        	userJoinService.userInfo(request, response);
+        } else if (command.equals("/mypage/findId.mypage")) {
+        	userJoinService.findUserId(request, response);
+        } else if (command.equals("/mypage/findPw.mypage")) {
+        	userJoinService.findUserPw(request, response);
         }
     }
 }
