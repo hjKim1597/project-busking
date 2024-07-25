@@ -98,7 +98,7 @@
 						<!-- 소식게시판 -->
 						<h3>
 							<a
-								href="${pageContext.request.contextPath }/board/board_news_list.boardNews">소식게시판</a>
+								href="${pageContext.request.contextPath }/board/board_list.boardNews">소식게시판</a>
 						</h3>
 
 
@@ -111,15 +111,13 @@
 									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px;">
 										<a
-										href="${pageContext.request.contextPath }/board_content.boardNews?bno=${dto.newsNum }"
+										href="${pageContext.request.contextPath }/board/board_content.boardNews?bno=${dto.newsNum }"
 										class="truncate with-style">${dto.newsTitle}</a>
 									</td>
 									<td class="preview-date"><fmt:formatDate
 											value="${dto.newsRegdate}" pattern="yy.MM.dd" /></td>
 								</tr>
 							</c:forEach>
-
-
 
 						</table>
 					</div>
