@@ -9,6 +9,6 @@ public interface UserJoinMapper {
     String findUserPw(UserJoinDTO dto);
     int updateUserInfo(UserJoinDTO userJoinDTO);
     UserJoinDTO getUserInfo(String userId);
-
+    int deleteUser(String userId);
 
 }

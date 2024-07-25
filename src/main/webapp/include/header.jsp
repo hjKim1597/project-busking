@@ -85,7 +85,7 @@
 								<li><a
 									href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">예약현황</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">회원탈퇴</a></li>
+									href="${pageContext.request.contextPath }/mypage/deleteUserPage.userinfo">회원탈퇴</a></li>
 							</ul></li>
 
 

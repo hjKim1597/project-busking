@@ -40,6 +40,10 @@ public class MypageController extends HttpServlet {
             mypageService.getUserInfo(request, response);
         } else if (command.equals("/mypage/updateUserInfo.userinfo")) {
             mypageService.updateUserInfo(request, response);
-        }
+        } else if (command.equals("/mypage/deleteUser.userinfo")) {
+        	mypageService.deleteUser(request, response);
+        } else if (command.equals("/mypage/deleteUserPage.userinfo")) {
+            request.getRequestDispatcher("/mypage/deleteUser.jsp").forward(request, response);
+        } 
     }
 }

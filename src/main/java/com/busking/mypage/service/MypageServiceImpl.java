@@ -74,4 +74,39 @@ public class MypageServiceImpl implements MypageService {
             response.sendRedirect(request.getContextPath() + "/mypage/login.jsp");
         }
     }
+    @Override
+    public void deleteUser(HttpServletRequest request, HttpServletResponse response)
+    		throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        UserJoinDTO dto = (UserJoinDTO) session.getAttribute("user");
+        String inputPw = request.getParameter("userPw");
+        
+        if (dto != null && dto.getUserPw().equals(inputPw)) {
+            String userId = dto.getUserId();
+
+            SqlSession sqlSession = sqlSessionFactory.openSession(true);
+            UserJoinMapper mapper = sqlSession.getMapper(UserJoinMapper.class);
+            int result = mapper.deleteUser(userId);
+            sqlSession.close();
+
+            if (result == 1) {
+                session.invalidate();
+                response.sendRedirect(request.getContextPath() + "/mypage/login.jsp");
+            } else {
+                response.setContentType("text/html; charset=UTF-8;");
+                PrintWriter out = response.getWriter();
+                out.println("<script>");
+                out.println("alert('회원 탈퇴에 실패했습니다. 다시 시도해주세요.');");
+                out.println("location.href='deleteUser.jsp';");
+                out.println("</script>");
+            }
+        } else {
+            response.setContentType("text/html; charset=UTF-8;");
+            PrintWriter out = response.getWriter();
+            out.println("<script>");
+            out.println("alert('비밀번호가 일치하지 않습니다.');");
+            out.println("location.href='deleteUser.jsp';");
+            out.println("</script>");
+        }
+    }
 }

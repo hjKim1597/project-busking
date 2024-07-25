@@ -9,9 +9,9 @@
             <div class="nav">
                 <ul>
                     <li><span class="nav-title">마이페이지</span></li>
-                    <li><a href="${pageContext.request.contextPath}/mypage/updateUserInfo.userinfo" class="tap">내 정보</a></li>
-                    <li><a href="reservationCheck.jsp">예약 현황</a></li>
-                    <li><a href="deleteUser.jsp">회원 탈퇴</a></li>
+                    <li><a href="${pageContext.request.contextPath}/mypage/getUserInfo.userinfo" class="tap">내 정보</a></li>
+                    <li><a href="${pageContext.request.contextPath}/mypage/getUserInfo.userinfo">예약 현황</a></li>
+                    <li><a href="${pageContext.request.contextPath}/mypage/deleteUserPage.userinfo">회원 탈퇴</a></li>
                 </ul>
             </div>
             <div class="user-info">

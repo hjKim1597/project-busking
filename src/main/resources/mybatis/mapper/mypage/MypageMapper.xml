@@ -45,4 +45,8 @@
             USER_GENDER = #{userGender}
         WHERE USER_ID = #{userId}
     </update>
+    <!-- 사용자 정보 삭제 -->
+    <delete id="deleteUser" parameterType="String">
+        DELETE FROM USERS WHERE USER_ID = #{userId}
+    </delete>
 </mapper>
