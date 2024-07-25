@@ -1,3 +1,23 @@
+function validateForm(event) {
+    var selectedDate = document.getElementById("selectedDate").value;
+    var startTime = document.getElementById("startTime").value;
+    var endTime = document.getElementById("endTime").value;
+
+    if (!selectedDate) {
+        alert("날짜를 선택해주세요.");
+        event.preventDefault();
+        return false;
+    }
+
+    if (!startTime || !endTime) {
+        alert("시간을 선택해주세요.");
+        event.preventDefault();
+        return false;
+    }
+
+    return true;
+}
+
 // 달력 script
 // 날짜 객체 생성
 var date = new Date();
@@ -57,11 +77,10 @@ document.getElementById("calendar").addEventListener('click', (e) => {
     var calendarTdList = document.querySelectorAll("#calendar table tbody td");
 
     calendarTdList.forEach(function(td) {
-        if(td.firstElementChild == e.target) return;
         td.classList.remove('selected');
     });
 
-    e.target.parentElement.classList.toggle("selected");
+    e.target.parentElement.classList.add("selected");
 
     // 클릭한 날짜 값
     var selectedDate = `${calendarYear}-${calendarMonth}-${e.target.innerHTML}`;
@@ -80,6 +99,21 @@ function selectTime(startTime, endTime) {
     event.target.classList.add('selected');
 }
 
+// 목록으로 버튼 클릭 이벤트
+function goToList() {
+    window.location.href = "/Busking/reservation/reservation.reservation";
+}
+
+// 지도 스크립트
+// 지도를 담을 영역의 DOM 레퍼런스
+var mapContainer = document.querySelector('.map-container #map');
+
+// 지도를 생성할 때 필요한 기본 옵션
+var mapOption = {
+    center: new kakao.maps.LatLng(locaY, locaX), // 지도의 중심 좌표
+    level: 3 // 지도의 확대 레벨
+};
+
 // 지도 스크립트
 // 지도를 담을 영역의 DOM 레퍼런스
 var mapContainer = document.querySelector('.map-container #map');
@@ -95,6 +129,20 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 
 // 컨트롤이 추가되었는지 확인하기 위한 변수
 var controlsAdded = false;
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(locaY, locaX); 
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 인포윈도우를 생성합니다
+var infowindow = new kakao.maps.InfoWindow({
+    position: markerPosition, 
+    content: '<div style="padding:5px;">' + locaName + '<br><a href="https://map.kakao.com/link/map/' + locaName + ',' + locaY + ',' + locaX + '" style="color:blue" target="_blank">지도보기</a> <a href="https://map.kakao.com/link/to/' + locaName + ',' + locaY + ',' + locaX + '" style="color:blue" target="_blank">길찾기</a></div>' 
+});
 
 // 부트스트랩 탭 이벤트 리스너
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -117,28 +165,11 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             // 컨트롤 추가 완료
             controlsAdded = true;
         }
-// 마커가 표시될 위치입니다 
-var markerPosition  = new kakao.maps.LatLng(locaY, locaX); 
 
-// 마커를 생성합니다
-var marker = new kakao.maps.Marker({
-    position: markerPosition
-});
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
 
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
-
-var iwContent = '<div style="padding:5px;">' + locaName + '<br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-    iwPosition = new kakao.maps.LatLng(locaY, locaX); //인포윈도우 표시 위치입니다
-
-// 인포윈도우를 생성합니다
-var infowindow = new kakao.maps.InfoWindow({
-    position : iwPosition, 
-    content : iwContent 
-});
-  
-// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-infowindow.open(map, marker); 
+        // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+        infowindow.open(map, marker); 
     }
 });
-

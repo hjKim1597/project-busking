@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/header.jsp" %>
@@ -79,7 +78,7 @@
                 <button type="button" onclick="selectTime('19:00', '22:00')">19:00 - 22:00</button>
             </div>
             <div class="resForm-mid-controll">
-                <form action="reservationPost.jsp" method="post" id="reservationForm">
+                <form action="reservationPost.jsp" method="post" id="reservationForm" onsubmit="return validateForm(event)">
                     <input type="hidden" name="locaId" value="${location.locaId}">
                     <input type="hidden" name="locaName" value="${location.locaName}">
                     <input type="hidden" name="locaPicPath" value="${location.locaPicPath}">
@@ -89,7 +88,7 @@
                     <input type="hidden" name="startTime" id="startTime">
                     <input type="hidden" name="endTime" id="endTime">
                     <input type="submit" value="예약하기">
-                    <input type="button" value="목록으로">
+                    <input type="button" value="목록으로" onclick="goBackToList()">
                 </form>
             </div>
         </div>
@@ -221,7 +220,7 @@
 
     </div>
 </div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e128e18b3b784844e96c9c2db2a8e6a"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_APP_KEY"></script>
 <script src="../resources/js/reservation/reservationForm.js"></script>
 
-<%@ include file="../include/footer.jsp" %> 
+<%@ include file="../include/footer.jsp" %>

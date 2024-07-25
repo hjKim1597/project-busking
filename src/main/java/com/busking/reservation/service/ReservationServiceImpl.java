@@ -31,7 +31,6 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.setResAmp(request.getParameter("resAmp"));
         reservation.setResDate(Date.valueOf(request.getParameter("resDate")));
         reservation.setResTime(LocalTime.parse(request.getParameter("resTime")));
-        reservation.setResTimeLast(LocalTime.parse(request.getParameter("resTimeLast")));
 
         reservationDAO.createReservation(reservation);
     }
