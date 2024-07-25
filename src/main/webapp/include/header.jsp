@@ -108,7 +108,8 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
                         <% if (session.getAttribute("user") != null) { %>
-                            <li><a href="${pageContext.request.contextPath}/mypage/logout.userinfo" class="header-right"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
+                            <li><a href="#">${user.userName}님 환영합니다</a></li>
+                            <li><a href="${pageContext.request.contextPath}/mypage/logout.userinfo" class="header-right"><span class="glyphicon glyphicon-off"></span> 로그아웃</a></li>
                         <% } else { %>
                             <li><a href="${pageContext.request.contextPath}/mypage/login.jsp" class="header-right"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
                             <li><a href="${pageContext.request.contextPath}/mypage/signup.jsp" class="header-right"><span class="glyphicon glyphicon-log-in"></span> 회원가입</a></li>
