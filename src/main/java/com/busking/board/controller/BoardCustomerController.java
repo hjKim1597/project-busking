@@ -70,8 +70,7 @@ public class BoardCustomerController extends HttpServlet {
 		} else if (command.equals("/customer_center/customer_center_FAQ.customer")) {
 			response.sendRedirect("customer_center_FAQ.jsp");
 			System.out.println("FAQ 화면 이동");
-			
-			
+
 		} else if (command.equals("/customer_center/registForm.customer")) {
 			//글 등록
 			
@@ -88,7 +87,7 @@ public class BoardCustomerController extends HttpServlet {
 			service = new BoardCustomerServiceImpl();
 			service.getContent(request, response);
 			
-			//위까지 완료-------------
+			
 		} else if (command.equals("/customer_center/modify.customer")) {
 			
 			service = new BoardCustomerServiceImpl();
@@ -100,16 +99,13 @@ public class BoardCustomerController extends HttpServlet {
 			service.update(request, response);
 			
 		} 
-		
-		
-		
-		
-		
-		
-		else if (command.equals("customer_center_index_content_delete.customer")) {
+		//삭제 기능
+		else if (command.equals("/customer_center/delete.customer")) {
+			
+			System.out.println("삭제 기능 컨트롤러");
 			
 			service = new BoardCustomerServiceImpl();
-			service.getContent(request, response);
+			service.delete(request, response);
 		}
 
 	}
