@@ -13,7 +13,6 @@ public class ReservationsDTO {
 	private String resAmp;
 	private String resResult;
 	private LocalTime resTime;
-	private LocalTime resTimeLast;
 	private int locaId;
 	private String userId;
 	private int dateNum;
@@ -22,7 +21,7 @@ public class ReservationsDTO {
 	}
 
 	public ReservationsDTO(int resNum, Date resDate, Date resRegDate, int resCount, String resContent, String resAmp,
-			String resResult, LocalTime resTime, LocalTime resTimeLast, int locaId, String userId, int dateNum) {
+			String resResult, LocalTime resTime, int locaId, String userId, int dateNum) {
 		super();
 		this.resNum = resNum;
 		this.resDate = resDate;
@@ -32,7 +31,6 @@ public class ReservationsDTO {
 		this.resAmp = resAmp;
 		this.resResult = resResult;
 		this.resTime = resTime;
-		this.resTimeLast = resTimeLast;
 		this.locaId = locaId;
 		this.userId = userId;
 		this.dateNum = dateNum;
@@ -100,14 +98,6 @@ public class ReservationsDTO {
 
 	public void setResTime(LocalTime resTime) {
 		this.resTime = resTime;
-	}
-
-	public LocalTime getResTimeLast() {
-		return resTimeLast;
-	}
-
-	public void setResTimeLast(LocalTime resTimeLast) {
-		this.resTimeLast = resTimeLast;
 	}
 
 	public int getLocaId() {

@@ -1,10 +1,13 @@
 package com.busking.reservation.service;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalTime;
 import java.util.List;
 
-import com.busking.reservation.model.ReservationLocationDTO;
 import com.busking.reservation.model.ReservationDAO;
+import com.busking.reservation.model.ReservationLocationDTO;
+import com.busking.reservation.model.ReservationsDTO;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,13 +22,27 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public void createReservation(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // 예약 생성 로직
+    public void createReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ReservationsDTO reservation = new ReservationsDTO();
+        reservation.setLocaId(Integer.parseInt(request.getParameter("locaId")));
+        reservation.setUserId(request.getParameter("userId"));
+        reservation.setResContent(request.getParameter("resContent"));
+        reservation.setResCount(Integer.parseInt(request.getParameter("resCount")));
+        reservation.setResAmp(request.getParameter("resAmp"));
+        reservation.setResDate(Date.valueOf(request.getParameter("resDate")));
+        reservation.setResTime(LocalTime.parse(request.getParameter("resTime")));
+        reservation.setResTimeLast(LocalTime.parse(request.getParameter("resTimeLast")));
+
+        reservationDAO.createReservation(reservation);
     }
 
     @Override
     public List<ReservationLocationDTO> getReservationList() throws ServletException, IOException {
         return reservationDAO.getReservationLocations();
+    }
+
+    @Override
+    public ReservationLocationDTO getReservationLocationById(int locaId) throws ServletException, IOException {
+        return reservationDAO.getReservationLocationById(locaId);
     }
 }

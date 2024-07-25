@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <%@ include file="../include/header.jsp" %>
@@ -10,6 +9,9 @@
     String locaPicPath = request.getParameter("locaPicPath");
     String locaPlace = request.getParameter("locaPlace");
     String locaInfo = request.getParameter("locaInfo");
+    String selectedDate = request.getParameter("selectedDate");
+    String startTime = request.getParameter("startTime");
+    String endTime = request.getParameter("endTime");
 %>
 
 <div class="resvPost-wrap">
@@ -76,11 +78,15 @@
                 <ul>
                     <li>
                         <b>공연 장소</b>
-                        <p><%= locaName %> - <%= locaPlace %></p>
+                        <p><%= locaName %> (<%= locaPlace %>)</p>
+                    </li>
+                    <li>
+                        <b>공연 날짜</b>
+                        <p><%= selectedDate %></p>
                     </li>
                     <li>
                         <b>공연 시간</b>
-                        <p>10:00 ~ 13:00</p>
+                        <p><%= startTime %> ~ <%= endTime %></p>
                     </li>
                 </ul>
             </div>
