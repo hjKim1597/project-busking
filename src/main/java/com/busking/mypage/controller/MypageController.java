@@ -44,6 +44,9 @@ public class MypageController extends HttpServlet {
         	mypageService.deleteUser(request, response);
         } else if (command.equals("/mypage/deleteUserPage.userinfo")) {
             request.getRequestDispatcher("/mypage/deleteUser.jsp").forward(request, response);
-        } 
+        } else if (command.equals("/mypage/logout.userinfo")) {
+            request.getSession().invalidate();
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
+        }
     }
 }
