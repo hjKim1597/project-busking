@@ -67,6 +67,7 @@
 		        <div class="board_comment_button">
 		        	<input type="submit" value="등록">
 		        	<input type="hidden" value=${bno } name="bno">
+		        	<input type="hidden" value="news" name="subject">
 		        </div>
 	        </form>
 	    </div>

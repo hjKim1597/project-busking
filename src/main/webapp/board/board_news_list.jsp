@@ -61,7 +61,7 @@
 	                            <li id="page_prev"><a href="board_list.boardNews?page=${pageVO.pageNum - 1 }"><img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>                            
                             </c:if>
                             <c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
-                            	<li class="page_li" data-page="${i }"><a href="board_news_list.boardNews?page=${i }" title="1페이지">${i }</a></li>	
+                            	<li class="page_li" data-page="${i }"><a href="board_list.boardNews?page=${i }" title="1페이지">${i }</a></li>	
                             </c:forEach>
                             <c:if test="${pageVO.next }">
 	                            <li id="page_next"><a href="board_list.boardNews?page=${pageVO.pageNum + 1 }"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>

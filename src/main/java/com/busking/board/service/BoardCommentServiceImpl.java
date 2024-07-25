@@ -16,7 +16,6 @@ import com.busking.board.model.BoardTeamMapper;
 import com.busking.board.model.CommentFreeDTO;
 import com.busking.board.model.CommentNewsDTO;
 import com.busking.board.model.CommentTeamDTO;
-import com.busking.mypage.model.UserJoinDTO;
 import com.busking.util.mybatis.MybatisUtil;
 
 import jakarta.servlet.ServletException;
