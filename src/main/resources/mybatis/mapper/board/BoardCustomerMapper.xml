@@ -31,7 +31,6 @@
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(*) FROM NOTICE 
 	</select>	
-	
 
 	<update id="increaseHit" parameterType="string">
 		UPDATE NOTICE SET NOTICE_HIT = NOTICE_HIT + 1 WHERE NOTICE_NUM = #{noticeNum}

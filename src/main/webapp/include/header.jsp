@@ -56,7 +56,7 @@
 					</button>
 					<a class="navbar-brand index-menu" href="${pageContext.request.contextPath }/index.main">사이트 명</a>
 				</div>
-				<div class="collapse navbar-collapse main-color" id="myNavbar">
+				<div class="collapse navbar-collapse main-color mobile-navbar" id="myNavbar">
 					<ul class="nav navbar-nav">
 
 						<li class="active index-menu"><a href="${pageContext.request.contextPath }/index.jsp">Main</a></li>
@@ -81,11 +81,11 @@
 							data-toggle="dropdown" href="#">마이페이지 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_news_list.board">내정보</a></li>
+									href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">내정보</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_free_list.board">예약현황</a></li>
+									href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">예약현황</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_team_list.board">회원탈퇴</a></li>
+									href="${pageContext.request.contextPath }/mypage/deleteUserPage.userinfo">회원탈퇴</a></li>
 							</ul></li>
 
 
@@ -107,11 +107,14 @@
 
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="${pageContext.request.contextPath }/mypage/login.jsp" class="header-right"><span
-								class="glyphicon glyphicon-user"></span> 로그인</a></li>
-						<li><a href="${pageContext.request.contextPath }/mypage/signup.jsp" class="header-right"><span
-								class="glyphicon glyphicon-log-in"></span> 회원가입</a></li>
-					</ul>
+                        <% if (session.getAttribute("user") != null) { %>
+                            <li><a href="#">${user.userName}님 환영합니다</a></li>
+                            <li><a href="${pageContext.request.contextPath}/mypage/logout.userinfo" class="header-right"><span class="glyphicon glyphicon-off"></span> 로그아웃</a></li>
+                        <% } else { %>
+                            <li><a href="${pageContext.request.contextPath}/mypage/login.jsp" class="header-right"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
+                            <li><a href="${pageContext.request.contextPath}/mypage/signup.jsp" class="header-right"><span class="glyphicon glyphicon-log-in"></span> 회원가입</a></li>
+                        <% } %>
+                    </ul>
 
 				</div>
 			</div>
