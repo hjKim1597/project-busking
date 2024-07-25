@@ -13,7 +13,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter({"/board/board_edit.boardNews", "/board/board_delete.boardNews"})
+@WebFilter({
+	"/board/board_edit.boardNews"
+	, "/board/board_delete.boardNews"
+	, "/board/board_edit.boardFree"
+	, "/board/board_delete.boardFree"
+	, "/board/board_edit.boardTeam"
+	, "/board/board_delete.boardTeam"
+	})
 public class BoardAuthenticationFilter implements Filter{
 
 	@Override

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< Updated upstream
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -43,6 +44,15 @@
 	<!-- 중앙 레이아웃 -->
 	<section class="container customer-center-width" id="change">
 		<div class="row">
+=======
+    pageEncoding="UTF-8"%>
+
+<%@ include file="../include/header.jsp"%>
+
+    <!-- 중앙 레이아웃 -->
+    <section class="container customer-center-width" id="change">
+        <div class="row">
+>>>>>>> Stashed changes
 
 			<!-- 좌측메뉴 -->
 			<div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 content">
@@ -129,6 +139,7 @@
 		</div>
 	</section>
 
+<<<<<<< Updated upstream
 
 	<%@ include file="../include/footer.jsp"%>
 
@@ -136,3 +147,7 @@
 
 
 </html>
+=======
+   
+<%@ include file="../include/footer.jsp"%>
+>>>>>>> Stashed changes

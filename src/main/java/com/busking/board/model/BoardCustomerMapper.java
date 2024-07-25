@@ -48,4 +48,8 @@ public interface BoardCustomerMapper {
 //
 //	// 조회수 기능 만들기
 //	public void increaseHit(String bno);
+	
+	// 페이징 용 전체 글 개수 가져오기
+	public int getTotal();
+	
 }

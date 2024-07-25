@@ -38,7 +38,6 @@ public class CommentAuthenticationFilter implements Filter {
 			
 			return;
 		}
-		
 
 		String writer = request.getParameter("writer");
 		

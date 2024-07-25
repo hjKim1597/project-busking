@@ -1,38 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_index.css">
-
-    <!-- 부트스트랩 css링크 -->
-    <link rel="stylesheet" href="../resources/css/customer_center/bootstrap.min.css">
-    <!-- 제이쿼리(부스트랩보다 먼저 링크) -->
-    <script src="../resources/js/customer_center_js/jquery-3.7.1.min.js"></script>
-    <!-- 부트스트랩 js링크 -->
-    <script src="../resources/js/customer_center_js/bootstrap.min.js"></script>
-
-    <!-- 커스터마이징 한 css 디자인 추가 -->
-    <link rel="stylesheet" href="../resources/css/custom-reset.css">
-    <link rel="stylesheet" href="../resources/css/center_default.css">
-
-    <!-- header,footer -->
-    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_header_footer.css">
-
-    <!-- 글 수정 스타일 -->
-    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_index_board.css">
-
-
-</head>
 
 <%@ include file="../include/header.jsp"%>
-
-<body>
-
 
     <!-- 중앙 레이아웃 -->
     <section class="container customer-center-width" id="change">
@@ -132,8 +101,3 @@
 
     
 <%@ include file="../include/footer.jsp"%>
-
-</body>
-
-
-</html>

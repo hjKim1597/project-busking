@@ -2,36 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <!-- 부트스트랩 css링크 -->
-    <link rel="stylesheet" href="../resources/css/customer_center/bootstrap.min.css">
-    <!-- 제이쿼리(부스트랩보다 먼저 링크) -->
-    <script src="../resources/js/customer_center_js/jquery-3.7.1.min.js"></script>
-    <!-- 부트스트랩 js링크 -->
-    <script src="../resources/js/customer_center_js/bootstrap.min.js"></script>
-
-    <!-- 커스터마이징 한 css 디자인 추가 -->
-    <link rel="stylesheet" href="../resources/css/custom-reset.css">
-    <link rel="stylesheet" href="../resources/css/default.css">
-    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_board_free_list.css">
-
-
-
-
-</head>
-
-
-
-<body>
 <%@ include file="../include/header.jsp"%>
-
 
     <!-- 중앙 레이아웃 -->
     <section class="container customer-center-width" id="change">
@@ -126,20 +98,18 @@
                                             <!-- 페이지 번호 -->
                                             <div class="page_nav" id="page_num123">
                                                 <ul class="center">
-                                                    <li><a href="첫페이지"><img src="../resources/img/ico_first.gif" alt="처음페이지"></a>
-                                                    </li>
-                                                    <li><a href="이전페이지"><img src="../resources/img/ico_prev.gif" alt="이전페이지"></a>
-                                                    </li>
-                                                    <li><a href="2페이지링크" title="1페이지">1</a></li>
-                                                    <li><a href="2페이지링크" title="2페이지">2</a></li>
-                                                    <li><a href="3페이지링크" title="3페이지">3</a></li>
-                                                    <li><a href="4페이지링크" title="4페이지">4</a></li>
-                                                    <li><a href="5페이지링크" title="5페이지">5</a></li>
-                                                    <li><a href="다음페이지"><img src="../resources/img/ico_next.gif" alt="다음페이지"></a>
-                                                    </li>
-                                                    <li><a href="마지막페이지"><img src="../resources/img/ico_last.gif" alt="마지막페이지"></a>
-                                                    </li>
-                                                </ul>
+						                            <li id="page_first"><a href="customer_center_index.customer"><img src="../resources/img/board_img/ico_first.gif" alt="처음페이지"></a></li>
+						                            <c:if test="${pageVO.prev }">
+							                            <li id="page_prev"><a href="customer_center_index.customer?page=${pageVO.pageNum - 1 }"><img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>                            
+						                            </c:if>
+						                            <c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+						                            	<li class="page_li" data-page="${i }"><a href="customer_center_index.customer?page=${i }" title="1페이지">${i }</a></li>	
+						                            </c:forEach>
+						                            <c:if test="${pageVO.next }">
+							                            <li id="page_next"><a href="customer_center_index.customer?page=${pageVO.pageNum + 1 }"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
+						                            </c:if>
+						                            <li id="page_last"><a href="customer_center_index.customer?page=${pageVO.endPage }"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
+						                        </ul>
                                                 <form action="customer_center_index_write.jsp" class="right">
                                                     <button value="글쓰기" onclick="">작성</button>
                                                 </form>
@@ -191,12 +161,17 @@
     </section>
 
     <!-- footer -->
+    <script>
+	    var pageNum = '${page}';
+	    var pageFirst;
+	    var pageUl = document.querySelector(".page_nav .center");
+	
+	    var pageItems = pageUl.querySelectorAll(".page_li");
+	    Array.from(pageItems)
+	    	 .filter(i => i.dataset.page == pageNum)
+	    	 .forEach(item => item.classList.add("active"));
+    
+    </script>
    	
     
 <%@ include file="../include/footer.jsp"%>
-
-
-</body>
-
-
-</html>

@@ -42,6 +42,10 @@ public class BoardCustomerController extends HttpServlet {
 		if (command.equals("/customer_center/customer_center_index.customer")) {
 			// 누르면 데이터가 필요하면 서비스
 			// 아니면 리다이렉트
+			// 페이징용 page 값 추가
+			String page = request.getParameter("page");
+			if(page == null) page = "1";
+			request.setAttribute("page", page);
 
 			// 서비스 영역을 거쳐서 목록을 가져간다
 			service = new BoardCustomerServiceImpl();

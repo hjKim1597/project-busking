@@ -1,17 +1,14 @@
 package com.busking.board.service;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardCustomerDTO;
 import com.busking.board.model.BoardCustomerMapper;
-import com.busking.board.model.BoardFreeDTO;
-import com.busking.board.model.BoardFreeMapper;
+
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
 
@@ -30,7 +27,14 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		// 글 목록
 
 		// request
+<<<<<<< Updated upstream
 
+=======
+		// 페이지 번호 받아오기
+		String page = (String)request.getAttribute("page");
+		int pageNum = Integer.parseInt(page);
+		System.out.println(pageNum);
+>>>>>>> Stashed changes
 		// DTO
 
 		// 호출하기
@@ -40,12 +44,20 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		// 화면에 리스트 내보내기
 		ArrayList<BoardCustomerDTO> noticeList = boardMapper.getList();
 		System.out.println("화면에 리스트 나타내기 " + noticeList);
+		
+		int total = boardMapper.getTotal(); // 페이징 용 전체 글 개수 가져오기
+		PageVO pageVO = new PageVO(pageNum, total); // 페이징용 PageVO 객체 생성
 
 		sql.close();
 
 		// response
 		request.setAttribute("noticeList", noticeList);
+<<<<<<< Updated upstream
 		request.getRequestDispatcher("/customer_center/customer_center_index.jsp").forward(request, response);
+=======
+		request.setAttribute("page", pageVO); // PageVO 객체 넘기기
+		request.getRequestDispatcher("customer_center_index.jsp").forward(request, response);
+>>>>>>> Stashed changes
 	}
 
 	// 글 등록
