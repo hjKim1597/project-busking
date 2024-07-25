@@ -24,6 +24,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <!-- 예약내용시작 -->
                             <tr class="accordion-toggle" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
                                 <td>1</td>
                                 <td>홍길동</td>
@@ -69,6 +70,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            <!-- 예약 내용 끝 -->
                             <!-- 추가적인 예약 내역 행을 여기에 추가 -->
                             <tr class="accordion-toggle" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
                                 <td>2</td>

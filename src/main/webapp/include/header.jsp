@@ -81,11 +81,11 @@
 							data-toggle="dropdown" href="#">마이페이지 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_news_list.board">내정보</a></li>
+									href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">내정보</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_free_list.board">예약현황</a></li>
+									href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">예약현황</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_team_list.board">회원탈퇴</a></li>
+									href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">회원탈퇴</a></li>
 							</ul></li>
 
 

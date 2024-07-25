@@ -43,28 +43,38 @@
     </div>
 
     <script>
-        function findId() {
-            var email = document.getElementById('email-findId').value;
-            var phone = document.getElementById('phone-findId').value;
+    // 아이디 찾기 기능을 수행하는 함수
+    function findId() {
+        // 이메일과 전화번호 입력 값을 가져옴
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
 
-            fetch('findId.mypage?email=' + email + '&phone=' + phone)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('foundId').value = data;
-                })
-                .catch(error => console.error('Error:', error));
-        }
+        // fetch API를 사용하여 서버에 요청을 보냄
+        fetch('findId.mypage?email=' + email + '&phone=' + phone)
+            .then(function(response) {
+                return response.text(); // 서버 응답을 텍스트로 변환
+            })
+            .then(function(data) {
+                // 응답 데이터를 'foundId' 필드에 설정
+                document.getElementById('foundId').value = data;
+            });
+     }
+    	// 비밀번호 찾기 기능을 수행하는 함수
+    function findPw() {
+        // 아이디와 전화번호 입력 값을 가져옴
+        var id = document.getElementById('id').value;
+        var phone = document.getElementById('phonePw').value;
 
-        function findPw() {
-            var id = document.getElementById('id-findPw').value;
-            var phone = document.getElementById('phone-findPw').value;
+        // fetch API를 사용하여 서버에 요청을 보냄
+        fetch('findPw.mypage?id=' + id + '&phone=' + phone)
+            .then(function(response) {
+                return response.text(); // 서버 응답을 텍스트로 변환
+            })
+            .then(function(data) {
+                // 응답 데이터를 'foundPw' 필드에 설정
+                document.getElementById('foundPw').value = data;
+            });
 
-            fetch('findPw.mypage?id=' + id + '&phone=' + phone)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('foundPw').value = data;
-                })
-                .catch(error => console.error('Error:', error));
-        }
+    }
     </script>
 <%@ include file="../include/footer.jsp" %>
