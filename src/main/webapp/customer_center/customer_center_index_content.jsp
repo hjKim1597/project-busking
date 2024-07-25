@@ -69,10 +69,15 @@
 								</div>
 
 								<div class="board-button">
-									<a href="customer_center_index_content_delete.customer">
+									<%-- 
+									<a href="delete.customer">
 										<button type="button" class="btn btn-default"
-											onclick="alert('삭제되었습니다');">삭제</button>
-									</a>
+											onclick="location.href='delete.customer?noticeNum=${dto.noticeNum}';">삭제</button>
+									</a> 
+									--%>
+									
+									<input type="submit" value="삭제" onclick="location.href='delete.customer?noticeNum=${dto.noticeNum}';">
+									
 								</div>
 							</div>
 

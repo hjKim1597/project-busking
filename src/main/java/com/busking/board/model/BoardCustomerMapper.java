@@ -19,7 +19,7 @@ public interface BoardCustomerMapper {
 	public int update(BoardCustomerDTO dto);
 
 	// 39) 삭제 메서드 추가하기 > delete태그 xml에서 추가하기
-	public void delete(String noticeNum);
+	public int delete(int noticeNum);
 
 	// 글 조회수 증가
 	public void increaseHit(String noticeNum);

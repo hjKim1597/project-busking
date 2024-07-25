@@ -41,7 +41,7 @@
                         </div>
 
 						<!-- 글 업데이트 -->
-                        <form action="update.customer" method="post" class="form">
+                        <form action="update.customer?noticeNum=${dto.noticeNum }" method="post" class="form">
 
                             <!-- 글 제목 -->
                             <div>

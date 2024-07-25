@@ -46,7 +46,6 @@
                         <div class="table-responsive">
                             <!-- 게시판 -->
 
-                            <!-- 가져온 코드 -->
 
                             <section id="board_free_list_wrap">
                                 <div class="wrap_board_free">

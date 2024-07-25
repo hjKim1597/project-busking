@@ -26,11 +26,11 @@
 
 	<select id="getContent" resultType="com.busking.board.model.BoardCustomerDTO">
 		SELECT * FROM NOTICE WHERE NOTICE_NUM = #{noticeNum}
-	</select>
+	</select>	
 	
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(*) FROM NOTICE 
-	</select>
+	</select>	
 
 	<update id="increaseHit" parameterType="string">
 		UPDATE NOTICE SET NOTICE_HIT = NOTICE_HIT + 1 WHERE NOTICE_NUM = #{noticeNum}
@@ -43,6 +43,10 @@
 		   ,NOTICE_CONTENT = #{noticeContent} 
 		WHERE NOTICE_NUM = #{noticeNum}
 	</update>
+	
+	<delete id="delete" parameterType="com.busking.board.model.BoardCustomerDTO">
+		DELETE FROM NOTICE WHERE NOTICE_NUM = #{noticeNum}
+	</delete>
 	
 </mapper>
 
