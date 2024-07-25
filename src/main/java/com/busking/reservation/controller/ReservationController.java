@@ -40,9 +40,28 @@ public class ReservationController extends HttpServlet {
         String command = uri.substring(path.length());
 
         if (command.equals("/reservation/reservation.reservation")) {
-            List<ReservationLocationDTO> locations = service.getReservationList(); // 
+            List<ReservationLocationDTO> locations = service.getReservationList();
             request.setAttribute("locations", locations);
             request.getRequestDispatcher("/reservation/reservation.jsp").forward(request, response);
-        } 
+        
+        } else if (command.equals("/reservation/reservationForm.reservation")) {
+            handleReservationForm(request, response);
+        
+        } else if (command.equals("reservation/reservationPost.reservation")) {
+            service.createReservation(request, response);
+            response.sendRedirect("reservationSuccess.jsp");
+        }       
+    }
+    
+    private void handleReservationForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int locaId = Integer.parseInt(request.getParameter("locaId"));
+        ReservationLocationDTO location = service.getReservationLocationById(locaId);
+        
+        if (location != null) {
+            request.setAttribute("location", location);
+            request.getRequestDispatcher("/reservation/reservationForm.jsp").forward(request, response);
+        } else {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Location not found");
+        }
     }
 }

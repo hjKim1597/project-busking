@@ -33,7 +33,7 @@
     <div class="res-loca">
         <c:forEach var="location" items="${locations}">
             <div class="loca-box">
-                <a href="reservationForm.jsp?locaId=${location.locaId}&locaName=${fn:escapeXml(location.locaName)}&locaPicPath=${fn:escapeXml(location.locaPicPath)}&locaPlace=${fn:escapeXml(location.locaPlace)}&locaInfo=${fn:escapeXml(location.locaInfo)}">
+                <a href="reservationForm.reservation?locaId=${location.locaId}">
                     <div class="loca-img-box">
                         <img src="${location.locaPicPath}" alt="${location.locaName}">
                     </div>
