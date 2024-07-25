@@ -56,7 +56,7 @@
 					</button>
 					<a class="navbar-brand index-menu" href="${pageContext.request.contextPath }/index.main">사이트 명</a>
 				</div>
-				<div class="collapse navbar-collapse main-color" id="myNavbar">
+				<div class="collapse navbar-collapse main-color mobile-navbar" id="myNavbar">
 					<ul class="nav navbar-nav">
 
 						<li class="active index-menu"><a href="${pageContext.request.contextPath }/index.jsp">Main</a></li>
