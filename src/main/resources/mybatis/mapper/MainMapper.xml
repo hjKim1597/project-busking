@@ -7,10 +7,10 @@
 	<!-- 공지사항 최신글 4개 -->
 	<select id="getCustomerList"
 		resultType="com.busking.board.model.BoardCustomerDTO">
-		SELECT NOTICE_TITLE, NOTICE_REGDATE
+		SELECT NOTICE_TITLE, NOTICE_REGDATE, NOTICE_NUM
 		FROM (
 		SELECT
-		NOTICE_TITLE, NOTICE_REGDATE
+		NOTICE_TITLE, NOTICE_REGDATE, NOTICE_NUM
 		FROM NOTICE
 		ORDER BY NOTICE_NUM DESC
 		)
@@ -21,9 +21,9 @@
 	<!-- 소식게시판 최신글 4개 -->
 	<select id="getNewsList"
 		resultType="com.busking.board.model.BoardNewsDTO">
-		SELECT NEWS_TITLE, NEWS_REGDATE
+		SELECT NEWS_TITLE, NEWS_REGDATE, NEWS_NUM
 		FROM (
-			SELECT NEWS_TITLE, NEWS_REGDATE
+			SELECT NEWS_TITLE, NEWS_REGDATE, NEWS_NUM
 			FROM BOARD_NEWS
 			ORDER BY NEWS_NUM DESC
 		)
@@ -35,9 +35,9 @@
 	<!-- FAQ 최신글 4개 -->
 	<select id="getFAQList"
 		resultType="com.busking.customercenter.model.FAQDTO">
-		SELECT FAQ_TITLE, FAQ_REGDATE
+		SELECT FAQ_TITLE, FAQ_REGDATE, FAQ_NUM
 		FROM (
-		SELECT FAQ_TITLE, FAQ_REGDATE
+		SELECT FAQ_TITLE, FAQ_REGDATE, FAQ_NUM
 		FROM FAQ
 		ORDER BY FAQ_NUM DESC
 		)
