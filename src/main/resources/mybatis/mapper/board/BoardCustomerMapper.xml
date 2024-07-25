@@ -23,16 +23,13 @@
 		#{managerId}, #{noticeTitle}, #{noticeContent}, SYSDATE, 0)
 
 	</insert>
-<<<<<<< Updated upstream
 
-	<select id="getContent"
-		resultType="com.busking.board.model.BoardCustomerDTO">
+	<select id="getContent" resultType="com.busking.board.model.BoardCustomerDTO">
 		SELECT * FROM NOTICE WHERE NOTICE_NUM = #{noticeNum}
-=======
+	</select>
 	
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(*) FROM NOTICE 
->>>>>>> Stashed changes
 	</select>
 
 	<update id="increaseHit" parameterType="string">

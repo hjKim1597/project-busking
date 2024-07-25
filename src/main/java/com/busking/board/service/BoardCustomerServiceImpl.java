@@ -1,6 +1,7 @@
 package com.busking.board.service;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,14 +28,12 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		// 글 목록
 
 		// request
-<<<<<<< Updated upstream
 
-=======
 		// 페이지 번호 받아오기
 		String page = (String)request.getAttribute("page");
 		int pageNum = Integer.parseInt(page);
 		System.out.println(pageNum);
->>>>>>> Stashed changes
+
 		// DTO
 
 		// 호출하기
@@ -52,12 +51,11 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 
 		// response
 		request.setAttribute("noticeList", noticeList);
-<<<<<<< Updated upstream
 		request.getRequestDispatcher("/customer_center/customer_center_index.jsp").forward(request, response);
-=======
+
 		request.setAttribute("page", pageVO); // PageVO 객체 넘기기
 		request.getRequestDispatcher("customer_center_index.jsp").forward(request, response);
->>>>>>> Stashed changes
+
 	}
 
 	// 글 등록
