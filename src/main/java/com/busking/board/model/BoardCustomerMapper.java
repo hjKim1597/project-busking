@@ -2,12 +2,12 @@ package com.busking.board.model;
 
 import java.util.ArrayList;
 
+
 public interface BoardCustomerMapper {
 
 	// 글 목록 조회
 	public ArrayList<BoardCustomerDTO> getList();
 
-	// 글 개수 조회
 
 	// 글 작성
 	public void regist(BoardCustomerDTO dto);
@@ -15,14 +15,20 @@ public interface BoardCustomerMapper {
 	// 글 조회
 	public BoardCustomerDTO getContent(String noticeNum);
 
+	// 글 수정
+	public int update(BoardCustomerDTO dto);
+
+	// 39) 삭제 메서드 추가하기 > delete태그 xml에서 추가하기
+	public void delete(String noticeNum);
 
 	// 글 조회수 증가
 	public void increaseHit(String noticeNum);
 
+
+
 	// --------------------
-	
+
 	// 마이바티스는 인터페이스를 호출시키면, 연결될 수 있는 mapper.xml파일이 실행된다
-	
 
 //	// 9)여러행 글 목록 조회 만들기
 //	public ArrayList<BoardDTO> getList();

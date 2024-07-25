@@ -107,7 +107,7 @@
                                     
                                     </a> --%>
                                     
-                                    <input type="submit" value="완료123" class="btn btn-default">
+                                    <input type="submit" value="완료" class="btn btn-default">
                                     
                                 </div>
                                 

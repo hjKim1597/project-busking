@@ -60,6 +60,7 @@ public class BoardCustomerDAO {
 	// 보이드는 리턴값 여부에 따라 적는다 void 반환 없음
 	public void regist(String writer, String title, String content) {
 		String sql = "INSERT INTO NOTICE(NOTICE_NUM, MANAGER_ID, NOTICE_TITLE, NOTICE_CONTENT, ) VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?)";
+//		String sql ="INSERT INTO NOTICE(NOTICE_NUM, MANAGER_ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT) VALUES (BOARD_CUSTOMER_SEQ.NEXTVAL, #{managerId}, #{noticeTitle}, #{noticeContent}, SYSDATE, 0);"
 		// BNO는 시퀀스가 넣어주고 나머지 2개는 디폴트다
 		// PK숫자이면 시퀀스가 처리해준다
 		

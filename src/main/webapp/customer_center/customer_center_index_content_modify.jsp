@@ -47,13 +47,13 @@
                                 <div class="span"></div>
                                 <h1>고객센터</h1>
                                 <ul class="menu">
-                                    <li class="nth1"><strong><a href="customer_center_index.jsp"><span>공지사항</span></a></strong>
+                                    <li class="nth1"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
                                     </li>
-                                    <li class="nth2"><strong><a href="customer_center_month.jsp"><span>이달의예약</span></a></strong>
+                                    <li class="nth2"><strong><a href="customer_center_month.customer"><span>이달의예약</span></a></strong>
                                     </li>
-                                    <li class="nth3"><strong><a href="customer_center_guide.jsp"><span>이용안내</span></a></strong>
+                                    <li class="nth3"><strong><a href="customer_center_guide.customer"><span>이용안내</span></a></strong>
                                     </li>
-                                    <li class="nth4"><strong><a href="customer_center_FAQ.jsp"><span>자주묻는질문(FAQ)</span></a></strong>
+                                    <li class="nth4"><strong><a href="customer_center_FAQ.customer"><span>자주묻는질문(FAQ)</span></a></strong>
                                     </li>
                                 </ul>
                             </nav>
@@ -70,36 +70,51 @@
                             <h2>글 수정하기</h2>
 
                         </div>
-                        <!-- 글작성하기 -->
-                        <form action="" class="form">
+
+						<!-- 글 업데이트 -->
+                        <form action="update.customer" method="post" class="form">
 
                             <!-- 글 제목 -->
                             <div>
                                 <label for="comment">제목</label>
                                 <br>
-                                <input type="text" name="title" placeholder="제목을 입력해주세요">
-
+                                <input class="" type="text" name="title" placeholder="내용을 입력해주세요" value="${dto.noticeTitle }">
+								
                             </div>
 
                             <!-- 글 내용 -->
                             <div class="form-group">
-                                <label for="comment">글 내용</label>
-                                <textarea class="form-control" id="comment" placeholder="내용을 입력해주세요"></textarea>
+                                <label for="comment">내용</label>
+                                <textarea class="form-control" id="comment" name="content" placeholder="내용을 입력해주세요">${dto.noticeContent }</textarea>
+                            
                             </div>
 
                             <!-- 완료 버튼-->
                             <div class="board_button_set">
                                 <div class="board-button">
-                                    <a href="customer_center_index.jsp"><button type="button"
+                                    <a href="${pageContext.request.contextPath }/customer_center/customer_center_index.customer"><button type="button"
                                             class="btn btn-default">목록</button></a>
                                 </div>
 
                                 <div class="board-button">
-                                    <a href="customer_center_index_content_modify.jsp"><button type="button"
-                                            class="btn btn-default">완료</button></a>
+                                    <%-- <a href="${pageContext.request.contextPath }/customer_center/customer_center_index.customer">
+                                    <button type="button"
+                                            class="btn btn-default">
+                                            완료
+                                    </button>
+                                    
+                                    </a> --%>
+                                    
+                                    <input type="submit" value="완료" class="btn btn-default">
+                                    
                                 </div>
+                                
+                                
+                            </div>
                         </form>
-
+                        
+                        
+                        
                     </div>
                 </div>
             </div>
