@@ -19,6 +19,7 @@ import com.busking.customercenter.model.FAQDTO;
 import com.busking.main.model.MainMapper;
 import com.busking.util.mybatis.MybatisUtil;
 
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -28,6 +29,8 @@ public class MainServiceImpl implements MainService {
 	// MyBatis를 사용하여 데이터베이스와 상호작용하기 위한 SqlSessionFactory 객체를 생성하는 코드
 	private SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
 
+	
+	
 	@Override
 	public void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
