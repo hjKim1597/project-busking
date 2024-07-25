@@ -259,7 +259,7 @@
     display: flex;
 }
 
-.team_container .team_count {
+.team_container .team_count_box .team_count {
     border-radius: 10px;
     width: 75px;
     height: 35px;

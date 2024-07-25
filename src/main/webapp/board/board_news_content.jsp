@@ -11,10 +11,10 @@
 		    <div id="board_nav_wrap">
 		        <h1>BOARD</h1>
 		        <ul class="menu">
-		            <li class="nth1 active"><strong><a href="board_news_list.boardNews">NEWS</a></strong></li>
-		            <li class="nth2"><strong><a href="board_free_list.boardFree">자유게시판</a></strong></li>
-		            <li class="nth3"><strong><a href="board_team_list.boardTeam">팀원 모집</a></strong></li>
-		            <li class="nth4"><strong><a href="board_ask_list.boardAsk">Q & A</a></strong></li>
+		            <li class="nth1 active"><strong><a href="board_list.boardNews">NEWS</a></strong></li>
+		            <li class="nth2"><strong><a href="board_list.boardFree">자유게시판</a></strong></li>
+		            <li class="nth3"><strong><a href="board_list.boardTeam">팀원 모집</a></strong></li>
+		            <li class="nth4"><strong><a href="board_list.boardAsk">Q & A</a></strong></li>
 		        </ul>
 		    </div>
 		</nav>
@@ -58,9 +58,9 @@
 	                        </div>
 	                    </div>
 	                    <div class="inner_bottom_right">
-	                        <button class="delete_button" type="button" data-bno="${dto.newsNum }">삭제</button>
-	                        <button class="edit_button" type="button" onclick="location.href='board_news_edit.boardNews?newsNum=${dto.newsNum}'">수정</button>
-	                        <button class="list_button" type="button" onclick="location.href='board_news_list.boardNews'">목록</button>
+	                        <button class="delete_button" type="button" data-bno=${dto.newsNum } data-writer=${dto.newsWriter } data-subject="News">삭제</button>
+	                        <button class="edit_button" type="button" onclick="location.href='board_edit.boardNews?subject=News&bno=${dto.newsNum}&writer=${dto.newsWriter }'">수정</button>
+	                        <button class="list_button" type="button" onclick="location.href='board_list.boardNews'">목록</button>
 	                    </div>
 	                </div>
 					<div class="comment_box">
@@ -71,17 +71,7 @@
 	    </div>
 	</section>
 		<script>
-		var deleteButton = document.querySelector(".inner_bottom_right .delete_button");
-		deleteButton.addEventListener('click', (e) => {
-		    //e.preventDefault(); // 기본 동작(예: 폼 제출) 방지
-		    if (confirm('삭제 하시겠습니까?')) {
-		        // e.target.dataset.bno을 사용하여 data-bno 값을 가져옴
-		        location.href = "board_news_delete.boardNews?newsNum=" + e.target.dataset.bno;
-		    } else {
-		        // 아무 동작도 하지 않음
-		        return;
-		    }
-		});
+
 	</script>
 	
 	<script src="${pageContext.request.contextPath }/resources/js/board/board_content.js"></script>

@@ -15,6 +15,7 @@ import com.busking.util.paging.PageVO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class BoardNewsServiceImpl implements BoardNewsService {
 	
@@ -48,28 +49,34 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 	public void write(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String newsTitle = request.getParameter("title");
-		String newsContent = request.getParameter("content");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		HttpSession session = request.getSession();
+		String writer = (String)session.getAttribute("userId");
+		
 		// DTO
 		BoardNewsDTO dto = new BoardNewsDTO();
-		dto.setNewsWriter("홍길동");
-		dto.setNewsTitle(newsTitle);
-		dto.setNewsContent(newsContent);
+		dto.setNewsWriter(writer);
+		dto.setNewsTitle(title);
+		dto.setNewsContent(content);
+		
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardNewsMapper mapper = sql.getMapper(BoardNewsMapper.class);
 		
 		mapper.write(dto);
 		sql.close();
+		
 		// response
-		response.sendRedirect("board_news_list.boardNews");
+		response.sendRedirect("board_list.boardNews");
 	}
 	
 	@Override
 	public void getContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String newsNum = request.getParameter("newsNum");
+		String bno = request.getParameter("bno");
 		
 		// DTO
 		BoardNewsDTO dto = new BoardNewsDTO();
@@ -78,10 +85,11 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardNewsMapper mapper = sql.getMapper(BoardNewsMapper.class);
 		
-		mapper.increaseHit(newsNum);
-		dto = mapper.getContent(newsNum);
-		dto.setNewsNum(newsNum);
+		mapper.increaseHit(bno);
+		dto = mapper.getContent(bno);
+		dto.setNewsNum(bno);
 		sql.close();
+		
 		// response
 		request.setAttribute("dto", dto);
 		request.getRequestDispatcher("board_news_content.jsp").forward(request, response);
@@ -92,32 +100,35 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 	public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String newsNum = request.getParameter("newsNum");
+		String bno = request.getParameter("bno");
+		
 		// DTO
 		
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardNewsMapper mapper = sql.getMapper(BoardNewsMapper.class);
-		int result = mapper.delete(newsNum);
+		int result = mapper.delete(bno);
 		sql.close();
+		
 		// response
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		
 		out.println("<script>");
 		if(result != 0) {
 			out.println("alert('글이 삭제되었습니다.');");
 		} else {
 			out.println("alert('글이 삭제되지 않았습니다.');");
 		}
-		out.println("location.href='board_news_list.boardNews';");
+		out.println("location.href='board_list.boardNews';");
 		out.println("</script>");
 	}
 	
 	@Override
-	public void getBefore(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void getBefore(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		// request
-		String newsNum = request.getParameter("newsNum");
+		String bno = request.getParameter("bno");
 		
 		// DTO
 		BoardNewsDTO dto = new BoardNewsDTO();
@@ -125,8 +136,8 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardNewsMapper mapper = sql.getMapper(BoardNewsMapper.class);
-		dto = mapper.getContent(newsNum);
-		dto.setNewsNum(newsNum);
+		dto = mapper.getContent(bno);
+		dto.setNewsNum(bno);
 		sql.close();
 		
 		// response
@@ -137,16 +148,17 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 	
 	@Override
 	public void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		// request
-		String newsNum = request.getParameter("newsNum");
-		String newsTitle = request.getParameter("title");
-		String newsContent = request.getParameter("content");
+		String bno = request.getParameter("bno");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		
 		// DTO
 		BoardNewsDTO dto = new BoardNewsDTO();
-		dto.setNewsNum(newsNum);
-		dto.setNewsTitle(newsTitle);
-		dto.setNewsContent(newsContent);
+		dto.setNewsNum(bno);
+		dto.setNewsTitle(title);
+		dto.setNewsContent(content);
 		
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
@@ -163,7 +175,7 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		} else {
 			out.println("alert('글이 수정되지 않았습니다.');");
 		}
-		out.println("location.href='board_news_content.boardNews?newsNum=" + newsNum + "';");
+		out.println("location.href='board_content.boardNews?bno=" + bno + "';");
 		out.println("</script>");
 		
 	}

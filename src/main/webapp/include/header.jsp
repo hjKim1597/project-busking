@@ -65,20 +65,15 @@
 						<li class="header-res"><a href="${pageContext.request.contextPath }/reservation/reservation.reservation" class="index-menu">예약하기</a></li>
 
 						<!-- 게시판 -->
-						<li class="dropdown"><a class="dropdown-toggle index-menu"
-							data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
+						<li class="dropdown">
+							<a class="dropdown-toggle index-menu" data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a
-									href="${pageContext.request.contextPath }/board/board_news_list.boardNews">NEWS</a></li>
-								<li><a
-									href="${pageContext.request.contextPath }/board/board_free_list.boardFree">자유게시판</a></li>
-								<li><a
-									href="${pageContext.request.contextPath }/board/board_team_list.boardTeam">팀원
-										모집</a></li>
-								<li><a
-									href="${pageContext.request.contextPath }/board/board_ask_list.boardAsk">Q
-										& A</a></li>
-							</ul></li>
+								<li><a href="${pageContext.request.contextPath }/board/board_list.boardNews">NEWS</a></li>
+								<li><a href="${pageContext.request.contextPath }/board/board_list.boardFree">자유게시판</a></li>
+								<li><a href="${pageContext.request.contextPath }/board/board_list.boardTeam">팀원모집</a></li>
+								<li><a href="${pageContext.request.contextPath }/board/board_list.boardAsk">Q & A</a></li>
+							</ul>
+						</li>
 
 
 						<!-- 마이페이지  -->
