@@ -108,12 +108,12 @@
 																<td>${dto.hit }</td>
 															</tr>
 														</c:forEach> --%>
-                                               
+                                               			
 								                        <c:forEach var="dto" items="${noticeList }">
 															<tr>
 																<td>${dto.noticeNum }</td>
 																<td>${dto.managerId }</td>																
-																<td><a href="board_notice_content.board?noticeNum=${dto.noticeNum }">${dto.noticeTitle }</a></td>
+																<td><a href="getContent.customer?noticeNum=${dto.noticeNum }">${dto.noticeTitle }</a></td>
 																<td><fmt:formatDate value="${dto.noticeRegdate }" pattern="yy.MM.dd"/></td>
 																<td>${dto.noticeHit }</td>
 															</tr>

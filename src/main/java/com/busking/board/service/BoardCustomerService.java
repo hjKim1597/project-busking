@@ -14,4 +14,13 @@ public interface BoardCustomerService {
 	void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
 	void getContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
+	//글 수정
+	void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
+	//글 삭제 기능
+	void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
+	void modify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
 }

@@ -8,19 +8,39 @@
 <mapper namespace="com.busking.board.model.BoardCustomerMapper">
 
 	<select id="getList" resultType="com.busking.board.model.BoardCustomerDTO">
-		
-		SELECT NOTICE_NUM, NOTICE_TITLE, MANAGER_ID, NOTICE_REGDATE, NOTICE_HIT  
+
+		SELECT NOTICE_NUM, MANAGER_ID, NOTICE_TITLE, NOTICE_REGDATE, NOTICE_HIT
 		FROM NOTICE
+		ORDER BY NOTICE_NUM DESC
 	</select>
 
 	<insert id="regist" parameterType="com.busking.board.model.BoardCustomerDTO">
-		
-		INSERT INTO NOTICE (NOTICE_NUM, MANAGER_ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT)
-    	VALUES (#{noticeNum}, #{managerId}, #{noticeTitle}, #{noticeContent}, SYSDATE, 0)
+
+		INSERT INTO NOTICE(NOTICE_NUM, MANAGER_ID, 
+		NOTICE_TITLE, NOTICE_CONTENT,
+		NOTICE_REGDATE, NOTICE_HIT)
+		VALUES (BOARD_CUSTOMER_SEQ.NEXTVAL,
+		#{managerId}, #{noticeTitle}, #{noticeContent}, SYSDATE, 0)
+
 	</insert>
 
+	<select id="getContent"
+		resultType="com.busking.board.model.BoardCustomerDTO">
+		SELECT * FROM NOTICE WHERE NOTICE_NUM = #{noticeNum}
+	</select>
 
-
+	<update id="increaseHit" parameterType="string">
+		UPDATE NOTICE SET NOTICE_HIT = NOTICE_HIT + 1 WHERE NOTICE_NUM = #{noticeNum}
+	</update>
+	
+	<!-- 글 수정 -->
+	<update id="update" parameterType="com.busking.board.model.BoardCustomerDTO">
+		UPDATE NOTICE 
+		SET NOTICE_TITLE = #{noticeTitle}
+		   ,NOTICE_CONTENT = #{noticeContent} 
+		WHERE NOTICE_NUM = #{noticeNum}
+	</update>
+	
 </mapper>
 
 

@@ -38,12 +38,12 @@ public class BoardCustomerController extends HttpServlet {
 
 		// BoardService 선언해두기
 		BoardCustomerService service;
-
+		                     
 		if (command.equals("/customer_center/customer_center_index.customer")) {
 			// 누르면 데이터가 필요하면 서비스
 			// 아니면 리다이렉트
 
-			// 데이터 필요한 공지
+			// 서비스 영역을 거쳐서 목록을 가져간다
 			service = new BoardCustomerServiceImpl();
 			service.getList(request, response);
 
@@ -52,28 +52,60 @@ public class BoardCustomerController extends HttpServlet {
 			//response.sendRedirect("customer_center_index.jsp");
 			//response.sendRedirect(request.getContextPath() + "/customer_center_index.jsp");
 
-		} else if (command.equals("/customer_center/customer_center_month.customer")) {
 			//이달의 예약
+		} else if (command.equals("/customer_center/customer_center_month.customer")) {
+			response.sendRedirect("customer_center_month.jsp");
+			System.out.println("달력 화면 이동");
 			
-			response.sendRedirect("/customer_center/customer_center_month.jsp");
-			
-		} else if (command.equals("/customer_center/customer_center_guide.customer")) {
 			//이용안내
+		} else if (command.equals("/customer_center/customer_center_guide.customer")) {
+			response.sendRedirect("customer_center_guide.jsp");
+			System.out.println("안내 화면 이동");
 			
-			response.sendRedirect("/customer_center/customer_center_guide.jsp");
-
-		} else if (command.equals("/customer_center/customer_center_FAQ.customer")) {
 			//자주묻는질문FAQ
-			response.sendRedirect("/customer_center/customer_center_FAQ.jsp");
-
+		} else if (command.equals("/customer_center/customer_center_FAQ.customer")) {
+			response.sendRedirect("customer_center_FAQ.jsp");
+			System.out.println("FAQ 화면 이동");
+			
+			
 		} else if (command.equals("/customer_center/registForm.customer")) {
 			//글 등록
 			
 			service = new BoardCustomerServiceImpl();
 			service.regist(request, response);
 			
-			System.out.println("컨트롤러에서 글 등록 화면으로");
+			System.out.println("글 등록화면 이동");
 			
+		} else if (command.equals("/customer_center/getContent.customer")) {
+			//글 상세 내용
+			
+			System.out.println("글 내용보기 화면 이동 요청");
+
+			service = new BoardCustomerServiceImpl();
+			service.getContent(request, response);
+			
+			//위까지 완료-------------
+		} else if (command.equals("/customer_center/modify.customer")) {
+			
+			service = new BoardCustomerServiceImpl();
+			service.modify(request, response);
+			
+		} else if (command.equals("/customer_center/update.customer")) {
+			
+			service = new BoardCustomerServiceImpl();
+			service.update(request, response);
+			
+		} 
+		
+		
+		
+		
+		
+		
+		else if (command.equals("customer_center_index_content_delete.customer")) {
+			
+			service = new BoardCustomerServiceImpl();
+			service.getContent(request, response);
 		}
 
 	}
