@@ -46,7 +46,7 @@ public class BoardFreeController extends HttpServlet {
 			service.getList(request, response);
 			
 		} else if(command.equals("/board/board_write.boardFree")) {
-			response.sendRedirect("board_write.jsp");
+			response.sendRedirect("board_free_write.jsp");
 			
 		} else if(command.equals("/board/board_writeForm.boardFree")) {
 			service = new BoardFreeServiceImpl();

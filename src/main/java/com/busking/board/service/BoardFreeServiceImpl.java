@@ -175,7 +175,7 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		} else {
 			out.println("alert('글이 수정되지 않았습니다.');");
 		}
-		out.println("location.href='board_free_content.boardFree?bno=" + bno + "';");
+		out.println("location.href='board_content.boardFree?bno=" + bno + "';");
 		out.println("</script>");
 		
 	}

@@ -46,7 +46,7 @@
                             </li>
                             <li>
                                 <b>주소</b>
-                                <div>${location.locaInfo}</div>
+                                <div id="loca-info">${location.locaInfo}</div>
                             </li>
                             <li>
                                 <b>연락망</b>

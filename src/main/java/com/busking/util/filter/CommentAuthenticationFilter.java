@@ -38,20 +38,19 @@ public class CommentAuthenticationFilter implements Filter {
 			
 			return;
 		}
-
-		String writer = request.getParameter("writer");
-		
-		if(writer == null || !writer.equals(userId)) {
-			
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('권한이 없습니다.');");
-			out.println("location.href='" + request.getContextPath() +"/board/board_comment_" + subject + "_list.comment?bno=" + bno + "';");
-			out.println("</script>");
-			
-			return;
-		}
+		/*
+		 * String writer = request.getParameter("writer");
+		 * 
+		 * if(writer == null || !writer.equals(userId)) {
+		 * 
+		 * response.setContentType("text/html; charset=UTF-8"); PrintWriter out =
+		 * response.getWriter(); out.println("<script>");
+		 * out.println("alert('권한이 없습니다.');"); out.println("location.href='" +
+		 * request.getContextPath() +"/board/board_comment_" + subject +
+		 * "_list.comment?bno=" + bno + "';"); out.println("</script>");
+		 * 
+		 * return; }
+		 */
 		
 		chain.doFilter(request, response);	
 		

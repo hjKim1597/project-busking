@@ -51,7 +51,7 @@ public class ReservationController extends HttpServlet {
             service.createReservation(request, response);
             response.sendRedirect("reservationSuccess.jsp");
             
-        } else if ()      
+        }   
     }
     
     private void handleReservationForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

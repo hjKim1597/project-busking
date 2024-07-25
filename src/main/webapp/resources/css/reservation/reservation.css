@@ -140,6 +140,11 @@
     color: #434343;
      
 }
+#loca-info {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 
 .res-loca .loca-box .loca-cont-box > ul > li {overflow: hidden;}
 .res-loca .loca-box .loca-cont-box > ul > li > b,
@@ -150,7 +155,7 @@
 
 .res-loca .loca-box .loca-cont-box > ul > li {
     margin-bottom: 10px;
-    padding-left: 120px;
+    padding-left: 80px;
     position: relative;
   
 }
