@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardNewsDTO;
 import com.busking.board.model.BoardNewsMapper;
-import com.busking.mypage.model.UserJoinDTO;
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
 
@@ -176,7 +175,7 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		} else {
 			out.println("alert('글이 수정되지 않았습니다.');");
 		}
-		out.println("location.href='board_news_content.boardNews?bno=" + bno + "';");
+		out.println("location.href='board_content.boardNews?bno=" + bno + "';");
 		out.println("</script>");
 		
 	}

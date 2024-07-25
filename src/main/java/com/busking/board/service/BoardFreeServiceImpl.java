@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardFreeDTO;
 import com.busking.board.model.BoardFreeMapper;
-import com.busking.mypage.model.UserJoinDTO;
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
 
@@ -50,18 +49,17 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 	public void write(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String freeTitle = request.getParameter("title");
-		String freeContent = request.getParameter("content");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		
 		HttpSession session = request.getSession();
-		UserJoinDTO user = (UserJoinDTO)session.getAttribute("user");
-		String writer = user.getUserId();
+		String writer = (String)session.getAttribute("userId");
 		
 		// DTO
 		BoardFreeDTO dto = new BoardFreeDTO();
 		dto.setFreeWriter(writer);
-		dto.setFreeTitle(freeTitle);
-		dto.setFreeContent(freeContent);
+		dto.setFreeTitle(title);
+		dto.setFreeContent(content);
 		
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
@@ -69,16 +67,16 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		
 		mapper.write(dto);
 		sql.close();
-
+		
 		// response
-		response.sendRedirect("board_free_list.boardFree");
+		response.sendRedirect("board_list.boardFree");
 	}
 	
 	@Override
 	public void getContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String freeNum = request.getParameter("bno");
+		String bno = request.getParameter("bno");
 		
 		// DTO
 		BoardFreeDTO dto = new BoardFreeDTO();
@@ -87,9 +85,9 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
 		
-		mapper.increaseHit(freeNum);
-		dto = mapper.getContent(freeNum);
-		dto.setFreeNum(freeNum);
+		mapper.increaseHit(bno);
+		dto = mapper.getContent(bno);
+		dto.setFreeNum(bno);
 		sql.close();
 		
 		// response
@@ -102,34 +100,35 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 	public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String freeNum = request.getParameter("freeNum");
+		String bno = request.getParameter("bno");
 		
 		// DTO
 		
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
-		int result = mapper.delete(freeNum);
+		int result = mapper.delete(bno);
 		sql.close();
 		
 		// response
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		
 		out.println("<script>");
 		if(result != 0) {
 			out.println("alert('글이 삭제되었습니다.');");
 		} else {
 			out.println("alert('글이 삭제되지 않았습니다.');");
 		}
-		out.println("location.href='board_free_list.boardFree';");
+		out.println("location.href='board_list.boardFree';");
 		out.println("</script>");
 	}
 	
 	@Override
-	public void getBefore(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void getBefore(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		// request
-		String freeNum = request.getParameter("freeNum");
+		String bno = request.getParameter("bno");
 		
 		// DTO
 		BoardFreeDTO dto = new BoardFreeDTO();
@@ -137,8 +136,8 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
-		dto = mapper.getContent(freeNum);
-		dto.setFreeNum(freeNum);
+		dto = mapper.getContent(bno);
+		dto.setFreeNum(bno);
 		sql.close();
 		
 		// response
@@ -149,16 +148,17 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 	
 	@Override
 	public void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		// request
-		String freeNum = request.getParameter("freeNum");
-		String freeTitle = request.getParameter("title");
-		String freeContent = request.getParameter("content");
+		String bno = request.getParameter("bno");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		
 		// DTO
 		BoardFreeDTO dto = new BoardFreeDTO();
-		dto.setFreeNum(freeNum);
-		dto.setFreeTitle(freeTitle);
-		dto.setFreeContent(freeContent);
+		dto.setFreeNum(bno);
+		dto.setFreeTitle(title);
+		dto.setFreeContent(content);
 		
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
@@ -175,7 +175,7 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		} else {
 			out.println("alert('글이 수정되지 않았습니다.');");
 		}
-		out.println("location.href='board_free_content.boardFree?freeNum=" + freeNum + "';");
+		out.println("location.href='board_free_content.boardFree?bno=" + bno + "';");
 		out.println("</script>");
 		
 	}

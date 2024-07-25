@@ -9,9 +9,9 @@
 	        <h1>BOARD</h1>
 	        <ul class="menu">
 	            <li class="nth1 active"><strong><a href="board_list.boardNews">NEWS</a></strong></li>
-	            <li class="nth2"><strong><a href="board_free_list.boardFree">자유게시판</a></strong></li>
-	            <li class="nth3"><strong><a href="board_team_list.boardTeam">팀원 모집</a></strong></li>
-	            <li class="nth4"><strong><a href="board_ask_list.boardAsk">Q & A</a></strong></li>
+	            <li class="nth2"><strong><a href="board_list.boardFree">자유게시판</a></strong></li>
+	            <li class="nth3"><strong><a href="board_list.boardTeam">팀원 모집</a></strong></li>
+	            <li class="nth4"><strong><a href="board_list.boardAsk">Q & A</a></strong></li>
 	        </ul>
 	    </div>
 	</nav>
@@ -32,7 +32,7 @@
             </div>
             <div class="button_box">
                 <button type="button" class="button_cancle" onclick="history.back()">취소</button>
-                <input type="submit" class="button_registration" value="등록">
+                <input type="submit" class="button_registration" value="수정">
             </div>
         </form>
     </div>

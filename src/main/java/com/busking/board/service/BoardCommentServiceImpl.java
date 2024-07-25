@@ -97,8 +97,7 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		String content = request.getParameter("content");
 		
 		HttpSession session = request.getSession();
-		UserJoinDTO user = (UserJoinDTO)session.getAttribute("user");
-		String writer = user.getUserId();
+		String writer = (String)session.getAttribute("userId");
 		
 		// DTO
 		CommentFreeDTO dto = new CommentFreeDTO();
@@ -134,8 +133,7 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		String content = request.getParameter("content");
 		
 		HttpSession session = request.getSession();
-		UserJoinDTO user = (UserJoinDTO)session.getAttribute("user");
-		String writer = user.getUserId();
+		String writer = (String)session.getAttribute("userId");
 		
 		// DTO
 		CommentNewsDTO dto = new CommentNewsDTO();
@@ -171,8 +169,7 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		String content = request.getParameter("content");
 		
 		HttpSession session = request.getSession();
-		UserJoinDTO user = (UserJoinDTO)session.getAttribute("user");
-		String writer = user.getUserId();
+		String writer = (String)session.getAttribute("userId");
 		
 		// DTO
 		CommentTeamDTO dto = new CommentTeamDTO();
