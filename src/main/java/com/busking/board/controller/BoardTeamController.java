@@ -37,7 +37,7 @@ public class BoardTeamController extends HttpServlet {
 		// BoardService 선언
 		BoardTeamService service;
 		
-		if(command.equals("/board/board_team_list.boardTeam")) {
+		if(command.equals("/board/board_list.boardTeam")) {
 			String page = request.getParameter("page");
 			if(page == null) page = "1";
 			request.setAttribute("page", page);
@@ -45,26 +45,26 @@ public class BoardTeamController extends HttpServlet {
 			service = new BoardTeamServiceImpl();
 			service.getList(request, response);
 			
-		} else if(command.equals("/board/board_team_write.boardTeam")) {
+		} else if(command.equals("/board/board_write.boardTeam")) {
 			response.sendRedirect("board_team_write.jsp");
 			
-		} else if(command.equals("/board/board_team_writeForm.boardTeam")) {
+		} else if(command.equals("/board/board_writeForm.boardTeam")) {
 			service = new BoardTeamServiceImpl();
 			service.write(request, response);
 			
-		} else if(command.equals("/board/board_team_content.boardTeam")) {
+		} else if(command.equals("/board/board_content.boardTeam")) {
 			service = new BoardTeamServiceImpl();
 			service.getContent(request, response);
 			
-		} else if(command.equals("/board/board_team_delete.boardTeam")) {
+		} else if(command.equals("/board/board_delete.boardTeam")) {
 			service = new BoardTeamServiceImpl();
 			service.delete(request, response);
 			
-		} else if(command.equals("/board/board_team_edit.boardTeam")) {
+		} else if(command.equals("/board/board_edit.boardTeam")) {
 			service = new BoardTeamServiceImpl();
 			service.getBefore(request, response);
 			
-		} else if(command.equals("/board/board_team_editForm.boardTeam")) {
+		} else if(command.equals("/board/board_editForm.boardTeam")) {
 			service = new BoardTeamServiceImpl();
 			service.edit(request, response);
 			

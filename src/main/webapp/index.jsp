@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@ include file="include/header.jsp"%>
 
@@ -67,83 +67,88 @@
 			<div class="row middle-row" style="margin: 0 10%">
 				<div class="col-md-4 preview-box">
 					<div class="preview-title">
-						<!-- 게시판 -->
-						<h3>
-							<a href="${pageContext.request.contextPath }/customer_center/customer_center_index.customer">공지사항</a>
-						</h3>
-
-						<table class="index-board">
-					
-							<c:forEach var="dto" items="${CustomerList}">
-								<tr>
-									<td class="index-board-bottom " 
-										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-										<a href="#">${dto.noticeTitle}</a>
-										
-									</td>
-									<td class="preview-date"><fmt:formatDate value="${dto.noticeRegdate}" pattern="yy.MM.dd"/></td>
-								</tr>
-
-							</c:forEach>
-
-
-						</table>
-					</div>
-				</div>
-
-				<div class="col-md-4 preview-box">
-					<div class="preview-title">
-						<!-- 게시판 -->
+						<!-- 공지게시판 -->
 						<h3>
 							<a
-								href="${pageContext.request.contextPath }/board/board_news_list.jsp">소식게시판</a>
+								href="${pageContext.request.contextPath }/customer_center/customer_center_index.customer">공지사항</a>
 						</h3>
 
 						<table class="index-board">
-						
-							<c:forEach var="dto" items="${NewsList}">
+
+							<c:forEach var="dto" items="${CustomerList}">
 								<tr>
 									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-										<a href="#" >${dto.newsTitle}</a>
-									</td>
-									<td class="preview-date"><fmt:formatDate value="${dto.newsRegdate}" pattern="yy.MM.dd"/></td>
-								</tr>
-							</c:forEach>
+										<a href="<%-- ${pageContext.request.contextPath }/board_content.boardNews?bno=${dto.newsNum } --%>" class="truncate with-style">${dto.noticeTitle}</a>
 
+									</td>
+									<td class="preview-date"><fmt:formatDate
+											value="${dto.noticeRegdate}" pattern="yy.MM.dd" /></td>
+								</tr>
+
+							</c:forEach>
 
 
 						</table>
 					</div>
-					
 				</div>
 
 				<div class="col-md-4 preview-box">
 					<div class="preview-title">
-						<!-- 게시판 -->
+						<!-- 소식게시판 -->
+						<h3>
+							<a
+								href="${pageContext.request.contextPath }/board/board_list.boardNews">소식게시판</a>
+						</h3>
+
+
+
+
+						<table class="index-board">
+
+							<c:forEach var="dto" items="${NewsList}">
+								<tr>
+									<td class="index-board-bottom "
+										style="border-bottom: 1px solid #e3e3e3; margin: 20px;">
+										<a
+										href="${pageContext.request.contextPath }/board/board_content.boardNews?bno=${dto.newsNum }"
+										class="truncate with-style">${dto.newsTitle}</a>
+									</td>
+									<td class="preview-date"><fmt:formatDate
+											value="${dto.newsRegdate}" pattern="yy.MM.dd" /></td>
+								</tr>
+							</c:forEach>
+
+						</table>
+					</div>
+
+				</div>
+
+				<div class="col-md-4 preview-box">
+					<div class="preview-title">
+						<!-- FAQ게시판 -->
 						<h3>
 							<a
 								href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.jsp">FAQ</a>
 						</h3>
 
-						<table class="index-board" id="board-three">				
-							
+						<table class="index-board" id="board-three">
+
 							<c:forEach var="dto" items="${FAQList}">
 								<tr>
 									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-										<a href="#">${dto.faqTitle}</a>
+										<a href="#" class="truncate with-style">${dto.faqTitle}</a>
 									</td>
-									<td class="preview-date"><fmt:formatDate value="${dto.faqRegdate}" pattern="yy.MM.dd"/></td>
+									<td class="preview-date"><fmt:formatDate
+											value="${dto.faqRegdate}" pattern="yy.MM.dd" /></td>
 								</tr>
 							</c:forEach>
-							
-							
+
 						</table>
 					</div>
 				</div>
 			</div>
-
 
 			<div class="container location-pic">
 				<h2>Book Your Busking Spot</h2>
@@ -225,8 +230,6 @@
 	event.preventDefault
 	pageUl.querySelectorAll(".page_li").forEach((li) => li.value == pageNum ? li.classList.add("active") : li);
 </script>
-
-
 
 
 

@@ -15,6 +15,7 @@ import com.busking.util.paging.PageVO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class BoardTeamServiceImpl implements BoardTeamService {
 	
@@ -26,6 +27,7 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		// request
 		String page = (String)request.getAttribute("page");
 		int pageNum = Integer.parseInt(page);
+		
 		// DTO
 		ArrayList<BoardTeamDTO> list = new ArrayList<>();
 		
@@ -47,33 +49,38 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 	public void write(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String teamTitle = request.getParameter("title");
-		String teamContent = request.getParameter("content");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		String teamCount = request.getParameter("teamCount");
 		String teamResult = request.getParameter("teamResult");
+		
+		HttpSession session = request.getSession();
+		String writer = (String)session.getAttribute("userId");
+		
 		// DTO
 		BoardTeamDTO dto = new BoardTeamDTO();
-		dto.setTeamWriter("홍길동");
-		dto.setTeamTitle(teamTitle);
-		dto.setTeamContent(teamContent);
+		dto.setTeamWriter(writer);
+		dto.setTeamTitle(title);
+		dto.setTeamContent(content);
 		dto.setTeamCount(Integer.parseInt(teamCount));
 		dto.setTeamResult(teamResult);
+		
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardTeamMapper mapper = sql.getMapper(BoardTeamMapper.class);
 		
 		mapper.write(dto);
 		sql.close();
+		
 		// response
-		response.sendRedirect("board_team_list.boardTeam");
+		response.sendRedirect("board_list.boardTeam");
 	}
 	
 	@Override
 	public void getContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String teamNum = request.getParameter("teamNum");
-		System.out.println(teamNum);
+		String bno = request.getParameter("bno");
 		
 		// DTO
 		BoardTeamDTO dto = new BoardTeamDTO();
@@ -82,10 +89,11 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardTeamMapper mapper = sql.getMapper(BoardTeamMapper.class);
 		
-		mapper.increaseHit(teamNum);
-		dto = mapper.getContent(teamNum);
-		dto.setTeamNum(teamNum);
+		mapper.increaseHit(bno);
+		dto = mapper.getContent(bno);
+		dto.setTeamNum(bno);
 		sql.close();
+		
 		// response
 		request.setAttribute("dto", dto);
 		request.getRequestDispatcher("board_team_content.jsp").forward(request, response);
@@ -96,14 +104,15 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 	public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String teamNum = request.getParameter("teamNum");
+		String bno = request.getParameter("bno");
 		// DTO
 		
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardTeamMapper mapper = sql.getMapper(BoardTeamMapper.class);
-		int result = mapper.delete(teamNum);
+		int result = mapper.delete(bno);
 		sql.close();
+		
 		// response
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -113,7 +122,7 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		} else {
 			out.println("alert('글이 삭제되지 않았습니다.');");
 		}
-		out.println("location.href='board_team_list.boardTeam';");
+		out.println("location.href='board_list.boardTeam';");
 		out.println("</script>");
 	}
 	
@@ -121,7 +130,7 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 	public void getBefore(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String teamNum = request.getParameter("teamNum");
+		String bno = request.getParameter("bno");
 		
 		// DTO
 		BoardTeamDTO dto = new BoardTeamDTO();
@@ -129,8 +138,9 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardTeamMapper mapper = sql.getMapper(BoardTeamMapper.class);
-		dto = mapper.getContent(teamNum);
-		dto.setTeamNum(teamNum);
+		dto = mapper.getContent(bno);
+		dto.setTeamNum(bno);
+		sql.close();
 		
 		// response
 		request.setAttribute("dto", dto);
@@ -142,20 +152,20 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 	public void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String teamNum = request.getParameter("teamNum");
-		String teamTitle = request.getParameter("title");
+		String bno = request.getParameter("bno");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		String teamCount = request.getParameter("teamCount");
 		String teamResult = request.getParameter("teamResult");
-		String teamContent = request.getParameter("content");
-		
+
 		// DTO
 		BoardTeamDTO dto = new BoardTeamDTO();
-		dto.setTeamNum(teamNum);
-		dto.setTeamTitle(teamTitle);
+		dto.setTeamNum(bno);
+		dto.setTeamTitle(title);
+		dto.setTeamContent(content);
 		dto.setTeamCount(Integer.parseInt(teamCount));
 		dto.setTeamResult(teamResult);
-		dto.setTeamContent(teamContent);
-		
+
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardTeamMapper mapper = sql.getMapper(BoardTeamMapper.class);
@@ -171,7 +181,7 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		} else {
 			out.println("alert('글이 수정되지 않았습니다.');");
 		}
-		out.println("location.href='board_team_content.boardTeam?teamNum=" + teamNum + "';");
+		out.println("location.href='board_content.boardTeam?bno=" + bno + "';");
 		out.println("</script>");
 	}
 	

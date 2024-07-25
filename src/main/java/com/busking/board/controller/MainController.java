@@ -8,7 +8,7 @@
  	4. 웹페이지 선택: 준비된 데이터를 사용자에게 보여줄 웹페이지를 선택 (index.jsp) 페이지를 선택
 */
 
-package com.busking.main.controller;
+package com.busking.board.controller;
 
 import java.io.IOException;
 
@@ -49,12 +49,17 @@ public class MainController extends HttpServlet{
 		String path = request.getContextPath();
 		String command = uri.substring(path.length());
 		
-		System.out.println(command);
+		System.out.println(command );
+		
+
 		
 		//MainService 선언
 		MainService service;
 		
 		if(command.equals("/index.main")) { 		
+			
+
+			
 			service = new MainServiceImpl();
 			service.getList(request, response);
 		}

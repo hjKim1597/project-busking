@@ -60,13 +60,14 @@
 		         </c:forEach>
 	        </div>
 	        <!--댓글 작성 영역-->
-	        <form action="board_comment_write.comment?subject=team" method="post">
+	        <form action="board_comment_team_write.comment" method="post">
 		        <div class="form-group board_comment_write">
 		            <textarea class="form-control" rows="5" id="comment" name="content"></textarea>
 		        </div>
 		        <div class="board_comment_button">
 		        	<input type="submit" value="등록">
 		        	<input type="hidden" value=${bno } name="bno">
+		        	<input type="hidden" value="team" name="subject">
 		        </div>
 	        </form>
 	    </div>

@@ -8,10 +8,10 @@
 	    <div id="board_nav_wrap">
 	        <h1>BOARD</h1>
 	        <ul class="menu">
-	            <li class="nth1"><strong><a href="board_news_list.boardNews">NEWS</a></strong></li>
-	            <li class="nth2"><strong><a href="board_free_list.boardFree">자유게시판</a></strong></li>
-	            <li class="nth3 active"><strong><a href="board_team_list.boardTeam">팀원 모집</a></strong></li>
-	            <li class="nth4"><strong><a href="board_ask_list.boardAsk">Q & A</a></strong></li>
+	            <li class="nth1"><strong><a href="board_list.boardNews">NEWS</a></strong></li>
+	            <li class="nth2"><strong><a href="board_list.boardFree">자유게시판</a></strong></li>
+	            <li class="nth3 active"><strong><a href="board_list.boardTeam">팀원 모집</a></strong></li>
+	            <li class="nth4"><strong><a href="board_list.boardAsk">Q & A</a></strong></li>
 	        </ul>
 	    </div>
 	</nav>
@@ -20,14 +20,14 @@
         <h1>
             <strong>게시글 작성</strong>
         </h1>
-        <form class="board_write_content" action="board_team_writeForm.boardTeam" method="post">
+        <form class="board_write_content" action="board_writeForm.boardTeam" method="post">
             <div class="form_group">
                 <label class="title_text" for="title">제목</label>
                 <input class="title_box" type="text" name="title" required style="height: 40px;">
                 <br>
                 <div class="title_team_box">
                     <select class="title_box" name="teamCount" required style="height: 40px; width: 110px; float: left;">
-                        <option id="board_team_option" value="0">모집 인원</option>
+                        <option id="board_option" value="0">모집 인원</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -36,7 +36,7 @@
                         <option value="6">기타</option>
                     </select>
                         <select class="title_box" name="teamResult" required style="height: 40px; width: 110px;">
-                            <option id="board_team_option" value="">모집 상태</option>
+                            <option id="board_option" value="">모집 상태</option>
                             <option value="T">모집 중</option>
                             <option value="F">모집 완료</option>
                         </select>

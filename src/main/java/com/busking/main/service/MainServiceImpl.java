@@ -45,6 +45,9 @@ public class MainServiceImpl implements MainService {
 		ArrayList<BoardNewsDTO> NewsList = Main.getNewsList();
 		ArrayList<FAQDTO> FAQList = Main.getFAQList();
 
+		
+//		System.out.println(NewsList.toString());
+		
 		sql.close();
 
 		// 역할: list라는 데이터를 request 객체에 담아서 jsp페이지에 전달함

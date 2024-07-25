@@ -19,7 +19,7 @@
         <div class="sum">
             <h3 class="title">회원가입</h3>
             <div class="user-join">
-                <form id="form_userInfo" action="${pageContext.request.contextPath}/userjoin/signup.userjoin" method="post" onsubmit="combineAddress()">
+                <form id="form_userInfo" action="${pageContext.request.contextPath}/userjoin/signup.mypage" method="post" onsubmit="combineAddress()">
                     <label for="userId">아이디</label>
                     <div class="input-group id-content">
                         <input type="text" class="form-control write-box" id="userId" placeholder="6~20자 영문, 숫자" name="userId" required="required">
@@ -64,8 +64,8 @@
                     </div>
     
                     <div class="form-group">
-                        <label for="sel1">성별</label>
-                        <select class="form-control write-box" id="sel1" name="gender">
+                        <label for="userGender">성별</label>
+                        <select class="form-control write-box" id="userGender" name="userGender">
                             <option>없음</option>
                             <option>남성</option>
                             <option>여성</option>
@@ -95,7 +95,7 @@
                 return;
             }
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "${pageContext.request.contextPath}/userjoin/checkUserId.userjoin?userId=" + userId, true);
+            xhr.open("GET", "${pageContext.request.contextPath}/userjoin/checkUserId.mypage?userId=" + userId, true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     var result = xhr.responseText;

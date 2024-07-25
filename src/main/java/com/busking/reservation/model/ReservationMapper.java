@@ -1,5 +1,7 @@
 package com.busking.reservation.model;
 
-public class ReservationMapper {
+import java.util.List;
 
+public interface ReservationMapper {
+    List<ReservationLocationDTO> getReservationLocations();
 }
