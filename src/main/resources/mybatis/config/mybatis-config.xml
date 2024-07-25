@@ -42,7 +42,7 @@
 	    <mapper resource="mybatis/mapper/board/BoardCustomerMapper.xml"/>
 	    
 	    <!-- 예약 매퍼 위치 -->
-	    <mapper resource="mybatis/mapper/reservation/ReservationLocationMapper.xml"/>
+	    <mapper resource="mybatis/mapper/reservation/ReservationMapper.xml"/>
 	    
 	  </mappers>
 	  

@@ -2,9 +2,14 @@
 <!DOCTYPE mapper 
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.busking.reservation.model.ReservationLocationMapper">
+	
+<mapper namespace="com.busking.reservation.model.ReservationMapper">
+
     <select id="getReservationLocations" resultType="com.busking.reservation.model.ReservationLocationDTO">
+        
         SELECT LOCA_ID, LOCA_NAME, LOCA_INFO, LOCA_PIC_PATH, LOCA_POINT_X, LOCA_POINT_Y, LOCA_PLACE
         FROM LOCATIONS
+   
     </select>
+    
 </mapper>

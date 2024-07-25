@@ -40,9 +40,9 @@ public class ReservationController extends HttpServlet {
         String command = uri.substring(path.length());
 
         if (command.equals("/reservation/reservation.reservation")) {
-            List<ReservationLocationDTO> locations = service.getReservationList();
+            List<ReservationLocationDTO> locations = service.getReservationList(); // 
             request.setAttribute("locations", locations);
             request.getRequestDispatcher("/reservation/reservation.jsp").forward(request, response);
-        }
+        } 
     }
 }
