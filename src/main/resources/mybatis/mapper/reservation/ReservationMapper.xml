@@ -6,11 +6,17 @@
 <mapper namespace="com.busking.reservation.model.ReservationMapper">
 
     <select id="getReservationLocations" resultType="com.busking.reservation.model.ReservationLocationDTO">       
-        SELECT * FROM LOCATIONS  
+        SELECT L.LOCA_ID, L.LOCA_NAME, L.LOCA_INFO, L.LOCA_PIC_PATH, L.LOCA_PLACE, M.MANAGER_EMAIL
+		FROM LOCATIONS L 
+		LEFT JOIN MANAGER M
+		ON L.LOCA_PLACE = M.LOCA_PLACE ORDER BY LOCA_ID 
     </select>
     
     <select id="getReservationLocationById" parameterType="int" resultType="com.busking.reservation.model.ReservationLocationDTO">
-        SELECT * FROM LOCATIONS WHERE LOCA_ID = #{locaId}        
+        SELECT L.LOCA_ID, L.LOCA_NAME, L.LOCA_INFO, L.LOCA_PIC_PATH, L.LOCA_PLACE, M.MANAGER_EMAIL, L.LOCA_POINT_X, L.LOCA_POINT_Y
+        FROM LOCATIONS L 
+		LEFT JOIN MANAGER M ON L.LOCA_PLACE = M.LOCA_PLACE
+		WHERE LOCA_ID = #{locaId}        
     </select>
     
     <insert id="createReservation" parameterType="com.busking.reservation.model.ReservationsDTO">

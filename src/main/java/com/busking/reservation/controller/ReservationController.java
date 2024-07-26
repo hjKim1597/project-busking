@@ -40,29 +40,46 @@ public class ReservationController extends HttpServlet {
         String command = uri.substring(path.length());
 
         if (command.equals("/reservation/reservation.reservation")) {
-            List<ReservationLocationDTO> locations = service.getReservationList();
-            request.setAttribute("locations", locations);
-            request.getRequestDispatcher("/reservation/reservation.jsp").forward(request, response);
-        
+            handleReservationList(request, response);
         } else if (command.equals("/reservation/reservationForm.reservation")) {
             handleReservationForm(request, response);
-        
-        } else if (command.equals("reservation/reservationPost.reservation")) {
+        } else if (command.equals("/reservation/reservationPost.reservation")) {
+            handleCreateReservation(request, response);
+        } else {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Page not found");
+        }
+    }
+
+    private void handleReservationList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<ReservationLocationDTO> locations = service.getReservationList();
+        request.setAttribute("locations", locations);
+        request.getRequestDispatcher("/reservation/reservation.jsp").forward(request, response);
+    }
+
+    private void handleReservationForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            int locaId = Integer.parseInt(request.getParameter("locaId"));
+            ReservationLocationDTO location = service.getReservationLocationById(locaId);
+
+            if (location != null) {
+                request.setAttribute("location", location);
+                request.getRequestDispatcher("/reservation/reservationForm.jsp").forward(request, response);
+            } else {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Location not found");
+            }
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid location ID");
+        } catch (Exception e) {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while processing your request");
+        }
+    }
+
+    private void handleCreateReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
             service.createReservation(request, response);
             response.sendRedirect("reservationSuccess.jsp");
-            
-        }   
-    }
-    
-    private void handleReservationForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int locaId = Integer.parseInt(request.getParameter("locaId"));
-        ReservationLocationDTO location = service.getReservationLocationById(locaId);
-        
-        if (location != null) {
-            request.setAttribute("location", location);
-            request.getRequestDispatcher("/reservation/reservationForm.jsp").forward(request, response);
-        } else {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Location not found");
+        } catch (Exception e) {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while processing your reservation");
         }
     }
 }

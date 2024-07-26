@@ -20,6 +20,16 @@ public class ReservationServiceImpl implements ReservationService {
     public ReservationServiceImpl() {
         this.reservationDAO = new ReservationDAO();
     }
+    
+    @Override
+    public List<ReservationLocationDTO> getReservationList() throws ServletException, IOException {
+    	return reservationDAO.getReservationLocations();
+    }
+    
+    @Override
+    public ReservationLocationDTO getReservationLocationById(int locaId) throws ServletException, IOException {
+    	return reservationDAO.getReservationLocationById(locaId);
+    }
 
     @Override
     public void createReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,13 +45,4 @@ public class ReservationServiceImpl implements ReservationService {
         reservationDAO.createReservation(reservation);
     }
 
-    @Override
-    public List<ReservationLocationDTO> getReservationList() throws ServletException, IOException {
-        return reservationDAO.getReservationLocations();
-    }
-
-    @Override
-    public ReservationLocationDTO getReservationLocationById(int locaId) throws ServletException, IOException {
-        return reservationDAO.getReservationLocationById(locaId);
-    }
 }

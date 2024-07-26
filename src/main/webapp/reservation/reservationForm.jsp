@@ -3,14 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/header.jsp" %>
 <%@ page import="com.busking.reservation.model.ReservationLocationDTO" %>
-<%
-    ReservationLocationDTO location = (ReservationLocationDTO) request.getAttribute("location");
-    if (location == null) {
-        throw new NullPointerException("Location not found in request attributes");
-    }
-%>
-<c:set var="locaX" value="${location.locaX}" />
-<c:set var="locaY" value="${location.locaY}" />
+
+<c:set var="locaX" value="${location.locaPointX}" />
+<c:set var="locaY" value="${location.locaPointY}" />
 <c:set var="locaName" value="${location.locaName}" />
 <c:set var="locaPicPath" value="${location.locaPicPath}" />
 <c:set var="locaPlace" value="${location.locaPlace}" />
@@ -24,6 +19,7 @@
     var locaPlace = "${locaPlace}";
     var locaInfo = "${locaInfo}";
 </script>
+
 <div class="resForm-wrap">
     <div class="resForm-top">
         <h3>${location.locaName}</h3>
@@ -57,7 +53,7 @@
                         </li>
                         <li>
                             <b>이메일</b>
-                            <p>이메일</p>
+                            <p>${location.managerEmail}</p>
                         </li>
                     </ul>
                 </div>

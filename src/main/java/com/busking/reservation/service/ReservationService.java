@@ -11,9 +11,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public interface ReservationService {
     
-    void createReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	// 예약장소 리스트 가져오기
+	List<ReservationLocationDTO> getReservationList() throws ServletException, IOException;
+	
+	// locaId로 해당 장소 정보 가져오기
+	ReservationLocationDTO getReservationLocationById(int locaId) throws ServletException, IOException;
     
-    List<ReservationLocationDTO> getReservationList() throws ServletException, IOException;
-
-    ReservationLocationDTO getReservationLocationById(int locaId) throws ServletException, IOException;
+	void createReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    
 }
