@@ -9,14 +9,11 @@
 		<div id="board_nav_wrap">
 			<h1>BOARD</h1>
 			<ul class="menu">
-				<li class="nth1"><strong><a
+				<li class="nth1"><strong><a 
 						href="board_list.boardNews">NEWS</a></strong></li>
-				<li class="nth2"><strong><a
-						href="board_list.boardFree">자유게시판</a></strong></li>
-				<li class="nth3"><strong><a
-						href="board_list.boardTeam">팀원 모집</a></strong></li>
-				<li class="nth4 active"><strong><a href="board_list.boardAsk">Q
-							& A</a></strong></li>
+				<li class="nth2"><strong><a href="board_list.boardFree">자유게시판</a></strong></li>
+				<li class="nth3"><strong><a href="board_list.boardTeam">팀원 모집</a></strong></li>
+				<li class="nth4 active"><strong><a href="board_list.boardAsk">Q & A</a></strong></li>
 			</ul>
 		</div>
 	</nav>

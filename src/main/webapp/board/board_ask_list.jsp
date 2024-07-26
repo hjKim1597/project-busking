@@ -46,8 +46,9 @@
 		                            <input class="submit-comment" value="등록">
 		                        </div>
 	                        </form>
+	                        
 	                        <div class="comment">
-	                        	<textarea rows="2" cols="50" value="test" readonly class="comList"></textarea>
+	                        	<textarea rows="2" cols="50" readonly class="comList">test</textarea>
 	                        </div>
 	                    </div>
 	                </div>
@@ -59,8 +60,7 @@
 	                        <div class="question-content">${dto.askContent }</div>
 	                        <div class="info">
 	                            <div class="writer">${dto.askWriter }</div>
-	                            <div class="date"><fmt:formatDate value="${dto.askRegdate }"
-											pattern="yy.MM.dd" /></div>
+	                            <div class="date"><fmt:formatDate value="${dto.askRegdate }" pattern="yy.MM.dd" /></div>
 	                        </div>
 	
 	                    </div>
@@ -71,6 +71,11 @@
 		                            <input class="submit-comment" value="등록">
 		                        </div>
 	                        </form>
+	                        <c:forEach var="dto" items="${comList }">
+		                        <div class="comment">
+		                        	<textarea rows="2" cols="50" readonly class="comList">test</textarea>
+		                        </div>
+		                    </c:forEach>
 	                    </div>
 	                </div>
 	                <!-- 추가적인 게시물은 여기에 추가 -->
