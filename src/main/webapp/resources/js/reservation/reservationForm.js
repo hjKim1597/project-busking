@@ -1,4 +1,4 @@
-function validateForm(event) {
+function validateForm() {
     var selectedDate = document.getElementById("selectedDate").value;
     var startTime = document.getElementById("startTime").value;
     var endTime = document.getElementById("endTime").value;
@@ -173,3 +173,19 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         infowindow.open(map, marker); 
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+        const stars = document.querySelectorAll('.cmt-star .star');
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                stars.forEach((s, i) => {
+                    if (i <= index) {
+                        s.classList.add('checked');
+                    } else {
+                        s.classList.remove('checked');
+                    }
+                });
+                document.getElementById('rating').value = index + 1; // Save the rating value
+            });
+        });
+    });

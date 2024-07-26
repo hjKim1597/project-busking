@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.busking.reservation.model.ReservationLocationDTO;
+import com.busking.reservation.model.ReservationReviewDTO;
 import com.busking.reservation.service.ReservationService;
 import com.busking.reservation.service.ReservationServiceImpl;
 
@@ -43,8 +44,10 @@ public class ReservationController extends HttpServlet {
             handleReservationList(request, response);
         } else if (command.equals("/reservation/reservationForm.reservation")) {
             handleReservationForm(request, response);
+        } else if (command.equals("/reservation/addReview.reservation")) { // 리뷰 추가 처리
+            handleAddReview(request, response);
         } else if (command.equals("/reservation/reservationPost.reservation")) {
-            handleCreateReservation(request, response);
+            // 예약 처리 코드 추가
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "Page not found");
         }
@@ -60,9 +63,11 @@ public class ReservationController extends HttpServlet {
         try {
             int locaId = Integer.parseInt(request.getParameter("locaId"));
             ReservationLocationDTO location = service.getReservationLocationById(locaId);
-
+            List<ReservationReviewDTO> reviewList = service.getReview(locaId);
+            
             if (location != null) {
                 request.setAttribute("location", location);
+                request.setAttribute("reviewList", reviewList);
                 request.getRequestDispatcher("/reservation/reservationForm.jsp").forward(request, response);
             } else {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Location not found");
@@ -74,12 +79,23 @@ public class ReservationController extends HttpServlet {
         }
     }
 
-    private void handleCreateReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void handleAddReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            service.createReservation(request, response);
-            response.sendRedirect("reservationSuccess.jsp");
+            String userId = request.getParameter("userId");
+            int locaId = Integer.parseInt(request.getParameter("locaId"));
+            String locaContent = request.getParameter("comment");
+            int locaScore = Integer.parseInt(request.getParameter("rating"));
+            
+            ReservationReviewDTO review = new ReservationReviewDTO();
+            review.setUserId(userId);
+            review.setLocaId(locaId);
+            review.setLocaContent(locaContent);
+            review.setLocaScore(locaScore);
+            
+            service.addReview(review);
+            response.sendRedirect("reservationForm.reservation?locaId=" + locaId);
         } catch (Exception e) {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while processing your reservation");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while processing your request");
         }
     }
 }

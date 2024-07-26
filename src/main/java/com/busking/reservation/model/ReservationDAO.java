@@ -8,12 +8,10 @@ import java.util.List;
 public class ReservationDAO {
     private SqlSessionFactory sqlSessionFactory;
 
-    // SqlSessionFactory 인스턴스 가져오기
     public ReservationDAO() {
         this.sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
     }
 
-    // 예약 장소 목록 가져오기
     public List<ReservationLocationDTO> getReservationLocations() {
         if (sqlSessionFactory == null) {
             throw new IllegalStateException("SqlSessionFactory is null.");
@@ -23,8 +21,7 @@ public class ReservationDAO {
             return mapper.getReservationLocations();
         }
     }
-    
-    // 예약 장소 ID로 예약 장소 정보 가져오기
+
     public ReservationLocationDTO getReservationLocationById(int locaId) {
         try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
             ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);
@@ -32,7 +29,23 @@ public class ReservationDAO {
         }
     }
 
-    // 예약 정보 저장하기
+    public List<ReservationReviewDTO> getReview(int locaId) {
+        if (sqlSessionFactory == null) {
+            throw new IllegalStateException("SqlSessionFactory is null.");
+        }
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);
+            return mapper.getReview(locaId);
+        }
+    }
+
+    public void addReview(ReservationReviewDTO review) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);
+            mapper.addReview(review);
+        }
+    }
+
     public void createReservation(ReservationsDTO reservation) {
         try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
             ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);
