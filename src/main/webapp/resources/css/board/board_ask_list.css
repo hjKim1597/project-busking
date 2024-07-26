@@ -279,7 +279,7 @@ thead th, tbody td {
     margin-left: auto;
 }
 
-.wrap_board_ask_list .page_nav .right button {
+.wrap_board_ask_list .page_nav .right input {
     float: right;
     font-size: 17px;
     text-align: center;
@@ -434,7 +434,11 @@ thead th, tbody td {
     color: white;
     border: none;
     border-radius: 3px;
+	text-align: center;
     cursor: pointer;
+}
+.comList {
+	width: 100%
 }
 
 
