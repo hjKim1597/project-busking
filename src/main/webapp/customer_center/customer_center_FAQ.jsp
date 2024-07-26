@@ -85,20 +85,22 @@
                                                             <th class="nth2">작성자</th>
                                                             <th class="nth3">제목</th>
                                                             <th class="nth4">날짜</th>
-                                                            <th class="nth5">조회수</th>
+                                                            
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <!--데이터 받아오기-->
                                                         
-                                               			
+                                               			SELECT FAQ_NUM, USER_ID, FAQ_TITLE, FAQ_REGDATE
+														FROM FAQ
+														ORDER BY FAQ_NUM DESC
 								                        <c:forEach var="dto" items="${faqList }">
 															<tr>
 																<td>${dto.faqNum }</td>
 																<td>${dto.userId }</td>																
-																<td><a href="getContent.customer?noticeNum=${dto.faqNum }">${dto.faqTitle }</a></td>
+																<td><a href="getContent.customer?faqNum=${dto.faqNum }">${dto.faqTitle }</a></td>
 																<td><fmt:formatDate value="${dto.faqRegdate }" pattern="yy.MM.dd"/></td>
-																<td>${dto.faqReply }</td>
+																<td></td>
 															</tr>
 														</c:forEach>
 
