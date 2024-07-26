@@ -1,22 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>   
 <%@ include file="../include/header.jsp" %>
 
 <section id="board_ask_list_wrap">  
 
     
-<nav class="board_nav">
-    <div id="board_nav_wrap">
-        <h1>BOARD</h1>
-        <ul class="menu">
-            <li class="nth1"><strong><a href="board_news_list.board">NEWS</a></strong></li>
-            <li class="nth2"><strong><a href="board_free_list.board">자유게시판</a></strong></li>
-            <li class="nth3"><strong><a href="board_team_list.board">팀원 모집</a></strong></li>
-            <li class="nth4 active"><strong><a href="board_ask_list.board">Q & A</a></strong></li>
-        </ul>
-    </div>
-</nav>
+	<nav class="board_nav">
+		<div id="board_nav_wrap">
+			<h1>BOARD</h1>
+			<ul class="menu">
+				<li class="nth1"><strong><a
+						href="board_list.boardNews">NEWS</a></strong></li>
+				<li class="nth2"><strong><a
+						href="board_list.boardFree">자유게시판</a></strong></li>
+				<li class="nth3"><strong><a
+						href="board_list.boardTeam">팀원 모집</a></strong></li>
+				<li class="nth4 active"><strong><a href="board_list.boardAsk">Q
+							& A</a></strong></li>
+			</ul>
+		</div>
+	</nav>
 <div class="wrap_board_ask">
     <div class="wrap_board_ask_list">
         <div class="add">
@@ -24,25 +29,52 @@
                 <div><strong>질문 게시판</strong></div>
             </div>
             <div class="board_ask_content_wrap">
-                <!-- 동적으로 게시물 추가 -->
-                <div class="post">
-                    <div class="post_box">
-
-                        <div class="question-content">질문 내용</div>
-                        <div class="info">
-                            <div class="writer">작성자</div>
-                            <div class="date">2023-07-17</div>
-                        </div>
-
-                    </div>
-                    <div class="comment-section">
-                        <div class="comment">
-                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요"></textarea>
-                            <button class="submit-comment">댓글 작성</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- 추가적인 게시물은 여기에 추가 -->
+            	<div class="post">
+	                    <div class="post_box">
+	
+	                        <div class="question-content">test</div>
+	                        <div class="info">
+	                            <div class="writer">test</div>
+	                            <div class="date">test</div>
+	                        </div>
+	
+	                    </div>
+	                    <div class="comment-section">
+	                    	<form action="" method="post">
+		                        <div class="comment">
+		                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="comContent"></textarea>
+		                            <input class="submit-comment" value="등록">
+		                        </div>
+	                        </form>
+	                        <div class="comment">
+	                        	<textarea rows="2" cols="50" value="test" readonly class="comList"></textarea>
+	                        </div>
+	                    </div>
+	                </div>
+            	<c:forEach var="dto" items="${askList }">
+	                <!-- 동적으로 게시물 추가 -->
+	                <div class="post">
+	                    <div class="post_box">
+	
+	                        <div class="question-content">${dto.askContent }</div>
+	                        <div class="info">
+	                            <div class="writer">${dto.askWriter }</div>
+	                            <div class="date"><fmt:formatDate value="${dto.askRegdate }"
+											pattern="yy.MM.dd" /></div>
+	                        </div>
+	
+	                    </div>
+	                    <div class="comment-section">
+	                    	<form action="" method="post">
+		                        <div class="comment">
+		                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="comContent"></textarea>
+		                            <input class="submit-comment" value="등록">
+		                        </div>
+	                        </form>
+	                    </div>
+	                </div>
+	                <!-- 추가적인 게시물은 여기에 추가 -->
+                </c:forEach>
             </div>
             <div class="page_nav">
                 <ul class="center">
@@ -56,8 +88,8 @@
                     <li><a href="다음페이지"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
                     <li><a href="마지막페이지"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
                 </ul>
-                <form action="board_ask_write.board" class="right">
-                    <button value="글쓰기">작성</button>  
+                <form action="board_write.boardAsk" class="right">
+                    <input type="submit" value="작성">
                 </form>   
             </div>
             <div class="board_ask_search">

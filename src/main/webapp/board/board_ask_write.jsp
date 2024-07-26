@@ -4,19 +4,22 @@
 
 
 <section id="board_write_wrap_ask">
-
-    <nav class="board_nav">
-	    <div id="board_nav_wrap">
-	        <h1>BOARD</h1>
-	        <ul class="menu">
-	            <li class="nth1"><strong><a href="board_news_list.board">NEWS</a></strong></li>
-	            <li class="nth2"><strong><a href="board_free_list.board">자유게시판</a></strong></li>
-	            <li class="nth3"><strong><a href="board_team_list.board">팀원 모집</a></strong></li>
-	            <li class="nth4 active"><strong><a href="board_ask_list.board">Q & A</a></strong></li>
-	        </ul>
-	    </div>
+	
+	<nav class="board_nav">
+		<div id="board_nav_wrap">
+			<h1>BOARD</h1>
+			<ul class="menu">
+				<li class="nth1"><strong><a
+						href="board_list.boardNews">NEWS</a></strong></li>
+				<li class="nth2"><strong><a
+						href="board_list.boardFree">자유게시판</a></strong></li>
+				<li class="nth3"><strong><a
+						href="board_list.boardTeam">팀원 모집</a></strong></li>
+				<li class="nth4 active"><strong><a href="board_list.boardAsk">Q
+							& A</a></strong></li>
+			</ul>
+		</div>
 	</nav>
-
     <div class="board_write_box">
         <h1>
             <strong>Q & A</strong>

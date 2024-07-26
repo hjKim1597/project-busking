@@ -25,7 +25,7 @@
                     </when>
                     <when test="type == 'all'">
                         AND (B.FREE_TITLE LIKE '%' || #{target} || '%' 
-                             OR CONTAINS(B.FREE_CONTENT, ('%' || #{target} || '%') ) > 0 
+                             OR CONTAINS(B.FREE_CONTENT, #{target, jdbcType=CLOB}) > 0 
                              OR B.FREE_WRITER LIKE '%' || #{target} || '%') 
                     </when>
                 </choose>
@@ -49,7 +49,7 @@
 		VALUES('FREE_' || LPAD(BOARD_FREE_SEQ.NEXTVAL, 8, '0'),
 		       #{freeWriter},
 		       #{freeTitle},
-		       #{freeContent},
+		       #{freeContent, jdbcType=CLOB},
 		       SYSDATE)
 	</insert>
 	
@@ -71,7 +71,7 @@
 	<update id="edit" parameterType="com.busking.board.model.BoardFreeDTO">
 		UPDATE BOARD_FREE 
 		SET FREE_TITLE = #{freeTitle}, 
-		    FREE_CONTENT = #{freeContent} 
+		    FREE_CONTENT = #{freeContent, jdbcType=CLOB} 
 		WHERE FREE_NUM = #{freeNum}
 	</update>
 	

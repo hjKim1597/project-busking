@@ -22,12 +22,12 @@
         </h1>
         <form class="board_write_content" action="board_writeForm.boardFree" method="post">
             <div class="form_group">
-                <label class="title_text" for="title">뉴스 제목</label>
-                <input class="title_box" type="text" id="title" name="title" placeholder="기사의 제목을 입력해주세요" required>
+                <label class="title_text" for="title">게시글 제목</label>
+                <input class="title_box" type="text" id="title" name="title" required>
             </div>
             <div class="form_group">
                 <label class="content_text" for="content">본문</label>
-                <div id="editor">*기사 링크 첨부 필수</div>
+                <div id="editor"></div>
                 <input type="hidden" name="content" id="content" required>
             </div>
             <div class="button_box">

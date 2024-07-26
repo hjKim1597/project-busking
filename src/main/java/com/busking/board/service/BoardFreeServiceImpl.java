@@ -52,7 +52,7 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		sql.close();
 		
 		// response
-		if(list.size() == 0) {
+		if(list.size() == 0 && type != null) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");

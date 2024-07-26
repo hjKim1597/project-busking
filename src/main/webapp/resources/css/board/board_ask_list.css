@@ -434,7 +434,11 @@ thead th, tbody td {
     color: white;
     border: none;
     border-radius: 3px;
+	text-align: center;
     cursor: pointer;
+}
+.comList {
+	width: 100%
 }
 
 
