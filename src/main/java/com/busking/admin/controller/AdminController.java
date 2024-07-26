@@ -46,10 +46,10 @@ public class AdminController extends HttpServlet {
 
 		AdminService service;
 
-		if (command.equals("/adminPage.admin")) {
-			String page = request.getParameter("page");
+		if (command.equals("/mypage/adminPage.admin")) {
+			/*String page = request.getParameter("page");
 			if(page == null) page = "1";
-			request.setAttribute("page", page);
+			request.setAttribute("page", page);*/
 			
 			service = new AdminServiceImpl();
 			service.getList(request, response);

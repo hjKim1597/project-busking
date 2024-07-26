@@ -44,6 +44,9 @@
 	    <!-- 예약 매퍼 위치 -->
 	    <mapper resource="mybatis/mapper/reservation/ReservationMapper.xml"/>
 	    
+	    <!-- 예약관리 매퍼 위치 -->
+	    <mapper resource="mybatis/mapper/admin/AdminMapper.xml"/>
+	    
 	  </mappers>
 	  
 
