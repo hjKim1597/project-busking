@@ -50,7 +50,7 @@
                             </li>
                             <li>
                                 <b>연락망</b>
-                                <div>관리자 이메일</div>
+                                <div>${location.managerEmail}</div>
                             </li>
                         </ul>
                     </div>

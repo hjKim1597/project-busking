@@ -5,17 +5,36 @@
 	
 <mapper namespace="com.busking.board.model.BoardFreeMapper">
 
-	<select id="getList" parameterType="com.busking.util.paging.PageVO" resultType="com.busking.board.model.BoardFreeDTO">
-		
-		SELECT FREE_NUM, FREE_TITLE, FREE_WRITER, FREE_REGDATE, FREE_HIT 
-		FROM (
-			SELECT ROWNUM RN,
-			       B.* 
-			FROM BOARD_FREE B 
-			ORDER BY FREE_NUM DESC 
-		) 
-		WHERE RN > (#{pageNum} - 1) * #{amount} and #{pageNum} * #{amount} >= RN 				
-	</select>
+    <select id="getList" parameterType="hashMap" resultType="com.busking.board.model.BoardFreeDTO">
+        SELECT FREE_NUM, FREE_TITLE, FREE_WRITER, FREE_REGDATE, FREE_HIT 
+        FROM ( 
+            SELECT ROWNUM AS RN, 
+                   B.* 
+            FROM BOARD_FREE B 
+            WHERE 1 = 1 
+            <if test="type != null and type != ''">
+                <choose>
+                    <when test="type == 'title'">
+                        AND B.FREE_TITLE LIKE '%' || #{target} || '%' 
+                    </when>
+                    <when test="type == 'content'">
+                        AND CONTAINS(B.FREE_CONTENT, ('%' || #{target} || '%') ) > 0 
+                    </when>
+                    <when test="type == 'writer'">
+                        AND B.FREE_WRITER LIKE '%' || #{target} || '%' 
+                    </when>
+                    <when test="type == 'all'">
+                        AND (B.FREE_TITLE LIKE '%' || #{target} || '%' 
+                             OR CONTAINS(B.FREE_CONTENT, ('%' || #{target} || '%') ) > 0 
+                             OR B.FREE_WRITER LIKE '%' || #{target} || '%') 
+                    </when>
+                </choose>
+            </if>
+            ORDER BY FREE_NUM DESC 
+        ) 
+        WHERE RN > (#{page.pageNum} - 1) * #{page.amount} 
+          AND #{page.pageNum} * #{page.amount} >= RN  
+    </select>
 	
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(*) FROM BOARD_FREE 
@@ -38,6 +57,7 @@
 		SELECT FREE_TITLE, FREE_LIKE_COUNT, FREE_WRITER, FREE_REGDATE, FREE_CONTENT, FREE_HIT, FREE_CMT_COUNT 
 		FROM BOARD_FREE 
 		WHERE FREE_NUM = #{freeNum}
+
 	</select>
 	
 	<update id="increaseHit" parameterType="String">

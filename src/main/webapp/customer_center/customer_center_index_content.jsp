@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="../include/header.jsp"%>
@@ -62,7 +63,7 @@
 									
                                    
                      				
-                     				<input type="button" value="수정" onclick="location.href='modify.customer?noticeNum=${dto.noticeNum}';">&nbsp;&nbsp;
+                     				<input type="button" class="btn btn-default" value="수정" onclick="location.href='modify.customer?noticeNum=${dto.noticeNum}';">
                                     
                                             
                                     
@@ -76,7 +77,7 @@
 									</a> 
 									--%>
 									
-									<input type="submit" value="삭제" onclick="location.href='delete.customer?noticeNum=${dto.noticeNum}';">
+									<input type="submit" class="btn btn-default" value="삭제" onclick="location.href='delete.customer?noticeNum=${dto.noticeNum}';">
 									
 								</div>
 							</div>

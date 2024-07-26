@@ -3,14 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/header.jsp" %>
 <%@ page import="com.busking.reservation.model.ReservationLocationDTO" %>
-<%
-    ReservationLocationDTO location = (ReservationLocationDTO) request.getAttribute("location");
-    if (location == null) {
-        throw new NullPointerException("Location not found in request attributes");
-    }
-%>
-<c:set var="locaX" value="${location.locaX}" />
-<c:set var="locaY" value="${location.locaY}" />
+
+<c:set var="locaX" value="${location.locaPointX}" />
+<c:set var="locaY" value="${location.locaPointY}" />
 <c:set var="locaName" value="${location.locaName}" />
 <c:set var="locaPicPath" value="${location.locaPicPath}" />
 <c:set var="locaPlace" value="${location.locaPlace}" />
@@ -23,7 +18,15 @@
     var locaPicPath = "${locaPicPath}";
     var locaPlace = "${locaPlace}";
     var locaInfo = "${locaInfo}";
+
+    function validateForm() {
+    }
+    
+    function goBackToList() {
+        window.location.href = 'reservation.reservation';
+    }
 </script>
+
 <div class="resForm-wrap">
     <div class="resForm-top">
         <h3>${location.locaName}</h3>
@@ -57,7 +60,7 @@
                         </li>
                         <li>
                             <b>이메일</b>
-                            <p>이메일</p>
+                            <p>${location.managerEmail}</p>
                         </li>
                     </ul>
                 </div>
@@ -78,7 +81,7 @@
                 <button type="button" onclick="selectTime('19:00', '22:00')">19:00 - 22:00</button>
             </div>
             <div class="resForm-mid-controll">
-                <form action="reservationPost.jsp" method="post" id="reservationForm" onsubmit="return validateForm(event)">
+                <form action="reservationPost.jsp" method="post" id="reservationForm" onsubmit="return validateForm()">
                     <input type="hidden" name="locaId" value="${location.locaId}">
                     <input type="hidden" name="locaName" value="${location.locaName}">
                     <input type="hidden" name="locaPicPath" value="${location.locaPicPath}">
@@ -175,7 +178,9 @@
                             <h3>장소후기</h3>
                             <div class="form-group loca-cmt-box">
                                 <div class="cmt-top-box">
-                                    <label for="comment" class="loca-cmt-left"><i class="glyphicon glyphicon-comment"></i> 버스킹 장소 이용 후기를 남겨주세요</label>
+                                    <label for="comment" class="loca-cmt-left">
+                                        <i class="glyphicon glyphicon-comment"></i> 버스킹 장소 이용 후기를 남겨주세요
+                                    </label>
                                     <div class="cmt-star">
                                         <ul>
                                             <li class="star"><i class="glyphicon glyphicon-star"></i></li>
@@ -185,33 +190,36 @@
                                             <li class="star"><i class="glyphicon glyphicon-star"></i></li>
                                         </ul>
                                     </div>
-                                    <textarea class="form-control cmt-text" rows="4" id="comment" placeholder="후기를 남겨주세요"></textarea>
-                                    <button type="button" id="cmt-btn">등록</button>
+                                    <form action="addReview.reservation" method="post" id="reviewForm">
+                                        <input type="hidden" id="locaId" name="locaId" value="${location.locaId}">
+                                        <input type="hidden" id="userId" name="userId" value="${sessionScope.userId}">
+                                        <input type="hidden" id="rating" name="rating" value="0">
+                                        <textarea class="form-control cmt-text" rows="4" id="comment" name="comment" placeholder="후기를 남겨주세요"></textarea>
+                                        <button type="submit" id="cmt-btn">등록</button>
+                                    </form>
                                 </div>
-
                             </div>
                             <div class="cmt-list-wrap">
-                                <div class="cmt-list-box">
-                                    <div class="cmt-list-top">
-                                        <div class="cmt-list-left">
-                                            <div class="writer">ABC12341</div>
-                                            <div class="date">24.7.15.17:22</div>
+                                <c:forEach var="review" items="${reviewList}">
+                                    <div class="cmt-list-box">
+                                        <div class="cmt-list-top">
+                                            <div class="cmt-list-left">
+                                                <div class="writer">${review.userId}</div>
+                                                <div class="date">
+                                                    <fmt:formatDate value="${review.locaCmtRegdate}" pattern="yyyy.MM.dd HH:mm" />
+                                                </div>
+                                            </div>
+                                            <div class="cmt-list-right">
+                                                <i class="glyphicon glyphicon-star"></i>
+                                                <p>${review.locaScore}</p>
+                                            </div>
                                         </div>
-                                        <div class="cmt-list-right">
-                                            <i class="glyphicon glyphicon-star"></i>
-                                            <p>4.5</p>
+                                        <div class="cmt-list-content">
+                                            <p>${review.locaContent}</p>
                                         </div>
                                     </div>
-                                    <div class="cmt-list-content">
-                                        <p>
-                                            후기 내용<br>
-                                            후기후기후기후기
-
-                                        </p>
-                                    </div>
-                                </div>
+                                </c:forEach>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -220,7 +228,8 @@
 
     </div>
 </div>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e128e18b3b784844e96c9c2db2a8e6a"></script>
 <script src="../resources/js/reservation/reservationForm.js"></script>
-
-<%@ include file="../include/footer.jsp" %>
+</body>
+</html>

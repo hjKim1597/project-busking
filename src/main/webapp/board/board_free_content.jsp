@@ -39,7 +39,15 @@
 	                    <div class="like_container">
 	                        <button class="like_button" onclick="location.href='board_like.boardFree?bno=${dto.freeNum }'">
 	                            <!-- <img src="../resources/img/board_img/like.png" alt="좋아요"> -->
-	                            <i class=${like = 'T' ? "fa-solid fa-heart like" : "fa-light fa-heart"}></i>
+	                            <c:choose>
+	                            	<c:when test="${like == 'T' }">
+	                            		<i class="fa-solid fa-heart like"></i>
+	                            	</c:when>
+		                            <c:otherwise>
+			                            <i class="fa-regular fa-heart"></i>
+		                            </c:otherwise>
+	                            </c:choose>
+	                            
 	                        </button>
 	                        <span class="like_count" id="likeCount">${dto.freeLikeCount }</span>
 	                    </div>
