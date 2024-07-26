@@ -44,8 +44,10 @@ public class ReservationController extends HttpServlet {
             handleReservationList(request, response);
         } else if (command.equals("/reservation/reservationForm.reservation")) {
             handleReservationForm(request, response);
-        } else if (command.equals("/reservation/addReview.reservation")) { // 리뷰 추가 처리
+        } else if (command.equals("/reservation/addReview.reservation")) {
             handleAddReview(request, response);
+        } else if (command.equals("/reservation/getReviews.reservation")) {
+            handleGetReviews(request, response); // 새로운 핸들러 추가
         } else if (command.equals("/reservation/reservationPost.reservation")) {
             // 예약 처리 코드 추가
         } else {
@@ -93,7 +95,18 @@ public class ReservationController extends HttpServlet {
             review.setLocaScore(locaScore);
             
             service.addReview(review);
-            response.sendRedirect("reservationForm.reservation?locaId=" + locaId);
+            response.sendRedirect(request.getContextPath() + "/reservation/reservationForm.reservation?locaId=" + locaId);
+        } catch (Exception e) {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while processing your request");
+        }
+    }
+
+    private void handleGetReviews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            int locaId = Integer.parseInt(request.getParameter("locaId"));
+            List<ReservationReviewDTO> reviewList = service.getReview(locaId);
+            request.setAttribute("reviewList", reviewList);
+            request.getRequestDispatcher("/reservation/reviewList.jsp").forward(request, response);
         } catch (Exception e) {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while processing your request");
         }

@@ -11,22 +11,6 @@
 <c:set var="locaPlace" value="${location.locaPlace}" />
 <c:set var="locaInfo" value="${location.locaInfo}" />
 
-<script>
-    var locaX = "${locaX}";
-    var locaY = "${locaY}";
-    var locaName = "${locaName}";
-    var locaPicPath = "${locaPicPath}";
-    var locaPlace = "${locaPlace}";
-    var locaInfo = "${locaInfo}";
-
-    function validateForm() {
-    }
-    
-    function goBackToList() {
-        window.location.href = 'reservation.reservation';
-    }
-</script>
-
 <div class="resForm-wrap">
     <div class="resForm-top">
         <h3>${location.locaName}</h3>
@@ -190,13 +174,14 @@
                                             <li class="star"><i class="glyphicon glyphicon-star"></i></li>
                                         </ul>
                                     </div>
-                                    <form action="addReview.reservation" method="post" id="reviewForm">
-                                        <input type="hidden" id="locaId" name="locaId" value="${location.locaId}">
-                                        <input type="hidden" id="userId" name="userId" value="${sessionScope.userId}">
-                                        <input type="hidden" id="rating" name="rating" value="0">
-                                        <textarea class="form-control cmt-text" rows="4" id="comment" name="comment" placeholder="후기를 남겨주세요"></textarea>
-                                        <button type="submit" id="cmt-btn">등록</button>
-                                    </form>
+                                    <!-- form 수정 -->
+									<form action="addReview.reservation" method="post" id="reviewForm" onsubmit="return confirmReviewSubmission()">
+   									  <input type="hidden" id="locaId" name="locaId" value="${location.locaId}">
+   									  <input type="hidden" id="userId" name="userId" value="${sessionScope.userId}">
+  									  <input type="hidden" id="rating" name="rating" value="0">
+  									  <textarea class="form-control cmt-text" rows="4" id="comment" name="comment" placeholder="후기를 남겨주세요"></textarea>
+  									  <button type="submit" id="cmt-btn">등록</button>
+									</form>
                                 </div>
                             </div>
                             <div class="cmt-list-wrap">

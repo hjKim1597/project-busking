@@ -1,3 +1,24 @@
+var locaX = "${locaX}";
+var locaY = "${locaY}";
+var locaName = "${locaName}";
+var locaPicPath = "${locaPicPath}";
+var locaPlace = "${locaPlace}";
+var locaInfo = "${locaInfo}";
+
+function validateForm() {
+    // Validation logic here
+     return true;
+}
+
+function goBackToList() {
+    window.location.href = 'reservation.reservation';
+    }
+
+function confirmReviewSubmission() {
+    return confirm('리뷰를 등록하시겠습니까?');
+}
+
+
 function validateForm() {
     var selectedDate = document.getElementById("selectedDate").value;
     var startTime = document.getElementById("startTime").value;
