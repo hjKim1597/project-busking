@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@ include file="include/header.jsp"%>
 
@@ -18,7 +20,9 @@
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
 				<div class="item active">
-					<a href="${pageContext.request.contextPath }/reservation/reservation.jsp"> <img
+					<a
+						href="${pageContext.request.contextPath }/reservation/reservation.jsp">
+						<img
 						src="${pageContext.request.contextPath }/resources/img/index/banner1.png"
 						alt="res">
 					</a>
@@ -26,14 +30,16 @@
 				</div>
 
 				<div class="item">
-					<a href="${pageContext.request.contextPath }/board/board_news_list.board"><img
+					<a
+						href="${pageContext.request.contextPath }/board/board_news_list.board"><img
 						src="${pageContext.request.contextPath }/resources/img/index/banner2.png"
 						alt="issue"></a>
 					<div class="carousel-caption"></div>
 				</div>
 
 				<div class="item">
-					<a href="${pageContext.request.contextPath }/customer_center/customer_center_guide.jsp"><img
+					<a
+						href="${pageContext.request.contextPath }/customer_center/customer_center_guide.jsp"><img
 						src="${pageContext.request.contextPath }/resources/img/index/banner3.png"
 						alt="guide"></a>
 					<div class="carousel-caption"></div>
@@ -61,100 +67,88 @@
 			<div class="row middle-row" style="margin: 0 10%">
 				<div class="col-md-4 preview-box">
 					<div class="preview-title">
-						<!-- 게시판 -->
+						<!-- 공지게시판 -->
 						<h3>
-							<a href="${pageContext.request.contextPath }/customer_center/customer_center_index.jsp">공지사항</a>
+							<a
+								href="${pageContext.request.contextPath }/customer_center/customer_center_index.customer">공지사항</a>
 						</h3>
 
 						<table class="index-board">
-							<tr>
 
-								<td class="index-board-bottom"
-									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0"><a
-									href="#">2024년 7월 한강공원 내 야구장</a></td>
-								<td>24.07.09</td>
+							<c:forEach var="dto" items="${CustomerList}">
+								<tr>
+									<td class="index-board-bottom "
+										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
+										<a href="<%-- ${pageContext.request.contextPath }/board_content.boardNews?bno=${dto.newsNum } --%>" class="truncate with-style">${dto.noticeTitle}</a>
 
-							</tr>
-							<tr>
-								<td><a href="#">서울시 공공서비스 예약 홈페이지 서비스</a></td>
-								<td>24.07.02</td>
-							</tr>
-							<tr>
-								<td><a href="#">[지방폐교를 활용한 서울캠핑장] '24. 8월</a></td>
-								<td>24.07.01</td>
-							</tr>
-							<tr>
-								<td><a href="#">2024년 7월 한강공원 내 야구장</a></td>
-								<td>24.06.26</td>
-							</tr>
+									</td>
+									<td class="preview-date"><fmt:formatDate
+											value="${dto.noticeRegdate}" pattern="yy.MM.dd" /></td>
+								</tr>
+
+							</c:forEach>
+
+
 						</table>
 					</div>
 				</div>
 
 				<div class="col-md-4 preview-box">
 					<div class="preview-title">
-						<!-- 게시판 -->
+						<!-- 소식게시판 -->
 						<h3>
-							<a href="${pageContext.request.contextPath }/board/board_news_list.jsp">소식게시판</a>
+							<a
+								href="${pageContext.request.contextPath }/board/board_list.boardNews">소식게시판</a>
 						</h3>
 
+
+
+
 						<table class="index-board">
-							<tr>
-								<td class="index-board-bottom"
-									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-									<a href="#">2024년 7월 한강공원 내 야구장</a>
-								</td>
-								<td>24.07.09</td>
-							</tr>
-							<tr>
-								<td><a href="#">서울시 공공서비스 예약 홈페이지 서비스</a></td>
-								<td>24.07.02</td>
-							</tr>
-							<tr>
-								<td><a href="#">[지방폐교를 활용한 서울캠핑장] '24. 8월</a></td>
-								<td>24.07.01</td>
-							</tr>
-							<tr>
-								<td><a href="#">2024년 7월 한강공원 내 야구장</a></td>
-								<td>24.06.26</td>
-							</tr>
+
+							<c:forEach var="dto" items="${NewsList}">
+								<tr>
+									<td class="index-board-bottom "
+										style="border-bottom: 1px solid #e3e3e3; margin: 20px;">
+										<a
+										href="${pageContext.request.contextPath }/board/board_content.boardNews?bno=${dto.newsNum }"
+										class="truncate with-style">${dto.newsTitle}</a>
+									</td>
+									<td class="preview-date"><fmt:formatDate
+											value="${dto.newsRegdate}" pattern="yy.MM.dd" /></td>
+								</tr>
+							</c:forEach>
+
 						</table>
 					</div>
+
 				</div>
 
 				<div class="col-md-4 preview-box">
 					<div class="preview-title">
-						<!-- 게시판 -->
+						<!-- FAQ게시판 -->
 						<h3>
-							<a href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.jsp">FAQ</a>
+							<a
+								href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.jsp">FAQ</a>
 						</h3>
 
 						<table class="index-board" id="board-three">
-							<tr>
 
-								<td class="index-board-bottom"
-									style="border-bottom: 1px solid #e3e3e3; margin: 20px 0"><a
-									href="#">2024년 7월 한강공원 내 야구장</a></td>
-								<td>24.07.09</td>
+							<c:forEach var="dto" items="${FAQList}">
+								<tr>
+									<td class="index-board-bottom "
+										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
+										<a href="#" class="truncate with-style">${dto.faqTitle}</a>
+									</td>
+									<td class="preview-date"><fmt:formatDate
+											value="${dto.faqRegdate}" pattern="yy.MM.dd" /></td>
+								</tr>
+							</c:forEach>
 
-							</tr>
-							<tr>
-								<td><a href="#">서울시 공공서비스 예약 홈페이지 서비스</a></td>
-								<td>24.07.02</td>
-							</tr>
-							<tr>
-								<td><a href="#">[지방폐교를 활용한 서울캠핑장] '24. 8월</a></td>
-								<td>24.07.01</td>
-							</tr>
-							<tr>
-								<td><a href="#">2024년 7월 한강공원 내 야구장</a></td>
-								<td>24.06.26</td>
-							</tr>
 						</table>
 					</div>
 				</div>
 			</div>
-
 
 			<div class="container location-pic">
 				<h2>Book Your Busking Spot</h2>
@@ -164,7 +158,9 @@
 
 					<div class="result">
 						<div>
-							<a id="mainImageLink" href="#"> <img
+							<a id="mainImageLink"
+								href="${pageContext.request.contextPath }/reservation/reservation.jsp">
+								<img
 								src="${pageContext.request.contextPath }/resources/img/index/1.jpg"
 								alt="결과" class="main-image" width="100%">
 							</a>
@@ -234,8 +230,6 @@
 	event.preventDefault
 	pageUl.querySelectorAll(".page_li").forEach((li) => li.value == pageNum ? li.classList.add("active") : li);
 </script>
-
-
 
 
 

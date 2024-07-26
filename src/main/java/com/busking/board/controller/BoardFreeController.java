@@ -37,7 +37,7 @@ public class BoardFreeController extends HttpServlet {
 		// BoardService 선언
 		BoardFreeService service;
 		
-		if(command.equals("/board/board_free_list.boardFree")) {
+		if(command.equals("/board/board_list.boardFree")) {
 			String page = request.getParameter("page");
 			if(page == null) page = "1";
 			request.setAttribute("page", page);
@@ -45,21 +45,32 @@ public class BoardFreeController extends HttpServlet {
 			service = new BoardFreeServiceImpl();
 			service.getList(request, response);
 			
-		} else if(command.equals("/board/board_free_write.boardFree")) {
+		} else if(command.equals("/board/board_write.boardFree")) {
 			response.sendRedirect("board_free_write.jsp");
 			
-		} else if(command.equals("/board/board_free_writeForm.boardFree")) {
+		} else if(command.equals("/board/board_writeForm.boardFree")) {
 			service = new BoardFreeServiceImpl();
 			service.write(request, response);
 			
-		} else if(command.equals("/board/board_free_content.boardFree")) {
+		} else if(command.equals("/board/board_content.boardFree")) {
 			service = new BoardFreeServiceImpl();
 			service.getContent(request, response);
 			
-		} else if(command.equals("/board/board_free_delete.boardFree")) {
+		} else if(command.equals("/board/board_edit.boardFree")) {
+			service = new BoardFreeServiceImpl();
+			service.getBefore(request, response);
+			
+		} else if(command.equals("/board/board_editForm.boardFree")) {
+			service = new BoardFreeServiceImpl();
+			service.edit(request, response);
+			
+		} else if(command.equals("/board/board_delete.boardFree")) {
 			service = new BoardFreeServiceImpl();
 			service.delete(request, response);
 			
+		} else if(command.equals("/board/board_like.boardFree")) {
+			service = new BoardFreeServiceImpl();
+			service.like(request, response);
 		}
 	}
 }

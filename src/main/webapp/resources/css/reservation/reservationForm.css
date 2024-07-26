@@ -544,3 +544,10 @@
     }
 
 }
+
+.resForm-mid .resForm-mid-left #calendar > table > tbody > tr > td.selected {
+    font-weight: bold; 
+    color: white; 
+    background-color: #5fd7ff; 
+    border-radius: 3px;
+    border: 1px solid #5fd7ff;

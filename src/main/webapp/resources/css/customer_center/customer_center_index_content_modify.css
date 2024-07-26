@@ -1,0 +1,64 @@
+@import url(customer_center_index.css);
+
+/* 게시판 내용 속성 */
+.board .service-board .panel .panel-heading {
+  /* border: 1px solid blue; */
+
+}
+
+.board .service-board .panel .panel-body {
+  /* border-bottom: 1px solid rgb(0, 0, 0, 0.2); */
+
+}
+
+.board .service-board .board_button_set {
+  text-align: right;
+  padding: 8px;
+
+  margin-top: 10%;
+}
+
+.board .service-board .board_button_set .board-button {
+  display: inline;
+  padding: 8px;
+
+}
+
+/* 글 내용 > 버튼 스타일 */
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+  outline: 0px;
+  outline-offset: 0px;
+
+}
+
+.btn-default.focus,
+.btn-default:focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+
+/* 글작성 */
+.service-board .container form {
+  /* border: 1px solid red; */
+
+}
+
+.service-board .form-group textarea {
+  /* border: 1px solid red; */
+  resize: none;
+  height: 300px;
+  overflow: hidden;
+
+}
+
+.service-board .form-group {
+  /* border: 1px solid red; */
+  margin-top: 20px;
+
+}

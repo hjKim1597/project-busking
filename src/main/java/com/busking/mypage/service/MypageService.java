@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public interface MypageService {
-
-	void signup(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    void updateUserInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    void getUserInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

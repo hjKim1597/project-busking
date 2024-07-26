@@ -14,6 +14,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public interface MainService {
-	//목록 조회
+	// 목록 조회
 	void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

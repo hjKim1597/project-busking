@@ -6,22 +6,22 @@ public class ReservationLocationDTO {
 	private String locaName;
 	private String locaInfo;
 	private String locaPicPath;
-	private double locaX;
-	private double locaY;
+	private String locaPointX;
+	private String locaPointY;
 	private String locaPlace;
 	
 	public ReservationLocationDTO() {
 	}
 
-	public ReservationLocationDTO(int locaId, String locaName, String locaInfo, String locaPicPath, double locaX, double locaY,
+	public ReservationLocationDTO(int locaId, String locaName, String locaInfo, String locaPicPath, String locaPointX, String locaPointY,
 			String locaPlace) {
 		super();
 		this.locaId = locaId;
 		this.locaName = locaName;
 		this.locaInfo = locaInfo;
 		this.locaPicPath = locaPicPath;
-		this.locaX = locaX;
-		this.locaY = locaY;
+		this.locaPointX = locaPointX;
+		this.locaPointY = locaPointY;
 		this.locaPlace = locaPlace;
 	}
 
@@ -57,20 +57,20 @@ public class ReservationLocationDTO {
 		this.locaPicPath = locaPicPath;
 	}
 
-	public double getLocaX() {
-		return locaX;
+	public String getLocaX() {
+		return locaPointX;
 	}
 
-	public void setLocaX(double locaX) {
-		this.locaX = locaX;
+	public void setLocaX(String locaX) {
+		this.locaPointX = locaX;
 	}
 
-	public double getLocaY() {
-		return locaY;
+	public String getLocaY() {
+		return locaPointY;
 	}
 
-	public void setLocaY(double locaY) {
-		this.locaY = locaY;
+	public void setLocaY(String locaY) {
+		this.locaPointY = locaY;
 	}
 
 	public String getLocaPlace() {

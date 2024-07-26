@@ -23,4 +23,10 @@ public interface BoardNewsMapper {
 	
 	// 글 삭제
 	public int delete(String newsNum);
+	
+	// 글 수정
+	public int edit(BoardNewsDTO dto);
+	
+	// 글 댓글 개수 수정
+	public void updateCmtCount(BoardNewsDTO dto);
 }

@@ -115,11 +115,14 @@
 	.location-pic {
 		margin-top: 0;
 	}
+	.navbar-collapse {
+	border-bottom: 1px solid #e3e3e3;
+}
 }
 
 /* 1032이하 디자인 */
 @media ( max-width :1032px) {
-	.index-content>.carousel>.carousel-inner>.item > a>img {
+	.index-content>.carousel>.carousel-inner>.item>a>img {
 		margin-top: 125px;
 	}
 }
@@ -127,6 +130,10 @@
 /* ----------------------------------------------header---------------------------------------------- */
 .index-header {
 	padding: 0 80px;
+}
+
+.navbar {
+	margin-bottom: 0px;
 }
 
 .navbar-inverse {
@@ -258,10 +265,22 @@
 	z-index: 1000;
 	height: 125px;
 	padding-top: 23px;
+	border-bottom: 1px solid #e3e3e3;
 }
 
 .container-fluid>.navbar-collapse {
 	margin-top: 13px;
+}
+
+.navbar-collapse {
+	border: 0px;
+}
+
+@media ( max-width :767px) {
+	
+	.navbar-collapse {
+		border-bottom: 1px solid #e3e3e3;
+	}
 }
 
 /* ----------------------------------------------content---------------------------------------------- */
@@ -327,7 +346,7 @@
 
 .index-content>.carousel>.carousel-inner>.item>a>img {
 	z-index: 0;
-	margin-top: 141px;
+	margin-top: 126px;
 }
 
 .carousel-inner>.item>.carousel-caption>.banner-left {
@@ -391,15 +410,32 @@
 	font-size: 20px;
 }
 
+.preview-date {
+	text-align: right;
+	white-space: nowrap;
+	max-width: 1%;
+	overflow: hidden;
+	border-bottom: 1px solid #e3e3e3;
+}
+
+.with-style::before {
+	content: "• ";
+	color: #999;
+	margin-right: 5px;
+	font-size: 1em;
+}
+
 /* 게시판  */
 .index-board {
 	border-collapse: collapse;
 	width: 100%;
+	table-layout: fixed;
 }
 
 .index-board tr th, td {
 	text-align: left;
 	padding: 8px;
+	font-size: smaller;
 }
 
 .index-board tr:nth-child() {
@@ -424,6 +460,14 @@
 	border: 1px solid #e3e3e3;
 	margin: 0 auto;
 	margin-bottom: 50px;
+}
+
+.truncate {
+	display: block;
+	max-width: 99%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 /*  --------로케이션 사진------------ */
@@ -511,9 +555,7 @@
 }
 
 /* 애니메이션 정의 */
-@keyframes fadeIn {
-	from { 
-	opacity:0;
+@keyframes fadeIn {from { opacity:0;
 	margin-left: -100px;
 }
 

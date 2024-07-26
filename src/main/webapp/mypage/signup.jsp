@@ -19,10 +19,13 @@
         <div class="sum">
             <h3 class="title">회원가입</h3>
             <div class="user-join">
-                <form id="form_userInfo" action="${pageContext.request.contextPath}/mypage/signup.mypage" method="post" onsubmit="combineAddress()">
+                <form id="form_userInfo" action="${pageContext.request.contextPath}/userjoin/signup.mypage" method="post" onsubmit="combineAddress()">
                     <label for="userId">아이디</label>
                     <div class="input-group id-content">
                         <input type="text" class="form-control write-box" id="userId" placeholder="6~20자 영문, 숫자" name="userId" required="required">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default" onclick="checkUserId()">중복확인</button>
+                        </div>
                     </div>
                     <div class="success-message hideMessage message-good">사용할 수 있는 아이디입니다</div>
                     <div class="failure-message hideMessage message-bad">아이디는 6~20글자이어야 합니다</div>
@@ -40,8 +43,7 @@
                     </div>
                     <div class="form-group">
                         <label for="userPno">연락처</label>
-                        <input type="text" class="form-control write-box" id="userPno" name="userPno" placeholder="010 1234 5678" required="required">
-                    </div>
+						<input type="text" class="form-control write-box" id="userPno" name="userPno" placeholder="010 1234 5678" required="required" maxlength="11">                    </div>
                     
                     <label for="userAddr">주소</label> <br>
                     <!-- 우편찾기 주소 -->
@@ -62,8 +64,8 @@
                     </div>
     
                     <div class="form-group">
-                        <label for="sel1">성별</label>
-                        <select class="form-control write-box" id="sel1" name="gender">
+                        <label for="userGender">성별</label>
+                        <select class="form-control write-box" id="userGender" name="userGender">
                             <option>없음</option>
                             <option>남성</option>
                             <option>여성</option>
@@ -86,6 +88,32 @@
             document.getElementById('userAddr').value = fullAddr;
         }
 
+        function checkUserId() {
+            var userId = document.getElementById('userId').value;
+            if (userId.length < 6 || userId.length > 20 || !/^[A-Za-z0-9]+$/.test(userId)) {
+                alert('아이디는 6~20자 영문, 숫자만 가능합니다.');
+                return;
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "${pageContext.request.contextPath}/userjoin/checkUserId.mypage?userId=" + userId, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var result = xhr.responseText;
+                    if (result === "사용할 수 있는 아이디입니다.") {
+                        alert(result);
+                    } else {
+                        alert(result);
+                        document.getElementById("userId").focus();
+                    }
+                }
+            };
+            xhr.send();
+        }
+		
+        //연락처 숫자만 입력하게끔
+        document.getElementById('userPno').addEventListener('input', function(e) {
+        	this.value = this.value.replace(/[^0-9]/g, '');  // 숫자만 입력 가능
+    	});
         // 아이디 입력창 정보 가져오기
         var elInputUsername = document.querySelector('#userId'); // input#userId
         // 성공 메시지 정보 가져오기

@@ -29,8 +29,6 @@
 <%@ include file="../include/header.jsp"%>
 
 
-<body>
-
 
     <!-- 레이아웃 -->
     <section class="container customer-center-width" id="change">
@@ -45,13 +43,13 @@
                                 <div class="span"></div>
                                 <h1>고객센터</h1>
                                 <ul class="menu">
-                                    <li class="nth1"><strong><a href="customer_center_index.jsp"><span>공지사항</span></a></strong>
+                                    <li class="nth1"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
                                     </li>
-                                    <li class="nth2"><strong><a href="customer_center_month.jsp"><span>이달의예약</span></a></strong>
+                                    <li class="nth2"><strong><a href="customer_center_month.customer"><span>이달의예약</span></a></strong>
                                     </li>
-                                    <li class="nth3"><strong><a href="customer_center_guide.jsp"><span>이용안내</span></a></strong>
+                                    <li class="nth3"><strong><a href="customer_center_guide.customer"><span>이용안내</span></a></strong>
                                     </li>
-                                    <li class="nth4"><strong><a href="customer_center_FAQ.jsp"><span>자주묻는질문(FAQ)</span></a></strong>
+                                    <li class="nth4"><strong><a href="customer_center_FAQ.customer"><span>자주묻는질문(FAQ)</span></a></strong>
                                     </li>
                                 </ul>
                             </nav>
@@ -60,88 +58,117 @@
                 </li>
             </div>
 
-            <!-- 공지사항 게시판 -->
+			<!-- 공지사항 게시판 -->
             <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 board">
                 <div class="service-board">
                     <div class="container">
                         <div class="page-header">
-                            <h2>자주묻는질문(FAQ)</h2>
-
+                            <h2>공지사항</h2>
                         </div>
-                        <p>글번호, 제목, 내용, 회원이 글작성 가능, 관리자만 답글 작성 가능, 답변 완료기능</p>
 
-                        <!-- 자주묻는질문 게시판 -->
-                        <div class="container">
-                            <div class="table-responsive ">
-                                <!-- 원래테이블 -->
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>글번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                           
-                                                <td>4</td>
-                                                <td><a href="customer_center_FAQ_content.jsp">질문4</a></td>
-                                                <td>관리자</td>
-                                                <td>2024-01-01</td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><a href="customer_center_FAQ_content.jsp">질문3</a></td>
+                        <p>관리자만 작성 가능, 글번호, 월별 허가된 공연 목록</p>
 
-                                            <td>관리자</td>
-                                            <td>2024-01-01</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><a href="customer_center_FAQ_content.jsp">질문2</a></td>
-
-                                            <td>관리자</td>
-                                            <td>2024-01-01</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td><a href="customer_center_FAQ_content.jsp">질문1</a></td>
-
-                                            <td>관리자</td>
-                                            <td>2024-01-01</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
+                        <div class="table-responsive">
+                            <!-- 게시판 -->
 
 
-                                <!-- 페이지 번호 -->
-                                <ul class="pagination">
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                </ul>
+                            <section id="board_free_list_wrap">
+                                <div class="wrap_board_free">
+                                    <div class="wrap_board_free_list">
+                                        <div class="board_free_list_box">
 
-                                <!-- 글작성 버튼 -->
-                                <div class="write-button">
-                                    <a href="#"><button type="button" class="btn write1" id="">글작성</button></a>
+                                            <table class="board_free_list_content" id="layout1">
+                                                <div id="board_font" >
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="nth1">글 번호</th>
+                                                            <th class="nth2">작성자</th>
+                                                            <th class="nth3">제목</th>
+                                                            <th class="nth4">날짜</th>
+                                                            
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!--데이터 받아오기-->
+                                                        
+                                               			SELECT FAQ_NUM, USER_ID, FAQ_TITLE, FAQ_REGDATE
+														FROM FAQ
+														ORDER BY FAQ_NUM DESC
+								                        <c:forEach var="dto" items="${faqList }">
+															<tr>
+																<td>${dto.faqNum }</td>
+																<td>${dto.userId }</td>																
+																<td><a href="getContent.customer?faqNum=${dto.faqNum }">${dto.faqTitle }</a></td>
+																<td><fmt:formatDate value="${dto.faqRegdate }" pattern="yy.MM.dd"/></td>
+																<td></td>
+															</tr>
+														</c:forEach>
+
+                                                    </tbody>
+                                                </div>
+                                            </table>
+
+                                            <!-- 페이지 번호 -->
+                                            <div class="page_nav" id="page_num123">
+                                                <ul class="center">
+						                            <li id="page_first"><a href="customer_center_index.customer"><img src="../resources/img/board_img/ico_first.gif" alt="처음페이지"></a></li>
+						                            <c:if test="${pageVO.prev }">
+							                            <li id="page_prev"><a href="customer_center_index.customer?page=${pageVO.pageNum - 1 }"><img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>                            
+						                            </c:if>
+						                            <c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+						                            	<li class="page_li" data-page="${i }"><a href="customer_center_index.customer?page=${i }" title="1페이지">${i }</a></li>	
+						                            </c:forEach>
+						                            <c:if test="${pageVO.next }">
+							                            <li id="page_next"><a href="customer_center_index.customer?page=${pageVO.pageNum + 1 }"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
+						                            </c:if>
+						                            <li id="page_last"><a href="customer_center_index.customer?page=${pageVO.endPage }"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
+						                        </ul>
+                                                <form action="customer_center_index_write.jsp" class="right">
+                                                    <button value="글쓰기" onclick="">작성</button>
+                                                </form>
+                                            </div>
+
+                                            <div class="board_free_search" id="layout3">
+                                                <select class="board_free_search_box">
+                                                    <option value="notice">전체</option>
+                                                    <option value="writer">작성자</option>
+                                                    <option value="title">제목</option>
+                                                    <option value="content">내용</option>
+                                                </select>
+                                                <input placeholder="검색어를 입력해 주세요" type="text">
+                                                <span>
+                                                    <button class="btn" onclick="실행할JS함수/검색기능" type="submit">검색</button>
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
+                            </section>
 
-                            </div>
+
                         </div>
-
                     </div>
                 </div>
             </div>
+            
+            
 
         </div>
     </section>
 
+    <!-- footer -->
+    <script>
+	    var pageNum = '${page}';
+	    var pageFirst;
+	    var pageUl = document.querySelector(".page_nav .center");
+	
+	    var pageItems = pageUl.querySelectorAll(".page_li");
+	    Array.from(pageItems)
+	    	 .filter(i => i.dataset.page == pageNum)
+	    	 .forEach(item => item.classList.add("active"));
+    
+    </script>
     
 <%@ include file="../include/footer.jsp"%>
 

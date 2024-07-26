@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.busking.board.model.BoardCommentMapper">
+
+	<select id="getCommentFreeList" parameterType="String" resultType="com.busking.board.model.CommentFreeDTO">
+		SELECT COM_FREE_WRITER, COM_FREE_CONTENT, COM_FREE_REGDATE, COM_FREE_LIKE_COUNT, COM_FREE_REPLY, COM_FREE_GROUP 
+		FROM COMMENT_FREE 
+		WHERE COM_FREE_BNO = #{comFreeBno} 
+		ORDER BY COM_FREE_GROUP, COM_FREE_NUM
+	</select>
+	
+	<select id="getCommentNewsList" parameterType="String" resultType="com.busking.board.model.CommentNewsDTO">
+		SELECT COM_NEWS_WRITER, COM_NEWS_CONTENT, COM_NEWS_REGDATE, COM_NEWS_LIKE_COUNT, COM_NEWS_REPLY, COM_NEWS_GROUP 
+		FROM COMMENT_NEWS 
+		WHERE COM_NEWS_BNO = #{comNewsBno} 
+		ORDER BY COM_NEWS_GROUP, COM_NEWS_NUM
+	</select>
+	
+	<select id="getCommentTeamList" parameterType="String" resultType="com.busking.board.model.CommentTeamDTO">
+		SELECT COM_TEAM_WRITER, COM_TEAM_CONTENT, COM_TEAM_REGDATE, COM_TEAM_LIKE_COUNT, COM_TEAM_REPLY, COM_TEAM_GROUP 
+		FROM COMMENT_TEAM 
+		WHERE COM_TEAM_BNO = #{comTeamBno} 
+		ORDER BY COM_TEAM_GROUP, COM_TEAM_NUM
+	</select>
+	
+	<insert id="writeCommentFree" parameterType="com.busking.board.model.CommentFreeDTO">
+		INSERT INTO COMMENT_FREE(COM_FREE_NUM,  
+		                         COM_FREE_WRITER,  
+		                         COM_FREE_CONTENT,  
+		                         COM_FREE_REGDATE, 
+		                         COM_FREE_BNO, 
+		                         COM_FREE_GROUP) 
+		VALUES('CF_' || LPAD(COMMENT_FREE_SEQ.NEXTVAL, 8, '0'), 
+		       #{comFreeWriter},  
+		       #{comFreeContent}, 
+		       SYSDATE, 
+		       #{comFreeBno}, 
+		       'CF_' || LPAD(COMMENT_FREE_SEQ.CURRVAL, 8, '0'))	
+	</insert>
+	
+	<insert id="writeCommentNews" parameterType="com.busking.board.model.CommentNewsDTO">
+		INSERT INTO COMMENT_NEWS(COM_NEWS_NUM,  
+		                         COM_NEWS_WRITER,  
+		                         COM_NEWS_CONTENT,  
+		                         COM_NEWS_REGDATE, 
+		                         COM_NEWS_BNO, 
+		                         COM_NEWS_GROUP) 
+		VALUES('CN_' || LPAD(COMMENT_NEWS_SEQ.NEXTVAL, 8, '0'), 
+		       #{comNewsWriter},  
+		       #{comNewsContent}, 
+		       SYSDATE, 
+		       #{comNewsBno}, 
+		       'CN_' || LPAD(COMMENT_NEWS_SEQ.CURRVAL, 8, '0'))	
+	</insert>
+	
+	<insert id="writeCommentTeam" parameterType="com.busking.board.model.CommentTeamDTO">
+		INSERT INTO COMMENT_TEAM(COM_TEAM_NUM,  
+		                         COM_TEAM_WRITER,  
+		                         COM_TEAM_CONTENT,  
+		                         COM_TEAM_REGDATE, 
+		                         COM_TEAM_BNO, 
+		                         COM_TEAM_GROUP) 
+		VALUES('CT_' || LPAD(COMMENT_TEAM_SEQ.NEXTVAL, 8, '0'), 
+		       #{comTeamWriter},  
+		       #{comTeamContent}, 
+		       SYSDATE, 
+		       #{comTeamBno}, 
+		       'CT_' || LPAD(COMMENT_TEAM_SEQ.CURRVAL, 8, '0'))	
+	</insert>
+	
+	<select id="getCommentFreeCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM COMMENT_FREE WHERE COM_FREE_BNO = #{comFreeBno} 
+	</select>
+	
+	<select id="getCommentNewsCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM COMMENT_NEWS WHERE COM_NEWS_BNO = #{comNewsBno} 
+	</select>
+	
+	<select id="getCommentTeamCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM COMMENT_TEAM WHERE COM_TEAM_BNO = #{comTeamBno} 
+	</select>
+
+</mapper>

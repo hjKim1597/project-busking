@@ -41,6 +41,7 @@
 <link
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css"
 	rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
@@ -54,30 +55,26 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand index-menu" href="${pageContext.request.contextPath }/index.jsp">사이트 명</a>
+					<a class="navbar-brand index-menu" href="${pageContext.request.contextPath }/index.main">사이트 명</a>
 				</div>
-				<div class="collapse navbar-collapse main-color" id="myNavbar">
+				<div class="collapse navbar-collapse main-color mobile-navbar" id="myNavbar">
 					<ul class="nav navbar-nav">
 
 						<li class="active index-menu"><a href="${pageContext.request.contextPath }/index.jsp">Main</a></li>
 
-						<li class="header-res"><a href="${pageContext.request.contextPath }/reservation/reservation.jsp" class="index-menu">예약하기</a></li>
+						<!-- 예약 -->
+						<li class="header-res"><a href="${pageContext.request.contextPath }/reservation/reservation.reservation" class="index-menu">예약하기</a></li>
 
 						<!-- 게시판 -->
-						<li class="dropdown"><a class="dropdown-toggle index-menu"
-							data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
+						<li class="dropdown">
+							<a class="dropdown-toggle index-menu" data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a
-									href="${pageContext.request.contextPath }/board/board_news_list.boardNews">NEWS</a></li>
-								<li><a
-									href="${pageContext.request.contextPath }/board/board_free_list.boardFree">자유게시판</a></li>
-								<li><a
-									href="${pageContext.request.contextPath }/board/board_team_list.boardTeam">팀원
-										모집</a></li>
-								<li><a
-									href="${pageContext.request.contextPath }/board/board_ask_list.boardAsk">Q
-										& A</a></li>
-							</ul></li>
+								<li><a href="${pageContext.request.contextPath }/board/board_list.boardNews">NEWS</a></li>
+								<li><a href="${pageContext.request.contextPath }/board/board_list.boardFree">자유게시판</a></li>
+								<li><a href="${pageContext.request.contextPath }/board/board_list.boardTeam">팀원모집</a></li>
+								<li><a href="${pageContext.request.contextPath }/board/board_list.boardAsk">Q & A</a></li>
+							</ul>
+						</li>
 
 
 						<!-- 마이페이지  -->
@@ -85,11 +82,11 @@
 							data-toggle="dropdown" href="#">마이페이지 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_news_list.board">내정보</a></li>
+									href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">내정보</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_free_list.board">예약현황</a></li>
+									href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">예약현황</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_team_list.board">회원탈퇴</a></li>
+									href="${pageContext.request.contextPath }/mypage/deleteUserPage.userinfo">회원탈퇴</a></li>
 							</ul></li>
 
 
@@ -99,28 +96,30 @@
 							data-toggle="dropdown" href="#">고객센터 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_news_list.board">공지사항</a></li>
+									href="${pageContext.request.contextPath }/customer_center/customer_center_index.customer">공지사항</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_free_list.board">이달의예약</a></li>
+									href="${pageContext.request.contextPath }/customer_center/customer_center_month.customer">이달의예약</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_team_list.board">이용안내</a></li>
+									href="${pageContext.request.contextPath }/customer_center/customer_center_guide.customer">이용안내</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_ask_list.board">자주묻는질문</a></li>
+									href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.customer">자주묻는질문</a></li>
 							</ul></li>
-
+							
 
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="${pageContext.request.contextPath }/mypage/login.jsp" class="header-right"><span
-								class="glyphicon glyphicon-user"></span> 로그인</a></li>
-						<li><a href="${pageContext.request.contextPath }/mypage/signup.jsp" class="header-right"><span
-								class="glyphicon glyphicon-log-in"></span> 회원가입</a></li>
-					</ul>
+                        <% if (session.getAttribute("user") != null) { %>
+                            <li><a href="#">${user.userName}님 환영합니다</a></li>
+                            <li><a href="${pageContext.request.contextPath}/mypage/logout.userinfo" class="header-right"><span class="glyphicon glyphicon-off"></span> 로그아웃</a></li>
+                        <% } else { %>
+                            <li><a href="${pageContext.request.contextPath}/mypage/login.jsp" class="header-right"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
+                            <li><a href="${pageContext.request.contextPath}/mypage/signup.jsp" class="header-right"><span class="glyphicon glyphicon-log-in"></span> 회원가입</a></li>
+                        <% } %>
+                    </ul>
 
 				</div>
 			</div>
 		</div>
-
 	</nav>
 
 

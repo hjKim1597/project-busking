@@ -8,7 +8,7 @@ public class PageVO {
 	private boolean next;
 	
 	private int pageNum;
-	private int amount = 20;
+	private int amount = 5;
 	private int total;
 	
 	public PageVO(int pageNum, int total) {
