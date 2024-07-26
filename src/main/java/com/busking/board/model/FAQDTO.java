@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class FAQDTO {
 
-	private String faqNum;
+	private int faqNum;
 	private String userId;
 	private String faqPw;
 	private String faqTitle;
@@ -16,7 +16,7 @@ public class FAQDTO {
 	public FAQDTO() {
 	}
 
-	public FAQDTO(String faqNum, String userId, String faqPw, String faqTitle, String faqContent, Timestamp faqRegdate,
+	public FAQDTO(int faqNum, String userId, String faqPw, String faqTitle, String faqContent, Timestamp faqRegdate,
 			String faqReply, String managerId) {
 		super();
 		this.faqNum = faqNum;
@@ -29,11 +29,11 @@ public class FAQDTO {
 		this.managerId = managerId;
 	}
 
-	public String getFaqNum() {
+	public int getFaqNum() {
 		return faqNum;
 	}
 
-	public void setFaqNum(String faqNum) {
+	public void setFaqNum(int faqNum) {
 		this.faqNum = faqNum;
 	}
 

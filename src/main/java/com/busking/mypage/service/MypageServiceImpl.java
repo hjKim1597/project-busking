@@ -2,10 +2,15 @@ package com.busking.mypage.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.busking.mypage.model.ReservationCheckDTO;
+import com.busking.mypage.model.ReservationCheckMapper;
 import com.busking.mypage.model.UserJoinDTO;
 import com.busking.mypage.model.UserJoinMapper;
 import com.busking.util.mybatis.MybatisUtil;
@@ -74,9 +79,10 @@ public class MypageServiceImpl implements MypageService {
             response.sendRedirect(request.getContextPath() + "/mypage/login.jsp");
         }
     }
+    
     @Override
     public void deleteUser(HttpServletRequest request, HttpServletResponse response)
-    		throws ServletException, IOException {
+            throws ServletException, IOException {
         HttpSession session = request.getSession();
         UserJoinDTO dto = (UserJoinDTO) session.getAttribute("user");
         String inputPw = request.getParameter("userPw");
@@ -107,6 +113,37 @@ public class MypageServiceImpl implements MypageService {
             out.println("alert('비밀번호가 일치하지 않습니다.');");
             out.println("location.href='deleteUser.jsp';");
             out.println("</script>");
+        }
+    }
+
+    @Override
+    public void getReservationInfo(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String userId = (String) session.getAttribute("userId");
+
+        // 디버그 메시지로 userId 출력
+        System.out.println("User ID: " + userId);
+
+        if (userId != null) {
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            ReservationCheckMapper mapper = sqlSession.getMapper(ReservationCheckMapper.class);
+            List<ReservationCheckDTO> allReservations = mapper.getReservationInfo(userId);
+            sqlSession.close();
+
+            List<ReservationCheckDTO> nextMonthReservations = allReservations.stream()
+                    .filter(reservation -> reservation.getResDate().toLocalDate().getMonthValue() == java.time.LocalDate.now().plusMonths(1).getMonthValue())
+                    .collect(Collectors.toList());
+
+            // 디버그 메시지 출력
+            System.out.println("All Reservations: " + allReservations);
+            System.out.println("Next Month Reservations: " + nextMonthReservations);
+
+            request.setAttribute("allReservations", allReservations);
+            request.setAttribute("nextMonthReservations", nextMonthReservations);
+            request.getRequestDispatcher("/mypage/reservationCheck.jsp").forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/mypage/login.jsp");
         }
     }
 }

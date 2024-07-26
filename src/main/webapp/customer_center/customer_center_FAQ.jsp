@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,7 +69,7 @@
                             <h2>공지사항</h2>
                         </div>
 
-                        <p>관리자만 작성 가능, 글번호, 월별 허가된 공연 목록</p>
+                        <p>FAQ 글보는 곳~~~~</p>
 
                         <div class="table-responsive">
                             <!-- 게시판 -->
@@ -91,16 +94,13 @@
                                                     <tbody>
                                                         <!--데이터 받아오기-->
                                                         
-                                               			SELECT FAQ_NUM, USER_ID, FAQ_TITLE, FAQ_REGDATE
-														FROM FAQ
-														ORDER BY FAQ_NUM DESC
 								                        <c:forEach var="dto" items="${faqList }">
 															<tr>
 																<td>${dto.faqNum }</td>
 																<td>${dto.userId }</td>																
-																<td><a href="getContent.customer?faqNum=${dto.faqNum }">${dto.faqTitle }</a></td>
+																<td><a href="getFAQContent.customer?faqNum=${dto.faqNum }">${dto.faqTitle }</a></td>
 																<td><fmt:formatDate value="${dto.faqRegdate }" pattern="yy.MM.dd"/></td>
-																<td></td>
+																
 															</tr>
 														</c:forEach>
 
@@ -123,9 +123,11 @@
 						                            </c:if>
 						                            <li id="page_last"><a href="customer_center_index.customer?page=${pageVO.endPage }"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
 						                        </ul>
-                                                <form action="customer_center_index_write.jsp" class="right">
+						                        
+                                                <form action="customer_center_FAQ_write.jsp" class="right">
                                                     <button value="글쓰기" onclick="">작성</button>
                                                 </form>
+                                                
                                             </div>
 
                                             <div class="board_free_search" id="layout3">

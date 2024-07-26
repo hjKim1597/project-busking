@@ -88,18 +88,20 @@
 						<button value="글쓰기">작성</button>
 					</form>
 				</div>
-				<div class="board_free_search">
-					<select class="board_search_box">
-						<option value="notice">전체</option>
-						<option value="writer">작성자</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-					</select> 
-					<input placeholder="검색어를 입력해 주세요" type="text" id="target"> 
-					<span>
-						<button class="btn" type="button" data-subject="Free" id="search_btn">검색</button>
-					</span>
-				</div>
+				<form action="board_list.boardFree" method="post">
+					<div class="board_free_search">
+						<select class="board_search_box" name="type">
+							<option value="all" selected>전체</option>
+							<option value="writer">작성자</option>
+							<option value="title">제목</option>
+							<option value="content">내용</option>
+						</select> 
+						<input placeholder="검색어를 입력해 주세요" type="text" name="target" required> 
+						<span>
+							<input class="btn" type="submit" id="search_btn" value="검색">
+						</span>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
