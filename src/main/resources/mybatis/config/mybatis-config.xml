@@ -43,10 +43,13 @@
 	    
 	    <!-- 예약 매퍼 위치 -->
 	    <mapper resource="mybatis/mapper/reservation/ReservationMapper.xml"/>
+
+	    <!-- 예약 확인 매퍼 위치 -->
+	    <mapper resource="mybatis/mapper/mypage/ReservationCheckMapper.xml"/>
 	    
 	    <!-- FAQ 매퍼 위치 -->
 	    <mapper resource="mybatis/mapper/board/BoardFAQMapper.xml"/>
-	  
+
 	  </mappers>
 	  
 

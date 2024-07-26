@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.busking.mypage.model.ReservationCheckMapper">
+    <select id="getReservationInfo" parameterType="string" resultType="com.busking.mypage.model.ReservationCheckDTO">
+        SELECT 
+            R.RES_NUM, 
+            U.USER_NAME, 
+            R.RES_DATE, 
+            R.LOCA_ID, 
+            R.RES_RESULT, 
+            R.RES_AMP, 
+            R.RES_CONTENT, 
+            R.RES_COUNT, 
+            U.USER_ADDR, 
+            U.USER_PNO, 
+            U.USER_EMAIL, 
+            R.RES_TIME
+        FROM 
+            RESERVATIONS R
+        JOIN 
+            USERS U ON R.USER_ID = U.USER_ID
+        WHERE 
+            U.USER_ID = #{userId, jdbcType=VARCHAR}
+    </select>
+</mapper>
