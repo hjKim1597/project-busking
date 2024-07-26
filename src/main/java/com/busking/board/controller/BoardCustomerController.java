@@ -38,7 +38,7 @@ public class BoardCustomerController extends HttpServlet {
 
 		// BoardService 선언해두기
 		BoardCustomerService service;
-		BoardFAQService faq_service;
+		//BoardFAQService faq_service;
 
 		if (command.equals("/customer_center/customer_center_index.customer")) {
 			// 누르면 데이터가 필요하면 서비스

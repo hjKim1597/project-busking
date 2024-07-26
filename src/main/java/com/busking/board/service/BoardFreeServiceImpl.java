@@ -3,6 +3,8 @@ package com.busking.board.service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -77,9 +79,14 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		
 		// request
 		String bno = request.getParameter("bno");
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
 		
 		// DTO
 		BoardFreeDTO dto = new BoardFreeDTO();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userId", userId);
+		map.put("boardNum",	bno);
 		
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
@@ -88,10 +95,12 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		mapper.increaseHit(bno);
 		dto = mapper.getContent(bno);
 		dto.setFreeNum(bno);
+		String like = mapper.checkLike(map) == 1 ? "T" : "F";
 		sql.close();
 		
 		// response
 		request.setAttribute("dto", dto);
+		request.setAttribute("like", like);
 		request.getRequestDispatcher("board_free_content.jsp").forward(request, response);
 		
 	}
@@ -177,6 +186,50 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		}
 		out.println("location.href='board_content.boardFree?bno=" + bno + "';");
 		out.println("</script>");
+		
+	}
+	
+	@Override
+	public void like(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		// request
+		String bno = request.getParameter("bno");
+		String like = (String)request.getAttribute("like");
+		System.out.println(like);
+		if(like == null || like.equals("F")) {
+			like = "T";
+		} else {
+			like = "F";
+		}
+		
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		
+		// DTO
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userId", userId);
+		map.put("boardNum",	bno);
+		
+		Map<String, String> mapLike = new HashMap<String, String>();
+		mapLike.put("boardNum", bno);
+		
+		// Mybatis
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
+		
+		if(like.equals("T")) {
+			mapper.insertLike(map);
+		} else {
+			mapper.deleteLike(map);
+		}
+		String likeCount = String.valueOf(mapper.getTotalLike(bno));
+		mapLike.put("likeCount", likeCount);
+		mapper.updateLikeCount(mapLike);
+		sql.close();
+		
+		// response
+		request.setAttribute("like", like);
+		request.getRequestDispatcher("board_content.boardFree?bno=" + bno).forward(request, response);
 		
 	}
 

@@ -176,11 +176,20 @@
     justify-content: center;
 }
 
-#board_content .board_content_box .inner_box .inner_mid .like_container .like_button img {
+/* #board_content .board_content_box .inner_box .inner_mid .like_container .like_button img {
     width: 25px; 
     height: 25px;
 }
-
+ */
+#board_content .board_content_box .inner_box .inner_mid .like_container .like_button i {
+	font-size: 25px;
+    width: 25px; 
+    height: 25px;
+    color: black;
+}
+#board_content .board_content_box .inner_box .inner_mid .like_container .like_button i.like {
+	color: red;
+}
 #board_content .board_content_box .inner_box .inner .inner_mid .like_container .like_count {
     margin-left: 15px; 
     font-size: 18px; 

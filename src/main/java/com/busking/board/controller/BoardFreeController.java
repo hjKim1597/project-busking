@@ -64,10 +64,13 @@ public class BoardFreeController extends HttpServlet {
 			service = new BoardFreeServiceImpl();
 			service.edit(request, response);
 			
-		}  else if(command.equals("/board/board_delete.boardFree")) {
+		} else if(command.equals("/board/board_delete.boardFree")) {
 			service = new BoardFreeServiceImpl();
 			service.delete(request, response);
 			
+		} else if(command.equals("/board/board_like.boardFree")) {
+			service = new BoardFreeServiceImpl();
+			service.like(request, response);
 		}
 	}
 }

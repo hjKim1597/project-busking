@@ -37,8 +37,9 @@
 	                </div>
 	                <div class="inner_mid">
 	                    <div class="like_container">
-	                        <button class="like_button" onclick="increaseLikes()">
-	                            <img src="../resources/img/board_img/like.png" alt="좋아요">
+	                        <button class="like_button" onclick="location.href='board_like.boardFree?bno=${dto.freeNum }'">
+	                            <!-- <img src="../resources/img/board_img/like.png" alt="좋아요"> -->
+	                            <i class=${like = 'T' ? "fa-solid fa-heart like" : "fa-light fa-heart"}></i>
 	                        </button>
 	                        <span class="like_count" id="likeCount">${dto.freeLikeCount }</span>
 	                    </div>

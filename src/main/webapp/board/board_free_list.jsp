@@ -27,7 +27,7 @@
 			<div class="add">
 				<div class="wrap_board_free_list_title">
 					<div>
-						<strong>NEWS</strong>
+						<strong>자유게시판</strong>
 					</div>
 				</div>
 

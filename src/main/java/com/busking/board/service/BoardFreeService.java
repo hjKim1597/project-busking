@@ -20,4 +20,6 @@ public interface BoardFreeService {
 	
 	void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
+	void like(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
 }
