@@ -3,12 +3,10 @@ package com.busking.board.model;
 import java.util.ArrayList;
 import java.util.Map;
 
-import com.busking.util.paging.PageVO;
-
 public interface BoardFreeMapper {
 	
 	// 글 목록 조회
-	public ArrayList<BoardFreeDTO> getList(PageVO pageVO);
+	public ArrayList<BoardFreeDTO> getList(Map<String, Object> map);
 	
 	// 글 개수 조회
 	public int getTotal();
