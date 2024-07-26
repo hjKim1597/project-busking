@@ -27,8 +27,12 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 	public void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String page = (String)request.getAttribute("page");
+		String page = request.getParameter("page");
+		if(page == null) page = "1";
 		int pageNum = Integer.parseInt(page);
+		
+		String type = request.getParameter("type");
+		String target = request.getParameter("target");
 		
 		// DTO
 		ArrayList<BoardFreeDTO> list = new ArrayList<>();
@@ -38,13 +42,29 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
 		int total = mapper.getTotal();
 		PageVO pageVO = new PageVO(pageNum, total);
-		list = mapper.getList(pageVO);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("type", type);
+		map.put("target", target);
+		map.put("page", pageVO);
+		
+		list = mapper.getList(map);
 		sql.close();
 		
 		// response
-		request.setAttribute("freeList", list);
-		request.setAttribute("pageVO", pageVO);
-		request.getRequestDispatcher("board_free_list.jsp").forward(request, response);
+		if(list.size() == 0) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('검색 결과가 없습니다.');");
+			out.println("location.href='board_list.boardFree';");
+			out.println("</script>");
+		} else {
+			request.setAttribute("freeList", list);
+			request.setAttribute("pageVO", pageVO);
+			request.getRequestDispatcher("board_free_list.jsp").forward(request, response);
+		}
+
 	}
 	
 	@Override
@@ -80,7 +100,7 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		// request
 		String bno = request.getParameter("bno");
 		HttpSession session = request.getSession();
-		String userId = (String)session.getAttribute("userId");
+		String userId = session.getAttribute("userId") != null ? (String)session.getAttribute("userId") : "";
 		
 		// DTO
 		BoardFreeDTO dto = new BoardFreeDTO();
@@ -194,13 +214,6 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 
 		// request
 		String bno = request.getParameter("bno");
-		String like = (String)request.getAttribute("like");
-		System.out.println(like);
-		if(like == null || like.equals("F")) {
-			like = "T";
-		} else {
-			like = "F";
-		}
 		
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
@@ -216,7 +229,7 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFreeMapper mapper = sql.getMapper(BoardFreeMapper.class);
-		
+		String like = mapper.checkLike(map) == 1 ? "F" : "T";
 		if(like.equals("T")) {
 			mapper.insertLike(map);
 		} else {

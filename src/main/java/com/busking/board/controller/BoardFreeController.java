@@ -38,10 +38,6 @@ public class BoardFreeController extends HttpServlet {
 		BoardFreeService service;
 		
 		if(command.equals("/board/board_list.boardFree")) {
-			String page = request.getParameter("page");
-			if(page == null) page = "1";
-			request.setAttribute("page", page);
-			
 			service = new BoardFreeServiceImpl();
 			service.getList(request, response);
 			
@@ -71,6 +67,7 @@ public class BoardFreeController extends HttpServlet {
 		} else if(command.equals("/board/board_like.boardFree")) {
 			service = new BoardFreeServiceImpl();
 			service.like(request, response);
+			
 		}
 	}
 }
