@@ -1,4 +1,4 @@
-package com.busking.board.controller;
+package com.busking.board.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,11 +7,10 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.busking.board.model.BoardCustomerDTO;
-import com.busking.board.model.BoardCustomerMapper;
+import com.busking.board.model.FAQDTO;
+import com.busking.board.model.BoardFAQMapper;
 import com.busking.board.model.BoardFAQMapper;
 import com.busking.board.model.FAQDTO;
-import com.busking.board.service.BoardCustomerService;
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
 
@@ -19,7 +18,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class BoardFAQServiceImpl implements BoardCustomerService {
+public class BoardFAQServiceImpl implements BoardFAQService {
 
 	private SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
 
@@ -38,14 +37,11 @@ public class BoardFAQServiceImpl implements BoardCustomerService {
 
 		// DTO
 
-		System.out.println("FAQ 목록 조회1");
 
 		// 호출하기
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFAQMapper FAQMapper = sql.getMapper(BoardFAQMapper.class);
 		
-		
-		System.out.println("FAQ 목록 조회2");
 
 		// 화면에 리스트 내보내기
 		ArrayList<FAQDTO> faqList = FAQMapper.getList();
@@ -53,8 +49,8 @@ public class BoardFAQServiceImpl implements BoardCustomerService {
 
 		int total = FAQMapper.getTotal(); // 페이징 용 전체 글 개수 가져오기
 		PageVO pageVO = new PageVO(pageNum, total); // 페이징용 PageVO 객체 생성
-		System.out.println("FAQ 목록 조회3");
 
+		
 		sql.close();
 
 		// response
@@ -73,20 +69,20 @@ public class BoardFAQServiceImpl implements BoardCustomerService {
 
 		// request
 		String managerId = "관리자"; // 관리자 아이디 고정
-		String noticeTitle = request.getParameter("title");
-		String noticeContent = request.getParameter("content");
+		String faqTitle = request.getParameter("title");
+		String faqContent = request.getParameter("content");
 
 		// DTO
-		BoardCustomerDTO dto = new BoardCustomerDTO(0, managerId, noticeTitle, noticeContent, null, 0);
+		FAQDTO dto = new FAQDTO(0, managerId, faqContent, faqTitle, faqContent, null, faqContent, managerId);
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
-		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
+		BoardFAQMapper FAQMapper = sql.getMapper(BoardFAQMapper.class);
 
-		boardMapper.regist(dto);
+		FAQMapper.regist(dto);
 		sql.close();
 
 		// 목록화면 보내기
-		response.sendRedirect("customer_center_index.customer");
+		response.sendRedirect("customer_center_FAQ.customer");
 
 	}
 
@@ -96,19 +92,19 @@ public class BoardFAQServiceImpl implements BoardCustomerService {
 			throws ServletException, IOException {
 
 		// a링크로 넘어온 값을 받는다
-		String noticeNum = request.getParameter("noticeNum");
+		String faqNum = request.getParameter("faqNum");
 
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
-		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
+		BoardFAQMapper FAQMapper = sql.getMapper(BoardFAQMapper.class);
 
-		boardMapper.increaseHit(noticeNum); // 조회수 증가
-		BoardCustomerDTO dto = boardMapper.getContent(noticeNum);
+
+		FAQDTO dto = FAQMapper.getContent(faqNum);
 		sql.close(); // 마이바티스 세션 종료
 
 		// response
 		request.setAttribute("dto", dto);
-		request.getRequestDispatcher("customer_center_index_content.jsp").forward(request, response);
+		request.getRequestDispatcher("customer_center_FAQ_content.jsp").forward(request, response);
 		// 자체 페이지 이름으로 포워드 이동
 
 	}
@@ -117,18 +113,18 @@ public class BoardFAQServiceImpl implements BoardCustomerService {
 	@Override
 	public void modify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String noticeNum = request.getParameter("noticeNum");
+		String faqNum = request.getParameter("faqNum");
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
-		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
-		BoardCustomerDTO dto = boardMapper.getContent(noticeNum);
+		BoardFAQMapper FAQMapper = sql.getMapper(BoardFAQMapper.class);
+		FAQDTO dto = FAQMapper.getContent(faqNum);
 		sql.close(); // 마이바티스 세션 종료
 
-		System.out.println(dto.getNoticeNum());
+		System.out.println(dto.getFaqNum());
 
 		// dto를 request에 담고 forward 화면으로 이동
 		request.setAttribute("dto", dto);
-		request.getRequestDispatcher("customer_center_index_content_modify.jsp").forward(request, response);
+		request.getRequestDispatcher("customer_center_FAQ_content_modify.jsp").forward(request, response);
 		;
 
 	}
@@ -142,19 +138,19 @@ public class BoardFAQServiceImpl implements BoardCustomerService {
 
 		// request
 		String managerId = "관리자"; // 관리자 아이디 고정
-		String noticeTitle = request.getParameter("title");
-		String noticeContent = request.getParameter("content");
+		String faqTitle = request.getParameter("title");
+		String faqContent = request.getParameter("content");
 
-		int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
+		int faqNum = Integer.parseInt(request.getParameter("faqNum"));
 
 		// DTO
-		BoardCustomerDTO dto = new BoardCustomerDTO(noticeNum, managerId, noticeTitle, noticeContent, null, 0);
+		FAQDTO dto = new FAQDTO(faqNum, managerId, faqContent, faqTitle, faqContent, null, faqContent, managerId);
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
-		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
+		BoardFAQMapper FAQMapper = sql.getMapper(BoardFAQMapper.class);
 
-		boardMapper.update(dto);
-		int result = boardMapper.update(dto);
+		FAQMapper.update(dto);
+		int result = FAQMapper.update(dto);
 		sql.close(); // close
 
 		System.out.println("업데이트 성공 여부  " + result);
@@ -165,13 +161,13 @@ public class BoardFAQServiceImpl implements BoardCustomerService {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('정상 처리 되었습니다!');");
-			out.println("location.href='customer_center_index.customer';");
+			out.println("location.href='customer_center_FAQ.customer';");
 			out.println("</script>");
 
 		} else { // 업데이트 실패
 
 			// 다시 수정화면으로
-			response.sendRedirect("getContent.customer?noticeNum=" + noticeNum);
+			response.sendRedirect("getFAQContent.customer?faqNum=" + faqNum);
 
 		}
 	}
@@ -181,29 +177,29 @@ public class BoardFAQServiceImpl implements BoardCustomerService {
 
 		System.out.println("delete 메서드 실행 되나");
 
-		int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
+		int faqNum = Integer.parseInt(request.getParameter("faqNum"));
 
 		// DTO
 
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
 
-		boardMapper.delete(noticeNum);
-		int result = boardMapper.delete(noticeNum);
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardFAQMapper FAQMapper = sql.getMapper(BoardFAQMapper.class);
+
+		FAQMapper.delete(faqNum);
+		int result = FAQMapper.delete(faqNum);
 		sql.close(); // close
 
 		System.out.println("삭제 여부  " + result);
 
 		
 		
-		response.sendRedirect("customer_center_index.customer");
+		response.sendRedirect("customer_center_FAQ.customer");
 
 		
 	}
 
 	
 
-	//FAQ-------------------------------------------------------
 	
 
 }
