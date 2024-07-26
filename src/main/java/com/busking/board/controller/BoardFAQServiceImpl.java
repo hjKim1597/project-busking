@@ -1,4 +1,4 @@
-package com.busking.board.service;
+package com.busking.board.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,7 +9,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardCustomerDTO;
 import com.busking.board.model.BoardCustomerMapper;
-
+import com.busking.board.model.BoardFAQMapper;
+import com.busking.board.model.FAQDTO;
+import com.busking.board.service.BoardCustomerService;
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
 
@@ -17,7 +19,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class BoardCustomerServiceImpl implements BoardCustomerService {
+public class BoardFAQServiceImpl implements BoardCustomerService {
 
 	private SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
 
@@ -28,7 +30,7 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		// 글 목록
 
 		// request
-
+		
 		// 페이지 번호 받아오기
 		String page = (String) request.getAttribute("page");
 		int pageNum = Integer.parseInt(page);
@@ -36,23 +38,29 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 
 		// DTO
 
+		System.out.println("FAQ 목록 조회1");
+
 		// 호출하기
 		SqlSession sql = sqlSessionFactory.openSession(true);
-		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
+		BoardFAQMapper FAQMapper = sql.getMapper(BoardFAQMapper.class);
+		
+		
+		System.out.println("FAQ 목록 조회2");
 
 		// 화면에 리스트 내보내기
-		ArrayList<BoardCustomerDTO> noticeList = boardMapper.getList();
-		System.out.println("화면에 리스트 나타내기 " + noticeList);
+		ArrayList<FAQDTO> faqList = FAQMapper.getList();
+		System.out.println("화면에 리스트 나타내기 " + faqList);
 
-		int total = boardMapper.getTotal(); // 페이징 용 전체 글 개수 가져오기
+		int total = FAQMapper.getTotal(); // 페이징 용 전체 글 개수 가져오기
 		PageVO pageVO = new PageVO(pageNum, total); // 페이징용 PageVO 객체 생성
+		System.out.println("FAQ 목록 조회3");
 
 		sql.close();
 
 		// response
 		request.setAttribute("page", pageVO); // PageVO 객체 넘기기
-		request.setAttribute("noticeList", noticeList);
-		request.getRequestDispatcher("customer_center_index.jsp").forward(request, response);
+		request.setAttribute("faqList", faqList);
+		request.getRequestDispatcher("customer_center_FAQ.jsp").forward(request, response);
 
 	}
 
@@ -197,7 +205,5 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 
 	//FAQ-------------------------------------------------------
 	
-	
-	
-	
+
 }
