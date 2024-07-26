@@ -3,12 +3,15 @@ package com.busking.board.controller;
 import java.io.IOException;
 
 import com.busking.board.service.BoardAskService;
+import com.busking.board.service.BoardAskServiceImpl;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@WebServlet("*.boardAsk")
 public class BoardAskController extends HttpServlet {
 	
 	@Override
@@ -31,7 +34,8 @@ public class BoardAskController extends HttpServlet {
 		BoardAskService service;
 		
 		if(command.equals("/board/board_list.boardAsk")) {
-			
+			service = new BoardAskServiceImpl();
+			service.getList(request, response);	
 		}
 		
 	}

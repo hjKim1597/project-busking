@@ -28,9 +28,10 @@
 	    <mapper resource="mybatis/mapper/board/BoardFreeMapper.xml"/>
 	    <mapper resource="mybatis/mapper/board/BoardNewsMapper.xml"/>
 	    <mapper resource="mybatis/mapper/board/BoardTeamMapper.xml"/>
+	    <mapper resource="mybatis/mapper/board/BoardAskMapper.xml"/>
 	    
 	    <!-- 댓글 매퍼 위치 -->
- 		  <mapper resource="mybatis/mapper/board/BoardCommentMapper.xml"/>
+ 		<mapper resource="mybatis/mapper/board/BoardCommentMapper.xml"/>
 
 	    <!-- 회원가입 매퍼 위치 -->
 	    <mapper resource="mybatis/mapper/mypage/MypageMapper.xml"/>

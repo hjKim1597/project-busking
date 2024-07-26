@@ -11,14 +11,10 @@
 		<div id="board_nav_wrap">
 			<h1>BOARD</h1>
 			<ul class="menu">
-				<li class="nth1"><strong><a
-						href="board_list.boardNews">NEWS</a></strong></li>
-				<li class="nth2"><strong><a
-						href="board_list.boardFree">자유게시판</a></strong></li>
-				<li class="nth3"><strong><a
-						href="board_list.boardTeam">팀원 모집</a></strong></li>
-				<li class="nth4 active"><strong><a href="board_list.boardAsk">Q
-							& A</a></strong></li>
+				<li class="nth1"><strong><a href="board_list.boardNews">NEWS</a></strong></li>
+				<li class="nth2"><strong><a href="board_list.boardFree">자유게시판</a></strong></li>
+				<li class="nth3"><strong><a href="board_list.boardTeam">팀원 모집</a></strong></li>
+				<li class="nth4 active"><strong><a href="board_list.boardAsk">Q & A</a></strong></li>
 			</ul>
 		</div>
 	</nav>
@@ -48,6 +44,10 @@
 	                        </form>
 	                        
 	                        <div class="comment">
+	                        	<div class="info">
+		                            <div class="writer">test</div>
+		                            <div class="date">test</div>
+		                        </div>
 	                        	<textarea rows="2" cols="50" readonly class="comList">test</textarea>
 	                        </div>
 	                    </div>
@@ -73,8 +73,13 @@
 	                        </form>
 	                        <c:forEach var="dto" items="${comList }">
 		                        <div class="comment">
-		                        	<textarea rows="2" cols="50" readonly class="comList">test</textarea>
+			                        <div class="info">
+			                            <div class="writer">test</div>
+			                            <div class="date">test</div>
+			                        </div>
+		                        	<textarea rows="2" cols="50" readonly class="comList">${dto.comAskContent }</textarea>
 		                        </div>
+		                        
 		                    </c:forEach>
 	                    </div>
 	                </div>

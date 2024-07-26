@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.busking.board.model.BoardAskMapper">
+
+    <select id="getList" parameterType="hashMap" resultType="com.busking.board.model.BoardAskDTO">
+        SELECT ASK_NUM, ASK_TITLE, ASK_WRITER, ASK_REGDATE, ASK_HIT 
+        FROM ( 
+            SELECT ROWNUM AS RN, 
+                   B.* 
+            FROM BOARD_ASK B 
+            WHERE 1 = 1 
+            <if test="type != null and type != ''">
+                <choose>
+                    <when test="type == 'title'">
+                        AND B.ASK_TITLE LIKE '%' || #{target} || '%' 
+                    </when>
+                    <when test="type == 'content'">
+                        AND CONTAINS(B.ASK_CONTENT, ('%' || #{target} || '%') ) > 0 
+                    </when>
+                    <when test="type == 'writer'">
+                        AND B.ASK_WRITER LIKE '%' || #{target} || '%' 
+                    </when>
+                    <when test="type == 'all'">
+                        AND (B.ASK_TITLE LIKE '%' || #{target} || '%' 
+                             OR CONTAINS(B.ASK_CONTENT, #{target, jdbcType=CLOB}) > 0 
+                             OR B.ASK_WRITER LIKE '%' || #{target} || '%') 
+                    </when>
+                </choose>
+            </if>
+            ORDER BY ASK_NUM DESC 
+        ) 
+        WHERE RN > (#{page.pageNum} - 1) * #{page.amount} 
+          AND #{page.pageNum} * #{page.amount} >= RN  
+    </select>
+	
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*) FROM BOARD_ASK 
+	</select>
+	
+	<insert id="write" parameterType="com.busking.board.model.BoardAskDTO">
+		INSERT INTO BOARD_ASK(ASK_NUM, 
+							   ASK_WRITER, 
+							   ASK_TITLE,
+							   ASK_CONTENT,
+							   ASK_REGDATE) 
+		VALUES('ASK_' || LPAD(BOARD_ASK_SEQ.NEXTVAL, 8, '0'),
+		       #{askWriter},
+		       #{askTitle},
+		       #{askContent, jdbcType=CLOB},
+		       SYSDATE)
+	</insert>
+	
+	<select  id="getContent" resultType="com.busking.board.model.BoardAskDTO" parameterType="String">
+		SELECT ASK_TITLE, ASK_LIKE_COUNT, ASK_WRITER, ASK_REGDATE, ASK_CONTENT, ASK_HIT, ASK_CMT_COUNT 
+		FROM BOARD_ASK 
+		WHERE ASK_NUM = #{askNum}
+
+	</select>
+	
+	<update id="increaseHit" parameterType="String">
+		UPDATE BOARD_ASK SET ASK_HIT = ASK_HIT + 1 WHERE ASK_NUM = #{askNum}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM BOARD_ASK WHERE ASK_NUM = #{askNum}
+	</delete>
+	
+	<update id="edit" parameterType="com.busking.board.model.BoardAskDTO">
+		UPDATE BOARD_ASK 
+		SET ASK_TITLE = #{askTitle}, 
+		    ASK_CONTENT = #{askContent, jdbcType=CLOB} 
+		WHERE ASK_NUM = #{askNum}
+	</update>
+	
+	<update id="updateCmtCount" parameterType="com.busking.board.model.BoardAskDTO">
+		UPDATE BOARD_ASK 
+		SET ASK_CMT_COUNT = #{askCmtCount} 
+		WHERE ASK_NUM = #{askNum} 
+	</update>
+	
+	<insert id="insertLike">
+		INSERT INTO LIKES(LIKE_NUM, USER_ID, BOARD_NUM) 
+		VALUES(LIKES_SEQ.NEXTVAL, #{userId}, #{boardNum})
+	</insert> 
+	
+	<delete id="deleteLike">
+		DELETE FROM LIKES WHERE USER_ID = #{userId} AND BOARD_NUM = #{boardNum} 
+	</delete>
+	
+	<update id="updateLikeCount">
+		UPDATE BOARD_ASK 
+		SET ASK_LIKE_COUNT = TO_NUMBER(#{likeCount}) 
+		WHERE ASK_NUM = #{boardNum}  
+	</update>
+	
+	<select id="getTotalLike" resultType="int">
+		SELECT COUNT(*) FROM LIKES WHERE BOARD_NUM = #{boardNum} 
+	</select>
+	
+	<select id="checkLike" resultType="int">
+		SELECT COUNT(*) FROM LIKES WHERE USER_ID = #{userId} AND BOARD_NUM = #{boardNum}
+	</select>
+	
+
+</mapper>

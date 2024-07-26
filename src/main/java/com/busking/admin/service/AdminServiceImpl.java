@@ -34,7 +34,7 @@ public class AdminServiceImpl implements AdminService {
 
 		// MainMapper 인터페이스의 getList 메서드를 호출하여 데이터베이스에서 BoardDTO 객체 목록을 가져온다
 		ArrayList<AdminPageDTO> getList = Admin.getList();
-
+		System.out.println(getList.size());
 		// request
 		/* String page = (String) request.getAttribute("page"); */
 		/* int pageNum = Integer.parseInt(page); */

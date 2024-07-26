@@ -20,6 +20,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class BoardAskServiceImpl implements BoardAskService {
+	
+	public BoardAskServiceImpl() {
+	}
 
 	SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
 	

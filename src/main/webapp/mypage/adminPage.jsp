@@ -28,7 +28,7 @@
 						<tbody>
 							<!-- 예약내용시작 -->
 							<c:forEach var="dto" items="${getList }">
-									<tr class="accordion-toggle" data-toggle="collapse"	data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+								<tr class="accordion-toggle" data-toggle="collapse"	data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
 									<td>1</td>
 									<td>홍길동</td>
 									<td>2024-07-20</td>
@@ -39,31 +39,29 @@
 										<button class="reject">거절</button>
 										<button class="modify">수정하기</button>
 									</td>
-									
-								<tr>
-									<td>${dto.userId }</td>
-									<!--예약id  -->
-
-									<td>${dto.userName }</td>
-									<!--예약자이름  -->
-
-									<td><fmt:formatDate value="${dto.resDate }"
-											pattern="yy.MM.dd" /></td>
-									<!--공연 날짜 -->
-
-									<td>${dto.locaName }</td>
-									<!--공연장소  -->
-
-									<td>승인됨</td>
-									<!-- 상태 -->
-									<td>
-										<button class="approve">승인</button> <!-- 작업 -->
-										<button class="reject">거절</button>
-										<button class="modify">수정하기</button>
-									</td>
 								</tr>
-
-								</tr>
+									<tr>
+										<td>${dto.userId }</td>
+										<!--예약id  -->
+	
+										<td>${dto.userName }</td>
+										<!--예약자이름  -->
+	
+										<td><fmt:formatDate value="${dto.resDate }"
+												pattern="yy.MM.dd" /></td>
+										<!--공연 날짜 -->
+	
+										<td>${dto.locaName }</td>
+										<!--공연장소  -->
+	
+										<td>승인됨</td>
+										<!-- 상태 -->
+										<td>
+											<button class="approve">승인</button> <!-- 작업 -->
+											<button class="reject">거절</button>
+											<button class="modify">수정하기</button>
+										</td>
+									</tr>
 								
 								<tr id="collapse1" class="collapse">
 									<td colspan="6">

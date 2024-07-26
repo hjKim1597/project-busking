@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+
 <%@ include file="../include/header.jsp" %>
-<body>
+
     
     <div class="jinseok-wrap">
         <div class="findidpw-wrap">
@@ -12,11 +11,11 @@
                 <form class="findid" onsubmit="return false;">
                     <label for="email-findId">이메일</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="email-findId" placeholder="가입하신 이메일을 입력하세요.">
+                        <input type="text" class="form-control" id="emailId" placeholder="가입하신 이메일을 입력하세요.">
                     </div>
                     <label for="phone-findId">연락처</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="phone-findId" placeholder="가입하신 연락처를 입력하세요.">
+                        <input type="text" class="form-control" id="phoneId" placeholder="가입하신 연락처를 입력하세요.">
                     </div>
                     <input type="button" class="jinseok-button" value="아이디 찾기" onclick="findId()"></input>
                     <div class="form-group" style="margin-top: 15px;">
@@ -28,11 +27,11 @@
             <form class="findpw" onsubmit="return false;">
                 <label for="id-findPw">아이디</label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="id-findPw" placeholder="가입하신 아이디를 입력하세요.">
+                    <input type="text" class="form-control" id="idPw" placeholder="가입하신 아이디를 입력하세요.">
                 </div>
                 <label for="phone-findPw">연락처</label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="phone-findPw" placeholder="가입하신 연락처를 입력하세요.">
+                    <input type="text" class="form-control" id="phonePw" placeholder="가입하신 연락처를 입력하세요.">
                 </div>
                 <input type="button" class="jinseok-button" value="비밀번호 찾기" onclick="findPw()"></input>
                 <div class="form-group" style="margin-top: 15px;">
@@ -46,8 +45,8 @@
     // 아이디 찾기 기능을 수행하는 함수
     function findId() {
         // 이메일과 전화번호 입력 값을 가져옴
-        var email = document.getElementById('email').value;
-        var phone = document.getElementById('phone').value;
+        var email = document.getElementById('emailId').value;
+        var phone = document.getElementById('phoneId').value;
 
         // fetch API를 사용하여 서버에 요청을 보냄
         fetch('findId.mypage?email=' + email + '&phone=' + phone)
@@ -62,7 +61,7 @@
     	// 비밀번호 찾기 기능을 수행하는 함수
     function findPw() {
         // 아이디와 전화번호 입력 값을 가져옴
-        var id = document.getElementById('id').value;
+        var id = document.getElementById('idPw').value;
         var phone = document.getElementById('phonePw').value;
 
         // fetch API를 사용하여 서버에 요청을 보냄
