@@ -22,7 +22,7 @@
                             <label for="usr">아이디 (변경불가)</label>
                             <input readonly type="text" class="form-control" id="usr" name="userId" value="${userInfo.userId}">
                         </div>
-                        <div class="form-group pw-margin">
+                        <div class="form-group pw-margin" style="margin-bottom: 15px">
                             <label for="pwd">비밀번호</label>
                             <div class="input-group">
                                 <input type="password" class="form-control" name="userPw" value="${userInfo.userPw}">
@@ -41,16 +41,13 @@
                         </div>
                         <label for="userAddr">주소</label> <br>
 	                    <!-- 우편찾기 주소 -->
-	                    <div class="input-group id-content">
-	                        <input type="text" class="form-control write-box" id="sample6_postcode" name="addr1" placeholder="우편번호" required="required">
+	                    <div class="input-group id-content" style="margin-bottom: 15px">
+	                        <input type="text" class="form-control write-box" id="sample6_postcode" name="postcode" placeholder="우편번호" required="required" value="${userInfo.userAddr}">
 	                        <div class="input-group-btn">
 	                            <button class="btn btn-default" type="button" onclick="sample6_execDaumPostcode()">우편번호 찾기</button>
 	                        </div>
 	                    </div>
-	                    <input type="text" id="sample6_address" class="form-control write-box" name="addr2" placeholder="주소" style="margin-top: 5px;" required="required">
-	                    <input type="text" id="sample6_extraAddress" class="form-control write-box" name="addr3" placeholder="참고항목" style="margin-top: 5px;" required="required">
-	                    <input type="text" id="sample6_detailAddress" class="form-control write-box" name="addr4" placeholder="상세주소" style="margin-top: 5px; margin-bottom: 15px;" required="required">
-	                    <input type="hidden" id="userAddr" name="userAddr"> <!-- Hidden field to store combined address -->
+	                    <input type="hidden" id="userAddr" name="userAddr" value="${userInfo.userAddr}"> <!-- Hidden field to store combined address -->
                         <div class="form-group">
                             <label for="email">이메일</label>
                             <input type="email" class="form-control" name="userEmail" value="${userInfo.userEmail}">
@@ -64,12 +61,13 @@
                                 <option value="변화" ${userInfo.userGender == '변화' ? 'selected' : ''}>변화</option>
                             </select>
                         </div>
-                        <input type="submit" class="jinseok-button" value="수정하기"></input>
+                        <input type="submit" class="jinseok-button" value="수정하기" onclick="combineAddress()"></input>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="text/javascript">
         var pwBtn = document.querySelector(".pwBtn");
         pwBtn.onclick = function() {
@@ -82,19 +80,12 @@
                 pwBtn.textContent = "비밀번호 표시";
             }
         }
-        //주소합치기
+
         function combineAddress() {
-            var addr1 = document.querySelector('input[name="addr1"]').value;
-            var addr2 = document.querySelector('input[name="addr2"]').value;
-            var addr3 = document.querySelector('input[name="addr3"]').value;
-            var addr4 = document.querySelector('input[name="addr4"]').value;
-            var fullAddr = addr1 + ' ' + addr2 + ' ' + addr3 + ' ' + addr4;
-            document.getElementById('userAddr').value = fullAddr;
+            var postcode = document.querySelector('input[name="postcode"]').value;
+            document.getElementById('userAddr').value = postcode;
         }
-    </script>
-    
-     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
+
         function sample6_execDaumPostcode() {
             new daum.Postcode({
                 oncomplete: function(data) {
@@ -117,14 +108,11 @@
                         if(extraAddr !== ''){
                             extraAddr = ' (' + extraAddr + ')';
                         }
-                        document.getElementById("sample6_extraAddress").value = extraAddr;
-                    } else {
-                        document.getElementById("sample6_extraAddress").value = '';
                     }
 
-                    document.getElementById('sample6_postcode').value = data.zonecode;
-                    document.getElementById("sample6_address").value = addr;
-                    document.getElementById("sample6_detailAddress").focus();
+                    var fullAddr = data.zonecode + ' ' + addr + ' ' + extraAddr;
+                    document.getElementById('sample6_postcode').value = fullAddr;
+                    document.getElementById('userAddr').value = fullAddr; // combined address for submission
                 }
             }).open();
         }
