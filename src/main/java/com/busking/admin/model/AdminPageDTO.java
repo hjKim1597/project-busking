@@ -7,7 +7,7 @@ public class AdminPageDTO {
 	private String userId;
 	private String userName;
 	private Date resDate;
-	private String resLoca;
+	private String locaName;
 	private String resAmp;
 	private String resContent;
 	private int resCount;
@@ -15,18 +15,20 @@ public class AdminPageDTO {
 	private String userEmail;
 	private String userAddr;
 	private String manangerId;
-	private String managerPw;
+	private String locaId;
+	private String locaPlace;
 
 	public AdminPageDTO() {
 	}
 
-	public AdminPageDTO(String userId, String userName, Date resDate, String resLoca, String resAmp, String resContent,
-			int resCount, int userPno, String userEmail, String userAddr, String manangerId, String managerPw) {
+	public AdminPageDTO(String userId, String userName, Date resDate, String locaName, String resAmp, String resContent,
+			int resCount, int userPno, String userEmail, String userAddr, String manangerId, String locaId,
+			String locaPlace) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.resDate = resDate;
-		this.resLoca = resLoca;
+		this.locaName = locaName;
 		this.resAmp = resAmp;
 		this.resContent = resContent;
 		this.resCount = resCount;
@@ -34,7 +36,8 @@ public class AdminPageDTO {
 		this.userEmail = userEmail;
 		this.userAddr = userAddr;
 		this.manangerId = manangerId;
-		this.managerPw = managerPw;
+		this.locaId = locaId;
+		this.locaPlace = locaPlace;
 	}
 
 	public String getUserId() {
@@ -61,12 +64,12 @@ public class AdminPageDTO {
 		this.resDate = resDate;
 	}
 
-	public String getResLoca() {
-		return resLoca;
+	public String getLocaName() {
+		return locaName;
 	}
 
-	public void setResLoca(String resLoca) {
-		this.resLoca = resLoca;
+	public void setLocaName(String locaName) {
+		this.locaName = locaName;
 	}
 
 	public String getResAmp() {
@@ -125,15 +128,22 @@ public class AdminPageDTO {
 		this.manangerId = manangerId;
 	}
 
-	public String getManagerPw() {
-		return managerPw;
+	public String getLocaId() {
+		return locaId;
 	}
 
-	public void setManagerPw(String managerPw) {
-		this.managerPw = managerPw;
+	public void setLocaId(String locaId) {
+		this.locaId = locaId;
 	}
-	
-	
-	
+
+	public String getLocaPlace() {
+		return locaPlace;
+	}
+
+	public void setLocaPlace(String locaPlace) {
+		this.locaPlace = locaPlace;
+	}
+
+
 	
 }
