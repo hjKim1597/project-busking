@@ -11,6 +11,15 @@
 <c:set var="locaPlace" value="${location.locaPlace}" />
 <c:set var="locaInfo" value="${location.locaInfo}" />
 
+<script>
+var locaX = "${locaX}";
+var locaY = "${locaY}";
+var locaName = "${locaName}";
+var locaPicPath = "${locaPicPath}";
+var locaPlace = "${locaPlace}";
+var locaInfo = "${locaInfo}";
+</script>
+
 <div class="resForm-wrap">
     <div class="resForm-top">
         <h3>${location.locaName}</h3>

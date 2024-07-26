@@ -1,10 +1,3 @@
-var locaX = "${locaX}";
-var locaY = "${locaY}";
-var locaName = "${locaName}";
-var locaPicPath = "${locaPicPath}";
-var locaPlace = "${locaPlace}";
-var locaInfo = "${locaInfo}";
-
 function validateForm() {
     // Validation logic here
      return true;
@@ -17,6 +10,24 @@ function goBackToList() {
 function confirmReviewSubmission() {
     return confirm('리뷰를 등록하시겠습니까?');
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+        const stars = document.querySelectorAll('.cmt-star .star');
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                stars.forEach((s, i) => {
+                    if (i <= index) {
+                        s.classList.add('checked');
+                    } else {
+                        s.classList.remove('checked');
+                    }
+                });
+                document.getElementById('rating').value = index + 1; // Save the rating value
+            });
+        });
+    });
+
+
 
 
 function validateForm() {
@@ -194,19 +205,3 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         infowindow.open(map, marker); 
     }
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-        const stars = document.querySelectorAll('.cmt-star .star');
-        stars.forEach((star, index) => {
-            star.addEventListener('click', () => {
-                stars.forEach((s, i) => {
-                    if (i <= index) {
-                        s.classList.add('checked');
-                    } else {
-                        s.classList.remove('checked');
-                    }
-                });
-                document.getElementById('rating').value = index + 1; // Save the rating value
-            });
-        });
-    });
