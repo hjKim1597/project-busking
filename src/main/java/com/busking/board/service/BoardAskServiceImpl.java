@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardAskDTO;
 import com.busking.board.model.BoardAskMapper;
+import com.busking.board.model.BoardFreeDTO;
 import com.busking.board.model.BoardFreeMapper;
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
@@ -18,6 +19,7 @@ import com.busking.util.paging.PageVO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class BoardAskServiceImpl implements BoardAskService {
 	
@@ -63,11 +65,70 @@ public class BoardAskServiceImpl implements BoardAskService {
 			out.println("location.href='board_list.boardAsk';");
 			out.println("</script>");
 		} else {
-			request.setAttribute("AskList", list);
+			request.setAttribute("askList", list);
 			request.setAttribute("pageVO", pageVO);
-			request.getRequestDispatcher("board_Ask_list.jsp").forward(request, response);
+			request.getRequestDispatcher("board_ask_list.jsp").forward(request, response);
 		}
 		
 	}
+	
+	@Override
+	public void write(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// request
+		String content = request.getParameter("content");
+		
+		HttpSession session = request.getSession();
+		String writer = (String)session.getAttribute("userId");
+		
+		// DTO
+		BoardAskDTO dto = new BoardAskDTO();
+		dto.setAskWriter(writer);
+		dto.setAskContent(content);
+		
+		// Mapper
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardAskMapper mapper = sql.getMapper(BoardAskMapper.class);
+		
+		mapper.write(dto);
+		sql.close();
+		
+		// response
+		response.sendRedirect("board_list.boardAsk");
+		
+	}
+	
+	@Override
+	public void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// request
+		String bno = request.getParameter("bno");
+		String content = request.getParameter("content");
+		
+		// DTO
+		BoardAskDTO dto = new BoardAskDTO();
+		dto.setAskNum(bno);
+		dto.setAskContent(content);
+		
+		// Mybatis
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardAskMapper mapper = sql.getMapper(BoardAskMapper.class);
+		int result = mapper.edit(dto);
+		sql.close();
+		
+		// response
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(result != 0) {
+			out.println("alert('글이 수정되었습니다.');");
+		} else {
+			out.println("alert('글이 수정되지 않았습니다.');");
+		}
+		out.println("location.href='board_list.boardAsk';");
+		out.println("</script>");
+		
+	}	
+	
+	
 	
 }

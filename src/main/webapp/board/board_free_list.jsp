@@ -62,27 +62,36 @@
 				</div>
 
 				<div class="page_nav">
-					<ul class="center">
-						<li id="page_first"><a href="board_list.boardFree"><img
-								src="../resources/img/board_img/ico_first.gif" alt="처음페이지"></a></li>
+	                <ul class="center">
+						<li id="page_first">
+							<a href="board_list.boardFree">
+								<img src="../resources/img/board_img/ico_first.gif" alt="처음페이지">
+							</a>
+						</li>
 						<c:if test="${pageVO.prev }">
-							<li id="page_prev"><a
-								href="board_list.boardFree?page=${pageVO.pageNum - 1 }"><img
-									src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>
+							<li id="page_prev">
+								<a href="board_list.boardFree?page=${pageVO.pageNum - 1 }">
+									<img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지">
+								</a>
+							</li>
 						</c:if>
-						<c:forEach var="i" begin="${pageVO.startPage }"
-							end="${pageVO.endPage }" step="1">
-							<li class="page_li" data-page="${i }"><a
-								href="board_list.boardFree?page=${i }" title="1페이지">${i }</a></li>
+						<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+							<li class="page_li" data-page="${i }">
+								<a href="board_list.boardFree?page=${i }" title="1페이지">${i }</a>
+							</li>
 						</c:forEach>
 						<c:if test="${pageVO.next }">
-							<li id="page_next"><a
-								href="board_list.boardFree?page=${pageVO.pageNum + 1 }"><img
-									src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
+							<li id="page_next">
+								<a href="board_list.boardFree?page=${pageVO.pageNum + 1 }">
+									<img src="../resources/img/board_img/ico_next.gif" alt="다음페이지">
+								</a>
+							</li>
 						</c:if>
-						<li id="page_last"><a
-							href="board_list.boardFree?page=${pageVO.endPage }"><img
-								src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
+						<li id="page_last">
+							<a href="board_list.boardFree?page=${pageVO.endPage }">
+								<img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지">
+							</a>
+						</li>
 					</ul>
 					<form action="board_write.boardFree" class="right">
 						<button value="글쓰기">작성</button>

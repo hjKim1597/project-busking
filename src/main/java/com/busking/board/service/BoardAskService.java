@@ -10,4 +10,7 @@ public interface BoardAskService {
 	
 	void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
+	void write(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
+	void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

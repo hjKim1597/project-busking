@@ -35,7 +35,19 @@ public class BoardAskController extends HttpServlet {
 		
 		if(command.equals("/board/board_list.boardAsk")) {
 			service = new BoardAskServiceImpl();
-			service.getList(request, response);	
+			service.getList(request, response);
+			
+		} else if(command.equals("/board/board_write.boardAsk")) {
+			response.sendRedirect("board_ask_write.jsp");
+			
+		} else if(command.equals("/board/board_writeForm.boardAsk")) {
+			service = new BoardAskServiceImpl();
+			service.write(request, response);
+			
+		} else if(command.equals("/board/board_edit.boardAsk")) {
+			service = new BoardAskServiceImpl();
+			service.edit(request, response);
+			
 		}
 		
 	}
