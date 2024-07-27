@@ -66,10 +66,10 @@
                 <div class="service-board">
                     <div class="container">
                         <div class="page-header">
-                            <h2>공지사항</h2>
+                            <h2>자주묻는질문(FAQ)</h2>
                         </div>
 
-                        <p>FAQ 글보는 곳~~~~</p>
+                        <p></p>
 
                         <div class="table-responsive">
                             <!-- 게시판 -->

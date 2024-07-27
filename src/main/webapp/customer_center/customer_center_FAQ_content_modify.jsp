@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <%@ include file="../include/header.jsp"%>
 
     <!-- 중앙 레이아웃 -->
@@ -19,7 +20,7 @@
                                 <ul class="menu">
                                     <li class="nth1"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
                                     </li>
-                                    <li class="nth2"><strong><a href="customer_center_month.customer"><span>이달의예약</span></a></strong>
+                                    <li class="nth2"><strong><a href="customer_center_res.customer"><span>이달의예약</span></a></strong>
                                     </li>
                                     <li class="nth3"><strong><a href="customer_center_guide.customer"><span>이용안내</span></a></strong>
                                     </li>
