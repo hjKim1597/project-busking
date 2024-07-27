@@ -157,17 +157,7 @@ public class ReservationController extends HttpServlet {
             String resContent = request.getParameter("res-content");
             String resAmp = request.getParameter("res-amp");
 
-            // 로그 추가
-            System.out.println("locaId: " + locaIdParam);
-            System.out.println("resDate: " + resDateParam);
-            System.out.println("resTime: " + resTimeParam);
-            System.out.println("resCount: " + resCountParam);
-            System.out.println("resContent: " + resContent);
-            System.out.println("resAmp: " + resAmp);
-
-            // null 체크 및 로그 추가
-            if (locaIdParam == null || resDateParam == null || resTimeParam == null || resCountParam == null || resContent == null) {
-                System.out.println("Missing parameter values: locaId=" + locaIdParam + ", resDate=" + resDateParam + ", resTime=" + resTimeParam + ", resCount=" + resCountParam + ", resContent=" + resContent);
+            if (locaIdParam == null || resDateParam == null || resTimeParam == null || resCountParam == null || resContent == null) {             
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST, "필수 파라미터가 누락되었습니다.");
                 return;
             }
