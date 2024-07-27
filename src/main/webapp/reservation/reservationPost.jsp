@@ -1,18 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/header.jsp" %>
 
-<%
-    String locaId = request.getParameter("locaId");
-    String locaName = request.getParameter("locaName");
-    String locaPicPath = request.getParameter("locaPicPath");
-    String locaPlace = request.getParameter("locaPlace");
-    String locaInfo = request.getParameter("locaInfo");
-    String selectedDate = request.getParameter("selectedDate");
-    String startTime = request.getParameter("startTime");
-    String endTime = request.getParameter("endTime");
-%>
+<% String endTime = request.getParameter("endTime"); %>
 
 <div class="resvPost-wrap">
     <div class="resvPost-title">예약 신청서 작성</div>
@@ -52,17 +43,20 @@
                 </div>
             </div>
         </div>
-        <form id="form1" class="resvPost-form">
+        <form id="form1" class="resvPost-form" action="submitReservation.reservation" method="post">
             <h3>상세 내용 작성</h3>
             <div class="form-group resvPost-form-group">
-                <label for="res-name">공연 담당자</label>
-                <input type="text" class="form-control" id="res-name" name="res-name" value="홍길동" readonly>
+                <label for="res-name">장소 신청자</label>
+                <input type="text" class="form-control" id="res-name" name="res-name" value="${userName}" readonly>
                 <label for="res-content">공연 내용을 작성해 주세요.</label>
                 <input type="text" class="form-control" id="res-content" name="res-content" placeholder="상세하게 작성해 주세요." required>
-                <label for="res-content">공연 인원</label>
+                <label for="res-count">공연 인원</label>
                 <input type="text" class="form-control" id="res-count" name="res-count" required>
                 <label for="res-amp">설치물</label>
                 <input type="text" class="form-control" id="res-amp" name="res-amp">
+                <input type="hidden" name="locaId" value="${location.locaId}">
+                <input type="hidden" name="resDate" value="${resDate}">
+                <input type="hidden" name="resTime" value="${resTime}">
             </div>
         </form>
     </div>
@@ -71,31 +65,24 @@
         <div class="resvPost-right">
             <h3>예약 확인</h3>
             <div class="resvPost-right-img">
-                <img src="<%= locaPicPath %>" alt="<%= locaName %>">
+                <img src="${locaPicPath}" alt="${locaName}">
             </div>
             <div class="resvPost-right-content">
-                <h4>홍길동님</h4>
+                <h4>${userName}님</h4>
                 <ul>
                     <li>
                         <b>공연 장소</b>
-                        <p><%= locaName %> (<%= locaPlace %>)</p>
+                        <p>${locaName} (${locaPlace})</p>
                     </li>
                     <li>
                         <b>공연 날짜</b>
-                        <p><%= selectedDate %></p>
+                        <p>${resDate}</p>
                     </li>
                     <li>
                         <b>공연 시간</b>
-                        <p><%= startTime %> ~ <%= endTime %></p>
+                        <p>${resTime} ~ ${endTime}</p>
                     </li>
                 </ul>
             </div>
             <div class="resvPost-control">
-                <button class="resvPost-submit" id="submitAll">예약하기</button>
-                <button type="button" class="resvPost-cancle">취소하기</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<%@ include file="../include/footer.jsp" %>
+                <button type="submit" form="

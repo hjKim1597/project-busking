@@ -1,5 +1,6 @@
 package com.busking.reservation.model;
 
+import com.busking.mypage.model.UserJoinDTO;
 import com.busking.util.mybatis.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -50,6 +51,13 @@ public class ReservationDAO {
         try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
             ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);
             mapper.createReservation(reservation);
+        }
+    }
+    
+    public UserJoinDTO getUserById(String userId) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);
+            return mapper.getUserById(userId);
         }
     }
 }

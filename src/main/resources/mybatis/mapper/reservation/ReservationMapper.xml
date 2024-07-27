@@ -32,8 +32,14 @@
         VALUES (#{userId}, #{locaId}, #{locaContent}, CURRENT_TIMESTAMP, #{locaScore})
     </insert>
     
+    <select id="getUserById" parameterType="string" resultType="com.busking.mypage.model.UserJoinDTO">
+        SELECT USER_ID, USER_NAME
+        FROM USERS
+        WHERE USER_ID = #{userId}
+    </select>
+    
     <insert id="createReservation" parameterType="com.busking.reservation.model.ReservationsDTO">
-        INSERT INTO RESERVATIONS (USER_ID, LOCA_ID, RES_DATE, RES_REGDATE, RES_COUNT, RES_CONTENT, RES_AMP, RES_RESULT, RES_TIME, RES_TIME_LAST, DATE_NUM)
-        VALUES (#{userId}, #{locaId}, #{resDate}, #{resRegDate}, #{resCount}, #{resContent}, #{resAmp}, #{resResult}, #{resTime}, #{resTimeLast}, #{dateNum})
+        INSERT INTO RESERVATIONS (USER_ID, LOCA_ID, RES_DATE, RES_REGDATE, RES_COUNT, RES_CONTENT, RES_AMP, RES_RESULT, RES_TIME)
+        VALUES (#{userId}, #{locaId}, #{resDate}, CURRENT_DATE, #{resCount}, #{resContent}, #{resAmp}, 'F', #{resTime})
     </insert>
 </mapper>

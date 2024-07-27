@@ -15,13 +15,13 @@ public class ReservationsDTO {
 	private LocalTime resTime;
 	private int locaId;
 	private String userId;
-	private int dateNum;
 	
 	public ReservationsDTO() {
+		this.resResult = "F"; // 기본값 F
 	}
 
 	public ReservationsDTO(int resNum, Date resDate, Date resRegDate, int resCount, String resContent, String resAmp,
-			String resResult, LocalTime resTime, int locaId, String userId, int dateNum) {
+			String resResult, LocalTime resTime, int locaId, String userId) {
 		super();
 		this.resNum = resNum;
 		this.resDate = resDate;
@@ -33,7 +33,6 @@ public class ReservationsDTO {
 		this.resTime = resTime;
 		this.locaId = locaId;
 		this.userId = userId;
-		this.dateNum = dateNum;
 	}
 
 	public int getResNum() {
@@ -116,13 +115,6 @@ public class ReservationsDTO {
 		this.userId = userId;
 	}
 
-	public int getDateNum() {
-		return dateNum;
-	}
-
-	public void setDateNum(int dateNum) {
-		this.dateNum = dateNum;
-	}
 	
 	
 

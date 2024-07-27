@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <%@ include file="../include/header.jsp" %>
 <%@ page import="com.busking.reservation.model.ReservationLocationDTO" %>
 
@@ -74,7 +74,7 @@ var locaInfo = "${locaInfo}";
                 <button type="button" onclick="selectTime('19:00', '22:00')">19:00 - 22:00</button>
             </div>
             <div class="resForm-mid-controll">
-                <form action="reservationPost.jsp" method="post" id="reservationForm" onsubmit="return validateForm()">
+                <form action="reservationPost.reservation" method="post" id="reservationForm" onsubmit="return validateForm()">
                     <input type="hidden" name="locaId" value="${location.locaId}">
                     <input type="hidden" name="locaName" value="${location.locaName}">
                     <input type="hidden" name="locaPicPath" value="${location.locaPicPath}">
@@ -138,7 +138,7 @@ var locaInfo = "${locaInfo}";
                                             <table class="notice-table">
                                                 <tr>
                                                     <td>공연 시간대</td>
-                                                    <td>주간 (10 : 00 ~ 18:00)</td>
+                                                    <td>주간 (10:00 ~ 18:00)</td>
                                                     <td>야간 (18:00 ~ 22:00)</td>
                                                 </tr>
                                                 <tr>

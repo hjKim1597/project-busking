@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 
@@ -19,5 +19,4 @@
         <div class="cmt-list-content">
             <p>${review.locaContent}</p>
         </div>
-    </div>
-</c:forEach>
+    </div></c:forEach>
