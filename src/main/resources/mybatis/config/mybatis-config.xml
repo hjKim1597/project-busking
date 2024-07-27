@@ -53,6 +53,9 @@
 
 	    <!-- FAQ 매퍼 위치 -->
 	    <mapper resource="mybatis/mapper/board/BoardFAQMapper.xml"/>
+	    
+	    <!-- 이달의 예약 매퍼 위치 -->
+	    <mapper resource="mybatis/mapper/board/BoardResMapper.xml"/>
 
 	  </mappers>
 	  

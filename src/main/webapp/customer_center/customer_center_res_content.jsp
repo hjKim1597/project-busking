@@ -50,35 +50,36 @@
 
                         <!-- 글 내용 -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">${dto.faqTitle }</div>
+                            <div class="panel-heading">예약 내용</div>
                             <div class="panel-body">
-                           		<p>${dto.faqContent }</p>
+                           		<p>${dto.resContent }</p>
+                           		<p>${dto.resDate }</p>
+                           		<p>${dto.resTime }</p>
                             </div>
 
                             <!-- 글 목록, 수정, 삭제 버튼-->
 							<div class="board_button_set" style="text-align: right">
                                 <div class="board-button" style="display: inline; padding: 8px;">
-									<a href="customer_center_FAQ.customer"><button
+									<a href="customer_center_res.customer"><button
 											type="button" class="btn btn-default">목록</button></a>
 								</div>
 
+                                <%-- 
+                                
                                 <div class="board-button" style="display: inline; padding: 8px;">
 									
-                     				<input type="button" class="btn btn-default" value="수정" onclick="location.href='modifyFAQ.customer?faqNum=${dto.faqNum}';">
+                     				<input type="button" class="btn btn-default" value="수정" onclick="location.href='modifyRes.customer?resNum=${dto.resNum}';">
                                     
 								</div>
 
                                 <div class="board-button" style="display: inline; padding: 8px;">
-									<%-- 
-									<a href="delete.customer">
-										<button type="button" class="btn btn-default"
-											onclick="location.href='delete.customer?faqNum=${dto.faqNum}';">삭제</button>
-									</a> 
-									--%>
 									
-									<input type="submit" class="btn btn-default" value="삭제" onclick="location.href='deleteFAQ.customer?faqNum=${dto.faqNum}';">
+									<input type="submit" class="btn btn-default" value="삭제" onclick="location.href='deleteRes.customer?resNum=${dto.resNum}';">
 									
-								</div>
+								</div> 
+								
+								--%>
+								
 							</div>
 							
 						
