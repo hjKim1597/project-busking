@@ -25,33 +25,6 @@
                 <div><strong>질문 게시판</strong></div>
             </div>
             <div class="board_ask_content_wrap">
-            	<div class="post">
-	                    <div class="post_box">
-	
-	                        <div class="question-content">test</div>
-	                        <div class="info">
-	                            <div class="writer">test</div>
-	                            <div class="date">test</div>
-	                        </div>
-	
-	                    </div>
-	                    <div class="comment-section">
-	                    	<form action="" method="post">
-		                        <div class="comment">
-		                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="comContent"></textarea>
-		                            <input class="submit-comment" value="등록">
-		                        </div>
-	                        </form>
-	                        
-	                        <div class="comment">
-	                        	<div class="info">
-		                            <div class="writer">test</div>
-		                            <div class="date">test</div>
-		                        </div>
-	                        	<textarea rows="2" cols="50" readonly class="comList">test</textarea>
-	                        </div>
-	                    </div>
-	                </div>
             	<c:forEach var="dto" items="${askList }">
 	                <!-- 동적으로 게시물 추가 -->
 	                <div class="post">
@@ -62,24 +35,37 @@
 	                            <div class="writer">${dto.askWriter }</div>
 	                            <div class="date"><fmt:formatDate value="${dto.askRegdate }" pattern="yy.MM.dd" /></div>
 	                        </div>
-	
+	   
 	                    </div>
 	                    <div class="comment-section">
-	                    	<form action="" method="post">
-		                        <div class="comment">
-		                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="comContent"></textarea>
-		                            <input class="submit-comment" value="등록">
-		                        </div>
-	                        </form>
-	                        <c:forEach var="dto" items="${comList }">
+	                    <c:choose>
+	                    	<c:when test="${sessionScope.userId == dto.askWriter }">
+	                        	<form action="board_edit.boardAsk" method="post">
+			                        <div class="comment">
+			                            <textarea rows="2" cols="50" placeholder="수정할 내용을 입력하세요" name="content"></textarea>
+			                            <input type="submit" class="submit-comment edit" value="수정">
+			                            <input type="button" class="submit-comment delete" value="삭제">
+			                            <input type="hidden" value="${dto.askNum }" name="bno">
+			                        </div>
+	                    		</form>
+	                        </c:when>
+	                        <c:otherwise>
+		                    	<form action="#" method="post">
+			                        <div class="comment">
+			                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="comContent"></textarea>
+			                            <input class="submit-comment" value="등록" type="submit">
+			                        </div>
+		                    	</form>
+	                    	</c:otherwise>
+						</c:choose>
+	                        <c:forEach var="comDto" items="${comList }">
 		                        <div class="comment">
 			                        <div class="info">
 			                            <div class="writer">test</div>
 			                            <div class="date">test</div>
 			                        </div>
-		                        	<textarea rows="2" cols="50" readonly class="comList">${dto.comAskContent }</textarea>
+		                        	<textarea rows="2" cols="50" readonly class="comList">${comDto.comAskContent }</textarea>
 		                        </div>
-		                        
 		                    </c:forEach>
 	                    </div>
 	                </div>
@@ -88,32 +74,53 @@
             </div>
             <div class="page_nav">
                 <ul class="center">
-                    <li><a href="첫페이지"><img src="../resources/img/board_img/ico_first.gif" alt="처음페이지"></a></li>
-                    <li><a href="이전페이지"><img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>
-                    <li class="active"><a href="board_ask_list.jsp" title="1페이지(선택됨)">1</a></li>
-                    <li><a href="2페이지링크" title="2페이지">2</a></li>
-                    <li><a href="3페이지링크" title="3페이지">3</a></li>
-                    <li><a href="4페이지링크" title="4페이지">4</a></li>
-                    <li><a href="5페이지링크" title="5페이지">5</a></li>
-                    <li><a href="다음페이지"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
-                    <li><a href="마지막페이지"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
-                </ul>
-                <form action="board_write.boardAsk" class="right">
+					<li id="page_first">
+						<a href="board_list.boardAsk">
+							<img src="../resources/img/board_img/ico_first.gif" alt="처음페이지">
+						</a>
+					</li>
+					<c:if test="${pageVO.prev }">
+						<li id="page_prev">
+							<a href="board_list.boardAsk?page=${pageVO.pageNum - 1 }">
+								<img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지">
+							</a>
+						</li>
+					</c:if>
+					<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+						<li class="page_li" data-page="${i }">
+							<a href="board_list.boardAsk?page=${i }" title="1페이지">${i }</a>
+						</li>
+					</c:forEach>
+					<c:if test="${pageVO.next }">
+						<li id="page_next">
+							<a href="board_list.boardAsk?page=${pageVO.pageNum + 1 }">
+								<img src="../resources/img/board_img/ico_next.gif" alt="다음페이지">
+							</a>
+						</li>
+					</c:if>
+					<li id="page_last">
+						<a href="board_list.boardAsk?page=${pageVO.endPage }">
+							<img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지">
+						</a>
+					</li>
+				</ul>
+                <form action="board_write.boardAsk" class="right" method="post">
                     <input type="submit" value="작성">
                 </form>   
             </div>
-            <div class="board_ask_search">
-                <select class="board_ask_search_box">
-                    <option value="notice">전체</option>
-                    <option value="writer">작성자</option>
-                    <option value="title">제목</option>
-                    <option value="content">내용</option>
-                </select>
-                <input placeholder="검색어를 입력해 주세요" type="text">
-                <span>
-                    <button class="btn" onclick="searchFunction()" type="submit">검색</button>
-                </span>
-            </div>
+            <form action="board_list.boardAsk" method="post">
+	            <div class="board_ask_search">
+	                <select class="board_ask_search_box" name="type">
+	                    <option value="all" selected>전체</option>
+						<option value="writer">작성자</option>
+						<option value="content">내용</option>
+	                </select>
+	                <input placeholder="검색어를 입력해 주세요" type="text" name="target" required> 
+	                <span>
+	                	<input class="btn" type="submit" id="search_btn" value="검색">
+	                </span>
+	            </div>
+            </form>
         </div>                
     </div>
 </div>
@@ -135,16 +142,21 @@ document.querySelectorAll('.comment textarea').forEach(textarea => {
     });
 });
 
-document.querySelectorAll('.submit-comment').forEach(button => {
+/* document.querySelectorAll('.submit-comment').forEach(button => {
     button.addEventListener('click', (event) => {
         event.stopPropagation();
-        alert('댓글이 작성되었습니다.');
+        var msg = "";
+        if(event.target.classList.contains("edit")) {
+        	msg = "글이 수정되었습니다.";
+        } else if(event.target.classList.contains("delete")) {
+        	msg = "글이 삭제되었습니다.";
+        } else {
+        	msg = '댓글이 작성되었습니다.';
+        }
+        alert(msg);
     });
-});
+}); */
 
-function searchFunction() {
-    alert('검색 기능이 실행되었습니다.');
-}
 </script>
 
 </body>

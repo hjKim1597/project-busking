@@ -19,6 +19,7 @@ public class BoardResDTO {
 	private int resResult;
 	private int dateNum;
 	private String resTime;
+	private String locaName;
 	
 
 	// 생성자
@@ -28,7 +29,7 @@ public class BoardResDTO {
 
 	//
 	public BoardResDTO(int resNum, String userId, int locaId, Timestamp resDate, Timestamp resRegdate, int resCount,
-			String resContent, String resAmp, int resResult, int dateNum, String resTime) {
+			String resContent, String resAmp, int resResult, int dateNum, String resTime, String locaName) {
 		super();
 		this.resNum = resNum;
 		this.userId = userId;
@@ -41,10 +42,20 @@ public class BoardResDTO {
 		this.resResult = resResult;
 		this.dateNum = dateNum;
 		this.resTime = resTime;
+		this.locaName = locaName;
+		
 	}
 	
-
 	//getter setter
+
+	public String getLocaName() {
+		return locaName;
+	}
+
+	public void setLocaName(String locaName) {
+		this.locaName = locaName;
+	}
+
 	public int getResNum() {
 		return resNum;
 	}

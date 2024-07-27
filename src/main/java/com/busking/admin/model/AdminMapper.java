@@ -1,14 +1,14 @@
 package com.busking.admin.model;
 
 import java.util.ArrayList;
+import java.util.Map;
 
-
-import com.busking.util.paging.PageVO;
+//import com.busking.util.paging.PageVO;
 
 public interface AdminMapper {
 	
 	//예약 확정 목록 조회
-	public ArrayList<AdminPageDTO> getList();
+	public ArrayList<AdminPageDTO> getList(Map<String, Object> params);
 
 
 	
