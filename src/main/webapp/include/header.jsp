@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,16 +78,27 @@
 
 
 						<!-- 마이페이지  -->
-						<li class="dropdown"><a class="dropdown-toggle index-menu"
-							data-toggle="dropdown" href="#">마이페이지 <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a
-									href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">내정보</a></li>
-								<li><a
-									href="${pageContext.request.contextPath }/mypage/reservationInfo.userinfo">예약현황</a></li>
-								<li><a
-									href="${pageContext.request.contextPath }/mypage/deleteUserPage.userinfo">회원탈퇴</a></li>
-							</ul></li>
+						<li class="dropdown">
+							<c:choose>
+								<c:when test="true"> 
+									<a class="dropdown-toggle index-menu" data-toggle="dropdown" href="#">마이페이지 <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">내정보</a>
+										</li>
+										<li>
+											<a href="${pageContext.request.contextPath }/mypage/reservationInfo.userinfo">예약현황</a>
+										</li>
+										<li>
+											<a href="${pageContext.request.contextPath }/mypage/deleteUserPage.userinfo">회원탈퇴</a>
+										</li>
+									</ul>
+								</c:when>
+								<c:otherwise>
+									<a href="${pageContext.request.contextPath }/mypage/adminPage.admin">예약관리</a>
+								</c:otherwise>
+							</c:choose>
+						</li>
 
 
 						<!-- 고객센터 -->

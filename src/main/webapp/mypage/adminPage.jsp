@@ -26,31 +26,29 @@
 						<tbody>
 							<!-- 예약내용시작 -->
 							<c:forEach var="dto" items="${getList }">
-								
-								
-								
-									<tr class="accordion-toggle" data-toggle="collapse"	data-target="#collapse" aria-expanded="false" aria-controls="collapse">
-										<td>${dto.userId }</td>
-										<!--예약id  -->
-	
-										<td>${dto.userName }</td>
-										<!--예약자이름  -->
-	
-										<td><fmt:formatDate value="${dto.resDate }"
-												pattern="yy.MM.dd" /></td>
-										<!--공연 날짜 -->
-	
-										<td>${dto.locaName }</td>
-										<!--공연장소  -->
-	
-										<td>승인됨</td>
-										<!-- 상태 -->
-										<td>
-											<button class="approve">승인</button> <!-- 작업 -->
-											<button class="reject">거절</button>
-											<button class="modify">수정하기</button>
-										</td>
-									</tr>
+							
+								<tr class="accordion-toggle" data-toggle="collapse"	data-target="#collapse" aria-expanded="false" aria-controls="collapse">
+									<td>${dto.userId }</td>
+									<!--예약id  -->
+
+									<td>${dto.userName }</td>
+									<!--예약자이름  -->
+
+									<td><fmt:formatDate value="${dto.resDate }"
+											pattern="yy.MM.dd" /></td>
+									<!--공연 날짜 -->
+
+									<td>${dto.locaName }</td>
+									<!--공연장소  -->
+
+									<td>승인됨</td>
+									<!-- 상태 -->
+									<td>
+										<button class="approve">승인</button> <!-- 작업 -->
+										<button class="reject">거절</button>
+										<button class="modify">수정하기</button>
+									</td>
+								</tr>
 								
 								<tr id="collapse1" class="collapse">
 									<td colspan="6">
@@ -160,9 +158,7 @@
 							
 							<!-- 예약 내용 끝 -->
 							<!-- 추가적인 예약 내역 행을 여기에 추가 -->
-							 <tr class="accordion-toggle" data-toggle="collapse"
-								data-target="#collapse" aria-expanded="false"
-								aria-controls="collapse">
+							 <tr class="accordion-toggle" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse">
 								<td>2</td>
 								<td>김철수</td>
 								<td>2024-07-21</td>
