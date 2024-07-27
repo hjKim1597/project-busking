@@ -28,19 +28,10 @@
 						<tbody>
 							<!-- 예약내용시작 -->
 							<c:forEach var="dto" items="${getList }">
-								<tr class="accordion-toggle" data-toggle="collapse"	data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-									<td>1</td>
-									<td>홍길동</td>
-									<td>2024-07-20</td>
-									<td>서울 광장</td>
-									<td>승인됨</td>
-									<td>
-										<button class="approve">승인</button>
-										<button class="reject">거절</button>
-										<button class="modify">수정하기</button>
-									</td>
-								</tr>
-									<tr>
+								
+								
+								
+									<tr class="accordion-toggle" data-toggle="collapse"	data-target="#collapse" aria-expanded="false" aria-controls="collapse">
 										<td>${dto.userId }</td>
 										<!--예약id  -->
 	
@@ -102,18 +93,78 @@
 													<label for="address">주소:</label> 
 													<input type="address"
 														id="address" name="address" class="form-control"
-														value="${dto.userAddr }" required readonly> </input>
+														value="${dto.userAddr }" required readonly>
 												</div>
 											</form>
 										</div>
 									</td>
 								</tr>
 							</c:forEach>
+							
+							<tr class="accordion-toggle" data-toggle="collapse"	data-target="#collapse" aria-expanded="false" aria-controls="collapse">
+									<td>1</td>
+									<td>홍길동</td>
+									<td>2024-07-20</td>
+									<td>서울 광장</td>
+									<td>승인됨</td>
+									<td>
+										<button class="approve">승인</button>
+										<button class="reject">거절</button>
+										<button class="modify">수정하기</button>
+									</td>
+								</tr>
+								<tr id="collapse2" class="collapse">
+								<td colspan="6">
+									<div class="panel-body">
+										<form class="reservation-form">
+											<div class="form-group">
+												<label for="facility">시설물:</label> 
+												<input type="text"
+													id="facility" name="facility" class="form-control"
+													value="마이크 1개 2m..." required readonly>
+											</div>
+											<div class="form-group">
+												<label for="busking-content">공연 내용:</label> 
+												<input
+													type="text" id="facility" name="busking-content"
+													class="form-control" value="나혼자기타수고" required readonly>
+											</div>
+											<div class="form-group">
+												<label for="people-cnt">인원수:</label> 
+												<input type="text"
+													id="people-cnt" name="busking-content" class="form-control"
+													value="1명" required readonly>
+											</div>
+
+											<div class="form-group">
+												<label for="phone">휴대폰번호:</label> 
+												<input type="tel"
+													id="phone" name="phone" class="form-control"
+													value="010-xxxx-xxxx" required readonly>
+											</div>
+											<div class="form-group">
+												<label for="email">이메일:</label> 
+												<input type="email"
+													id="email" name="email" class="form-control"
+													value="dlwlstjr1010@mdkfla.cods" required readonly>
+											</div>
+											<div class="form-group">
+												<label for="address">주소:</label> 
+												<input type="address"
+													id="address" name="address" class="form-control"
+													value="서울시 강남구 ㅇㅇㅇㅇ.ㅇㅇㅇㅇ." required readonly></input>
+											</div>
+										</form>
+									</div>
+								</td>
+							</tr>
+							
+							
 							<!-- 예약 내용 끝 -->
 							<!-- 추가적인 예약 내역 행을 여기에 추가 -->
-							<tr class="accordion-toggle" data-toggle="collapse"
-								data-target="#collapse2" aria-expanded="false"
-								aria-controls="collapse2">
+							 <tr class="accordion-toggle" data-toggle="collapse"
+								data-target="#collapse" aria-expanded="false"
+								aria-controls="collapse">
 								<td>2</td>
 								<td>김철수</td>
 								<td>2024-07-21</td>
