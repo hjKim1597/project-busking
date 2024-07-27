@@ -68,36 +68,78 @@
             </div>
             <div class="page_nav">
                 <ul class="center">
-					<li id="page_first">
-						<a href="board_list.boardAsk">
-							<img src="../resources/img/board_img/ico_first.gif" alt="처음페이지">
-						</a>
-					</li>
-					<c:if test="${pageVO.prev }">
-						<li id="page_prev">
-							<a href="board_list.boardAsk?page=${pageVO.pageNum - 1 }">
-								<img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지">
-							</a>
-						</li>
-					</c:if>
-					<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
-						<li class="page_li" data-page="${i }">
-							<a href="board_list.boardAsk?page=${i }" title="1페이지">${i }</a>
-						</li>
-					</c:forEach>
-					<c:if test="${pageVO.next }">
-						<li id="page_next">
-							<a href="board_list.boardAsk?page=${pageVO.pageNum + 1 }">
-								<img src="../resources/img/board_img/ico_next.gif" alt="다음페이지">
-							</a>
-						</li>
-					</c:if>
-					<li id="page_last">
-						<a href="board_list.boardAsk?page=${pageVO.endPage }">
-							<img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지">
-						</a>
-					</li>
-				</ul>
+	                	<c:choose>
+		                	<c:when test="${!pageVO.first }">
+								<li id="page_first">
+									<a href="board_list.boardAsk">
+										<i class="fa-solid fa-angles-left"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_first">
+									<div class="page_link">
+										<i class="fa-solid fa-angles-left" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${!pageVO.first }">
+								<li id="page_prev">
+									<a href="board_list.boardAsk?page=${pageVO.pageNum - 1 }">
+										<i class="fa-solid fa-angle-left"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_prev">
+									<div class="page_link">
+										<i class="fa-solid fa-angle-left" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						
+						<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+							<li class="page_li" data-page="${i }">
+								<a href="board_list.boardAsk?page=${i }" title="1페이지">${i }</a>
+							</li>
+						</c:forEach>
+						
+						<c:choose>
+		                	<c:when test="${!pageVO.last }">
+								<li id="page_next">
+									<a href="board_list.boardAsk?page=${pageVO.pageNum + 1}">
+										<i class="fa-solid fa-angle-right"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_next">
+									<div class="page_link">
+										<i class="fa-solid fa-angle-right" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${!pageVO.last }">
+								<li id="page_last">
+									<a href="board_list.boardAsk?page=${pageVO.realEndPage }">
+										<i class="fa-solid fa-angles-right"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_last">
+									<div class="page_link">
+										<i class="fa-solid fa-angles-right" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</ul>
                 <form action="board_write.boardAsk" class="right" method="post">
                     <input type="submit" value="작성">
                 </form>   
@@ -161,20 +203,17 @@ document.querySelectorAll('.post').forEach(post => {
 });
 
 
-/* document.querySelectorAll('.submit-comment').forEach(button => {
-    button.addEventListener('click', (event) => {
-        event.stopPropagation();
-        var msg = "";
-        if(event.target.classList.contains("edit")) {
-        	msg = "글이 수정되었습니다.";
-        } else if(event.target.classList.contains("delete")) {
-        	msg = "글이 삭제되었습니다.";
-        } else {
-        	msg = '댓글이 작성되었습니다.';
-        }
-        alert(msg);
-    });
-}); */
+window.onload = function() {
+	var pageNum = '${pageVO.pageNum}';
+	console.log(pageNum);
+	var pageUl = document.querySelector(".page_nav .center");
+	
+	var pageItems = pageUl.querySelectorAll(".page_li");
+	Array.from(pageItems)
+		 .filter(i => i.dataset.page == pageNum)
+		 .forEach(item => item.classList.add("active"));
+		 	
+}
 
 </script>
 

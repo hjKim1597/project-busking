@@ -11,7 +11,8 @@
             SELECT ROWNUM AS RN, 
                    B.* 
             FROM BOARD_FREE B 
-            WHERE 1 = 1 
+            WHERE FREE_DELETED = 'F' 
+            AND 1 = 1 
             <if test="type != null and type != ''">
                 <choose>
                     <when test="type == 'title'">
@@ -37,7 +38,7 @@
     </select>
 	
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM BOARD_FREE 
+		SELECT COUNT(*) FROM BOARD_FREE WHERE FREE_DELETED = 'F' 
 	</select>
 	
 	<insert id="write" parameterType="com.busking.board.model.BoardFreeDTO">
@@ -64,9 +65,9 @@
 		UPDATE BOARD_FREE SET FREE_HIT = FREE_HIT + 1 WHERE FREE_NUM = #{freeNum}
 	</update>
 	
-	<delete id="delete" parameterType="String">
-		DELETE FROM BOARD_FREE WHERE FREE_NUM = #{freeNum}
-	</delete>
+	<update id="delete" parameterType="String">
+		UPDATE BOARD_FREE SET FREE_DELETED = 'T' WHERE FREE_NUM = #{freeNum}
+	</update>
 	
 	<update id="edit" parameterType="com.busking.board.model.BoardFreeDTO">
 		UPDATE BOARD_FREE 

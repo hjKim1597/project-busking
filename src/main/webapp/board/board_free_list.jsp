@@ -153,7 +153,19 @@
 	</div>
 </section>
 
-<script src="${pageContext.request.contextPath }/resources/js/board/board_list.js"></script>
+<script>
+window.onload = function() {
+	var pageNum = '${pageVO.pageNum}';
+	console.log(pageNum);
+	var pageUl = document.querySelector(".page_nav .center");
+	
+	var pageItems = pageUl.querySelectorAll(".page_li");
+	Array.from(pageItems)
+		 .filter(i => i.dataset.page == pageNum)
+		 .forEach(item => item.classList.add("active"));
+		 	
+}
+</script>
     
 <%@ include file="../include/footer.jsp" %>
 

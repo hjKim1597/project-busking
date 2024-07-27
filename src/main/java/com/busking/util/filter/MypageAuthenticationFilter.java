@@ -19,6 +19,31 @@ import jakarta.servlet.http.HttpSession;
 			"/mypage/deleteUser.userinfo",
 			"/mypage/deleteUserPage.userinfo",
 			"/mypage/reservationInfo.userinfo"
+			,"/board/board_write.boardAsk"
+			,"/board/board_writeForm.boardAsk"
+			,"/board/board_edit.boardAsk"
+			,"/board/board_delete.boardAsk"
+			,"/board/board_write.boardFree"
+			,"/board/board_writeForm.boardFree"
+			,"/board/board_edit.boardFree"
+			,"/board/board_editForm.boardFree"
+			,"/board/board_delete.boardFree"
+			,"/board/board_like.boardFree"
+			,"/board/board_write.boardNews"
+			,"/board/board_writeForm.boardNews"
+			,"/board/board_edit.boardNews"
+			,"/board/board_editForm.boardNews"
+			,"/board/board_delete.boardNews"
+			,"/board/board_like.boardNews"
+			,"/board/board_write.boardTeam"
+			,"/board/board_writeForm.boardTeam"
+			,"/board/board_delete.boardTeam"
+			,"/board/board_edit.boardTeam"
+			,"/board/board_editForm.boardTeam"
+			,"/board/board_comment_free_write.comment"
+			,"/board/board_comment_news_write.comment"
+			,"/board/board_comment_team_write.comment"
+			,"/board/board_comment_ask_write.comment"
 			})
 public class MypageAuthenticationFilter implements Filter{
 

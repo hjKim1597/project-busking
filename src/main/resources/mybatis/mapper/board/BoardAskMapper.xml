@@ -29,12 +29,13 @@
             </if>
             ORDER BY ASK_NUM DESC 
         ) 
-        WHERE RN > (#{page.pageNum} - 1) * #{page.amount} 
+        WHERE ASK_DELETED = 'F' 
+        AND RN > (#{page.pageNum} - 1) * #{page.amount} 
         AND #{page.pageNum} * #{page.amount} >= RN  
     </select>
 	
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM BOARD_ASK 
+		SELECT COUNT(*) FROM BOARD_ASK WHERE ASK_DELETED = 'F'  
 	</select>
 	
 	<insert id="write" parameterType="com.busking.board.model.BoardAskDTO">

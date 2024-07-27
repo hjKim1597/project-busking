@@ -5,20 +5,41 @@
 	
 <mapper namespace="com.busking.board.model.BoardTeamMapper">
 
-	<select id="getList" parameterType="com.busking.util.paging.PageVO" resultType="com.busking.board.model.BoardTeamDTO">
+	<select id="getList" parameterType="hashMap" resultType="com.busking.board.model.BoardTeamDTO">
 		
 		SELECT TEAM_NUM, TEAM_TITLE, TEAM_WRITER, TEAM_REGDATE, TEAM_HIT, TEAM_COUNT, TEAM_RESULT  
-		FROM (
-			SELECT ROWNUM RN,
-			       T.* 
-			FROM BOARD_TEAM T 
-			ORDER BY TEAM_NUM DESC 
-		) 
-		WHERE RN > (#{pageNum} - 1) * #{amount} and #{pageNum} * #{amount} >= RN 				
+		FROM ( 
+            SELECT ROWNUM AS RN, 
+                   B.* 
+            FROM BOARD_TEAM B 
+            WHERE TEAM_DELETED = 'F' 
+            AND 1 = 1 
+            <if test="type != null and type != ''">
+                <choose>
+                    <when test="type == 'title'">
+                        AND B.TEAM_TITLE LIKE '%' || #{target} || '%' 
+                    </when>
+                    <when test="type == 'content'">
+                        AND B.TEAM_CONTENT LIKE '%' || #{target} || '%' 
+                    </when>
+                    <when test="type == 'writer'">
+                        AND B.TEAM_WRITER LIKE '%' || #{target} || '%' 
+                    </when>
+                    <when test="type == 'all'">
+                        AND (B.TEAM_TITLE LIKE '%' || #{target} || '%' 
+                             OR B.TEAM_CONTENT LIKE '%' || #{target} || '%' 
+                             OR B.TEAM_WRITER LIKE '%' || #{target} || '%') 
+                    </when>
+                </choose>
+            </if>
+            ORDER BY TEAM_NUM DESC 
+        ) 
+        WHERE RN > (#{page.pageNum} - 1) * #{page.amount} 
+          AND #{page.pageNum} * #{page.amount} >= RN  			
 	</select>
 	
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM BOARD_TEAM 
+		SELECT COUNT(*) FROM BOARD_TEAM WHERE TEAM_DELETED = 'F' 
 	</select>
 	
 	<insert id="write" parameterType="com.busking.board.model.BoardTeamDTO">
@@ -56,9 +77,9 @@
 		UPDATE BOARD_TEAM SET TEAM_HIT = TEAM_HIT + 1 WHERE TEAM_NUM = #{teamNum}
 	</update>
 	
-	<delete id="delete" parameterType="String">
-		DELETE FROM BOARD_TEAM WHERE TEAM_NUM = #{teamNum}
-	</delete>
+	<update id="delete" parameterType="String">
+		UPDATE BOARD_TEAM SET TEAM_DELETED = 'T' WHERE TEAM_NUM = #{teamNum}
+	</update>
 	
 	<update id="edit" parameterType="com.busking.board.model.BoardTeamDTO">
 		UPDATE BOARD_TEAM 

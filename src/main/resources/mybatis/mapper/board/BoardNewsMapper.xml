@@ -11,7 +11,8 @@
             SELECT ROWNUM AS RN, 
                    B.* 
             FROM BOARD_NEWS B 
-            WHERE 1 = 1 
+            WHERE NEWS_DELETED = 'F' 
+            AND 1 = 1 
             <if test="type != null and type != ''">
                 <choose>
                     <when test="type == 'title'">
@@ -37,7 +38,7 @@
     </select>
 	
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM BOARD_NEWS 
+		SELECT COUNT(*) FROM BOARD_NEWS WHERE NEWS_DELETED = 'F' 
 	</select>
 	
 	<insert id="write" parameterType="com.busking.board.model.BoardNewsDTO">
@@ -64,9 +65,9 @@
 		UPDATE BOARD_NEWS SET NEWS_HIT = NEWS_HIT + 1 WHERE NEWS_NUM = #{newsNum}
 	</update>
 	
-	<delete id="delete" parameterType="String">
-		DELETE FROM BOARD_NEWS WHERE NEWS_NUM = #{newsNum}
-	</delete>
+	<update id="delete" parameterType="String">
+		UPDATE BOARD_NEWS SET NEWS_DELETED = 'T' WHERE NEWS_NUM = #{newsNum}
+	</update>
 	
 	<update id="edit" parameterType="com.busking.board.model.BoardNewsDTO">
 		UPDATE BOARD_NEWS 
