@@ -68,10 +68,10 @@ var locaInfo = "${locaInfo}";
         </div>
         <div class="resForm-mid-right">
             <div class="resForm-mid-button">
-                <button type="button" onclick="selectTime('10:00', '13:00')">10:00 - 13:00</button>
-                <button type="button" onclick="selectTime('13:00', '16:00')">13:00 - 16:00</button>
-                <button type="button" onclick="selectTime('16:00', '19:00')">16:00 - 19:00</button>
-                <button type="button" onclick="selectTime('19:00', '22:00')">19:00 - 22:00</button>
+                <button type="button" onclick="selectTime('10:00', '13:00')" class="time-btn">10:00 - 13:00</button>
+                <button type="button" onclick="selectTime('13:00', '16:00')" class="time-btn">13:00 - 16:00</button>
+                <button type="button" onclick="selectTime('16:00', '19:00')" class="time-btn">16:00 - 19:00</button>
+                <button type="button" onclick="selectTime('19:00', '22:00')" class="time-btn">19:00 - 22:00</button>
             </div>
             <div class="resForm-mid-controll">
                 <form action="reservationPost.reservation" method="post" id="reservationForm" onsubmit="return validateForm()">
