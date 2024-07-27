@@ -257,8 +257,10 @@ body {}
 
 
 
-
-
+/* 전체화면 마진 */
+#change .row {
+	margin-top : 70px;
+}
 
 
 
