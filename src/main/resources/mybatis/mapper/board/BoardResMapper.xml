@@ -7,11 +7,19 @@
 
 <mapper namespace="com.busking.board.model.BoardResMapper">
 
-	<!-- 글번호, 유저아이디, 예약날짜, 신청날짜 목록 가져오기-->
-	<select id="getList" resultType="com.busking.board.model.BoardResDTO">
+	<!-- 글번호, 유저아이디, 예약날짜, 신청날짜 목록 가져오기 -->
+	<select id="getList"
+		resultType="com.busking.board.model.BoardResDTO">
 
-		SELECT RES_NUM, USER_ID, RES_DATE, RES_REGDATE 
-		FROM RESERVATIONS ORDER BY RES_NUM DESC
+		SELECT R.RES_NUM, R.USER_ID, R.RES_DATE, R.RES_REGDATE,
+		L.LOCA_NAME
+		FROM RESERVATIONS R
+		JOIN LOCATIONS L
+		ON R.LOCA_ID = L.LOCA_ID
+		WHERE RES_RESULT = 'F'
+		ORDER BY RES_DATE DESC
+
+
 	</select>
 
 	<!-- 글 등록 -->
@@ -23,11 +31,20 @@
 	<!-- 글 내용 -->
 	<select id="getContent"
 		resultType="com.busking.board.model.BoardResDTO">
-		SELECT * FROM RESERVATIONS WHERE RES_NUM = #{resNum}
+		<!-- SELECT * FROM RESERVATIONS WHERE RES_NUM = #{resNum} -->
+
+		SELECT R.RES_NUM, R.USER_ID, R.RES_DATE, R.RES_REGDATE, L.LOCA_NAME
+		FROM RESERVATIONS R
+		JOIN LOCATIONS L
+		ON R.LOCA_ID = L.LOCA_ID
+		WHERE RES_RESULT = 'F'
+		ORDER BY RES_DATE DESC
+		
 	</select>
 
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM RESERVATIONS
+		SELECT COUNT(*) FROM
+		RESERVATIONS
 	</select>
 
 
