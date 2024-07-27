@@ -1,6 +1,8 @@
 package com.busking.reservation.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.Date;
 import java.time.LocalTime;
 import java.util.List;
@@ -128,7 +130,7 @@ public class ReservationController extends HttpServlet {
 
             UserJoinDTO user = service.getUserById(userId); // 사용자 정보 가져오기
             ReservationLocationDTO location = service.getReservationLocationById(locaId);
-
+            
             if (location != null) {
                 request.setAttribute("userName", user.getUserName());
                 request.setAttribute("location", location);

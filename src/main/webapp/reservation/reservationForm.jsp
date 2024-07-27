@@ -174,14 +174,14 @@ var locaInfo = "${locaInfo}";
                                     <label for="comment" class="loca-cmt-left">
                                         <i class="glyphicon glyphicon-comment"></i> 버스킹 장소 이용 후기를 남겨주세요
                                     </label>
-                                    <div class="cmt-star">
-                                        <ul>
-                                            <li class="star"><i class="glyphicon glyphicon-star"></i></li>
-                                            <li class="star"><i class="glyphicon glyphicon-star"></i></li>
-                                            <li class="star"><i class="glyphicon glyphicon-star"></i></li>
-                                            <li class="star"><i class="glyphicon glyphicon-star"></i></li>
-                                            <li class="star"><i class="glyphicon glyphicon-star"></i></li>
-                                        </ul>
+           							<div class="cmt-star">
+                						<ul>
+                    						<li class="star"><i class="glyphicon glyphicon-star"></i></li>
+                    						<li class="star"><i class="glyphicon glyphicon-star"></i></li>
+                    						<li class="star"><i class="glyphicon glyphicon-star"></i></li>
+                    						<li class="star"><i class="glyphicon glyphicon-star"></i></li>
+                    						<li class="star"><i class="glyphicon glyphicon-star"></i></li>
+                						</ul>
                                     </div>
                                     <!-- form 수정 -->
 									<form action="addReview.reservation" method="post" id="reviewForm" onsubmit="return confirmReviewSubmission()">
@@ -225,5 +225,5 @@ var locaInfo = "${locaInfo}";
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e128e18b3b784844e96c9c2db2a8e6a"></script>
 <script src="../resources/js/reservation/reservationForm.js"></script>
-</body>
-</html>
+
+<%@ include file="../include/footer.jsp" %>
