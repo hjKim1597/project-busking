@@ -147,17 +147,39 @@ public class ReservationController extends HttpServlet {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "요청을 처리하는 도중 오류가 발생했습니다");
         }
     }
-
     private void handleCreateReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            int locaId = Integer.parseInt(request.getParameter("locaId"));
-            String userId = (String) request.getSession().getAttribute("userId");
-            Date resDate = Date.valueOf(request.getParameter("resDate"));
-            LocalTime resTime = LocalTime.parse(request.getParameter("resTime"));
-            int resCount = Integer.parseInt(request.getParameter("resCount"));
-            String resContent = request.getParameter("resContent");
-            String resAmp = request.getParameter("resAmp");
+            // 파라미터 값 가져오기
+            String locaIdParam = request.getParameter("locaId");
+            String resDateParam = request.getParameter("resDate");
+            String resTimeParam = request.getParameter("resTime");
+            String resCountParam = request.getParameter("res-count");
+            String resContent = request.getParameter("res-content");
+            String resAmp = request.getParameter("res-amp");
 
+            // 로그 추가
+            System.out.println("locaId: " + locaIdParam);
+            System.out.println("resDate: " + resDateParam);
+            System.out.println("resTime: " + resTimeParam);
+            System.out.println("resCount: " + resCountParam);
+            System.out.println("resContent: " + resContent);
+            System.out.println("resAmp: " + resAmp);
+
+            // null 체크 및 로그 추가
+            if (locaIdParam == null || resDateParam == null || resTimeParam == null || resCountParam == null || resContent == null) {
+                System.out.println("Missing parameter values: locaId=" + locaIdParam + ", resDate=" + resDateParam + ", resTime=" + resTimeParam + ", resCount=" + resCountParam + ", resContent=" + resContent);
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "필수 파라미터가 누락되었습니다.");
+                return;
+            }
+
+            // 파라미터 값 파싱
+            int locaId = Integer.parseInt(locaIdParam);
+            String userId = (String) request.getSession().getAttribute("userId");
+            Date resDate = Date.valueOf(resDateParam);
+            LocalTime resTime = LocalTime.parse(resTimeParam);
+            int resCount = Integer.parseInt(resCountParam);
+
+            // 예약 DTO 생성
             ReservationsDTO reservation = new ReservationsDTO();
             reservation.setLocaId(locaId);
             reservation.setUserId(userId);
@@ -167,11 +189,21 @@ public class ReservationController extends HttpServlet {
             reservation.setResContent(resContent);
             reservation.setResAmp(resAmp);
 
+            // 예약 생성 서비스 호출
             service.createReservation(reservation);
 
-            response.sendRedirect(request.getContextPath() + "/reservation/success.jsp");
+            // 예약 성공 시 리다이렉트
+            response.sendRedirect(request.getContextPath() + "/mypage/reservationInfo.userinfo");
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "잘못된 파라미터 값입니다.");
         } catch (Exception e) {
+            e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "요청을 처리하는 도중 오류가 발생했습니다");
         }
     }
+
+
+
+
 }
