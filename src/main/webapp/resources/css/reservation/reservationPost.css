@@ -179,31 +179,38 @@
     display: flex;
     justify-content: space-between;
 }
-.resvPost-control > button {
+
+.resvPost-control input,
+.resvPost-control button {
     appearance: none;
     outline: none;
     border: none;
     display: inline-block;
-
     flex-grow: 1;
     margin: 0 5px;
     height: 44px;
     border-radius: 3px;
     font-weight: 600;
+    text-align: center;
+    line-height: 44px; /* 세로 가운데 정렬 */
 }
+
 .resvPost-control .resvPost-submit {
     border: 1px solid #5fd7ff;
     background-color: #5fd7ff41;
 }
+
 .resvPost-control .resvPost-submit:hover {
     color: #fff;
     background-color: #5fd7ff;
 }
+
 .resvPost-control .resvPost-cancle {
     border: 1px solid #a2a2a2;
     background-color: #7777772f;
     color: #333;
 }
+
 .resvPost-control .resvPost-cancle:hover {
     background-color: #777777;
     color: #e2e2e2;

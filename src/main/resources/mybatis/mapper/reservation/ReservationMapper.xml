@@ -38,8 +38,9 @@
         WHERE USER_ID = #{userId}
     </select>
     
-    <insert id="createReservation" parameterType="com.busking.reservation.model.ReservationsDTO">
-        INSERT INTO RESERVATIONS (USER_ID, LOCA_ID, RES_DATE, RES_REGDATE, RES_COUNT, RES_CONTENT, RES_AMP, RES_RESULT, RES_TIME)
-        VALUES (#{userId}, #{locaId}, #{resDate}, CURRENT_DATE, #{resCount}, #{resContent}, #{resAmp}, 'F', #{resTime})
-    </insert>
+	<insert id="createReservation" parameterType="com.busking.reservation.model.ReservationsDTO">
+    	INSERT INTO RESERVATIONS (USER_ID, LOCA_ID, RES_DATE, RES_REGDATE, RES_COUNT, RES_CONTENT, RES_AMP, RES_RESULT, RES_TIME)
+    	VALUES (#{userId}, #{locaId}, #{resDate}, CURRENT_DATE, #{resCount}, #{resContent}, #{resAmp}, 'F', #{resTime})
+	</insert>
+
 </mapper>

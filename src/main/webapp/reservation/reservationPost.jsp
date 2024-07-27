@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <%@ include file="../include/header.jsp" %>
-
-<% String endTime = request.getParameter("endTime"); %>
 
 <div class="resvPost-wrap">
     <div class="resvPost-title">예약 신청서 작성</div>
@@ -22,7 +20,7 @@
                             <div class="resvPost-container">
                                 <!-- 개인정보 처리 방침 내용 -->
                             </div>
-                            <input type="checkbox" required>동의 합니다.
+                            <input type="checkbox" id="privacy-policy" required>동의 합니다.
                         </div>
                     </div>
                 </div>
@@ -36,7 +34,7 @@
                         <div class="panel-body">
                             <!-- 예약 안내 내용 -->
                             <ul>
-                                <li><input type="checkbox" required>확인했습니다.</li>
+                                <li><input type="checkbox" id="reservation-confirmation" required>확인했습니다.</li>
                             </ul>
                         </div>
                     </div>
@@ -51,12 +49,17 @@
                 <label for="res-content">공연 내용을 작성해 주세요.</label>
                 <input type="text" class="form-control" id="res-content" name="res-content" placeholder="상세하게 작성해 주세요." required>
                 <label for="res-count">공연 인원</label>
-                <input type="text" class="form-control" id="res-count" name="res-count" required>
+                <input type="number" class="form-control" id="res-count" name="res-count" required>
                 <label for="res-amp">설치물</label>
                 <input type="text" class="form-control" id="res-amp" name="res-amp">
                 <input type="hidden" name="locaId" value="${location.locaId}">
                 <input type="hidden" name="resDate" value="${resDate}">
                 <input type="hidden" name="resTime" value="${resTime}">
+                
+                <div class="resvPost-control">
+                    <input type="submit" class="resvPost-submit" value="예약하기" style="width: 48%;">
+                    <button type="button" class="resvPost-cancle" onclick="window.history.back();">취소하기</button>
+                </div>
             </div>
         </form>
     </div>
@@ -65,14 +68,14 @@
         <div class="resvPost-right">
             <h3>예약 확인</h3>
             <div class="resvPost-right-img">
-                <img src="${locaPicPath}" alt="${locaName}">
+                <img src="${location.locaPicPath}" alt="${location.locaName}">
             </div>
             <div class="resvPost-right-content">
                 <h4>${userName}님</h4>
                 <ul>
                     <li>
                         <b>공연 장소</b>
-                        <p>${locaName} (${locaPlace})</p>
+                        <p>${location.locaName} (${location.locaPlace})</p>
                     </li>
                     <li>
                         <b>공연 날짜</b>
@@ -84,5 +87,9 @@
                     </li>
                 </ul>
             </div>
-            <div class="resvPost-control">
-                <button type="submit" form="
+        </div>
+    </div>
+</div>
+
+<script src="../resources/js/reservation/reservationPost.js"></script>
+<%@ include file="../include/footer.jsp" %>
