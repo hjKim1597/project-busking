@@ -10,5 +10,6 @@ public interface UserJoinMapper {
     int updateUserInfo(UserJoinDTO userJoinDTO);
     UserJoinDTO getUserInfo(String userId);
     int deleteUser(String userId);
+	boolean adminCheck(String userId);
 
 }

@@ -69,7 +69,6 @@
                             <option>없음</option>
                             <option>남성</option>
                             <option>여성</option>
-                            <option>변화</option>
                         </select>
                     </div>
                     <input type="submit" class="jinseok-button" value="회원가입" id="submit-btn"></input>

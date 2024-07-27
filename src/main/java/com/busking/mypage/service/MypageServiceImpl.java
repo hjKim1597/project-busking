@@ -48,6 +48,9 @@ public class MypageServiceImpl implements MypageService {
         response.setContentType("text/html; charset=UTF-8;");
         PrintWriter out = response.getWriter();
         if (result == 1) {
+            // 세션의 사용자 정보 업데이트
+            HttpSession session = request.getSession();
+            session.setAttribute("user", dto);
             out.println("<script>");
             out.println("alert('정보가 성공적으로 업데이트 되었습니다.');");
             out.println("location.href='" + request.getContextPath() + "/mypage/getUserInfo.userinfo';");
@@ -95,15 +98,18 @@ public class MypageServiceImpl implements MypageService {
             int result = mapper.deleteUser(userId);
             sqlSession.close();
 
+            PrintWriter out = response.getWriter();
+            response.setContentType("text/html; charset=UTF-8;");
             if (result == 1) {
                 session.invalidate();
-                response.sendRedirect(request.getContextPath() + "/mypage/login.jsp");
+                out.println("<script>");
+                out.println("alert('정상적으로 회원 탈퇴가 완료되었습니다.');");
+                out.println("location.href='../index.main';");
+                out.println("</script>");
             } else {
-                response.setContentType("text/html; charset=UTF-8;");
-                PrintWriter out = response.getWriter();
                 out.println("<script>");
                 out.println("alert('회원 탈퇴에 실패했습니다. 다시 시도해주세요.');");
-                out.println("location.href='deleteUser.jsp';");
+                out.println("location.href='deleteUserPage.userinfo';");
                 out.println("</script>");
             }
         } else {
@@ -122,9 +128,6 @@ public class MypageServiceImpl implements MypageService {
         HttpSession session = request.getSession();
         String userId = (String) session.getAttribute("userId");
 
-        // 디버그 메시지로 userId 출력
-        System.out.println("User ID: " + userId);
-
         if (userId != null) {
             SqlSession sqlSession = sqlSessionFactory.openSession();
             ReservationCheckMapper mapper = sqlSession.getMapper(ReservationCheckMapper.class);
@@ -135,15 +138,11 @@ public class MypageServiceImpl implements MypageService {
                     .filter(reservation -> reservation.getResDate().toLocalDate().getMonthValue() == java.time.LocalDate.now().plusMonths(1).getMonthValue())
                     .collect(Collectors.toList());
 
-            // 디버그 메시지 출력
-            System.out.println("All Reservations: " + allReservations);
-            System.out.println("Next Month Reservations: " + nextMonthReservations);
-
             request.setAttribute("allReservations", allReservations);
             request.setAttribute("nextMonthReservations", nextMonthReservations);
             request.getRequestDispatcher("/mypage/reservationCheck.jsp").forward(request, response);
         } else {
-            response.sendRedirect(request.getContextPath() + "/mypage/login.jsp");
+            response.sendRedirect(request.getContextPath() + "/userjoin/loginPage.mypage");
         }
     }
 }

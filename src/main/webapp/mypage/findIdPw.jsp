@@ -46,11 +46,11 @@
     // 아이디 찾기 기능을 수행하는 함수
     function findId() {
         // 이메일과 전화번호 입력 값을 가져옴
-        var email = document.getElementById('email').value;
-        var phone = document.getElementById('phone').value;
+        var email = document.getElementById('email-findId').value;
+        var phone = document.getElementById('phone-findId').value;
 
         // fetch API를 사용하여 서버에 요청을 보냄
-        fetch('findId.mypage?email=' + email + '&phone=' + phone)
+        fetch('${pageContext.request.contextPath}/userjoin/findId.mypage?email=' + email + '&phone=' + phone)
             .then(function(response) {
                 return response.text(); // 서버 응답을 텍스트로 변환
             })
@@ -59,14 +59,14 @@
                 document.getElementById('foundId').value = data;
             });
      }
-    	// 비밀번호 찾기 기능을 수행하는 함수
+        // 비밀번호 찾기 기능을 수행하는 함수
     function findPw() {
         // 아이디와 전화번호 입력 값을 가져옴
-        var id = document.getElementById('id').value;
-        var phone = document.getElementById('phonePw').value;
+        var id = document.getElementById('id-findPw').value;
+        var phone = document.getElementById('phone-findPw').value;
 
         // fetch API를 사용하여 서버에 요청을 보냄
-        fetch('findPw.mypage?id=' + id + '&phone=' + phone)
+        fetch('${pageContext.request.contextPath}/userjoin/findPw.mypage?id=' + id + '&phone=' + phone)
             .then(function(response) {
                 return response.text(); // 서버 응답을 텍스트로 변환
             })
