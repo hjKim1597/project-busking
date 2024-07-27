@@ -26,6 +26,13 @@
 		ORDER BY COM_TEAM_GROUP, COM_TEAM_NUM
 	</select>
 	
+	<select id="getCommentAskList" parameterType="String" resultType="com.busking.board.model.CommentAskDTO">
+		SELECT COM_ASK_WRITER, COM_ASK_CONTENT, COM_ASK_REGDATE 
+		FROM COMMENT_ASK 
+		WHERE COM_ASK_BNO = #{comAskBno} 
+		ORDER BY COM_ASK_GROUP, COM_ASK_NUM
+	</select>
+	
 	<insert id="writeCommentFree" parameterType="com.busking.board.model.CommentFreeDTO">
 		INSERT INTO COMMENT_FREE(COM_FREE_NUM,  
 		                         COM_FREE_WRITER,  
@@ -69,6 +76,21 @@
 		       SYSDATE, 
 		       #{comTeamBno}, 
 		       'CT_' || LPAD(COMMENT_TEAM_SEQ.CURRVAL, 8, '0'))	
+	</insert>
+	
+	<insert id="writeCommentAsk" parameterType="com.busking.board.model.CommentAskDTO">
+		INSERT INTO COMMENT_ASK(COM_ASK_NUM,  
+		                         COM_ASK_WRITER,  
+		                         COM_ASK_CONTENT,  
+		                         COM_ASK_REGDATE, 
+		                         COM_ASK_BNO, 
+		                         COM_ASK_GROUP) 
+		VALUES('CA_' || LPAD(COMMENT_ASK_SEQ.NEXTVAL, 8, '0'), 
+		       #{comAskWriter},  
+		       #{comAskContent}, 
+		       SYSDATE, 
+		       #{comAskBno}, 
+		       'CA_' || LPAD(COMMENT_ASK_SEQ.CURRVAL, 8, '0'))	
 	</insert>
 	
 	<select id="getCommentFreeCount" parameterType="String" resultType="int">

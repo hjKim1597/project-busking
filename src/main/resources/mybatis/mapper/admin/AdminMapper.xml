@@ -4,9 +4,7 @@
 
 <mapper namespace="com.busking.admin.model.AdminMapper">
 
-	<select id="getList"
-		parameterType="com.busking.util.paging.PageVO"
-		resultType="com.busking.admin.model.AdminPageDTO">
+	<select id="getList" parameterType="map" resultType="com.busking.admin.model.AdminPageDTO">
 
 		SELECT
 			R.USER_ID AS USER_ID,

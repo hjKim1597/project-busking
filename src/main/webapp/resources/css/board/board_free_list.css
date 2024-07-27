@@ -243,11 +243,22 @@ thead th, tbody td {
     margin: 0 5px;
 }
 
+.wrap_board_free_list .page_nav ul li .page_link {
+    text-decoration: none;
+    color: #000;
+    padding: 5px;
+    font-size: 17px;
+}
 .wrap_board_free_list .page_nav ul li a {
     text-decoration: none;
     color: #000;
-    font-size: 17px;
     padding: 5px;
+    font-size: 17px;
+}
+
+.wrap_board_free_list .page_nav ul li a > i,
+.wrap_board_free_list .page_nav ul li .page_link > i{
+	font-size: 15px;
 }
 
 .wrap_board_free_list .page_nav ul li a:hover {
@@ -256,11 +267,6 @@ thead th, tbody td {
 
 .page_nav .center .page_li.active > a {
     font-family: 'NanumSquareNeoB';
-}
-
-.wrap_board_free_list .page_nav ul li a img {
-    width: 7px;
-    height: 7px;
 }
 
 .wrap_board_free_list .page_nav .right {

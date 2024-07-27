@@ -18,14 +18,14 @@
                         AND B.FREE_TITLE LIKE '%' || #{target} || '%' 
                     </when>
                     <when test="type == 'content'">
-                        AND CONTAINS(B.FREE_CONTENT, ('%' || #{target} || '%') ) > 0 
+                        AND B.FREE_CONTENT LIKE '%' || #{target} || '%' 
                     </when>
                     <when test="type == 'writer'">
                         AND B.FREE_WRITER LIKE '%' || #{target} || '%' 
                     </when>
                     <when test="type == 'all'">
                         AND (B.FREE_TITLE LIKE '%' || #{target} || '%' 
-                             OR CONTAINS(B.FREE_CONTENT, #{target, jdbcType=CLOB}) > 0 
+                             OR B.FREE_CONTENT LIKE '%' || #{target} || '%' 
                              OR B.FREE_WRITER LIKE '%' || #{target} || '%') 
                     </when>
                 </choose>

@@ -14,9 +14,13 @@ public interface BoardCommentService {
 	
 	void getCommentTeamList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
+	void getCommentAskList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
 	void writeCommentFree(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
 	void writeCommentNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
 	void writeCommentTeam(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
+	void writeCommentAsk(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

@@ -10,14 +10,10 @@
 		<div id="board_nav_wrap">
 			<h1>BOARD</h1>
 			<ul class="menu">
-				<li class="nth1"><strong><a
-						href="board_list.boardNews">NEWS</a></strong></li>
-				<li class="nth2 active"><strong><a
-						href="board_list.boardFree">자유게시판</a></strong></li>
-				<li class="nth3"><strong><a
-						href="board_list.boardTeam">팀원 모집</a></strong></li>
-				<li class="nth4"><strong><a href="board_list.boardAsk">Q
-							& A</a></strong></li>
+				<li class="nth1"><strong><a href="board_list.boardNews">NEWS</a></strong></li>
+				<li class="nth2 active"><strong><a href="board_list.boardFree">자유게시판</a></strong></li>
+				<li class="nth3"><strong><a href="board_list.boardTeam">팀원 모집</a></strong></li>
+				<li class="nth4"><strong><a href="board_list.boardAsk">Q & A</a></strong></li>
 			</ul>
 		</div>
 	</nav>
@@ -50,8 +46,7 @@
 									<td>${dto.freeNum }</td>
 									<td>${dto.freeWriter }</td>
 									<td><a href="board_content.boardFree?bno=${dto.freeNum }">${dto.freeTitle }</a></td>
-									<td><fmt:formatDate value="${dto.freeRegdate }"
-											pattern="yy.MM.dd" /></td>
+									<td><fmt:formatDate value="${dto.freeRegdate }" pattern="yy.MM.dd" /></td>
 									<td>${dto.freeHit }</td>
 								</tr>
 							</c:forEach>
@@ -63,35 +58,77 @@
 
 				<div class="page_nav">
 	                <ul class="center">
-						<li id="page_first">
-							<a href="board_list.boardFree">
-								<img src="../resources/img/board_img/ico_first.gif" alt="처음페이지">
-							</a>
-						</li>
-						<c:if test="${pageVO.prev }">
-							<li id="page_prev">
-								<a href="board_list.boardFree?page=${pageVO.pageNum - 1 }">
-									<img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지">
-								</a>
-							</li>
-						</c:if>
+	                	<c:choose>
+		                	<c:when test="${!pageVO.first }">
+								<li id="page_first">
+									<a href="board_list.boardFree">
+										<i class="fa-solid fa-angles-left"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_first">
+									<div class="page_link">
+										<i class="fa-solid fa-angles-left" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${!pageVO.first }">
+								<li id="page_prev">
+									<a href="board_list.boardFree?page=${pageVO.pageNum - 1 }">
+										<i class="fa-solid fa-angle-left"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_prev">
+									<div class="page_link">
+										<i class="fa-solid fa-angle-left" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						
 						<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
 							<li class="page_li" data-page="${i }">
 								<a href="board_list.boardFree?page=${i }" title="1페이지">${i }</a>
 							</li>
 						</c:forEach>
-						<c:if test="${pageVO.next }">
-							<li id="page_next">
-								<a href="board_list.boardFree?page=${pageVO.pageNum + 1 }">
-									<img src="../resources/img/board_img/ico_next.gif" alt="다음페이지">
-								</a>
-							</li>
-						</c:if>
-						<li id="page_last">
-							<a href="board_list.boardFree?page=${pageVO.endPage }">
-								<img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지">
-							</a>
-						</li>
+						
+						<c:choose>
+		                	<c:when test="${!pageVO.last }">
+								<li id="page_next">
+									<a href="board_list.boardFree?page=${pageVO.pageNum + 1}">
+										<i class="fa-solid fa-angle-right"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_next">
+									<div class="page_link">
+										<i class="fa-solid fa-angle-right" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${!pageVO.last }">
+								<li id="page_last">
+									<a href="board_list.boardFree?page=${pageVO.realEndPage }">
+										<i class="fa-solid fa-angles-right"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_last">
+									<div class="page_link">
+										<i class="fa-solid fa-angles-right" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
 					</ul>
 					<form action="board_write.boardFree" class="right">
 						<button value="글쓰기">작성</button>

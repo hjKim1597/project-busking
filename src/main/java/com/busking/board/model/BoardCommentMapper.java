@@ -11,12 +11,16 @@ public interface BoardCommentMapper {
 	
 	public ArrayList<CommentTeamDTO> getCommentTeamList(String comTeamBno);
 	
+	public ArrayList<CommentAskDTO> getCommentAskList(String comAskBno);
+	
 	// 댓글 등록
 	public void writeCommentFree(CommentFreeDTO dto);
 	
 	public void writeCommentNews(CommentNewsDTO dto);
 	
 	public void writeCommentTeam(CommentTeamDTO dto);
+	
+	public void writeCommentAsk(CommentAskDTO dto);
 	
 	// 댓글 개수 조회
 	public int getCommentFreeCount(String comFreeBno);

@@ -129,6 +129,33 @@ public class BoardAskServiceImpl implements BoardAskService {
 		
 	}	
 	
-	
+	@Override
+	public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// request
+		String bno = request.getParameter("bno");
+		System.out.println(bno);
+		
+		// DTO
+
+		// Mybatis
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardAskMapper mapper = sql.getMapper(BoardAskMapper.class);
+		int result = mapper.delete(bno);
+		sql.close();
+		
+		// response
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(result != 0) {
+			out.println("alert('글이 삭제되었습니다.');");
+		} else {
+			out.println("alert('글이 삭제되지 않았습니다.');");
+		}
+		out.println("location.href='board_list.boardAsk';");
+		out.println("</script>");
+
+	}
 	
 }

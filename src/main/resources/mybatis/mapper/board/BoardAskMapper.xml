@@ -48,8 +48,8 @@
 	
 	<update id="delete" parameterType="String">
 		UPDATE BOARD_ASK 
-		SET ASK_CONTENT = '', 
-			ASK_WRITER = '' 
+		SET ASK_CONTENT = ' ', 
+			ASK_WRITER = ' ' 
 		WHERE ASK_NUM = #{askNum}
 	</update>
 	

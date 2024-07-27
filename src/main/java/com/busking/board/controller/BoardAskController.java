@@ -48,7 +48,12 @@ public class BoardAskController extends HttpServlet {
 			service = new BoardAskServiceImpl();
 			service.edit(request, response);
 			
+		} else if(command.equals("/board/board_delete.boardAsk")) {
+			service = new BoardAskServiceImpl();
+			service.delete(request, response);
+			
 		}
+		
 		
 	}
 }

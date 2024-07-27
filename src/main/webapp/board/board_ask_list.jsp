@@ -27,38 +27,45 @@
             <div class="board_ask_content_wrap">
             	<c:forEach var="dto" items="${askList }">
 	                <!-- 동적으로 게시물 추가 -->
-	                <div class="post">
+	                <div class="post" data-bno="${dto.askNum }">
 	                    <div class="post_box">
 	
-	                        <div class="question-content">${dto.askContent }</div>
+	                        <div class="question-content">${dto.askContent == ' ' ? '삭제된 글 입니다.' : dto.askContent}</div>
 	                        <div class="info">
 	                            <div class="writer">${dto.askWriter }</div>
-	                            <div class="date"><fmt:formatDate value="${dto.askRegdate }" pattern="yy.MM.dd" /></div>
+	                            <div class="date">
+	                            	<c:if test="${dto.askContent != ' ' }">
+	                            		<fmt:formatDate value="${dto.askRegdate }" pattern="yy.MM.dd" />
+	                            	</c:if>
+	                            </div>
 	                        </div>
 	   
 	                    </div>
 	                    <div class="comment-section">
-	                    <c:choose>
-	                    	<c:when test="${sessionScope.userId == dto.askWriter }">
-	                        	<form action="board_edit.boardAsk" method="post">
-			                        <div class="comment">
-			                            <textarea rows="2" cols="50" placeholder="수정할 내용을 입력하세요" name="content"></textarea>
-			                            <input type="submit" class="submit-comment edit" value="수정">
-			                            <input type="button" class="submit-comment delete" value="삭제">
-			                            <input type="hidden" value="${dto.askNum }" name="bno">
-			                        </div>
-	                    		</form>
-	                        </c:when>
-	                        <c:otherwise>
-		                    	<form action="#" method="post">
-			                        <div class="comment">
-			                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="comContent"></textarea>
-			                            <input class="submit-comment" value="등록" type="submit">
-			                        </div>
-		                    	</form>
-	                    	</c:otherwise>
-						</c:choose>
-	                        <c:forEach var="comDto" items="${comList }">
+		                    <c:choose>
+		                    	<c:when test="${dto.askContent == ' ' }">
+		                    	</c:when>
+		                    	<c:when test="${sessionScope.userId == dto.askWriter }">
+		                        	<form action="board_edit.boardAsk" method="post">
+				                        <div class="comment">
+				                            <textarea rows="2" cols="50" placeholder="수정할 내용을 입력하세요" name="content"></textarea>
+				                            <input type="submit" class="submit-comment edit" value="수정">
+				                            <input type="button" class="submit-comment delete" value="삭제" onclick="location.href='board_delete.boardAsk?bno=${dto.askNum}';">
+				                            <input type="hidden" value="${dto.askNum }" name="bno">
+				                        </div>
+		                    		</form>
+		                        </c:when>
+		                        <c:otherwise>
+			                    	<form action="board_comment_ask_write.comment" method="post">
+				                        <div class="comment">
+				                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="content"></textarea>
+				                            <input class="submit-comment" value="등록" type="submit">
+				                            <input type="hidden" value="${dto.askNum }" name="bno">
+				                        </div>
+			                    	</form>
+		                    	</c:otherwise>
+							</c:choose>
+	                        <%-- <c:forEach var="comDto" items="${comList }">
 		                        <div class="comment">
 			                        <div class="info">
 			                            <div class="writer">test</div>
@@ -66,10 +73,10 @@
 			                        </div>
 		                        	<textarea rows="2" cols="50" readonly class="comList">${comDto.comAskContent }</textarea>
 		                        </div>
-		                    </c:forEach>
+		                    </c:forEach> --%>
+		                    <div class="comment-list-box"></div>
 	                    </div>
 	                </div>
-	                <!-- 추가적인 게시물은 여기에 추가 -->
                 </c:forEach>
             </div>
             <div class="page_nav">
@@ -126,8 +133,6 @@
 </div>
 </section>
 
-<script src="js/jquery-3.7.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 <script>
 document.querySelectorAll('.post').forEach(post => {
     post.addEventListener('click', () => {
@@ -141,6 +146,33 @@ document.querySelectorAll('.comment textarea').forEach(textarea => {
         event.stopPropagation();
     });
 });
+
+document.querySelectorAll('.post').forEach(post => {
+    post.addEventListener('click', (e) => {
+    	var bno = post.dataset.bno;
+		
+        fetch('board_comment_ask_list.comment?bno=' + bno)
+        .then(response => response.json())
+        .then(data => {
+        	
+        	var commentListBox = post.querySelector('.comment-section .comment-list-box');
+        	var html = "";
+        	data.forEach(item => {
+        		
+        		html += '<div class="comment">';
+        		html += '<div class="info">';
+        		html += '<div class="writer">' + item.writer + '</div>';
+        		html += '<div class="date">' + item.regdate + '</div>';
+        		html += '</div>';
+        		html += '<textarea rows="2" cols="50" readonly class="comList">' + item.content + '</textarea>'
+        		html += '</div>';
+        	});
+        	commentListBox.innerHTML = html;
+        })
+        .catch(error => console.error('오류:', error));
+    });
+});
+
 
 /* document.querySelectorAll('.submit-comment').forEach(button => {
     button.addEventListener('click', (event) => {
@@ -158,8 +190,5 @@ document.querySelectorAll('.comment textarea').forEach(textarea => {
 }); */
 
 </script>
-
-</body>
-</html>
 
 <%@ include file="../include/footer.jsp" %>

@@ -13,4 +13,6 @@ public interface BoardAskService {
 	void write(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
 	void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
+	void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

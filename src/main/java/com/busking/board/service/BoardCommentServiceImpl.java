@@ -1,11 +1,17 @@
 package com.busking.board.service;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import com.busking.board.model.BoardAskDTO;
+import com.busking.board.model.BoardAskMapper;
 import com.busking.board.model.BoardCommentMapper;
 import com.busking.board.model.BoardFreeDTO;
 import com.busking.board.model.BoardFreeMapper;
@@ -13,6 +19,7 @@ import com.busking.board.model.BoardNewsDTO;
 import com.busking.board.model.BoardNewsMapper;
 import com.busking.board.model.BoardTeamDTO;
 import com.busking.board.model.BoardTeamMapper;
+import com.busking.board.model.CommentAskDTO;
 import com.busking.board.model.CommentFreeDTO;
 import com.busking.board.model.CommentNewsDTO;
 import com.busking.board.model.CommentTeamDTO;
@@ -88,6 +95,40 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		request.getRequestDispatcher("board_team_comment.jsp").forward(request, response);
 	}
 	
+	public void getCommentAskList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// request
+		String bno = request.getParameter("bno");
+		
+		// DTO
+		ArrayList<CommentAskDTO> commentList = new ArrayList<>();
+		
+		// Mapper
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);
+		commentList = mapper.getCommentAskList(bno);
+		sql.close();
+		
+		// response
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        
+		JSONArray jsonArray = new JSONArray();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yy.MM.dd");
+		
+        for (CommentAskDTO dto : commentList) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("writer", dto.getComAskWriter());
+            jsonObject.put("regdate", dateFormat.format(dto.getComAskRegdate()));
+            jsonObject.put("content", dto.getComAskContent());
+            jsonArray.put(jsonObject);
+        }
+
+        PrintWriter out = response.getWriter();
+        out.println(jsonArray.toString());
+	}
+	
+	
 	@Override
 	public void writeCommentFree(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -160,6 +201,7 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		
 	}
 	
+	
 	@Override
 	public void writeCommentTeam(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -193,6 +235,36 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		// response
 		request.setAttribute("bno", bno);
 		request.getRequestDispatcher("board_comment_team_list.comment").forward(request, response);
+		
+	}
+	
+	@Override
+	public void writeCommentAsk(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// request
+		String bno = request.getParameter("bno");
+		String content = request.getParameter("content");
+		
+		HttpSession session = request.getSession();
+		String writer = (String)session.getAttribute("userId");
+		
+		// DTO
+		CommentAskDTO dto = new CommentAskDTO();
+		dto.setComAskBno(bno);
+		dto.setComAskContent(content);
+		dto.setComAskWriter(writer);
+		
+		BoardAskDTO dtoTeam = new BoardAskDTO();
+		dtoTeam.setAskNum(bno);
+		
+		// Mapper
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);		
+		mapper.writeCommentAsk(dto);
+		sql.close();
+		
+		// response
+		response.sendRedirect("board_list.boardAsk");
 		
 	}
 	

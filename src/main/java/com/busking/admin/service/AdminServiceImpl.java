@@ -35,7 +35,8 @@ public class AdminServiceImpl implements AdminService {
 		AdminMapper Admin = sql.getMapper(AdminMapper.class);
 
 		// 파라미터 가져오기
-		String managerId = request.getParameter("managerId");
+		/* String managerId = request.getParameter("managerId"); */
+		String managerId = "hangang01";
 		String monthParam = request.getParameter("month");
 
 		// managerId와 month 값이 null이 아닌지 확인 필요
@@ -52,6 +53,7 @@ public class AdminServiceImpl implements AdminService {
 			try {
 				month = Integer.parseInt(monthParam);
 				month += 1; // 1을 더하기
+				if(month == 13) month = 1;
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 				request.setAttribute("errorMessage", "월 값은 숫자여야 합니다");
