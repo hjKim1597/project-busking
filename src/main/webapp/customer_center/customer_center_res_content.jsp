@@ -55,6 +55,7 @@
                            		<p>${dto.resContent }</p>
                            		<p>${dto.resDate }</p>
                            		<p>${dto.resTime }</p>
+                           		<p>${dto.resAmp }</p>
                             </div>
 
                             <!-- 글 목록, 수정, 삭제 버튼-->
