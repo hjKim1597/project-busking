@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,16 +78,27 @@
 
 
 						<!-- 마이페이지  -->
-						<li class="dropdown"><a class="dropdown-toggle index-menu"
-							data-toggle="dropdown" href="#">마이페이지 <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a
-									href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">내정보</a></li>
-								<li><a
-									href="${pageContext.request.contextPath }/mypage/reservationInfo.userinfo">예약현황</a></li>
-								<li><a
-									href="${pageContext.request.contextPath }/mypage/deleteUserPage.userinfo">회원탈퇴</a></li>
-							</ul></li>
+						<li class="dropdown">
+							<c:choose>
+								<c:when test="true"> 
+									<a class="dropdown-toggle index-menu" data-toggle="dropdown" href="#">마이페이지 <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="${pageContext.request.contextPath }/mypage/getUserInfo.userinfo">내정보</a>
+										</li>
+										<li>
+											<a href="${pageContext.request.contextPath }/mypage/reservationInfo.userinfo">예약현황</a>
+										</li>
+										<li>
+											<a href="${pageContext.request.contextPath }/mypage/deleteUserPage.userinfo">회원탈퇴</a>
+										</li>
+									</ul>
+								</c:when>
+								<c:otherwise>
+									<a href="${pageContext.request.contextPath }/mypage/adminPage.admin">예약관리</a>
+								</c:otherwise>
+							</c:choose>
+						</li>
 
 
 						<!-- 고객센터 -->
@@ -108,12 +119,13 @@
 
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-                        <% if (session.getAttribute("user") != null) { %>
-                            <li><a href="#">${user.userName}님 환영합니다</a></li>
-                            <li><a href="${pageContext.request.contextPath}/mypage/logout.userinfo" class="header-right"><span class="glyphicon glyphicon-off"></span> 로그아웃</a></li>
+                    <% if (session.getAttribute("user") != null) { %>
+                        <% boolean adminCheck = (Boolean) session.getAttribute("adminCheck"); %>
+                        <li><a href="<%= adminCheck ? request.getContextPath() + "/mypage/adminPage.admin" : "#" %>">${user.userName}님 환영합니다</a></li>
+                        <li><a href="${pageContext.request.contextPath}/userjoin/logout.mypage" class="header-right"><span class="glyphicon glyphicon-off"></span> 로그아웃</a></li>
                         <% } else { %>
-                            <li><a href="${pageContext.request.contextPath}/mypage/login.jsp" class="header-right"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
-                            <li><a href="${pageContext.request.contextPath}/mypage/signup.jsp" class="header-right"><span class="glyphicon glyphicon-log-in"></span> 회원가입</a></li>
+                            <li><a href="${pageContext.request.contextPath}/userjoin/loginPage.mypage" class="header-right"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
+                            <li><a href="${pageContext.request.contextPath}/userjoin/signupPage.mypage" class="header-right"><span class="glyphicon glyphicon-log-in"></span> 회원가입</a></li>
                         <% } %>
                     </ul>
 

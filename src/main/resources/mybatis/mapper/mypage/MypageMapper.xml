@@ -49,4 +49,10 @@
     <delete id="deleteUser" parameterType="String">
         DELETE FROM USERS WHERE USER_ID = #{userId}
     </delete>
+    <!-- 관리자 여부 확인 -->
+    <select id="adminCheck" resultType="boolean">
+        SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+        FROM MANAGER
+        WHERE MANAGER_ID = #{userId}
+    </select>
 </mapper>

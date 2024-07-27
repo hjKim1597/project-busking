@@ -58,7 +58,6 @@
                                 <option value="없음" ${userInfo.userGender == '없음' ? 'selected' : ''}>없음</option>
                                 <option value="남성" ${userInfo.userGender == '남성' ? 'selected' : ''}>남성</option>
                                 <option value="여성" ${userInfo.userGender == '여성' ? 'selected' : ''}>여성</option>
-                                <option value="변화" ${userInfo.userGender == '변화' ? 'selected' : ''}>변화</option>
                             </select>
                         </div>
                         <input type="submit" class="jinseok-button" value="수정하기" onclick="combineAddress()"></input>

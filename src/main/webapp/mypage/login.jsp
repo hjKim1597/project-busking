@@ -22,9 +22,9 @@
                     </div>
                     <input type="submit" class="jinseok-button" value="로그인">
                     <div class="sub-wrap" style="color: #a0a0a0;">
-                        <a href="${pageContext.request.contextPath}/mypage/findIdPw.jsp">비밀번호 찾기</a> | 
-                        <a href="${pageContext.request.contextPath}/mypage/findIdPw.jsp">아이디 찾기</a> |
-                        <a href="${pageContext.request.contextPath}/mypage/signup.jsp">회원가입</a>
+                        <a href="${pageContext.request.contextPath}/userjoin/findIdPw.mypage">비밀번호 찾기</a> | 
+                        <a href="${pageContext.request.contextPath}/userjoin/findIdPw.mypage">아이디 찾기</a> |
+                        <a href="${pageContext.request.contextPath}/userjoin/signupPage.mypage">회원가입</a>
                     </div>
                 </form>
             </div>
