@@ -37,8 +37,17 @@
 	                </div>
 	                <div class="inner_mid">
 	                    <div class="like_container">
-	                        <button class="like_button" onclick="increaseLikes()">
-	                            <img src="../resources/img/board_img/like.png" alt="좋아요">
+	                        <button class="like_button" onclick="location.href='board_like.boardNews?bno=${dto.newsNum }'">
+	                            <!-- <img src="../resources/img/board_img/like.png" alt="좋아요"> -->
+	                            <c:choose>
+	                            	<c:when test="${like == 'T' }">
+	                            		<i class="fa-solid fa-heart like"></i>
+	                            	</c:when>
+		                            <c:otherwise>
+			                            <i class="fa-regular fa-heart"></i>
+		                            </c:otherwise>
+	                            </c:choose>
+	                            
 	                        </button>
 	                        <span class="like_count" id="likeCount">${dto.newsLikeCount }</span>
 	                    </div>
@@ -70,9 +79,6 @@
 	        </div>
 	    </div>
 	</section>
-		<script>
-
-	</script>
 	
 	<script src="${pageContext.request.contextPath }/resources/js/board/board_content.js"></script>
 <%@ include file="../include/footer.jsp" %>

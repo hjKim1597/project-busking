@@ -11,7 +11,8 @@
             SELECT ROWNUM AS RN, 
                    A.* 
             FROM BOARD_ASK A 
-            WHERE 1 = 1 
+            WHERE ASK_DELETED = 'F' 
+            AND 1 = 1 
             <if test="type != null and type != ''">
                 <choose>
                     <when test="type == 'content'">
@@ -48,8 +49,7 @@
 	
 	<update id="delete" parameterType="String">
 		UPDATE BOARD_ASK 
-		SET ASK_CONTENT = ' ', 
-			ASK_WRITER = ' ' 
+		SET ASK_DELETED = 'T' 
 		WHERE ASK_NUM = #{askNum}
 	</update>
 	

@@ -3,6 +3,8 @@ package com.busking.board.service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -25,8 +27,12 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 	public void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String page = (String)request.getAttribute("page");
+		String page = request.getParameter("page");
+		if(page == null) page = "1";
 		int pageNum = Integer.parseInt(page);
+		
+		String type = request.getParameter("type");
+		String target = request.getParameter("target");
 		
 		// DTO
 		ArrayList<BoardTeamDTO> list = new ArrayList<>();
@@ -36,7 +42,13 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		BoardTeamMapper mapper = sql.getMapper(BoardTeamMapper.class);
 		int total = mapper.getTotal();
 		PageVO pageVO = new PageVO(pageNum, total);
-		list = mapper.getList(pageVO);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("type", type);
+		map.put("target", target);
+		map.put("page", pageVO);
+		
+		list = mapper.getList(map);
 		sql.close();
 		
 		// response
@@ -183,6 +195,11 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		}
 		out.println("location.href='board_content.boardTeam?bno=" + bno + "';");
 		out.println("</script>");
+	}
+	
+	@Override
+	public void like(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 	
 }

@@ -79,9 +79,6 @@
 	        </div>
 	    </div>
 	</section>
-		<script>
 
-	</script>
-	
 	<script src="${pageContext.request.contextPath }/resources/js/board/board_content.js"></script>
 <%@ include file="../include/footer.jsp" %>

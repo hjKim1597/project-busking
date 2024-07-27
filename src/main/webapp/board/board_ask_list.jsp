@@ -29,22 +29,18 @@
 	                <!-- 동적으로 게시물 추가 -->
 	                <div class="post" data-bno="${dto.askNum }">
 	                    <div class="post_box">
-	
-	                        <div class="question-content">${dto.askContent == ' ' ? '삭제된 글 입니다.' : dto.askContent}</div>
+
+	                        <div class="question-content">${dto.askContent }</div>
 	                        <div class="info">
 	                            <div class="writer">${dto.askWriter }</div>
 	                            <div class="date">
-	                            	<c:if test="${dto.askContent != ' ' }">
-	                            		<fmt:formatDate value="${dto.askRegdate }" pattern="yy.MM.dd" />
-	                            	</c:if>
+	                            	<fmt:formatDate value="${dto.askRegdate }" pattern="yy.MM.dd" />
 	                            </div>
 	                        </div>
 	   
 	                    </div>
 	                    <div class="comment-section">
 		                    <c:choose>
-		                    	<c:when test="${dto.askContent == ' ' }">
-		                    	</c:when>
 		                    	<c:when test="${sessionScope.userId == dto.askWriter }">
 		                        	<form action="board_edit.boardAsk" method="post">
 				                        <div class="comment">
@@ -65,16 +61,7 @@
 			                    	</form>
 		                    	</c:otherwise>
 							</c:choose>
-	                        <%-- <c:forEach var="comDto" items="${comList }">
-		                        <div class="comment">
-			                        <div class="info">
-			                            <div class="writer">test</div>
-			                            <div class="date">test</div>
-			                        </div>
-		                        	<textarea rows="2" cols="50" readonly class="comList">${comDto.comAskContent }</textarea>
-		                        </div>
-		                    </c:forEach> --%>
-		                    <div class="comment-list-box"></div>
+		                	<div class="comment-list-box"></div>
 	                    </div>
 	                </div>
                 </c:forEach>

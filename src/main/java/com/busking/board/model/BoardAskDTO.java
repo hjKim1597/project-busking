@@ -8,16 +8,18 @@ public class BoardAskDTO {
 	private String askWriter;
 	private String askContent;
 	private Timestamp askRegdate;
+	private String askDeleted;
 	
 	public BoardAskDTO() {
 	}
 
-	public BoardAskDTO(String askNum, String askWriter, String askContent, Timestamp askRegdate) {
+	public BoardAskDTO(String askNum, String askWriter, String askContent, Timestamp askRegdate, String askDeleted) {
 		super();
 		this.askNum = askNum;
 		this.askWriter = askWriter;
 		this.askContent = askContent;
 		this.askRegdate = askRegdate;
+		this.askDeleted = askDeleted;
 	}
 
 	public String getAskNum() {
@@ -52,4 +54,12 @@ public class BoardAskDTO {
 		this.askRegdate = askRegdate;
 	}
 
+	public String getAskDeleted() {
+		return askDeleted;
+	}
+
+	public void setAskDeleted(String askDeleted) {
+		this.askDeleted = askDeleted;
+	}
+	
 }
