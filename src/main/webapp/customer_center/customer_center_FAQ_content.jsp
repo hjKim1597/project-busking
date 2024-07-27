@@ -9,11 +9,13 @@
 
     <!-- 중앙 레이아웃 -->
     <section class="container customer-center-width" id="change">
-        <div class="row">
+        <div class="row" style="margin-top : 100px;">
 
             <!-- 좌측메뉴 -->
             
+            
             <!-- 
+            
             <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 content">
                 <li class="col-xs-4 col-sm-4 col-lg-4 col-lg-4">
                     <section>
@@ -24,7 +26,7 @@
                                 <ul class="menu">
                                     <li class="nth1"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
                                     </li>
-                                    <li class="nth2"><strong><a href="customer_center_month.customer"><span>이달의 예약</span></a></strong>
+                                    <li class="nth2"><strong><a href="customer_center_res.customer"><span>이달의 예약</span></a></strong>
                                     </li>
                                     <li class="nth3"><strong><a href="customer_center_guide.customer"><span>이용안내</span></a></strong>
                                     </li>
@@ -36,7 +38,9 @@
                     </section>
                 </li>
             </div>
-             -->
+            
+            -->
+            
 
 
             <!-- 공지사항 게시판 > 게시글 내용 보는 곳 -->
@@ -46,7 +50,7 @@
                         <div class="page-header">
                             <h2>자주묻는질문FAQ</h2>
                         </div>
-                        <p>FAQ는 내용만 보기</p>
+                        <p></p>
 
                         <!-- 글 내용 -->
                         <div class="panel panel-default">

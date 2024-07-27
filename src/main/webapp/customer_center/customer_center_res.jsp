@@ -64,14 +64,14 @@
 
 			<!-- 공지사항 게시판 -->
             <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 board">
-                <div class="service-board">
+                <div class="service-board" >
                     <div class="container">
                         <div class="page-header">
-                            <h2>공지사항</h2>
+                            <h2>이달의 예약</h2>
                         </div>
 
-                        <p>예약리스트</p>
-
+<!--                         <p>예약리스트</p>
+ -->
                         <div class="table-responsive">
                             <!-- 게시판 -->
 
@@ -88,12 +88,14 @@
                                                             <th class="nth1">글 번호</th>
                                                             <th class="nth2">신청자</th>
                                                             <th class="nth3">예약 날짜 및 시간</th>
-                                                            <th class="nth4">신청 날짜</th>
+                                                            <th class="nth4">장소</th>
+                                                            <th class="nth5">신청 날짜</th>
                                                             
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <!--데이터 받아오기-->
+														<!--나중에 xml 매퍼에서 F를 T로 수정할것  -->
 			
 								                        <c:forEach var="dto" items="${resList }">
 															
@@ -101,7 +103,9 @@
 																<td>${dto.resNum }</td>
 																<td>${dto.userId }</td>																
 																<td><a href="getResContent.customer?resNum=${dto.resNum }">${dto.resDate }</a></td>
+																<td>${dto.locaName }</td>
 																<td><fmt:formatDate value="${dto.resRegdate }" pattern="yy.MM.dd"/></td>
+																	
 															</tr>
 															
 														</c:forEach>
