@@ -334,21 +334,26 @@
 .cmt-star .star i {
     font-size: 18px;
     font-weight: 900;
-    color: gold; /* 필요에 따라 색상을 조정*/
+    color: #e2e2e2; /* 필요에 따라 색상을 조정*/
     cursor: pointer; /* 클릭 가능한 아이콘임을 표시 */
 }
 
 /* 마우스를 올리면 해당 별과 이전 별들을 채워진 상태로 변경 */
-.cmt-star .star:hover i,
-.cmt-star .star:hover ~ .star i {
+.cmt-star .star:hover i.checked,
+.cmt-star .star:hover ~ .star i.checked {
     color: gold; /* 필요에 따라 색상을 조정 */
 }
 
-/* 클릭된 별과 그 이전 별들을 채워진 상태로 유지 */
-.cmt-star .star.selected i,
-.cmt-star .star.selected ~ .star i {
-    color: gold; /* 필요에 따라 색상을 조정 */
+/* 선택된 별과 그 이전 별들이 채워진 상태로 변경 */
+.cmt-star .star i.checked {
+    color: gold; /* 선택된 별 색상 */
 }
+
+/* 선택된 별 스타일
+.cmt-star .star.checked i {
+    color: gold; 선택된 별 색상
+} */
+
 
 .loca-cmt-box .cmt-top-box .cmt-text {
     resize: none;
@@ -441,9 +446,7 @@
     font-size: 24px;
     cursor: pointer;
 }
-.cmt-star .star.checked {
-	color: gold;
-}
+
 
 /* ======반응형 웹 디자인====== */
 @media (min-width:1200px) {
