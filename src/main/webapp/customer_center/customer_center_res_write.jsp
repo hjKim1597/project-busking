@@ -47,7 +47,7 @@
                         
                         
                         <!-- 글작성하기 -->
-                        <form action="registFAQForm.customer" method="post" class="form">
+                        <form action="registResForm.customer" method="post" class="form">
 
                             <!-- 글 제목 -->
                             <div>
@@ -72,7 +72,7 @@
                             <!-- FAQ 목록 페이지에서 작성을 누르면?  -->
                                 
 							    	                          
-	                            	<a href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.customer"><button type="button"
+	                            	<a href="${pageContext.request.contextPath }/customer_center/customer_center_Res.customer"><button type="button"
                                             class="btn btn-default">목록</button></a>
 	                            
 	                            

@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <%@ include file="../include/header.jsp"%>
 
     <!-- 중앙 레이아웃 -->
@@ -39,46 +40,37 @@
                 <div class="service-board">
                     <div class="container">
                         <div class="page-header">
-
-                            <h2>글 작성하기</h2>
+                            <h2>글 수정하기</h2>
 
                         </div>
-                        
-                        
-                        
-                        <!-- 글작성하기 -->
-                        <form action="registFAQForm.customer" method="post" class="form">
+
+						<!-- 글 업데이트 -->
+                        <form action="updateRes.customer?resNum=${dto.resNum }" method="post" class="form">
 
                             <!-- 글 제목 -->
                             <div>
                                 <label for="comment">제목</label>
                                 <br>
-                                <input class="" type="text" name="title" placeholder="제목을 입력해주세요">
-
+                                <input class="" type="text" name="title" placeholder="내용을 입력해주세요" value="${dto.faqTitle }">
+								
                             </div>
 
                             <!-- 글 내용 -->
                             <div class="form-group">
-                                <label for="comment">글 내용</label>
-                                <textarea class="form-control" id="comment" name="content" placeholder="내용을 입력해주세요"></textarea>
+                                <label for="comment">내용</label>
+                                <textarea class="form-control" id="comment" name="content" placeholder="내용을 입력해주세요">${dto.faqContent }</textarea>
+                            
                             </div>
 
                             <!-- 완료 버튼-->
-                            <div class="board_button_set">
-                                <div class="board-button">
-                                
-                            <!-- 공지사항 목록에서 작성을 누르면? -->
-                                    
-                            <!-- FAQ 목록 페이지에서 작성을 누르면?  -->
-                                
-							    	                          
-	                            	<a href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.customer"><button type="button"
+							<div class="board_button_set" style="text-align: right">
+                                <div class="board-button" style="display: inline; padding: 8px;">
+                                    <a href="${pageContext.request.contextPath }/customer_center/customer_center_res.customer" style="display: inline;
+    								padding: 8px;"><button type="button"
                                             class="btn btn-default">목록</button></a>
-	                            
-	                            
                                 </div>
 
-                                <div class="board-button">
+                                <div class="board-button" style="display: inline; padding: 8px;">
                                     <%-- <a href="${pageContext.request.contextPath }/customer_center/customer_center_index.customer">
                                     <button type="button"
                                             class="btn btn-default">
@@ -87,16 +79,17 @@
                                     
                                     </a> --%>
                                     
-                                    <input type="submit" value="완료" class="btn btn-default">
+                                    <input type="submit" class="btn btn-default" value="완료" class="btn btn-default" >
                                     
                                 </div>
                                 
                                 
                             </div>
+                            
                         </form>
-
-
-
+                        
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -114,4 +107,3 @@
 
     
 <%@ include file="../include/footer.jsp"%>
-

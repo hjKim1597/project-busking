@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.busking.board.model.BoardResMapper">
+
+	<!-- 글번호, 유저아이디, 예약날짜, 신청날짜 목록 가져오기-->
+	<select id="getList" resultType="com.busking.board.model.BoardResDTO">
+
+		SELECT RES_NUM, USER_ID, RES_DATE, RES_REGDATE 
+		FROM RESERVATIONS ORDER BY RES_NUM DESC
+	</select>
+
+	<!-- 글 등록 -->
+	<!-- <insert id="regist" parameterType="com.busking.board.model.BoardResDTO"> 
+		INSERT INTO FAQ(FAQ_NUM, USER_ID, FAQ_TITLE, FAQ_CONTENT, FAQ_REGDATE, MANAGER_ID) 
+		VALUES (BOARD_FAQ_SEQ.NEXTVAL, #{userId}, #{faqTitle}, #{faqContent}, SYSDATE, 
+		#{managerId}) RES_CONTENT </insert> -->
+
+	<!-- 글 내용 -->
+	<select id="getContent"
+		resultType="com.busking.board.model.BoardResDTO">
+		SELECT * FROM RESERVATIONS WHERE RES_NUM = #{resNum}
+	</select>
+
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*) FROM RESERVATIONS
+	</select>
+
+
+	<!-- 글 수정 -->
+	<!-- <update id="update" parameterType="com.busking.board.model.BoardResDTO"> 
+		UPDATE RESERVATIONS SET RES_TITLE = #{resTitle} ,FAQ_CONTENT = #{resContent} 
+		WHERE RES_NUM = #{resNum} </update> -->
+
+	<!-- 글 삭제 -->
+	<delete id="delete"
+		parameterType="com.busking.board.model.BoardResDTO">
+		DELETE FROM RESERVATIONS WHERE RES_NUM = #{resNum}
+	</delete>
+
+</mapper>
+
+
+
+
+
+

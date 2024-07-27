@@ -1,11 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_index.css">
+
+    <!-- 부트스트랩 css링크 -->
+    <link rel="stylesheet" href="../resources/css/customer_center/bootstrap.min.css">
+    <!-- 제이쿼리(부스트랩보다 먼저 링크) -->
+    <script src="../resources/js/customer_center_js/jquery-3.7.1.min.js"></script>
+    <!-- 부트스트랩 js링크 -->
+    <script src="../resources/js/customer_center_js/bootstrap.min.js"></script>
+
+    <!-- 커스터마이징 한 css 디자인 추가 -->
+    <link rel="stylesheet" href="../resources/css/custom-reset.css">
+    <link rel="stylesheet" href="../resources/css/center_default.css">
+    <link rel="stylesheet" href="../resources/css/customer_center/board_free_list.css">
+
+    <!-- header,footer -->
+    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_header_footer.css">
+
+</head>
 
 <%@ include file="../include/header.jsp"%>
 
-    <!-- 중앙 레이아웃 -->
+
+
+    <!-- 레이아웃 -->
     <section class="container customer-center-width" id="change">
         <div class="row">
 
@@ -33,7 +62,7 @@
                 </li>
             </div>
 
-            <!-- 공지사항 게시판 -->
+			<!-- 공지사항 게시판 -->
             <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 board">
                 <div class="service-board">
                     <div class="container">
@@ -41,7 +70,7 @@
                             <h2>공지사항</h2>
                         </div>
 
-                        <p>관리자만 작성 가능, 글번호, 월별 허가된 공연 목록</p>
+                        <p>예약리스트</p>
 
                         <div class="table-responsive">
                             <!-- 게시판 -->
@@ -57,39 +86,26 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="nth1">글 번호</th>
-                                                            <th class="nth2">작성자</th>
-                                                            <th class="nth3">제목</th>
-                                                            <th class="nth4">날짜</th>
-                                                            <th class="nth5">조회수</th>
+                                                            <th class="nth2">신청자</th>
+                                                            <th class="nth3">예약 날짜 및 시간</th>
+                                                            <th class="nth4">신청 날짜</th>
+                                                            
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <!--데이터 받아오기-->
-                                                        
-                                                        <%-- <c:forEach var="dto" items="${noticeList }">
+			
+								                        <c:forEach var="dto" items="${resList }">
+															
 															<tr>
-																<td>${dto.noticeNum }</td>
-																<td>${dto.managerId }</td>
-																<td>
-																	<!-- 17) get으로 값 넘기기 href="getContent.board?키=값" 으로 --> 
-																	<a href="getContent.board?bno=${dto.bno} ">${dto.title }</a>
-																</td>
-																<td><fmt:formatDate value="${dto.regdate }"
-																		pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" /></td>
-																<td>${dto.hit }</td>
+																<td>${dto.resNum }</td>
+																<td>${dto.userId }</td>																
+																<td><a href="getResContent.customer?resNum=${dto.resNum }">${dto.resDate }</a></td>
+																<td><fmt:formatDate value="${dto.resRegdate }" pattern="yy.MM.dd"/></td>
 															</tr>
-														</c:forEach> --%>
-                                               			
-								                        <c:forEach var="dto" items="${noticeList }">
-															<tr>
-																<td>${dto.noticeNum }</td>
-																<td>${dto.managerId }</td>																
-																<td><a href="getContent.customer?noticeNum=${dto.noticeNum }">${dto.noticeTitle }</a></td>
-																<td><fmt:formatDate value="${dto.noticeRegdate }" pattern="yy.MM.dd"/></td>
-																<td>${dto.noticeHit }</td>
-															</tr>
+															
 														</c:forEach>
-							
+
                                                     </tbody>
                                                 </div>
                                             </table>
@@ -109,9 +125,15 @@
 						                            </c:if>
 						                            <li id="page_last"><a href="customer_center_index.customer?page=${pageVO.endPage }"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
 						                        </ul>
-                                                <form action="customer_center_index_write.jsp" class="right">
+						                        
+						                        
+                                                <!-- 
+                                                <form action="customer_center_FAQ_write.jsp" class="right">
                                                     <button value="글쓰기" onclick="">작성</button>
-                                                </form>
+                                                </form> 
+                                                -->
+                                                
+                                                
                                             </div>
 
                                             <div class="board_free_search" id="layout3">
@@ -133,28 +155,12 @@
                             </section>
 
 
-
-
-                            <!-- 페이지 번호 -->
-                            <!-- <ul class="pagination">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                            </ul> -->
-
-                            <!-- 글작성 버튼 -->
-                            <!-- <div class="write-button">
-                                <a href="customer_center_index_write.jsp"><button type="button" class="btn write1"
-                                        id="">글작성</button></a>
-                            </div> -->
-
                         </div>
                     </div>
                 </div>
             </div>
-
+            
+            
 
         </div>
     </section>
@@ -171,6 +177,10 @@
 	    	 .forEach(item => item.classList.add("active"));
     
     </script>
-   	
     
 <%@ include file="../include/footer.jsp"%>
+
+</body>
+
+
+</html>
