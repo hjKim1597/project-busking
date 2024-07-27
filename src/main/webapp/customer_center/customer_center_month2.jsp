@@ -24,8 +24,9 @@
     <link rel="stylesheet" href="../resources/css/custom-reset.css">
 
       <!-- 달력 -->
-	<link rel="stylesheet" href="../resources/css/customer_center/customer_center_month.css">
-	
+<!--  	<link rel="stylesheet" href="../resources/css/customer_center/customer_center_month.css">
+ --> 
+	<!-- 
 	<link href='../resources/css/customer_center/fullcalendar-4.4.0/core_main.css' rel='stylesheet' />
 	<link href='../resources/css/customer_center/fullcalendar-4.4.0/daygrid_main.css' rel='stylesheet' />
 	<link href='../resources/css/customer_center/fullcalendar-4.4.0/timegrid_main.css' rel='stylesheet' />
@@ -33,10 +34,15 @@
 	<script src='../resources/css/customer_center/fullcalendar-4.4.0/interaction_main.js'></script>
 	<script src='../resources/css/customer_center/fullcalendar-4.4.0/daygrid_main.js'></script>
 	<script src='../resources/css/customer_center/fullcalendar-4.4.0/timegrid_main.js'></script>
-
-
  
-  <style>
+ 	-->
+
+	<script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
+    </script>
+    
+    
+    
+  <!-- <style>
     body {
       margin: 40px 10px;
       padding: 0;
@@ -49,7 +55,7 @@
       margin: 0 auto;
       border: none;
     }
-  </style>
+  </style> -->
 
 
 </head>
@@ -134,7 +140,26 @@
 
 </body>
 
+	<script>
 
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendarEl = document.getElementById('calendar')
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth', // 초기 달력 화면
+        locale: 'ko' //한국어 설정하기
+      })
+      calendar.render()
+    })
+
+  </script>
+ 
+ 
+ 
+ <!-- 
+ 
+ 
+ 
+ 
  
   <script>
 
@@ -142,16 +167,17 @@
       var calendarEl = document.getElementById('calendar');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: ['interaction', 'dayGrid', 'timeGrid'],
+        plugins: ['interaction'],
         header: {
           left: 'prev,next today',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        defaultDate: '2020-02-12',
+        /* defaultDate: '2020-02-12', */
         navLinks: true, // can click day/week names to navigate views
         selectable: true,
         selectMirror: true,
+        locale: 'ko',
         select: function (arg) {
           var title = prompt('Event Title:');
           if (title) {
@@ -232,4 +258,7 @@
   
 
 
+
+ -->
+ 
 </html>
