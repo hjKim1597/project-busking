@@ -26,11 +26,6 @@
 		WHERE M.MANAGER_ID = #{managerId, jdbcType=VARCHAR} 
 		AND R.RES_DATE LIKE CONCAT('24/', CONCAT(#{month, jdbcType=VARCHAR}, '/%'))
 			
-			<!-- M.MANAGER_ID = #{managerId, jdbcType=VARCHAR}  -->
-			<!-- AND R.RES_DATE LIKE CONCAT('24/',#{month, jdbcType=VARCHAR} , '/%') -->
-
-
-<!-- M.MANAGER_ID = 'hangang02'   -->
 
 	</select>
 

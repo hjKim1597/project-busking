@@ -10,8 +10,7 @@ public interface AdminMapper {
 	//예약 확정 목록 조회
 	public ArrayList<AdminPageDTO> getList(Map<String, Object> params);
 
-
-	
+	 	
 	/*
 	 * // 글 개수 조회 public int getTotal();
 	 */
