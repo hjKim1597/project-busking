@@ -13,7 +13,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter({"/board/board_comment_free_write.comment", "/board/board_comment_news_write.comment", "/board/board_comment_team_write.comment"})
+@WebFilter({
+	"/board/board_comment_free_write.comment"
+	,"/board/board_comment_news_write.comment"
+	,"/board/board_comment_team_write.comment"
+	,"/board/board_comment_ask_write.comment"
+	,"/board/board_comment_free_reply.comment" 
+	,"/board/board_comment_news_reply.comment" 
+	})
 public class CommentAuthenticationFilter implements Filter {
 
 	@Override

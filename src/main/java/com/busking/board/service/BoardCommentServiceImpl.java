@@ -305,5 +305,45 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		
 	}
 	
+	@Override
+	public void writeReplyNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// request
+		String bno = request.getParameter("bno");
+		String reply = request.getParameter("reply");
+		String content = request.getParameter("content");
+		
+		System.out.println(reply + ", " + bno);
+		
+		HttpSession session = request.getSession();
+		String writer = (String)session.getAttribute("userId");
+		
+		// DTO
+		CommentNewsDTO dto = new CommentNewsDTO();
+		dto.setComNewsBno(bno);
+		dto.setComNewsContent(content);
+		dto.setComNewsWriter(writer);
+		dto.setComNewsReply(reply);
+		
+		BoardNewsDTO dtoNews = new BoardNewsDTO();
+		dtoNews.setNewsNum(bno);
+		
+		// Mapper
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);
+		BoardNewsMapper mapperNews = sql.getMapper(BoardNewsMapper.class);
+		
+		mapper.writeReplyNews(dto);
+		int total = mapper.getCommentNewsCount(bno);
+		dtoNews.setNewsCmtCount(total);
+		mapperNews.updateCmtCount(dtoNews);
+		sql.close();
+		
+		// response
+		request.setAttribute("bno", bno);
+		request.getRequestDispatcher("board_comment_news_list.comment").forward(request, response);
+		
+	}
+	
 	
 }

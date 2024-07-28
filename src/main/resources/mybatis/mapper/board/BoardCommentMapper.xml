@@ -119,5 +119,20 @@
 		       #{comFreeReply}, 
 		       #{comFreeReply})	
 	</insert>
+	
+	<insert id="writeReplyNews" parameterType="com.busking.board.model.CommentNewsDTO">
+		INSERT INTO COMMENT_NEWS(COM_NEWS_NUM,  
+		                         COM_NEWS_WRITER,  
+		                         COM_NEWS_CONTENT,  
+		                         COM_NEWS_BNO, 
+		                         COM_NEWS_REPLY, 
+		                         COM_NEWS_GROUP) 
+		VALUES('CN_' || LPAD(COMMENT_FREE_SEQ.NEXTVAL, 8, '0'), 
+		       #{comNewsWriter},  
+		       #{comNewsContent}, 
+		       #{comNewsBno}, 
+		       #{comNewsReply}, 
+		       #{comNewsReply})	
+	</insert>
 
 </mapper>
