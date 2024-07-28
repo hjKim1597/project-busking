@@ -46,9 +46,9 @@
 								<td id="status${dto.userId}" class="btnStatus">상태</td>
 								<!-- 상태 -->
 								<td class="status-btn">
-									<button class="approve" >승인</button>
-									<button class="reject" >거절</button>
-									<button class="modify" >수정하기</button>
+									<button class="approve">승인</button>
+									<button class="reject">거절</button>
+									<button class="modify">수정하기</button>
 								</td>
 							</tr>
 
@@ -116,7 +116,30 @@
 						            var $row = $(this).closest('tr');
 						            $row.find('.btnStatus').text('대기중');
 						        });
-						    });				 
+						    });		
+						 
+						 
+						/*  function updateReservation(userId, result) {
+					            $.ajax({
+					                url: '${pageContext.request.contextPath}/mypage/adminPage.admin',
+					                type: 'POST',
+					                data: {
+					                    userId: userId,
+					                    result: result
+					                },
+					                success: function(response) {
+					                    if (response === 'Success') {
+					                        $('#status' + userId).text(result);
+					                    } else {
+					                        alert('업데이트 실패');
+					                    }
+					                },
+					                error: function(error) {
+					                    alert('오류가 발생했습니다.');
+					                }
+					            });
+					        }
+					    }); */
 						</script>
 
 						<!-- 예약 내용 끝 -->
@@ -125,11 +148,11 @@
 
 					</tbody>
 				</table>
-				<div class="pagination">
+				<!-- <div class="pagination">
 					<button class="prev">이전</button>
 					<span>1 / 10</span>
 					<button class="next">다음</button>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

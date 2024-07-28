@@ -29,14 +29,11 @@ public class AdminServiceImpl implements AdminService {
 		int currentMonth = currentDate.getMonthValue();
 		SqlSession sql = sqlSessionFactory.openSession(true);
 
-
 		AdminMapper Admin = sql.getMapper(AdminMapper.class);
 
-		//String managerId = request.getParameter("managerId"); 
+		// String managerId = request.getParameter("managerId");
 		String managerId = "hangang02";
-		//String monthParam = request.getParameter("month");
-		
-
+		// String monthParam = request.getParameter("month");
 
 		int month = 0;
 
@@ -47,13 +44,10 @@ public class AdminServiceImpl implements AdminService {
 		Map<String, Object> params = new HashMap<>();
 		params.put("managerId", managerId);
 		params.put("month", monthTarget); // 2자리 숫자로 포맷
-		
+
 		ArrayList<AdminPageDTO> getList = Admin.getList(params);
 
-
 		// request.setAttribute("pageVO", pageVO);
-
-		
 
 //		System.out.println(getList.size());
 		request.setAttribute("getList", getList);
@@ -68,4 +62,28 @@ public class AdminServiceImpl implements AdminService {
 
 	}
 
+	@Override
+	public void updateReservation(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String userId = request.getParameter("userId");
+		String result = request.getParameter("result");
+		
+
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		AdminMapper adminMapper = sql.getMapper(AdminMapper.class);
+
+		Map<String, Object> params = new HashMap<>();
+		params.put("userId", userId);
+		params.put("result", result);
+
+		int rowsUpdated = adminMapper.updateResult(params);
+
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		if (rowsUpdated > 0) {
+			response.getWriter().write("Success");
+		} else {
+			response.getWriter().write("Fail");
+		}
+	}
 }

@@ -61,14 +61,14 @@
 							class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand index-menu"
-						href="${pageContext.request.contextPath }/index.main">사이트 명</a>
+						>사이트 명</a>
 				</div>
 				<div class="collapse navbar-collapse main-color mobile-navbar"
 					id="myNavbar">
 					<ul class="nav navbar-nav">
 
 						<li class="active index-menu"><a
-							href="${pageContext.request.contextPath }/index.jsp">Main</a></li>
+							href="${pageContext.request.contextPath }/index.main">Main</a></li>
 
 						<!-- 예약 -->
 						<li class="header-res"><a
@@ -86,8 +86,7 @@
 								<li><a
 									href="${pageContext.request.contextPath }/board/board_list.boardTeam">팀원모집</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/board/board_list.boardAsk">Q
-										& A</a></li>
+									href="${pageContext.request.contextPath }/board/board_list.boardAsk">Q & A</a></li>
 							</ul></li>
 
 

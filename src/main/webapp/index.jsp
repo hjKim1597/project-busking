@@ -21,7 +21,7 @@
 			<div class="carousel-inner">
 				<div class="item active">
 					<a
-						href="${pageContext.request.contextPath }/reservation/reservation.jsp">
+						href="${pageContext.request.contextPath }/reservation/reservation.reservation">
 						<img
 						src="${pageContext.request.contextPath }/resources/img/index/banner1.png"
 						alt="res">
@@ -31,7 +31,7 @@
 
 				<div class="item">
 					<a
-						href="${pageContext.request.contextPath }/board/board_news_list.board"><img
+						href="${pageContext.request.contextPath }/board/board_list.boardNews"><img
 						src="${pageContext.request.contextPath }/resources/img/index/banner2.png"
 						alt="issue"></a>
 					<div class="carousel-caption"></div>
@@ -39,7 +39,8 @@
 
 				<div class="item">
 					<a
-						href="${pageContext.request.contextPath }/customer_center/customer_center_guide.jsp"><img
+					
+						href="${pageContext.request.contextPath }/customer_center/customer_center_guide.customer"><img
 						src="${pageContext.request.contextPath }/resources/img/index/banner3.png"
 						alt="guide"></a>
 					<div class="carousel-caption"></div>
@@ -79,7 +80,12 @@
 								<tr>
 									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-										<a href="<%-- ${pageContext.request.contextPath }/board_content.boardNews?bno=${dto.newsNum } --%>" class="truncate with-style">${dto.noticeTitle}</a>
+										<a
+										href="${pageContext.request.contextPath }/customer_center/customer_center?noticeNum=${dto.noticeNum }"
+										
+										
+												
+										class="truncate with-style">${dto.noticeTitle}</a>
 
 									</td>
 									<td class="preview-date"><fmt:formatDate
@@ -129,7 +135,9 @@
 						<!-- FAQ게시판 -->
 						<h3>
 							<a
-								href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.jsp">FAQ</a>
+								href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.customer">FAQ</a>
+
+
 						</h3>
 
 						<table class="index-board" id="board-three">
@@ -138,7 +146,7 @@
 								<tr>
 									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-										<a href="#" class="truncate with-style">${dto.faqTitle}</a>
+										<a href="${pageContext.request.contextPath }/customer_center/getFAQContent.customer?faqNum=${dto.faqNum }" class="truncate with-style">${dto.faqTitle}</a>
 									</td>
 									<td class="preview-date"><fmt:formatDate
 											value="${dto.faqRegdate}" pattern="yy.MM.dd" /></td>
@@ -159,7 +167,7 @@
 					<div class="result">
 						<div>
 							<a id="mainImageLink"
-								href="${pageContext.request.contextPath }/reservation/reservation.jsp">
+								href="${pageContext.request.contextPath }/reservation/reservationForm.reservation?locaId=11">
 								<img
 								src="${pageContext.request.contextPath }/resources/img/index/1.jpg"
 								alt="결과" class="main-image" width="100%">
@@ -172,18 +180,18 @@
 						<li><img
 							src="${pageContext.request.contextPath }/resources/img/index/1.jpg"
 							alt="1" width="100"
-							data-link="${pageContext.request.contextPath }/reservation/reservation.jsp"></li>
+							data-link="${pageContext.request.contextPath }/reservation/reservationForm.reservation?locaId=11"></li>
 						<li><img
 							src="${pageContext.request.contextPath }/resources/img/index/2.jpg"
 							alt="1" width="100"
-							data-link="${pageContext.request.contextPath }/reservation/reservationForm.jsp"></li>
+							data-link="${pageContext.request.contextPath }/reservation/reservationForm.reservation?locaId=1"></li>
 						<li><img
 							src="${pageContext.request.contextPath }/resources/img/index/3.jpg"
 							alt="1" width="100"
-							data-link="${pageContext.request.contextPath }/reservation/reservationPost.jsp"></li>
+							data-link="${pageContext.request.contextPath }/reservation/reservationForm.reservation?locaId=8"></li>
 						<li><img
 							src="${pageContext.request.contextPath }/resources/img/index/4.jpg"
-							alt="1" width="100" data-link="#"></li>
+							alt="1" width="100" data-link="reservation/reservationForm.reservation?locaId=9"></li>
 					</ul>
 
 				</div>

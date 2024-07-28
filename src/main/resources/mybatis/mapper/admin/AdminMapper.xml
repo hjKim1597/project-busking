@@ -40,7 +40,11 @@
 		</select> -->
 
 
-
+	 <update id="updateResult" parameterType="map">
+        UPDATE RESERVATIONS
+        SET RES_RESULT = #{result}
+        WHERE USER_ID = #{userId}
+    </update>
 
 
 

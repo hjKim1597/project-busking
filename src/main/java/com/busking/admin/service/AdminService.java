@@ -10,8 +10,7 @@ public interface AdminService {
 	// 목록 조회
 	void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
-	
-	
-	
-	
+	// 예약 관리
+	void updateReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
 }
