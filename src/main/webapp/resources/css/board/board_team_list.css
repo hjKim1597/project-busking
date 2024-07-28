@@ -20,14 +20,14 @@
 * {font-family: 'NanumSquareNeo';}
 
 @media (min-width:1200px) {
-    .resForm-wrap {
+    #board_team_list_wrap {
         width: 1170px;
     }
 
 }
 
 @media (min-width:992px) and (max-width:1199px) {
-    .resForm-wrap {
+    #board_team_list_wrap {
         width: 970px;
     }
 
@@ -79,7 +79,7 @@
 }
 
 @media (max-width:991px) {
-    .resForm-wrap {
+    #board_team_list_wrap {
         width: 750px;
     }
 
@@ -132,7 +132,8 @@
 
 #board_team_list_wrap {
     /* display: flex; */
-    padding: 100px;
+    padding: 150px 50px 0 50px;
+    margin: 0 auto;
 }
 
 #board_team_list_wrap .board_nav {
@@ -150,9 +151,9 @@
     
 }
 
-#board_team_list_wrap .wrap_board_team .wrap_board_team_list .wrap_board_team_list_title {
+/* #board_team_list_wrap .wrap_board_team .wrap_board_team_list .wrap_board_team_list_title {
     padding: 0 70px;
-}
+} */
 
 #board_team_list_wrap .wrap_board_team .wrap_board_team_list .wrap_board_team_list_title div {
     font-family: 'nanumsquare';
@@ -170,7 +171,7 @@
     /* float: left; */
     width: 100%;
     margin-top: 40px;
-    padding: 0px 70px;
+   /*  padding: 0px 70px; */
 }
 
 .wrap_board_team > .wrap_board_team_list .add .board_team_list_content {
@@ -212,7 +213,7 @@
 
 .wrap_board_team_list .page_nav {
     margin-top: 25px; 
-    padding: 0px 70px;
+    /* padding: 0px 70px; */
     justify-content: space-between; 
     text-align: center; /* 추가 */
     justify-content: center; /* 변경 */
@@ -223,7 +224,7 @@
     list-style: none;
     justify-content: center; /* 페이지네이션을 가운데 정렬 */
     padding: 0;
-   
+    height: 36px;
     margin: auto; /* 추가 */
 }
 
@@ -273,7 +274,7 @@
     margin-top: 50px;
     display: flex;
     align-items: center;
-    padding: 0px 70px;
+    /* padding: 0px 70px; */
 }
 
 .board_team_search .board_team_search_box {

@@ -20,7 +20,9 @@ deleteButton.addEventListener('click', (e) => {
 var iframe = document.querySelector('.comment_box > iframe');
 
 iframe.addEventListener('load', function() {
-	iframe.style.height = iframe.contentDocument.body.scrollHeight + 'px';
+	var height = iframe.contentDocument.body.scrollHeight + 20;
+	iframe.style.height = height + 'px';
+	iframe.parentElement.style.height = height + 'px';
 });
 
 

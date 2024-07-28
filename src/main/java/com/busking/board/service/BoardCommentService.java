@@ -23,4 +23,6 @@ public interface BoardCommentService {
 	void writeCommentTeam(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
 	void writeCommentAsk(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
+	void writeReplyFree(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

@@ -8,33 +8,45 @@
     <select id="getList" parameterType="hashMap" resultType="com.busking.board.model.BoardNewsDTO">
         SELECT NEWS_NUM, NEWS_TITLE, NEWS_WRITER, NEWS_REGDATE, NEWS_HIT 
         FROM ( 
-            SELECT ROWNUM AS RN, 
-                   B.* 
-            FROM BOARD_NEWS B 
-            WHERE NEWS_DELETED = 'F' 
-            AND 1 = 1 
-            <if test="type != null and type != ''">
-                <choose>
-                    <when test="type == 'title'">
-                        AND B.NEWS_TITLE LIKE '%' || #{target} || '%' 
-                    </when>
-                    <when test="type == 'content'">
-                        AND B.NEWS_CONTENT LIKE '%' || #{target} || '%' 
-                    </when>
-                    <when test="type == 'writer'">
-                        AND B.NEWS_WRITER LIKE '%' || #{target} || '%' 
-                    </when>
-                    <when test="type == 'all'">
-                        AND (B.NEWS_TITLE LIKE '%' || #{target} || '%' 
-                             OR B.NEWS_CONTENT LIKE '%' || #{target} || '%' 
-                             OR B.NEWS_WRITER LIKE '%' || #{target} || '%') 
-                    </when>
-                </choose>
-            </if>
-            ORDER BY NEWS_NUM DESC 
+        	SELECT A.*, ROWNUM AS RN 
+        	FROM (
+        		SELECT B.* 
+	            FROM BOARD_NEWS B 
+	            WHERE NEWS_DELETED = 'F' 
+	            AND 1 = 1 
+	            <choose>
+	            	<when test="type != null and type != ''">
+		                <choose>
+		                    <when test="type == 'title'">
+		                    	/*+ INDEX(B IDX_BOARD_NEWS_TITLE) */ 
+		                        AND B.NEWS_TITLE LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'content'">
+		                        AND B.NEWS_CONTENT LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'writer'">
+		                    	 /*+ INDEX(B IDX_BOARD_NEWS_WRITER) */ 
+		                        AND B.NEWS_WRITER LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'all'">
+		                    	 /*+ INDEX(B PK_IDX_BOARD_NEWS) */ 
+		                        AND (B.NEWS_TITLE LIKE '%' || #{target} || '%' 
+		                             OR B.NEWS_CONTENT LIKE '%' || #{target} || '%' 
+		                             OR B.NEWS_WRITER LIKE '%' || #{target} || '%') 
+		                    </when>
+		                </choose>
+		            </when>
+		            <otherwise>
+		            	/*+ INDEX(B PK_IDX_BOARD_NEWS) */ 
+		            </otherwise>
+	            </choose>
+            
+            	ORDER BY NEWS_NUM DESC 
+            ) A  	
         ) 
         WHERE RN > (#{page.pageNum} - 1) * #{page.amount} 
-          AND #{page.pageNum} * #{page.amount} >= RN  
+        AND #{page.pageNum} * #{page.amount} >= RN
+ 
     </select>
 	
 	<select id="getTotal" resultType="int">

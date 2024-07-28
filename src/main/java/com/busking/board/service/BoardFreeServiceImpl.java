@@ -2,6 +2,7 @@ package com.busking.board.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -126,6 +127,9 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		sql.close();
 		
 		// response
+		Timestamp regdate = dto.getFreeRegdate();
+		long regdateMillis = regdate.getTime();
+		request.setAttribute("regdate", regdateMillis);
 		request.setAttribute("dto", dto);
 		request.setAttribute("like", like);
 		request.getRequestDispatcher("board_free_content.jsp").forward(request, response);

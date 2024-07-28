@@ -254,9 +254,6 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		dto.setComAskContent(content);
 		dto.setComAskWriter(writer);
 		
-		BoardAskDTO dtoTeam = new BoardAskDTO();
-		dtoTeam.setAskNum(bno);
-		
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);		
@@ -265,6 +262,46 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		
 		// response
 		response.sendRedirect("board_list.boardAsk");
+		
+	}
+	
+	@Override
+	public void writeReplyFree(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// request
+		String bno = request.getParameter("bno");
+		String reply = request.getParameter("reply");
+		String content = request.getParameter("content");
+		
+		System.out.println(reply + ", " + bno);
+		
+		HttpSession session = request.getSession();
+		String writer = (String)session.getAttribute("userId");
+		
+		// DTO
+		CommentFreeDTO dto = new CommentFreeDTO();
+		dto.setComFreeBno(bno);
+		dto.setComFreeContent(content);
+		dto.setComFreeWriter(writer);
+		dto.setComFreeReply(reply);
+		
+		BoardFreeDTO dtoFree = new BoardFreeDTO();
+		dtoFree.setFreeNum(bno);
+		
+		// Mapper
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);
+		BoardFreeMapper mapperFree = sql.getMapper(BoardFreeMapper.class);
+		
+		mapper.writeReplyFree(dto);
+		int total = mapper.getCommentFreeCount(bno);
+		dtoFree.setFreeCmtCount(total);
+		mapperFree.updateCmtCount(dtoFree);
+		sql.close();
+		
+		// response
+		request.setAttribute("bno", bno);
+		request.getRequestDispatcher("board_comment_free_list.comment").forward(request, response);
 		
 	}
 	

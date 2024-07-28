@@ -163,8 +163,9 @@ window.onload = function() {
 	Array.from(pageItems)
 		 .filter(i => i.dataset.page == pageNum)
 		 .forEach(item => item.classList.add("active"));
-		 	
+	 	
 }
+
 </script>
     
 <%@ include file="../include/footer.jsp" %>

@@ -8,33 +8,45 @@
     <select id="getList" parameterType="hashMap" resultType="com.busking.board.model.BoardFreeDTO">
         SELECT FREE_NUM, FREE_TITLE, FREE_WRITER, FREE_REGDATE, FREE_HIT 
         FROM ( 
-            SELECT ROWNUM AS RN, 
-                   B.* 
-            FROM BOARD_FREE B 
-            WHERE FREE_DELETED = 'F' 
-            AND 1 = 1 
-            <if test="type != null and type != ''">
-                <choose>
-                    <when test="type == 'title'">
-                        AND B.FREE_TITLE LIKE '%' || #{target} || '%' 
-                    </when>
-                    <when test="type == 'content'">
-                        AND B.FREE_CONTENT LIKE '%' || #{target} || '%' 
-                    </when>
-                    <when test="type == 'writer'">
-                        AND B.FREE_WRITER LIKE '%' || #{target} || '%' 
-                    </when>
-                    <when test="type == 'all'">
-                        AND (B.FREE_TITLE LIKE '%' || #{target} || '%' 
-                             OR B.FREE_CONTENT LIKE '%' || #{target} || '%' 
-                             OR B.FREE_WRITER LIKE '%' || #{target} || '%') 
-                    </when>
-                </choose>
-            </if>
-            ORDER BY FREE_NUM DESC 
+        	SELECT A.*, ROWNUM AS RN 
+        	FROM (
+        		SELECT B.* 
+	            FROM BOARD_FREE B 
+	            WHERE FREE_DELETED = 'F' 
+	            AND 1 = 1 
+	            <choose>
+	            	<when test="type != null and type != ''">
+		                <choose>
+		                    <when test="type == 'title'">
+		                    	/*+ INDEX(B IDX_BOARD_FREE_TITLE) */ 
+		                        AND B.FREE_TITLE LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'content'">
+		                        AND B.FREE_CONTENT LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'writer'">
+		                    	 /*+ INDEX(B IDX_BOARD_FREE_WRITER) */ 
+		                        AND B.FREE_WRITER LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'all'">
+		                    	 /*+ INDEX(B PK_IDX_BOARD_FREE) */ 
+		                        AND (B.FREE_TITLE LIKE '%' || #{target} || '%' 
+		                             OR B.FREE_CONTENT LIKE '%' || #{target} || '%' 
+		                             OR B.FREE_WRITER LIKE '%' || #{target} || '%') 
+		                    </when>
+		                </choose>
+		            </when>
+		            <otherwise>
+		            	/*+ INDEX(B PK_IDX_BOARD_FREE) */ 
+		            </otherwise>
+	            </choose>
+            
+            	ORDER BY FREE_NUM DESC 
+            ) A  	
         ) 
         WHERE RN > (#{page.pageNum} - 1) * #{page.amount} 
-          AND #{page.pageNum} * #{page.amount} >= RN  
+        AND #{page.pageNum} * #{page.amount} >= RN
+ 
     </select>
 	
 	<select id="getTotal" resultType="int">

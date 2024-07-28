@@ -42,21 +42,58 @@
 	        <h2>댓글</h2>
 	        <div class="board_comment_list"> <!--댓글 리스트 영역-->
 	        	<c:forEach var="dto" items="${commentList }">
-		            <div class="board_comment_list_box">
-		                <div class="board_comment_header">
-		                    <div class="board_comment_info">
-		                        <div class="writer">${dto.comFreeWriter }</div>
-		                        <div class="date"><fmt:formatDate value="${dto.comFreeRegdate }" pattern="yy.MM.dd"/></div>
-		                    </div>
-		                    <button class="board_comment_like" onclick="location.href='board_comment_like.comment?comNum=${dto.comFreeNum}'">
-		                        <img src="../resources/img/board_img/like.png" alt="">
-		                        <span class="like_count" id="likeCount1">${dto.comFreeLikeCount }</span>
-		                    </button>
-		                </div>
-		                <div class="board_comment_content">
-		                    ${dto.comFreeContent }
-		                </div>
-		            </div>
+		            <c:choose>
+		            	<c:when test="${dto.comFreeReply == 'ROOT' }">
+		            		<div class="board_comment_list_box">
+				                <div class="board_comment_header">
+				                    <div class="board_comment_info">
+				                        <div class="writer">${dto.comFreeWriter }</div>
+				                        <div class="date"><fmt:formatDate value="${dto.comFreeRegdate }" pattern="yy.MM.dd"/></div>
+				                    </div>
+				                    <button class="board_comment_like" onclick="location.href='board_comment_like.comment?comNum=${dto.comFreeNum}'">
+				                        <img src="../resources/img/board_img/like.png" alt="">
+				                        <span class="like_count" id="likeCount1">${dto.comFreeLikeCount }</span>
+				                    </button>
+				                </div>
+				                <div class="board_comment_content">
+				                    ${dto.comFreeContent }
+				                </div>
+				                <div class="comment-section" style="display: none">
+						            <form action="board_comment_free_reply.comment" method="post">
+				                        <div class="comment">
+				                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="content"></textarea>
+				                            <input class="submit-comment" value="등록" type="submit">
+				                            <input type="hidden" value="${bno }" name="bno">
+				                            <input type="hidden" value="${dto.comFreeNum }" name="reply">
+				                        </div>
+			                   		</form>
+			                   	</div>
+			                </div>
+			            </c:when>
+		                <c:otherwise>
+		                   	<div class="reply">
+		                   		<div class="board_comment_header">
+		                   			<div class="reply_img">
+		                   				<img src="../resources/img/board_img/ico_reply.png" alt="reply">
+		                   			</div>
+				                    <div class="board_comment_info">
+				                        <div class="writer">${dto.comFreeWriter }</div>
+				                        <div class="date"><fmt:formatDate value="${dto.comFreeRegdate }" pattern="yy.MM.dd"/></div>
+				                    </div>
+				                    <div class="board_comment_content">
+				                    	<p>${dto.comFreeContent }</p>
+				                	</div>
+				                	<div class="reply_like">
+					                    <button class="board_comment_like" onclick="location.href='board_comment_like.comment?comNum=${dto.comFreeNum}'">
+					                        <img src="../resources/img/board_img/like.png" alt="like">
+					                        <span class="like_count" id="likeCount1">${dto.comFreeLikeCount }</span>
+					                    </button>
+				                    </div>
+				                </div>
+				                
+				        	</div>
+	                   	</c:otherwise>
+	                 </c:choose>
 		         </c:forEach>
 	        </div>
 	        <!--댓글 작성 영역-->
@@ -72,5 +109,20 @@
 	        </form>
 	    </div>
 	</section>
+	<script>
+		document.querySelectorAll('.board_comment_list_box').forEach(box => {
+		    box.addEventListener('click', () => {
+		        const commentSection = box.querySelector('.comment-section');
+		        if(commentSection == null) return;
+		        commentSection.style.display = commentSection.style.display === 'none' ? 'block' : 'none';
+		    });
+		});
+	
+		document.querySelectorAll('.comment textarea').forEach(textarea => {
+		    textarea.addEventListener('click', (event) => {
+		        event.stopPropagation();
+		    });
+		});
+	</script>
 
 </body>

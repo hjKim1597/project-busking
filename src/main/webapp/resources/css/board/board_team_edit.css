@@ -8,12 +8,12 @@
 * {font-family: 'NanumSquareNeo';}
 
 @media (min-width:1200px) {
-    .resForm-wrap {
+    #board_write_wrap {
         width: 1170px;
     }
 }
 @media (min-width:992px) and (max-width:1199px) {
-    .resForm-wrap {
+    #board_write_wrap {
         width: 970px;
     }
 

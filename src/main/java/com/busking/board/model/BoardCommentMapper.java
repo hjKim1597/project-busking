@@ -28,4 +28,7 @@ public interface BoardCommentMapper {
 	public int getCommentNewsCount(String comNewsBno);
 	
 	public int getCommentTeamCount(String comTeamBno);
+	
+	// 대댓글 등록
+	public void writeReplyFree(CommentFreeDTO dto);
 }
