@@ -54,7 +54,7 @@ public class AdminController extends HttpServlet {
 			
 			service = new AdminServiceImpl();
 			service.getList(request, response);
-		}
+		}	
 
 	}
 
