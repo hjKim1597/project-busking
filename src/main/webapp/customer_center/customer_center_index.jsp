@@ -114,7 +114,8 @@
                                                 </form>
                                             </div>
 
-                                            <div class="board_free_search" id="layout3">
+											<!-- 검색 -->
+                                            <!-- <div class="board_free_search" id="layout3">
                                                 <select class="board_free_search_box">
                                                     <option value="notice">전체</option>
                                                     <option value="writer">작성자</option>
@@ -125,7 +126,7 @@
                                                 <span>
                                                     <button class="btn" onclick="실행할JS함수/검색기능" type="submit">검색</button>
                                                 </span>
-                                            </div>
+                                            </div> -->
 
                                         </div>
                                     </div>
