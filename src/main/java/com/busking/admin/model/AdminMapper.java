@@ -18,6 +18,9 @@ public interface AdminMapper {
 
 	// 예약 대기상태 업데이트
 	public int updateResultN(String resNum);
+	
+	// 예약 상태 조회
+	public String getStatus(String resNum);
 
 	
 

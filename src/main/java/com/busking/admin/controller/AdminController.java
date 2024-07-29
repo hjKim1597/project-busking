@@ -48,20 +48,23 @@ public class AdminController extends HttpServlet {
 		AdminService service = new AdminServiceImpl();
 
 		if (command.equals("/mypage/adminPage.admin")) {
+			service = new AdminServiceImpl();
+			service.getList(request, response);
+
+		} else if (command.equals("/mypage/adminPageT.admin")) {
+			service = new AdminServiceImpl();
+			service.updateResultT(request, response);
+		} else if (command.equals("/mypage/adminPageF.admin")) {
+			service = new AdminServiceImpl();
+			service.updateResultF(request, response);
+		} else if (command.equals("/mypage/adminPageN.admin")) {
+			service = new AdminServiceImpl();
+			service.updateResultN(request, response);
+
 			/*
 			 * String page = request.getParameter("page"); if(page == null) page = "1";
 			 * request.setAttribute("page", page);
 			 */
-			String action = request.getParameter("action");
-			if (action == null) {
-				service.getList(request, response);
-			} else if (action.equals("updateResultT")) {
-				service.updateResultT(request, response);
-			} else if (action.equals("updateResultF")) {
-				service.updateResultF(request, response);
-			} else if (action.equals("updateResultF")) {
-				service.updateResultF(request, response);
-			}
 
 		}
 	}
