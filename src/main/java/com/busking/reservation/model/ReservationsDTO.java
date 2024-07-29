@@ -17,7 +17,7 @@ public class ReservationsDTO {
 	private String userId;
 	
 	public ReservationsDTO() {
-		this.resResult = "F"; // 기본값 F
+		this.resResult = "W"; // 기본값 W
 	}
 
 	public ReservationsDTO(int resNum, Date resDate, Date resRegDate, int resCount, String resContent, String resAmp,

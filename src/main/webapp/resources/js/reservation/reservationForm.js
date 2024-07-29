@@ -54,6 +54,15 @@ function validateForm() {
 function initializeCalendar() {
     var date = new Date();
     var nextMonth = new Date(date.getFullYear(), date.getMonth() + 1); // Calculate next month
+// 달력 script
+// 날짜 객체 생성
+var date = new Date();
+// 달력 연도
+var calendarYear = date.getFullYear();
+// 달력 월
+var calendarMonth = date.getMonth() + 2;
+// 달력 일
+var calendarToday = date.getDate();
 
     var calendarYear = nextMonth.getFullYear();
     var calendarMonth = nextMonth.getMonth() + 1; // Adjust to 1-based index for display
