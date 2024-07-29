@@ -1,6 +1,7 @@
 package com.busking.reservation.model;
 
 import java.util.List;
+import java.util.Map;
 
 import com.busking.mypage.model.UserJoinDTO;
 
@@ -17,4 +18,8 @@ public interface ReservationMapper {
     void createReservation(ReservationsDTO reservation);
     
     UserJoinDTO getUserById(String userId); // 사용자 정보 가져오기
+    
+    List<ReservationLocationDTO> searchLocations(Map<String, Object> paramss);
+    
+    
 }

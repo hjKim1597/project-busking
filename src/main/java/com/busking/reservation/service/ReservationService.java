@@ -22,4 +22,6 @@ public interface ReservationService {
     void createReservation(ReservationsDTO reservation) throws ServletException, IOException;
     
     UserJoinDTO getUserById(String userId) throws ServletException, IOException;
+    
+    List<ReservationLocationDTO> searchLocations(String searchText, String locaPlace) throws ServletException, IOException;
 }

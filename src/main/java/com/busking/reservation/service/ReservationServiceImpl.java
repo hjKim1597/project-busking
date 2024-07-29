@@ -48,4 +48,10 @@ public class ReservationServiceImpl implements ReservationService {
     public UserJoinDTO getUserById(String userId) throws ServletException, IOException {
         return reservationDAO.getUserById(userId);
     }
+
+	@Override
+	public List<ReservationLocationDTO> searchLocations(String searchText, String locaPlace)
+			throws ServletException, IOException {
+		return reservationDAO.searchLocations(searchText, locaPlace);
+	}
 }

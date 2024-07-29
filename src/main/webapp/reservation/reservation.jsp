@@ -7,10 +7,10 @@
 
 <div class="res-wrap">
     <div class="res-search">
-        <form action="#" method="post">
+        <form action="locationSearch.reservation" method="post">
             <fieldset>
                 <legend class="hide">검색영역</legend>
-                <select name="locations" id="locations" class="select-loca">
+                <select name="locaPlace" id="locations" class="select-loca">
                     <option value="*">전체</option>
                     <option value="광나루">광나루</option>
                     <option value="잠실">잠실</option>
@@ -59,5 +59,6 @@
         </c:forEach>
     </div>
 </div>        
-           
+
+<script src="../resources/js/reservation/reservation.js"></script>           
 <%@ include file="../include/footer.jsp" %>
