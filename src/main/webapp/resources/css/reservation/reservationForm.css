@@ -589,8 +589,7 @@
 	color: white;
 	border: 1px solid #5fd7ff;
 }
-/* 사진 전체보기 디자인 */
-/* 오버레이 스타일링 */
+/* 오버레이스타일*/
 #photo-overlay {
     display: none; /* 기본적으로 숨김 */
     position: fixed; /* 화면에 고정 */
