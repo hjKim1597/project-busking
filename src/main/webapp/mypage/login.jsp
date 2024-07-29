@@ -29,12 +29,12 @@
                 </form>
             </div>
             
-            <p>sns 연동 로그인</p>
+            <p>홈페이지 바로가기</p>
             <div class="social-login">
                 <div class="icon-all">
-                    <a href=""><img src="../resources/img/Naver.png" alt=""></a>
-                    <a href=""><img src="../resources/img/Kakao.png" alt=""></a>
-                    <a href=""class="google"><img src="../resources/img/web_neutral_sq_na@4x.png" alt=""></a>
+                    <a href="https://www.naver.com/"><img src="../resources/img/Naver.png" alt=""></a>
+                    <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk"><img src="../resources/img/Kakao.png" alt=""></a>
+                    <a href="https://www.google.com/"class="google"><img src="../resources/img/web_neutral_sq_na@4x.png" alt=""></a>
                 </div>
             </div>
         </div>
