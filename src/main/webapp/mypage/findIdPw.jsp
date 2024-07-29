@@ -47,8 +47,6 @@
         // 이메일과 전화번호 입력 값을 가져옴
         var email = document.getElementById('emailId').value;
         var phone = document.getElementById('phoneId').value;
-        var email = document.getElementById('email-findId').value;
-        var phone = document.getElementById('phone-findId').value;
 
         // fetch API를 사용하여 서버에 요청을 보냄
         fetch('${pageContext.request.contextPath}/userjoin/findId.mypage?email=' + email + '&phone=' + phone)
@@ -65,8 +63,7 @@
         // 아이디와 전화번호 입력 값을 가져옴
         var id = document.getElementById('idPw').value;
         var phone = document.getElementById('phonePw').value;
-        var id = document.getElementById('id-findPw').value;
-        var phone = document.getElementById('phone-findPw').value;
+
 
         // fetch API를 사용하여 서버에 요청을 보냄
         fetch('${pageContext.request.contextPath}/userjoin/findPw.mypage?id=' + id + '&phone=' + phone)

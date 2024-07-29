@@ -27,7 +27,7 @@
             <p>회원가입이 성공적으로 완료되었습니다.</p>
             <div class="button-container">
                 <a href="${pageContext.request.contextPath}/index.main" class="btn-custom">메인페이지</a>
-                <a href="${pageContext.request.contextPath}/userjoin/login.mypage" class="btn-custom">로그인</a>
+                <a href="${pageContext.request.contextPath}/userjoin/loginPage.mypage" class="btn-custom">로그인</a>
             </div>
         </div>
     </div>
