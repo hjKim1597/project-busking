@@ -39,7 +39,6 @@
 
 				<div class="item">
 					<a
-					
 						href="${pageContext.request.contextPath }/customer_center/customer_center_guide.customer"><img
 						src="${pageContext.request.contextPath }/resources/img/index/banner3.png"
 						alt="guide"></a>
@@ -82,9 +81,6 @@
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
 										<a
 										href="${pageContext.request.contextPath }/customer_center/customer_center?noticeNum=${dto.noticeNum }"
-										
-										
-												
 										class="truncate with-style">${dto.noticeTitle}</a>
 
 									</td>
@@ -146,7 +142,9 @@
 								<tr>
 									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
-										<a href="${pageContext.request.contextPath }/customer_center/getFAQContent.customer?faqNum=${dto.faqNum }" class="truncate with-style">${dto.faqTitle}</a>
+										<a
+										href="${pageContext.request.contextPath }/customer_center/getFAQContent.customer?faqNum=${dto.faqNum }"
+										class="truncate with-style">${dto.faqTitle}</a>
 									</td>
 									<td class="preview-date"><fmt:formatDate
 											value="${dto.faqRegdate}" pattern="yy.MM.dd" /></td>
@@ -191,7 +189,16 @@
 							data-link="${pageContext.request.contextPath }/reservation/reservationForm.reservation?locaId=8"></li>
 						<li><img
 							src="${pageContext.request.contextPath }/resources/img/index/4.jpg"
-							alt="1" width="100" data-link="reservation/reservationForm.reservation?locaId=9"></li>
+							alt="1" width="100"
+							data-link="${pageContext.request.contextPath }reservation/reservationForm.reservation?locaId=9"></li>
+						<li><img
+							src="${pageContext.request.contextPath }/resources/img/index/5.jpg"
+							alt="1" width="100"
+							data-link="${pageContext.request.contextPath }/reservation/reservationForm.reservation?locaId=17"></li>
+						<li><img
+							src="${pageContext.request.contextPath }/resources/img/index/6.jpg"
+							alt="1" width="100"
+							data-link="${pageContext.request.contextPath }/reservation/reservationForm.reservation?locaId=18"></li>
 					</ul>
 
 				</div>

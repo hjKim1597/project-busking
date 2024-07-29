@@ -6,13 +6,19 @@ import java.util.Map;
 //import com.busking.util.paging.PageVO;
 
 public interface AdminMapper {
-	
-	//예약 확정 목록 조회
+
+	// 예약 확정 목록 조회
 	public ArrayList<AdminPageDTO> getList(Map<String, Object> params);
 
-	 // 예약 상태 업데이트
-	 public int updateResult(Map<String, Object> params);
-	 
+	// 예약 승인상태 업데이트
+	public int updateResultT(String userId);
+
+	// 예약 거절상태 업데이트
+	public int updateResultF(String userId);
+
+	// 예약 대기상태 업데이트
+	public int updateResultN(String userId);
+
 	/*
 	 * // 글 개수 조회 public int getTotal();
 	 */

@@ -52,9 +52,25 @@ public class BoardTeamServiceImpl implements BoardTeamService {
 		sql.close();
 		
 		// response
-		request.setAttribute("teamList", list);
-		request.setAttribute("pageVO", pageVO);
-		request.getRequestDispatcher("board_team_list.jsp").forward(request, response);
+		if(list.size() == 0 && type != null) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('검색 결과가 없습니다.');");
+			out.println("location.href='board_list.boardTeam';");
+			out.println("</script>");
+			return;
+		} else if(type == null){
+			request.setAttribute("teamList", list);
+			request.setAttribute("pageVO", pageVO);
+			request.getRequestDispatcher("board_team_list.jsp").forward(request, response);
+			return;
+		} else {
+			request.setAttribute("teamList", list);
+			request.setAttribute("pageVO", pageVO);
+			request.getRequestDispatcher("board_team_list.jsp?type=" + type + "&target=" + target).forward(request, response);
+			return;
+		}
 	}
 	
 	@Override

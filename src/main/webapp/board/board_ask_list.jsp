@@ -44,7 +44,7 @@
 			                    	<c:when test="${sessionScope.userId == dto.askWriter }">
 			                        	<form action="board_edit.boardAsk" method="post">
 					                        <div class="comment">
-					                            <textarea rows="2" cols="50" placeholder="수정할 내용을 입력하세요" name="content"></textarea>
+					                            <textarea rows="2" cols="50" placeholder="수정할 내용을 입력하세요" name="content" required></textarea>
 					                            <input type="submit" class="submit-comment edit" value="수정">
 					                            <input type="button" class="submit-comment delete" value="삭제" onclick="location.href='board_delete.boardAsk?bno=${dto.askNum}';">
 					                            <input type="hidden" value="${dto.askNum }" name="bno">
@@ -54,7 +54,7 @@
 			                        <c:otherwise>
 				                    	<form action="board_comment_ask_write.comment" method="post">
 					                        <div class="comment">
-					                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="content"></textarea>
+					                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="content" required></textarea>
 					                            <input class="submit-comment" value="등록" type="submit">
 					                            <input type="hidden" value="${dto.askNum }" name="bno">
 					                        </div>

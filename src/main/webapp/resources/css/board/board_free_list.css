@@ -135,6 +135,7 @@ thead th, tbody td {
 #board_free_list_wrap {
     padding: 150px 50px 0 50px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 #board_free_list_wrap .board_nav {

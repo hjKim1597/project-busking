@@ -1,7 +1,6 @@
 package com.busking.reservation.model;
 
 import java.sql.Date;
-import java.time.LocalTime;
 
 public class ReservationsDTO {
 	
@@ -12,16 +11,16 @@ public class ReservationsDTO {
 	private String resContent;
 	private String resAmp;
 	private String resResult;
-	private LocalTime resTime;
+	private String resTime;
 	private int locaId;
 	private String userId;
 	
 	public ReservationsDTO() {
-		this.resResult = "F"; // 기본값 F
+		this.resResult = "W"; // 기본값 W
 	}
 
 	public ReservationsDTO(int resNum, Date resDate, Date resRegDate, int resCount, String resContent, String resAmp,
-			String resResult, LocalTime resTime, int locaId, String userId) {
+			String resResult, String resTime, int locaId, String userId) {
 		super();
 		this.resNum = resNum;
 		this.resDate = resDate;
@@ -91,11 +90,11 @@ public class ReservationsDTO {
 		this.resResult = resResult;
 	}
 
-	public LocalTime getResTime() {
+	public String getResTime() {
 		return resTime;
 	}
 
-	public void setResTime(LocalTime resTime) {
+	public void setResTime(String resTime) {
 		this.resTime = resTime;
 	}
 
