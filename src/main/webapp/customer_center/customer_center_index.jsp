@@ -25,104 +25,6 @@
         </div>
         <!-- 공지사항 게시판 -->
         <div class="board">
-<<<<<<< Updated upstream
-            <div class="service-board">
-                <div class="container">
-                    <div class="page-header">
-                        <h2>공지사항</h2>
-                    </div>
-
-<!--                         <p>관리자만 작성 가능, 글번호, 월별 허가된 공연 목록</p>
- -->
-
-                        <div class="table-responsive">
-                            <!-- 게시판 -->
-
-
-                            <section id="board_free_list_wrap">
-                                <div class="wrap_board_free">
-                                    <div class="wrap_board_free_list">
-                                        <div class="board_free_list_box">
-
-                                            <table class="board_free_list_content" id="layout1">
-                                                <div id="board_font" >
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="nth1">글 번호</th>
-                                                            <th class="nth2">작성자</th>
-                                                            <th class="nth3">제목</th>
-                                                            <th class="nth4">날짜</th>
-                                                            <th class="nth5">조회수</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <!--데이터 받아오기-->
-                                                        
-                                                        <%-- <c:forEach var="dto" items="${noticeList }">
-															<tr>
-																<td>${dto.noticeNum }</td>
-																<td>${dto.managerId }</td>
-																<td>
-																	<!-- 17) get으로 값 넘기기 href="getContent.board?키=값" 으로 --> 
-																	<a href="getContent.board?bno=${dto.bno} ">${dto.title }</a>
-																</td>
-																<td><fmt:formatDate value="${dto.regdate }"
-																		pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" /></td>
-																<td>${dto.hit }</td>
-															</tr>
-														</c:forEach> --%>
-                                               			
-								                        <c:forEach var="dto" items="${noticeList }">
-															<tr>
-																<td>${dto.noticeNum }</td>
-																<td>${dto.managerId }</td>																
-																<td><a href="getContent.customer?noticeNum=${dto.noticeNum }">${dto.noticeTitle }</a></td>
-																<td><fmt:formatDate value="${dto.noticeRegdate }" pattern="yy.MM.dd"/></td>
-																<td>${dto.noticeHit }</td>
-															</tr>
-														</c:forEach>
-							
-                                                    </tbody>
-                                                </div>
-                                            </table>
-
-                                            <!-- 페이지 번호 -->
-                                            <div class="page_nav" id="page_num123">
-                                                <ul class="center">
-						                            <li id="page_first"><a href="customer_center_index.customer"><img src="../resources/img/board_img/ico_first.gif" alt="처음페이지"></a></li>
-						                            <c:if test="${pageVO.prev }">
-							                            <li id="page_prev"><a href="customer_center_index.customer?page=${pageVO.pageNum - 1 }"><img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>                            
-						                            </c:if>
-						                            <c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
-						                            	<li class="page_li" data-page="${i }"><a href="customer_center_index.customer?page=${i }" title="1페이지">${i }</a></li>	
-						                            </c:forEach>
-						                            <c:if test="${pageVO.next }">
-							                            <li id="page_next"><a href="customer_center_index.customer?page=${pageVO.pageNum + 1 }"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
-						                            </c:if>
-						                            <li id="page_last"><a href="customer_center_index.customer?page=${pageVO.endPage }"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
-						                        </ul>
-                                                <form action="customer_center_index_write.jsp" class="right">
-                                                    <button value="글쓰기" onclick="">작성</button>
-                                                </form>
-                                            </div>
-
-											<!-- 검색 -->
-                                            <!-- <div class="board_free_search" id="layout3">
-                                                <select class="board_free_search_box">
-                                                    <option value="notice">전체</option>
-                                                    <option value="writer">작성자</option>
-                                                    <option value="title">제목</option>
-                                                    <option value="content">내용</option>
-                                                </select>
-                                                <input placeholder="검색어를 입력해 주세요" type="text">
-                                                <span>
-                                                    <button class="btn" onclick="실행할JS함수/검색기능" type="submit">검색</button>
-                                                </span>
-                                            </div> -->
-
-
-                                        </div>
-=======
 	        <!-- 공지사항 목록 -->
 	        <div class="board_list">
 	        	<div class="board_list_title">
@@ -249,7 +151,6 @@
 			</div>
 		</div>
 	</section>
->>>>>>> Stashed changes
 
     <script>
 	    var pageNum = '${page}';
