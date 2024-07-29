@@ -225,5 +225,7 @@ var locaInfo = "${locaInfo}";
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e128e18b3b784844e96c9c2db2a8e6a"></script>
 <script src="../resources/js/reservation/reservationForm.js"></script>
-
+<script>
+	
+</script>
 <%@ include file="../include/footer.jsp" %>
