@@ -19,4 +19,7 @@ public interface AdminService {
 	// 예약 대기관리
 	void updateResultN(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
+	// 예약 상태 조회
+	void getStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
 }
