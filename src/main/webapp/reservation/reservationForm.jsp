@@ -26,7 +26,7 @@ var locaInfo = "${locaInfo}";
         <div class="resForm-top-loca">
             <div class="resForm-top-loca-right">
                 <div class="resForm-top-loca-img">
-                    <img src="${location.locaPicPath}" alt="${location.locaName}">
+                    <img id="locationImage" src="${location.locaPicPath}" alt="${location.locaName}">
                 </div>
                 <div class="resForm-top-loca-img-hover">
                     <strong>자세히 보기</strong>
@@ -68,10 +68,10 @@ var locaInfo = "${locaInfo}";
         </div>
         <div class="resForm-mid-right">
             <div class="resForm-mid-button">
-                <button type="button" onclick="selectTime('10:00', '13:00')" class="time-btn">10:00 - 13:00</button>
-                <button type="button" onclick="selectTime('13:00', '16:00')" class="time-btn">13:00 - 16:00</button>
-                <button type="button" onclick="selectTime('16:00', '19:00')" class="time-btn">16:00 - 19:00</button>
-                <button type="button" onclick="selectTime('19:00', '22:00')" class="time-btn">19:00 - 22:00</button>
+                <button type="button" onclick="selectTime('10:00', '13:00')" class="time-btn btn1">10:00 - 13:00</button>
+                <button type="button" onclick="selectTime('13:00', '16:00')" class="time-btn btn2">13:00 - 16:00</button>
+                <button type="button" onclick="selectTime('16:00', '19:00')" class="time-btn btn3">16:00 - 19:00</button>
+                <button type="button" onclick="selectTime('19:00', '22:00')" class="time-btn btn4">19:00 - 22:00</button>
             </div>
             <div class="resForm-mid-controll">
                 <form action="reservationPost.reservation" method="post" id="reservationForm" onsubmit="return validateForm()">
@@ -221,11 +221,37 @@ var locaInfo = "${locaInfo}";
         </div>
 
     </div>
+    <!-- 오버레이 요소 추가 -->
+    <div id="photo-overlay" style="display: none;">
+        <span class="close-btn">&times;</span>
+        <img src="" alt="Enlarged Photo">
+    </div>
 </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e128e18b3b784844e96c9c2db2a8e6a"></script>
 <script src="../resources/js/reservation/reservationForm.js"></script>
 <script>
+	var overlay = document.getElementById('photo-overlay');
+	var overlayImage = overlay.querySelector('img');
+	var closeBtn = overlay.querySelector('.close-btn');
+	var locationImage = document.getElementById('locationImage');
 	
+	// 이미지 클릭 이벤트 리스너 추가
+	locationImage.onclick = function() {
+	    overlayImage.src = this.src;
+	    overlay.style.display = 'flex';
+	};
+	
+	// 닫기 버튼 클릭 이벤트 리스너 추가
+	closeBtn.onclick = function() {
+	    overlay.style.display = 'none';
+	};
+	
+	// 오버레이 외부 클릭 시 오버레이를 닫는 이벤트 리스너 추가
+	overlay.onclick = function(e) {
+	    if (e.target === overlay) {
+	        overlay.style.display = 'none';
+	    }
+	};
 </script>
 <%@ include file="../include/footer.jsp" %>

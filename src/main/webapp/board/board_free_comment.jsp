@@ -11,25 +11,16 @@
 	<title>Document</title>
 	
 	<!-- 부트스트랩 css 링크 -->
-	<link rel="stylesheet"
-		href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css">
 	<!-- 제이쿼리(부트스트랩보다 먼저 링크해야함) -->
-	<script
-		src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
 	<!-- 부트스트랩 js링크 -->
-	<script
-		src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
 
 	<!-- 웹폰트 -->
-	<link
-		href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
-		rel="stylesheet">
-	<link
-		href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css"
-		rel="stylesheet">
-	<link
-		href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css"
-		rel="stylesheet">
+	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 		
 	<!-- 댓글 css 링크 -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/board/board_free_comment.css">
@@ -61,10 +52,11 @@
 				                <div class="comment-section" style="display: none">
 						            <form action="board_comment_free_reply.comment" method="post">
 				                        <div class="comment">
-				                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="content"></textarea>
+				                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="content" required></textarea>
 				                            <input class="submit-comment" value="등록" type="submit">
 				                            <input type="hidden" value="${bno }" name="bno">
 				                            <input type="hidden" value="${dto.comFreeNum }" name="reply">
+				                            <input type="hidden" value="free" name="subject">
 				                        </div>
 			                   		</form>
 			                   	</div>
@@ -99,7 +91,7 @@
 	        <!--댓글 작성 영역-->
 	        <form action="board_comment_free_write.comment" method="post">
 		        <div class="form-group board_comment_write">
-		            <textarea class="form-control" rows="5" id="comment" name="content"></textarea>
+		            <textarea class="form-control" rows="5" id="comment" name="content" required></textarea>
 		        </div>
 		        <div class="board_comment_button">
 		        	<input type="submit" value="등록">
@@ -123,6 +115,7 @@
 		        event.stopPropagation();
 		    });
 		});
+		
 	</script>
 
 </body>

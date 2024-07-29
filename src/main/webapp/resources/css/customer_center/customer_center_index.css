@@ -1,7 +1,7 @@
 @import url(../default.css);
 @import url(customer_center_board_free_list.css);
 
-ul,
+/* ul,
 li,
 ol,
 dl,
@@ -13,9 +13,16 @@ img {
     max-width: 100%;
     height: auto;
 }
+ */
 
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
 
-
+thead th, tbody td {
+    border: 1px solid black;
+}
 /* 반응형 기준값 */
 @media (min-width:1200px) {
     #change {
@@ -34,8 +41,11 @@ img {
 @media (min-width:992px) and (max-width:1199px) {
     #change {
         width: 970px;
-        /* border: 1px solid rgb(255, 166, 0); */
-
+        padding: 10px 20px !important;
+        margin-top: 20px !important;
+    }
+    #change .board_nav #board_nav_wrap {
+        display: none;
     }
 
     /* 테이블 */
@@ -48,8 +58,11 @@ img {
 @media (min-width:768px) and (max-width:991px) {
     #change {
         width: 750px;
-        /* border: 1px solid rgb(0, 255, 191); */
-
+        padding: 10px 20px !important;
+        margin-top: 20px !important;
+    }
+    #change .board_nav #board_nav_wrap {
+        display: none;
     }
 
     /* 테이블 */
@@ -64,25 +77,25 @@ img {
 body {}
 
 /* 그리드 */
-.container .row {}
+.container  {}
 
 /* header */
-.container .row .header {}
+.container  .header {}
 
 
 /* 중앙 레이아웃 */
-#change .row {
+#change {
+    padding: 150px 50px 0 50px;
+    margin: 0 auto;
     overflow: hidden;
 }
 
-#change .row .content {
+#change .board_nav {
     /* border: 1px solid red; */
     float: left;
-    width: 250px;
-    margin-top: 40px;
 }
 
-#change .row .board {
+#change .board {
     /* border: 1px solid blue; */
     margin-top: 30px;
     width: 500px;
@@ -90,11 +103,14 @@ body {}
 
 
 /* 좌측 메뉴 */
-.container .row .content li .service_menu {
+#change .board_nav #board_nav_wrap.h1 {
+    font-family: 'nanumsquare';
+}
+.container  .content li .service_menu {
     margin-top: 60px;
 }
 
-.container .row .content li .service_menu nav {
+.container  .content li .service_menu nav {
     float: left;
     padding: 40px 10px;
     overflow: hidden;
@@ -110,7 +126,7 @@ body {}
 }
 
 
-.container .row .content li .service_menu nav h1 {
+.container  .content li .service_menu nav h1 {
     font-size: 24px;
     letter-spacing: 2px;
     display: block;
@@ -123,14 +139,14 @@ body {}
 
 }
 
-.container .row .content li .service_menu nav>.menu {
+.container  .content li .service_menu nav>.menu {
     float: left;
     width: 400px;
 
 
 }
 
-.container .row .content li .service_menu nav>.menu>li {
+.container  .content li .service_menu nav>.menu>li {
     padding: 15px 10px;
     letter-spacing: 1px;
     display: block;
@@ -139,43 +155,43 @@ body {}
 
 }
 
-.container .row .content li .service_menu a {
+.container  .content li .service_menu a {
     text-decoration: none;
     color: black;
     padding: 5px 5px;
 
 }
 
-.container .row .content li .service_menu a:hover {
+.container  .content li .service_menu a:hover {
     /* background-color: #9CD9D9; */
     border-radius: 20px;
 }
 
-.container .row .content li .service_menu nav .menu .nth1 a:hover {
+.container  .content li .service_menu nav .menu .nth1 a:hover {
     background-color: #9CD9D9;
     /* nth1의 마우스 오버 시 배경색 변경 */
 }
 
-.container .row .content li .service_menu nav .menu .nth2 a:hover {
+.container  .content li .service_menu nav .menu .nth2 a:hover {
     background-color: #8AC89A;
     /* nth1의 마우스 오버 시 배경색 변경 */
 }
 
-.container .row .content li .service_menu nav .menu .nth3 a:hover {
+.container  .content li .service_menu nav .menu .nth3 a:hover {
     background-color: #BAD98B;
     /* nth1의 마우스 오버 시 배경색 변경 */
 }
 
-.container .row .content li .service_menu nav .menu .nth4 a:hover {
+.container  .content li .service_menu nav .menu .nth4 a:hover {
     background-color: #78C2AD;
     /* nth1의 마우스 오버 시 배경색 변경 */
 }
 
-.container .row .content li .service_menu nav>h1 {
+.container  .content li .service_menu nav>h1 {
     font-size: 20px;
 }
 
-.container .row .content li .service_menu .menu li strong a {
+.container  .content li .service_menu .menu li strong a {
     font-size: 16px;
 }
 
@@ -194,29 +210,73 @@ body {}
 }
 
 /* 게시판 버튼 */
-.service-board .pagination {
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: center;
 
-    margin-top: 20px;
-    font-size: 12px;
-}
-
-.service-board .pagination ul {
-    border: none;
-    width: 10px;
-
-
-}
-
-.service-board .pagination li a {
-    border: none;
-    width: 10px;
+.wrap_board_free_list .page_nav {
+    margin-top: 25px; 
+    /* padding: 0px 70px; */
+    justify-content: space-between;
     text-align: center;
     justify-content: center;
-    display: flex;
 }
+
+.wrap_board_free_list .page_nav .center {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    justify-content: center;
+    padding: 0;
+    height: 36px;
+    margin: auto;
+}
+
+.wrap_board_free_list .page_nav ul li {
+    margin: 0 5px;
+}
+
+.wrap_board_free_list .page_nav ul li .page_link {
+    text-decoration: none;
+    color: #000;
+    padding: 5px;
+    font-size: 17px;
+}
+.wrap_board_free_list .page_nav ul li a {
+    text-decoration: none;
+    color: #000;
+    padding: 5px;
+    font-size: 17px;
+}
+
+.wrap_board_free_list .page_nav ul li a > i,
+.wrap_board_free_list .page_nav ul li .page_link > i{
+	font-size: 15px;
+}
+
+.wrap_board_free_list .page_nav ul li a:hover {
+    color: #daeede;
+}
+
+.page_nav .center .page_li.active > a {
+    font-family: 'NanumSquareNeoB';
+}
+
+.wrap_board_free_list .page_nav .right {
+    margin-left: auto;
+}
+
+.wrap_board_free_list .page_nav .right button {
+    float: right;
+    display: inline-block;
+    font-size: 17px;
+    text-align: center;
+    height: 38px;
+    width: 75px;
+    background-color: #5FD7FF;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
 
 .service-board .write-button {
     /* border: 1px solid red; */
@@ -240,38 +300,3 @@ body {}
     border: none;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 전체화면 마진 */
-#change .row {
-	margin-top : 70px;
-}
-
-
-
-/* footer */
-.extra {
-    display: block;
-
-    width: 100px;
-    height: 100px;
-
-    margin-top: 100px;
-}
-
-

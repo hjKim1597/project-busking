@@ -127,7 +127,7 @@ public class ReservationController extends HttpServlet {
             String userId = (String) request.getSession().getAttribute("userId"); // 현재 로그인한 사용자 ID
             int locaId = Integer.parseInt(request.getParameter("locaId"));
             Date resDate = Date.valueOf(request.getParameter("selectedDate"));
-            LocalTime resTime = LocalTime.parse(request.getParameter("startTime"));
+            String resTime = request.getParameter("startTime");
             String endTime = request.getParameter("endTime");
 
             UserJoinDTO user = service.getUserById(userId); // 사용자 정보 가져오기
@@ -170,7 +170,7 @@ public class ReservationController extends HttpServlet {
             int locaId = Integer.parseInt(locaIdParam);
             String userId = (String) request.getSession().getAttribute("userId");
             Date resDate = Date.valueOf(resDateParam);
-            LocalTime resTime = LocalTime.parse(resTimeParam);
+            String resTime = resTimeParam;
             int resCount = Integer.parseInt(resCountParam);
 
             // 예약 DTO 생성

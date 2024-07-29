@@ -7,42 +7,34 @@
 
     <!-- 중앙 레이아웃 -->
     <section class="container customer-center-width" id="change">
-        <div class="row">
-
-            <!-- 좌측메뉴 -->
-            <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 content">
-                <li class="col-xs-4 col-sm-4 col-lg-4 col-lg-4">
-                    <section>
-                        <div class="service_menu">
-                            <nav>
-                                <div class="span"></div>
-                                <h1>고객센터</h1>
-                                <ul class="menu">
-                                    <li class="nth1"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
-                                    </li>
-                                    <li class="nth2"><strong><a href="customer_center_res.customer"><span>이달의 예약</span></a></strong>
-                                    </li>
-                                    <li class="nth3"><strong><a href="customer_center_guide.customer"><span>이용안내</span></a></strong>
-                                    </li>
-                                    <li class="nth4"><strong><a href="customer_center_FAQ.customer"><span>자주묻는질문(FAQ)</span></a></strong>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </section>
-                </li>
+        <!-- 좌측메뉴 -->
+        <div class="board_nav">
+            <div id="board_nav_wrap">
+             <h1>고객센터</h1>
+             <ul class="menu">
+                 <li class="nth1"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
+                 </li>
+                 <li class="nth2"><strong><a href="customer_center_res.customer"><span>이달의 예약</span></a></strong>
+                 </li>
+                 <li class="nth3"><strong><a href="customer_center_guide.customer"><span>이용안내</span></a></strong>
+                 </li>
+                 <li class="nth4"><strong><a href="customer_center_FAQ.customer"><span>자주묻는질문(FAQ)</span></a></strong>
+                 </li>
+             </ul>
             </div>
+        </div>
 
-            <!-- 공지사항 게시판 -->
-            <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 board">
-                <div class="service-board">
-                    <div class="container">
-                        <div class="page-header">
-                            <h2>공지사항</h2>
-                        </div>
+        <!-- 공지사항 게시판 -->
+        <div class="board">
+            <div class="service-board">
+                <div class="container">
+                    <div class="page-header">
+                        <h2>공지사항</h2>
+                    </div>
 
 <!--                         <p>관리자만 작성 가능, 글번호, 월별 허가된 공연 목록</p>
  -->
+
                         <div class="table-responsive">
                             <!-- 게시판 -->
 
@@ -128,35 +120,35 @@
                                                 </span>
                                             </div> -->
 
+
                                         </div>
+
                                     </div>
                                 </div>
-                            </section>
+                            </div>
+                        </section>
 
 
 
 
-                            <!-- 페이지 번호 -->
-                            <!-- <ul class="pagination">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                            </ul> -->
+                        <!-- 페이지 번호 -->
+                        <!-- <ul class="pagination">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                        </ul> -->
 
-                            <!-- 글작성 버튼 -->
-                            <!-- <div class="write-button">
-                                <a href="customer_center_index_write.jsp"><button type="button" class="btn write1"
-                                        id="">글작성</button></a>
-                            </div> -->
+                        <!-- 글작성 버튼 -->
+                        <!-- <div class="write-button">
+                            <a href="customer_center_index_write.jsp"><button type="button" class="btn write1"
+                                    id="">글작성</button></a>
+                        </div> -->
 
-                        </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </section>
 

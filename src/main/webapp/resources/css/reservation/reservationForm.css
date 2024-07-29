@@ -119,6 +119,7 @@
 .resForm-mid .resForm-mid-left {
     float: left;
     width: 50%;
+    margin-left: 50px;
 }
 .resForm-mid .resForm-mid-left #calendar {
 	width: 100%;
@@ -566,31 +567,82 @@
     border-radius: 3px;
     border: 1px solid #5fd7ff;
 }
+
 /* 예약버튼 디자인 */
+
 .resForm-mid-button {
-	display: flex;
+	margin-top: 35px;
+	text-align: center;
 }
-.resForm-mid-button > button{
-	border-radius: 3px;
-	border: 1px solid black;
-	
+
+.resForm-mid-button > button {
+	border: 1px solid #ebebeb;
+    background-color: white;
+    width: 70%;
+    padding: 18px 10px;
+    letter-spacing: 0.5px;
+    font-size: 17px;
+    color: rgb(70, 70, 70);
 }
-.resForm-mid-button > button:hover {
+
+.resForm-mid-button > button.btn1,
+.resForm-mid-button > button.btn2,
+.resForm-mid-button > button.btn3 {
+    border-bottom: none;
+}
+
+.resForm-mid-button button.btn1:hover,
+.resForm-mid-button button.btn2:hover,
+.resForm-mid-button button.btn3:hover {
 	background-color: #5fd7ff41;
 	border: 1px solid #5fd7ff;
+	border-bottom: 1px solid #5fd7ff;
+	box-shadow: 0 4px 0 0 #5fd7ff;
 }
-.resForm-mid-button > .selected:hover {
+
+.resForm-mid-button button.btn4:hover {
+	background-color: #5fd7ff41;
+	border: 1px solid #5fd7ff;
+	/* box-shadow: 0 1px 0 0 #5fd7ff; */
+}
+
+
+.resForm-mid-button button.btn1 .selected:hover,
+.resForm-mid-button button.btn2 .selected:hover,
+.resForm-mid-button button.btn3 .selected:hover {
+	/* background-color: #5fd7ff; */
+	color: black;
+	border: 1px solid #5fd7ff;
+	border-bottom: 1px solid #5fd7ff;
+	box-shadow: 0 4px 0 0 #5fd7ff; 
+ 	font-weight: 600px;
+}
+
+.resForm-mid-button button.btn4 .selected:hover {
+	color: black;
+	border: 1px solid #5fd7ff;
+	box-shadow: 0 4px 0 0 #5fd7ff;
+	font-weight: 600; 
+}
+
+.resForm-mid-button button.btn1.selected,
+.resForm-mid-button button.btn2.selected,
+.resForm-mid-button button.btn3.selected {
 	background-color: #5fd7ff;
 	color: white;
 	border: 1px solid #5fd7ff;
+	border-bottom: 1px solid #5fd7ff;
+	box-shadow: 0 4px 0 0 #5fd7ff;
 }
-.resForm-mid-button > .selected {
+
+.resForm-mid-button button.btn4.selected {
 	background-color: #5fd7ff;
 	color: white;
 	border: 1px solid #5fd7ff;
+	/* box-shadow: 0 4px 0 0 #5fd7ff; */
 }
-/* 사진 전체보기 디자인 */
-/* 오버레이 스타일링 */
+
+/* 오버레이스타일*/
 #photo-overlay {
     display: none; /* 기본적으로 숨김 */
     position: fixed; /* 화면에 고정 */
@@ -627,3 +679,5 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+

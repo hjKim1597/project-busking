@@ -37,7 +37,7 @@
                                     <td>${reservation.userName}</td>
                                     <td>${reservation.resDate}</td>
                                     <td>${reservation.locaId}</td>
-                                    <td>${reservation.resResult}</td>
+                                    <td class="resResult">${reservation.resResult}</td>
                                 </tr>
                                 <tr id="collapse${reservation.resNum}" class="collapse">
                                     <td colspan="5">
@@ -48,7 +48,7 @@
                                             <p>휴대폰번호: ${reservation.userPno}</p>
                                             <p>이메일: ${reservation.userEmail}</p>
                                             <p>주소: ${reservation.userAddr}</p>
-                                            <p>시간: ${reservation.resTime}</p>
+                                            <p>시간: ${reservation.resTime} ~ <span class="newResTime" data-time="${reservation.resTime}"></span></p>
                                         </div>
                                     </td>
                                 </tr>
@@ -77,7 +77,7 @@
                                     <td>${reservation.userName}</td>
                                     <td>${reservation.resDate}</td>
                                     <td>${reservation.locaId}</td>
-                                    <td>${reservation.resResult}</td>
+                                    <td class="resResult">${reservation.resResult}</td>
                                 </tr>
                                 <tr id="collapseAll${reservation.resNum}" class="collapse">
                                     <td colspan="5">
@@ -88,7 +88,7 @@
                                             <p>휴대폰번호: ${reservation.userPno}</p>
                                             <p>이메일: ${reservation.userEmail}</p>
                                             <p>주소: ${reservation.userAddr}</p>
-                                            <p>시간: ${reservation.resTime}</p>
+                                            <p>시간: ${reservation.resTime} ~ <span class="newResTime" data-time="${reservation.resTime}"></span></p>
                                         </div>
                                     </td>
                                 </tr>
@@ -99,8 +99,8 @@
             </div>
         </div>
     </div>
-<%@ include file="../include/footer.jsp" %>
-   <script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
         $(document).ready(function() {
             $('.accordion-toggle').click(function(event) {
                 if ($(this).is('button') || $(this).closest('button').length > 0) {
@@ -113,7 +113,36 @@
                 event.stopPropagation();
                 $(this).closest('tr').next('.collapse').collapse('hide');
             });
+
+            $('.resResult').each(function() {
+                var status = $(this).text();
+                if (status === 'W') {
+                    $(this).text('수락 대기중');
+                } else if (status === 'T') {
+                    $(this).text('수락됨');
+                } else {
+                    $(this).text('거절됨');
+                }
+            });
+
+            // 시간 계산을 위해 추가한 부분
+            $('.newResTime').each(function() {
+                var timeStr = $(this).data('time');
+                var timeParts = timeStr.split(':');
+                var hours = parseInt(timeParts[0], 10);
+                var minutes = parseInt(timeParts[1], 10);
+
+                hours += 3; // 3시간 더하기
+
+                if (hours >= 24) {
+                    hours -= 24; // 24시를 넘어가면 0시부터 시작
+                }
+
+                var newTimeStr = ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2);
+                $(this).text(newTimeStr);
+            });
         });
     </script>
+    <%@ include file="../include/footer.jsp" %>
 </body>
 </html>
