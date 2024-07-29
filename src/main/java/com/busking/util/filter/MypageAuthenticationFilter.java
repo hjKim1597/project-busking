@@ -40,9 +40,6 @@ import jakarta.servlet.http.HttpSession;
 			,"/board/board_delete.boardTeam"
 			,"/board/board_edit.boardTeam"
 			,"/board/board_editForm.boardTeam"
-			,"/board/board_comment_free_write.comment"
-			,"/board/board_comment_news_write.comment"
-			,"/board/board_comment_team_write.comment"
 			,"/board/board_comment_ask_write.comment"
 			})
 public class MypageAuthenticationFilter implements Filter{

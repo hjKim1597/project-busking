@@ -6,32 +6,42 @@
 <mapper namespace="com.busking.board.model.BoardAskMapper">
 
     <select id="getList" parameterType="hashMap" resultType="com.busking.board.model.BoardAskDTO">
+        
         SELECT ASK_NUM, ASK_WRITER, ASK_CONTENT, ASK_REGDATE 
         FROM ( 
-            SELECT ROWNUM AS RN, 
-                   A.* 
-            FROM BOARD_ASK A 
-            WHERE ASK_DELETED = 'F' 
-            AND 1 = 1 
-            <if test="type != null and type != ''">
-                <choose>
-                    <when test="type == 'content'">
-                        AND A.ASK_CONTENT LIKE '%' || #{target} || '%' 
-                    </when>
-                    <when test="type == 'writer'">
-                        AND A.ASK_WRITER LIKE '%' || #{target} || '%' 
-                    </when>
-                    <when test="type == 'all'">
-                        AND (A.ASK_WRITER LIKE '%' || #{target} || '%' 
-                         OR A.ASK_CONTENT LIKE '%' || #{target} || '%') 
-                    </when>
-                </choose>
-            </if>
-            ORDER BY ASK_NUM DESC 
+        	SELECT A.*, ROWNUM AS RN 
+        	FROM (
+        		SELECT B.* 
+	            FROM BOARD_ASK B 
+	            WHERE ASK_DELETED = 'F' 
+	            AND 1 = 1 
+	            <choose>
+	            	<when test="type != null and type != ''">
+		                <choose>
+		                    <when test="type == 'content'">
+		                        AND B.ASK_CONTENT LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'writer'">
+		                    	 /*+ INDEX(B IDX_BOARD_ASK_WRITER) */ 
+		                        AND B.ASK_WRITER LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'all'">
+		                    	 /*+ INDEX(B PK_IDX_BOARD_ASK) */ 
+		                        AND (B.ASK_CONTENT LIKE '%' || #{target} || '%' 
+		                             OR B.ASK_WRITER LIKE '%' || #{target} || '%') 
+		                    </when>
+		                </choose>
+		            </when>
+		            <otherwise>
+		            	/*+ INDEX(B PK_IDX_BOARD_ASK) */ 
+		            </otherwise>
+	            </choose>
+            
+            	ORDER BY ASK_NUM DESC 
+            ) A  	
         ) 
-        WHERE ASK_DELETED = 'F' 
-        AND RN > (#{page.pageNum} - 1) * #{page.amount} 
-        AND #{page.pageNum} * #{page.amount} >= RN  
+        WHERE RN > (#{page.pageNum} - 1) * #{page.amount} 
+        AND #{page.pageNum} * #{page.amount} >= RN
     </select>
 	
 	<select id="getTotal" resultType="int">

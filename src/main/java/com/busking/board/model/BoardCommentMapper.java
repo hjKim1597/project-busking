@@ -31,4 +31,8 @@ public interface BoardCommentMapper {
 	
 	// 대댓글 등록
 	public void writeReplyFree(CommentFreeDTO dto);
+	
+	public void writeReplyNews(CommentNewsDTO dto);
+	
+	public void writeReplyTeam(CommentTeamDTO dto);
 }
