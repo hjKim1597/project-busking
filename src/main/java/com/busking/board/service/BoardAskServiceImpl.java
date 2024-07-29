@@ -64,10 +64,17 @@ public class BoardAskServiceImpl implements BoardAskService {
 			out.println("alert('검색 결과가 없습니다.');");
 			out.println("location.href='board_list.boardAsk';");
 			out.println("</script>");
-		} else {
+			return;
+		} else if(type == null){
 			request.setAttribute("askList", list);
 			request.setAttribute("pageVO", pageVO);
 			request.getRequestDispatcher("board_ask_list.jsp").forward(request, response);
+			return;
+		} else {
+			request.setAttribute("askList", list);
+			request.setAttribute("pageVO", pageVO);
+			request.getRequestDispatcher("board_ask_list.jsp?type=" + type + "&target=" + target).forward(request, response);
+			return;
 		}
 		
 	}

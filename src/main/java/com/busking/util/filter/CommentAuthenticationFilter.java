@@ -17,9 +17,9 @@ import jakarta.servlet.http.HttpSession;
 	"/board/board_comment_free_write.comment"
 	,"/board/board_comment_news_write.comment"
 	,"/board/board_comment_team_write.comment"
-	,"/board/board_comment_ask_write.comment"
 	,"/board/board_comment_free_reply.comment" 
 	,"/board/board_comment_news_reply.comment" 
+	,"/board/board_comment_team_reply.comment"
 	})
 public class CommentAuthenticationFilter implements Filter {
 
@@ -34,6 +34,7 @@ public class CommentAuthenticationFilter implements Filter {
 		String userId = (String)session.getAttribute("userId");
 		String bno = request.getParameter("bno");
 		String subject = request.getParameter("subject");
+		System.out.println("/board/board_comment_" + subject + "_list.comment?bno=" + bno);
 		
 		if(userId == null) {
 			response.setContentType("text/html; charset=UTF-8");

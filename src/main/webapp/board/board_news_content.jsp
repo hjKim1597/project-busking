@@ -79,6 +79,18 @@
 	        </div>
 	    </div>
 	</section>
-	
+	<script>
+
+		var date = new Date();
+		var regdate = '${regdate}';
+		
+		if((date - regdate) > 86400000) {
+			var newSpan = document.querySelector('.inner_top .title .new');
+			newSpan.style.display = "none";
+		}
+		
+
+	</script>
 	<script src="${pageContext.request.contextPath }/resources/js/board/board_content.js"></script>
+	
 <%@ include file="../include/footer.jsp" %>

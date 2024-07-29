@@ -34,7 +34,7 @@
 							<tr>
 								<th class="nth1">글 번호</th>
 								<th class="nth2">작성자</th>
-								<th class="nth3">뉴스 제목</th>
+								<th class="nth3">제목</th>
 								<th class="nth4">날짜</th>
 								<th class="nth5">조회수</th>
 							</tr>

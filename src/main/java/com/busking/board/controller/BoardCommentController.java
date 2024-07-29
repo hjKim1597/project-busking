@@ -77,6 +77,10 @@ public class BoardCommentController extends HttpServlet {
 			service = new BoardCommentServiceImpl();
 			service.writeReplyNews(request, response);
 			
+		} else if(command.equals("/board/board_comment_team_reply.comment")) {
+			service = new BoardCommentServiceImpl();
+			service.writeReplyTeam(request, response);
+			
 		}
 	}
 }

@@ -345,5 +345,43 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		
 	}
 	
+	@Override
+	public void writeReplyTeam(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// request
+		String bno = request.getParameter("bno");
+		String reply = request.getParameter("reply");
+		String content = request.getParameter("content");
+		
+		HttpSession session = request.getSession();
+		String writer = (String)session.getAttribute("userId");
+		
+		// DTO
+		CommentTeamDTO dto = new CommentTeamDTO();
+		dto.setComTeamBno(bno);
+		dto.setComTeamContent(content);
+		dto.setComTeamWriter(writer);
+		dto.setComTeamReply(reply);
+		
+		BoardTeamDTO dtoTeam = new BoardTeamDTO();
+		dtoTeam.setTeamNum(bno);
+		
+		// Mapper
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);
+		BoardTeamMapper mapperTeam = sql.getMapper(BoardTeamMapper.class);
+		
+		mapper.writeReplyTeam(dto);
+		int total = mapper.getCommentTeamCount(bno);
+		dtoTeam.setTeamCmtCount(total);
+		mapperTeam.updateCmtCount(dtoTeam);
+		sql.close();
+		
+		// response
+		request.setAttribute("bno", bno);
+		request.getRequestDispatcher("board_comment_team_list.comment").forward(request, response);
+		
+	}
+	
 	
 }

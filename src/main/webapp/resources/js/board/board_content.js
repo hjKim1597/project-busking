@@ -16,13 +16,25 @@ deleteButton.addEventListener('click', (e) => {
         return;
     }
 });
+
 // iframe 높이 자동 조절
 var iframe = document.querySelector('.comment_box > iframe');
 
 iframe.addEventListener('load', function() {
-	var height = iframe.contentDocument.body.scrollHeight + 20;
-	iframe.style.height = height + 'px';
-	iframe.parentElement.style.height = height + 'px';
+    adjustIframeHeight();
+
+    // MutationObserver 설정
+    var commentBody = iframe.contentDocument.body;
+    var observer = new MutationObserver(function(mutations) {
+        adjustIframeHeight();
+    });
+
+    var config = { attributes: true, childList: true, subtree: true };
+    observer.observe(commentBody, config);
 });
 
-
+function adjustIframeHeight() {
+    var height = iframe.contentDocument.body.scrollHeight + 20;
+    iframe.style.height = height + 'px';
+    iframe.parentElement.style.height = height + 'px';
+}

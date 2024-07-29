@@ -52,10 +52,11 @@
 				                <div class="comment-section" style="display: none">
 						            <form action="board_comment_free_reply.comment" method="post">
 				                        <div class="comment">
-				                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="content"></textarea>
+				                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="content" required></textarea>
 				                            <input class="submit-comment" value="등록" type="submit">
 				                            <input type="hidden" value="${bno }" name="bno">
 				                            <input type="hidden" value="${dto.comFreeNum }" name="reply">
+				                            <input type="hidden" value="free" name="subject">
 				                        </div>
 			                   		</form>
 			                   	</div>
@@ -90,7 +91,7 @@
 	        <!--댓글 작성 영역-->
 	        <form action="board_comment_free_write.comment" method="post">
 		        <div class="form-group board_comment_write">
-		            <textarea class="form-control" rows="5" id="comment" name="content"></textarea>
+		            <textarea class="form-control" rows="5" id="comment" name="content" required></textarea>
 		        </div>
 		        <div class="board_comment_button">
 		        	<input type="submit" value="등록">
@@ -114,6 +115,7 @@
 		        event.stopPropagation();
 		    });
 		});
+		
 	</script>
 
 </body>
