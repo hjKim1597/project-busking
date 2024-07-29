@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
-<%@ include file="../include/header.jsp" %> <!-- 헤더를 포함하여 공통 레이아웃 유지 -->
+<%@ include file="../include/header.jsp" %>
 <body>
     <div class="jinseok-wrap">
         <div class="sum">
@@ -31,13 +31,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="reservation" items="${nextMonthReservations}"> <!-- nextMonthReservations 변수 반복 -->
+                            <c:forEach var="reservation" items="${nextMonthReservations}">
                                 <tr class="accordion-toggle" data-toggle="collapse" data-target="#collapse${reservation.resNum}" aria-expanded="false" aria-controls="collapse${reservation.resNum}">
                                     <td>${reservation.resNum}</td>
                                     <td>${reservation.userName}</td>
                                     <td>${reservation.resDate}</td>
                                     <td>${reservation.locaId}</td>
-                                    <td class="resResult">${reservation.resResult}</td> <!-- 상태값이 W, T, F 중 하나 -->
+                                    <td class="resResult">${reservation.resResult}</td>
                                 </tr>
                                 <tr id="collapse${reservation.resNum}" class="collapse">
                                     <td colspan="5">
@@ -48,7 +48,7 @@
                                             <p>휴대폰번호: ${reservation.userPno}</p>
                                             <p>이메일: ${reservation.userEmail}</p>
                                             <p>주소: ${reservation.userAddr}</p>
-                                            <p>시간: ${reservation.resTime}</p>
+                                            <p>시간: ${reservation.resTime} ~ <span class="newResTime" data-time="${reservation.resTime}"></span></p>
                                         </div>
                                     </td>
                                 </tr>
@@ -71,13 +71,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="reservation" items="${allReservations}"> <!-- allReservations 변수 반복 -->
+                            <c:forEach var="reservation" items="${allReservations}">
                                 <tr class="accordion-toggle" data-toggle="collapse" data-target="#collapseAll${reservation.resNum}" aria-expanded="false" aria-controls="collapseAll${reservation.resNum}">
                                     <td>${reservation.resNum}</td>
                                     <td>${reservation.userName}</td>
                                     <td>${reservation.resDate}</td>
                                     <td>${reservation.locaId}</td>
-                                    <td class="resResult">${reservation.resResult}</td> <!-- 상태값이 W, T, F 중 하나 -->
+                                    <td class="resResult">${reservation.resResult}</td>
                                 </tr>
                                 <tr id="collapseAll${reservation.resNum}" class="collapse">
                                     <td colspan="5">
@@ -88,7 +88,7 @@
                                             <p>휴대폰번호: ${reservation.userPno}</p>
                                             <p>이메일: ${reservation.userEmail}</p>
                                             <p>주소: ${reservation.userAddr}</p>
-                                            <p>시간: ${reservation.resTime}</p>
+                                            <p>시간: ${reservation.resTime} ~ <span class="newResTime" data-time="${reservation.resTime}"></span></p>
                                         </div>
                                     </td>
                                 </tr>
@@ -99,31 +99,50 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery 로드 -->
-<script>
-    $(document).ready(function() { <!-- DOMContentLoaded와 동일하게 사용 -->
-        $('.accordion-toggle').click(function(event) {
-            if ($(this).is('button') || $(this).closest('button').length > 0) {
-                return;
-            }
-            $(this).next('.collapse').collapse('toggle'); <!-- 클릭 시 collapse 클래스 토글 -->
-        });
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.accordion-toggle').click(function(event) {
+                if ($(this).is('button') || $(this).closest('button').length > 0) {
+                    return;
+                }
+                $(this).next('.collapse').collapse('toggle');
+            });
 
-        $('.modify').click(function(event) {
-            event.stopPropagation();
-            $(this).closest('tr').next('.collapse').collapse('hide'); <!-- 수정 버튼 클릭 시 토글 해제 -->
-        });
+            $('.modify').click(function(event) {
+                event.stopPropagation();
+                $(this).closest('tr').next('.collapse').collapse('hide');
+            });
 
-        $('.resResult').each(function() {
-            var status = $(this).text(); <!-- 상태 값을 읽어옴 -->
-            if (status === 'W') {
-                $(this).text('수락 대기중'); <!-- 상태값이 W인 경우 텍스트 변경 -->
-            } else if (status === 'T') {
-                $(this).text('수락됨'); <!-- 상태값이 T인 경우 텍스트 변경 -->
-            } else {
-                $(this).text('거절됨'); <!-- 그 외의 경우 텍스트 변경 -->
-            }
+            $('.resResult').each(function() {
+                var status = $(this).text();
+                if (status === 'W') {
+                    $(this).text('수락 대기중');
+                } else if (status === 'T') {
+                    $(this).text('수락됨');
+                } else {
+                    $(this).text('거절됨');
+                }
+            });
+
+            // 시간 계산을 위해 추가한 부분
+            $('.newResTime').each(function() {
+                var timeStr = $(this).data('time');
+                var timeParts = timeStr.split(':');
+                var hours = parseInt(timeParts[0], 10);
+                var minutes = parseInt(timeParts[1], 10);
+
+                hours += 3; // 3시간 더하기
+
+                if (hours >= 24) {
+                    hours -= 24; // 24시를 넘어가면 0시부터 시작
+                }
+
+                var newTimeStr = ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2);
+                $(this).text(newTimeStr);
+            });
         });
-    });
-</script>
-<%@ include file="../include/footer.jsp" %>
+    </script>
+    <%@ include file="../include/footer.jsp" %>
+</body>
+</html>
