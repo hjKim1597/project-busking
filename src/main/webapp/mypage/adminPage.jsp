@@ -100,67 +100,6 @@
 
 
 						<!-- 승인거절버튼기능 -->
-						<script>
-						$(document).ready(function() {
-						    $('.approve').click(function() {
-						        var $row = $(this).closest('tr');
-						        var userId = $(this).data('id');
-						        updateStatus(userId, '승인됨', $row);
-						    });
-
-						    $('.reject').click(function() {
-						        var $row = $(this).closest('tr');
-						        var userId = $(this).data('id');
-						        updateStatus(userId, '거절됨', $row);
-						    });
-
-						    $('.modify').click(function() {
-						        var $row = $(this).closest('tr');
-						        var userId = $(this).data('id');
-						        updateStatus(userId, '대기중', $row);
-						    });
-
-						    function updateStatus(userId, status, $row) {
-						        $.ajax({
-						            url: 'mypage/adminPage.admin',
-						            type: 'POST',
-						            data: {
-						                userId: userId,
-						                status: status
-						            },
-						            success: function(response) {
-						                if (response === 'Success') {
-						                    $row.find('.btnStatus').text(status);
-						                } else {
-						                    alert('업데이트 성공');
-						                }
-						            },
-						            error: function(error) {
-						                console.log(error);
-						                alert('오류가 발생했습니다.');
-						            }
-						        });
-						    }
-						});
-						 
-						 
-						/* $(document).ready(function() {
-						        $('.approve').click(function() {
-						            var $row = $(this).closest('tr');
-						            $row.find('.btnStatus').text('승인됨');
-						        });
-
-						        $('.reject').click(function() {
-						            var $row = $(this).closest('tr');
-						            $row.find('.btnStatus').text('거절됨');
-						        });
-
-						        $('.modify').click(function() {
-						            var $row = $(this).closest('tr');
-						            $row.find('.btnStatus').text('대기중');
-						        });
-						    }); */
-						</script>
 
 						<!-- 예약 내용 끝 -->
 
@@ -235,6 +174,67 @@
 									}
 								});
 					});
+	
+	
+	/* $(document).ready(function() {
+    $('.approve').click(function() {
+        var $row = $(this).closest('tr');
+        var userId = $(this).data('id');
+        updateStatus(userId, '승인됨', $row);
+    });
+
+    $('.reject').click(function() {
+        var $row = $(this).closest('tr');
+        var userId = $(this).data('id');
+        updateStatus(userId, '거절됨', $row);
+    });
+
+    $('.modify').click(function() {
+        var $row = $(this).closest('tr');
+        var userId = $(this).data('id');
+        updateStatus(userId, '대기중', $row);
+    });
+
+    function updateStatus(userId, status, $row) {
+        $.ajax({
+            url: 'mypage/adminPage.admin',
+            type: 'POST',
+            data: {
+                userId: userId,
+                status: status
+            },
+            success: function(response) {
+                if (response === 'Success') {
+                    $row.find('.btnStatus').text(status);
+                } else {
+                    alert('업데이트 성공');
+                }
+            },
+            error: function(error) {
+                console.log(error);
+                alert('오류가 발생했습니다.');
+            }
+        });
+    }
+}); */
+ 
+ 
+$(document).ready(function() {
+        $('.approve').click(function() {
+            var $row = $(this).closest('tr');
+            $row.find('.btnStatus').text('승인됨');
+        });
+
+        $('.reject').click(function() {
+            var $row = $(this).closest('tr');
+            $row.find('.btnStatus').text('거절됨');
+        });
+
+        $('.modify').click(function() {
+            var $row = $(this).closest('tr');
+            $row.find('.btnStatus').text('대기중');
+        });
+    });
 </script>
 
 <%@ include file="../include/footer.jsp"%>
