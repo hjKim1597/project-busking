@@ -3,7 +3,8 @@ package com.busking.admin.model;
 import java.sql.Date;
 
 public class AdminPageDTO {
-
+	
+	private String resNum;
 	private String userId;
 	private String userName;
 	private Date resDate;
@@ -21,10 +22,11 @@ public class AdminPageDTO {
 	public AdminPageDTO() {
 	}
 
-	public AdminPageDTO(String userId, String userName, Date resDate, String locaName, String resAmp, String resContent,
-			int resCount, int userPno, String userEmail, String userAddr, String manangerId, String locaId,
-			String locaPlace) {
+	public AdminPageDTO(String resNum, String userId, String userName, Date resDate, String locaName, String resAmp,
+			String resContent, int resCount, int userPno, String userEmail, String userAddr, String manangerId,
+			String locaId, String locaPlace) {
 		super();
+		this.resNum = resNum;
 		this.userId = userId;
 		this.userName = userName;
 		this.resDate = resDate;
@@ -38,6 +40,14 @@ public class AdminPageDTO {
 		this.manangerId = manangerId;
 		this.locaId = locaId;
 		this.locaPlace = locaPlace;
+	}
+
+	public String getResNum() {
+		return resNum;
+	}
+
+	public void setResNum(String resNum) {
+		this.resNum = resNum;
 	}
 
 	public String getUserId() {
@@ -143,7 +153,6 @@ public class AdminPageDTO {
 	public void setLocaPlace(String locaPlace) {
 		this.locaPlace = locaPlace;
 	}
-
 
 	
 }
