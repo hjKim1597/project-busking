@@ -113,7 +113,7 @@ public class BoardCommentServiceImpl implements BoardCommentService {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         
-		JSONArray jsonArray = new JSONArray();
+        JSONArray jsonArray = new JSONArray();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yy.MM.dd");
 		
         for (CommentAskDTO dto : commentList) {

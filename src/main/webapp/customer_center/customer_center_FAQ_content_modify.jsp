@@ -7,10 +7,10 @@
 
     <!-- 중앙 레이아웃 -->
     <section class="container customer-center-width" id="change">
-        <div class="row">
+        <div class="row" style="margin-top: 100px" >
 
             <!-- 좌측메뉴 -->
-            <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 content">
+            <!-- <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 content">
                 <li class="col-xs-4 col-sm-4 col-lg-4 col-lg-4">
                     <section>
                         <div class="service_menu">
@@ -31,7 +31,7 @@
                         </div>
                     </section>
                 </li>
-            </div>
+            </div> -->
 
             <!-- 공지사항 게시판 -->
             <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 board">

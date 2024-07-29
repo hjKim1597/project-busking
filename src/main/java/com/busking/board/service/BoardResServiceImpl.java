@@ -147,7 +147,7 @@ public class BoardResServiceImpl implements BoardResService {
 		int resNum = Integer.parseInt(request.getParameter("resNum"));
 
 		// DTO
-		BoardResDTO dto = new BoardResDTO(resNum, faqContent, resNum, null, null, resNum, faqContent, faqTitle, 0, resNum, faqContent);
+		BoardResDTO dto = new BoardResDTO(resNum, faqContent, resNum, null, null, resNum, faqContent, faqTitle, 0, resNum, faqContent, faqContent);
 		
 		
 		SqlSession sql = sqlSessionFactory.openSession(true);
