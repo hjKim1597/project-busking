@@ -46,9 +46,11 @@
 								<td id="status${dto.userId}" class="btnStatus">상태</td>
 								<!-- 상태 -->
 								<td class="status-btn">
-									<button class="approve" data-rno="${dto.resNum }">승인</button>
-									<button class="reject" data-rno="${dto.resNum }">거절</button>
-									<button class="modify" data-rno="${dto.resNum }">수정하기</button>
+									<button class="approve" data-rno="${dto.resNum }"
+										onclick="handleApprove(${dto.resNum})">승인</button>
+									<button class="reject" data-rno="${dto.resNum }"
+										onclick="handleReject(${dto.resNum})">거절</button> <%-- <button class="modify" data-rno="${dto.resNum }"
+										onclick="handleModify(${dto.resNum})">수정하기</button> --%>
 								</td>
 							</tr>
 
@@ -119,123 +121,66 @@
 </div>
 
 <script>
-	// JavaScript 코드
-	$(document)
-			.ready(
-					function() {
-						// 클릭 이벤트 처리
-						$('.accordion-toggle')
-								.click(
-										function(event) {
-											// 클릭된 요소가 버튼인 경우는 아코디언 효과를 발생시키지 않음
-											if ($(event.target).is('button')
-													|| $(event.target).closest(
-															'button').length > 0) {
-												return;
-											}
 
-											// 클릭된 요소가 버튼이 아니면 아코디언 효과 토글
-											$(this).next('.collapse').collapse(
-													'toggle');
-										});
+	function sendPostRequest(url, data) {
+	    return fetch(url, {
+	        method: "POST",
+	        headers: {
+	            "Content-Type": "application/x-www-form-urlencoded"
+	        },
+	        body: new URLSearchParams(data)
+	    })
+	    .then(response => response.text());
+	}
+	function handleApprove(resNum) {
+	    var $row = $('button[data-rno="' + resNum + '"]').closest('tr');
+	    $row.find('.btnStatus').text('승인됨');
+	    sendPostRequest('adminPageT.admin', { resNum: resNum })
+	        .then(data => {
+	            console.log(data);
+	        })
+	        .catch(error => console.error('Error:', error));
+	}
 
-						// 승인 버튼 클릭 시 이벤트 처리
-						$('.approve').click(function(event) {
-							event.stopPropagation(); // 이벤트 버블링 방지
-							// 여기에 승인 처리 관련 코드 추가
-							console.log('승인 버튼 클릭');
-						});
-
-						// 거절 버튼 클릭 시 이벤트 처리
-						$('.reject').click(function(event) {
-							event.stopPropagation(); // 이벤트 버블링 방지
-							// 여기에 거절 처리 관련 코드 추가
-							console.log('거절 버튼 클릭');
-						});
-						$('.modify').click(
-								function(event) {
-									event.stopPropagation(); // 이벤트 버블링 방지
-									$(this).closest('tr').next('.collapse')
-											.collapse('hide');
-								});
-						// 예약 상태에 따라 작업 버튼 변경
-						$('tbody tr').each(
-								function() {
-									var status = $(this)
-											.find('td:nth-child(5)').text()
-											.trim();
-									if (status === '승인됨') {
-										$(this).find('.approve').hide();
-										$(this).find('.reject').hide();
-										$(this).find('.modify').show();
-									} else if (status === '대기 중') {
-										$(this).find('.approve').show();
-										$(this).find('.reject').show();
-										$(this).find('.modify').hide();
-									}
-								});
-					});
 	
-	
-	/* $(document).ready(function() {
-    $('.approve').click(function() {
-        var $row = $(this).closest('tr');
-        var userId = $(this).data('id');
-        updateStatus(userId, '승인됨', $row);
-    });
+	function handleReject(resNum) {
+	    var $row = $('button[data-rno="' + resNum + '"]').closest('tr');
+	    $row.find('.btnStatus').text('거절됨');
+	    sendPostRequest('adminPageF.admin', { resNum: resNum })
+	        .then(data => {
+	            console.log(data);
+	        })
+	        .catch(error => console.error('Error:', error));
+	}
 
-    $('.reject').click(function() {
-        var $row = $(this).closest('tr');
-        var userId = $(this).data('id');
-        updateStatus(userId, '거절됨', $row);
-    });
 
-    $('.modify').click(function() {
-        var $row = $(this).closest('tr');
-        var userId = $(this).data('id');
-        updateStatus(userId, '대기중', $row);
-    });
 
-    function updateStatus(userId, status, $row) {
-        $.ajax({
-            url: 'mypage/adminPage.admin',
-            type: 'POST',
-            data: {
-                userId: userId,
-                status: status
-            },
-            success: function(response) {
-                if (response === 'Success') {
-                    $row.find('.btnStatus').text(status);
-                } else {
-                    alert('업데이트 성공');
-                }
-            },
-            error: function(error) {
-                console.log(error);
-                alert('오류가 발생했습니다.');
-            }
-        });
-    }
-}); */
- 
- 
 $(document).ready(function() {
-        $('.approve').click(function() {
-            var $row = $(this).closest('tr');
-            $row.find('.btnStatus').text('승인됨');
-        });
+	$('.accordion-toggle').click(function(event) {
+		if ($(event.target).is('button') || $(event.target).closest('button').length > 0) return;
+		$(this).next('.collapse').collapse('toggle');
+	});
+	$('.modify').click(function(event) {
+		event.stopPropagation(); 
+		$(this).closest('tr').next('.collapse').collapse('hide');
+	});
 
-        $('.reject').click(function() {
-            var $row = $(this).closest('tr');
-            $row.find('.btnStatus').text('거절됨');
-        });
+	$('tbody tr').each(function() {
+		var status = $(this).find('td:nth-child(5)').text().trim();
+		if (status === '승인됨') {
+			$(this).find('.approve').hide();
+			$(this).find('.reject').hide();
+			$(this).find('.modify').show();
+		} else if (status === '대기 중') {
+			$(this).find('.approve').show();
+			$(this).find('.reject').show();
+			$(this).find('.modify').hide();
+		}
+	});
+}); 
 
-        $('.modify').click(function() {
-            var $row = $(this).closest('tr');
-            $row.find('.btnStatus').text('대기중');
-        });
-    });
+
+
 </script>
 
 <%@ include file="../include/footer.jsp"%>
