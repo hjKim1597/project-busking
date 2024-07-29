@@ -40,12 +40,23 @@
 		</select> -->
 
 
-	 <update id="updateResult" parameterType="map">
-        UPDATE RESERVATIONS
-        SET RES_RESULT = #{result}
-        WHERE USER_ID = #{userId}
+	 <update id="updateResultT" parameterType="String">
+	 UPDATE RESERVATIONS SET RES_RESULT = 'T' WHERE USER_ID = #{userId} 
+	 
+    <!--     UPDATE RESERVATIONS SET RES_RESULT = #{result} WHERE USER_ID = #{userId} -->
     </update>
 
+	<update id="updateResultF" parameterType="String">
+	 UPDATE RESERVATIONS SET RES_RESULT = 'F' WHERE USER_ID = #{userId} 
+	 
+    <!--     UPDATE RESERVATIONS SET RES_RESULT = #{result} WHERE USER_ID = #{userId} -->
+    </update>
+    
+    <update id="updateResultN" parameterType="String">
+	 UPDATE RESERVATIONS SET RES_RESULT = NULL WHERE USER_ID = #{userId} 
+	 
+    <!--     UPDATE RESERVATIONS SET RES_RESULT = #{result} WHERE USER_ID = #{userId} -->
+    </update>
 
 
 

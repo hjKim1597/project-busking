@@ -46,9 +46,9 @@
 								<td id="status${dto.userId}" class="btnStatus">상태</td>
 								<!-- 상태 -->
 								<td class="status-btn">
-									<button class="approve">승인</button>
-									<button class="reject">거절</button>
-									<button class="modify">수정하기</button>
+									<button class="approve" data-id="${dto.userId }">승인</button>
+									<button class="reject" data-id="${dto.userId }">거절</button>
+									<button class="modify" data-id="${dto.userId }">수정하기</button>
 								</td>
 							</tr>
 
@@ -101,7 +101,50 @@
 
 						<!-- 승인거절버튼기능 -->
 						<script>
-						 $(document).ready(function() {
+						$(document).ready(function() {
+						    $('.approve').click(function() {
+						        var $row = $(this).closest('tr');
+						        var userId = $(this).data('id');
+						        updateStatus(userId, '승인됨', $row);
+						    });
+
+						    $('.reject').click(function() {
+						        var $row = $(this).closest('tr');
+						        var userId = $(this).data('id');
+						        updateStatus(userId, '거절됨', $row);
+						    });
+
+						    $('.modify').click(function() {
+						        var $row = $(this).closest('tr');
+						        var userId = $(this).data('id');
+						        updateStatus(userId, '대기중', $row);
+						    });
+
+						    function updateStatus(userId, status, $row) {
+						        $.ajax({
+						            url: 'mypage/adminPage.admin',
+						            type: 'POST',
+						            data: {
+						                userId: userId,
+						                status: status
+						            },
+						            success: function(response) {
+						                if (response === 'Success') {
+						                    $row.find('.btnStatus').text(status);
+						                } else {
+						                    alert('업데이트 성공');
+						                }
+						            },
+						            error: function(error) {
+						                console.log(error);
+						                alert('오류가 발생했습니다.');
+						            }
+						        });
+						    }
+						});
+						 
+						 
+						/* $(document).ready(function() {
 						        $('.approve').click(function() {
 						            var $row = $(this).closest('tr');
 						            $row.find('.btnStatus').text('승인됨');
@@ -116,30 +159,7 @@
 						            var $row = $(this).closest('tr');
 						            $row.find('.btnStatus').text('대기중');
 						        });
-						    });		
-						 
-						 
-						/*  function updateReservation(userId, result) {
-					            $.ajax({
-					                url: '${pageContext.request.contextPath}/mypage/adminPage.admin',
-					                type: 'POST',
-					                data: {
-					                    userId: userId,
-					                    result: result
-					                },
-					                success: function(response) {
-					                    if (response === 'Success') {
-					                        $('#status' + userId).text(result);
-					                    } else {
-					                        alert('업데이트 실패');
-					                    }
-					                },
-					                error: function(error) {
-					                    alert('오류가 발생했습니다.');
-					                }
-					            });
-					        }
-					    }); */
+						    }); */
 						</script>
 
 						<!-- 예약 내용 끝 -->
