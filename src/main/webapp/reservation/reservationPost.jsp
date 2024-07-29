@@ -4,7 +4,7 @@
 <%@ include file="../include/header.jsp" %>
 
 <div class="resvPost-wrap">
-    <div class="resvPost-title">예약 신청서 작성</div>
+    <div class="resvPost-title" style="margin-top:150px; margin-left:25px;">예약 신청서 작성</div>
     <div class="resvPost-left">        
         <h3>이용약관</h3>
         <div class="resvPost-accordion">
@@ -77,7 +77,7 @@
                 <input type="hidden" name="resTime" value="${resTime}">
                 
                 <div class="resvPost-control">
-                    <input type="submit" class="resvPost-submit" value="예약하기" style="width: 48%;">
+                    <input type="submit" class="resvPost-submit" value="예약하기">
                     <button type="button" class="resvPost-cancle" onclick="window.history.back();">취소하기</button>
                 </div>
             </div>
