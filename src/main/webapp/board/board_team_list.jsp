@@ -42,7 +42,10 @@
 	                        <!--데이터 받아오기-->
 	                        <c:forEach var="dto" items="${teamList }">
 								<tr>
-									<td>${dto.teamNum }</td>
+									<td>
+										<c:set var="numberStr" value="${fn:substring(dto.teamNum, 5, 13)}" />
+                        				<c:out value="${numberStr + 0}" />
+									</td>
 									<td>${dto.teamWriter }</td>
 									<td><a href="board_content.boardTeam?bno=${dto.teamNum }">${dto.teamTitle }</a></td>
 									<td><fmt:formatDate value="${dto.teamRegdate }" pattern="yy.MM.dd"/></td>

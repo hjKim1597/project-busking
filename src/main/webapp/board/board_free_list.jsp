@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="../include/header.jsp" %>
 
 <section id="board_free_list_wrap">
@@ -43,7 +44,10 @@
 							<!--데이터 받아오기-->
 							<c:forEach var="dto" items="${freeList }">
 								<tr>
-									<td>${dto.freeNum }</td>
+									<td>
+										<c:set var="numberStr" value="${fn:substring(dto.freeNum, 5, 13)}" />
+                        				<c:out value="${numberStr + 0}" />
+                        			</td>
 									<td>${dto.freeWriter }</td>
 									<td><a href="board_content.boardFree?bno=${dto.freeNum }">${dto.freeTitle }</a></td>
 									<td><fmt:formatDate value="${dto.freeRegdate }" pattern="yy.MM.dd" /></td>

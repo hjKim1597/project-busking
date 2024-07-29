@@ -46,9 +46,15 @@
 								<td id="status${dto.userId}" class="btnStatus">상태</td>
 								<!-- 상태 -->
 								<td class="status-btn">
+<<<<<<< Updated upstream
 									<button class="approve" data-rno="${dto.resNum }">승인</button>
 									<button class="reject" data-rno="${dto.resNum }">거절</button>
 									<button class="modify" data-rno="${dto.resNum }">수정하기</button>
+=======
+									<button class="approve" data-rno="${dto.resNum}" >승인</button>
+									<button class="reject" data-id="${dto.userId }">거절</button>
+									<button class="modify" data-id="${dto.userId }">수정하기</button>
+>>>>>>> Stashed changes
 								</td>
 							</tr>
 
@@ -224,11 +230,13 @@ $(document).ready(function() {
         $('.approve').click(function() {
             var $row = $(this).closest('tr');
             $row.find('.btnStatus').text('승인됨');
+            
         });
 
         $('.reject').click(function() {
             var $row = $(this).closest('tr');
             $row.find('.btnStatus').text('거절됨');
+            
         });
 
         $('.modify').click(function() {

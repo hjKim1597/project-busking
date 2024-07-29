@@ -29,10 +29,6 @@
 	rel="stylesheet">
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
-<!-- 고객센터 index css -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/customer_center_css/customer_center_index.css">
-
 <!-- 웹폰트 -->
 <link
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"

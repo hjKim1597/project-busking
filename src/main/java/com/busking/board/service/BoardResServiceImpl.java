@@ -58,7 +58,7 @@ public class BoardResServiceImpl implements BoardResService {
 		// response
 		request.setAttribute("page", pageVO); // PageVO 객체 넘기기
 		request.setAttribute("resList", resList);
-		request.getRequestDispatcher("customer_center_res.jsp").forward(request, response);
+		request.getRequestDispatcher("customer_center_res_temp.jsp").forward(request, response);
 
 	}
 

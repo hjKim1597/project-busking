@@ -41,7 +41,10 @@
 	                        <!--데이터 받아오기-->
 	                        <c:forEach var="dto" items="${newsList }">
 								<tr>
-									<td>${dto.newsNum }</td>
+									<td>
+										<c:set var="numberStr" value="${fn:substring(dto.newsNum, 5, 13)}" />
+                        				<c:out value="${numberStr + 0}" />
+									</td>
 									<td>${dto.newsWriter }</td>
 									<td><a href="board_content.boardNews?bno=${dto.newsNum }">${dto.newsTitle }</a></td>
 									<td><fmt:formatDate value="${dto.newsRegdate }" pattern="yy.MM.dd"/></td>

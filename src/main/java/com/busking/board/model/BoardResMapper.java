@@ -8,7 +8,6 @@ public interface BoardResMapper {
 	// 글 목록 조회
 	public ArrayList<BoardResDTO> getList();
 
-
 	// 글 작성
 	public void regist(BoardResDTO dto);
 
