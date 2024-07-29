@@ -73,7 +73,7 @@
 	                    </div>
 	                </div>
 					<div class="comment_box">
-		                <iframe src="board_comment_free_list.comment?bno=${dto.freeNum }" frameborder="0" scrolling="no"></iframe>
+		                <iframe  id="dynamicIframe" src="board_comment_free_list.comment?bno=${dto.freeNum }" frameborder="0" scrolling="no"></iframe>
 					</div>
 	            </div>
 	        </div>
@@ -88,8 +88,7 @@
 			var newSpan = document.querySelector('.inner_top .title .new');
 			newSpan.style.display = "none";
 		}
-		
-		
+
 
 	</script>
 	<script src="${pageContext.request.contextPath }/resources/js/board/board_content.js"></script>
