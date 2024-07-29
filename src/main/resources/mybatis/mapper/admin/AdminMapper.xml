@@ -5,8 +5,9 @@
 <mapper namespace="com.busking.admin.model.AdminMapper">
 
 	<select id="getList" resultType="com.busking.admin.model.AdminPageDTO">
-
+	
 		SELECT 
+			R.RES_NUM AS RES_NUM,
 			R.USER_ID AS USER_ID, 
 			U.USER_NAME AS USER_NAME, 
 			R.RES_DATE AS RES_DATE, 
@@ -41,21 +42,17 @@
 
 
 	 <update id="updateResultT" parameterType="String">
-	 UPDATE RESERVATIONS SET RES_RESULT = 'T' WHERE USER_ID = #{userId} 
-	 
-    <!--     UPDATE RESERVATIONS SET RES_RESULT = #{result} WHERE USER_ID = #{userId} -->
+	 UPDATE RESERVATIONS SET RES_RESULT = 'T' WHERE RES_NUM = #{resNum} 
     </update>
 
+
 	<update id="updateResultF" parameterType="String">
-	 UPDATE RESERVATIONS SET RES_RESULT = 'F' WHERE USER_ID = #{userId} 
-	 
-    <!--     UPDATE RESERVATIONS SET RES_RESULT = #{result} WHERE USER_ID = #{userId} -->
+	 UPDATE RESERVATIONS SET RES_RESULT = 'F' WHERE RES_NUM = #{resNum} 
     </update>
     
+    
     <update id="updateResultN" parameterType="String">
-	 UPDATE RESERVATIONS SET RES_RESULT = NULL WHERE USER_ID = #{userId} 
-	 
-    <!--     UPDATE RESERVATIONS SET RES_RESULT = #{result} WHERE USER_ID = #{userId} -->
+	 UPDATE RESERVATIONS SET RES_RESULT = NULL WHERE RES_NUM = #{resNum} 
     </update>
 
 

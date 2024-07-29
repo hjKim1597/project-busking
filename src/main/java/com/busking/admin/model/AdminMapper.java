@@ -11,13 +11,15 @@ public interface AdminMapper {
 	public ArrayList<AdminPageDTO> getList(Map<String, Object> params);
 
 	// 예약 승인상태 업데이트
-	public int updateResultT(String userId);
+	public int updateResultT(String resNum);
 
 	// 예약 거절상태 업데이트
-	public int updateResultF(String userId);
+	public int updateResultF(String resNum);
 
 	// 예약 대기상태 업데이트
-	public int updateResultN(String userId);
+	public int updateResultN(String resNum);
+
+	
 
 	/*
 	 * // 글 개수 조회 public int getTotal();

@@ -33,7 +33,7 @@ public class AdminServiceImpl implements AdminService {
 		AdminMapper Admin = sql.getMapper(AdminMapper.class);
 
 		// String managerId = request.getParameter("managerId");
-		String managerId = "hangang02";
+		String managerId = "hangang01";
 		// String monthParam = request.getParameter("month");
 
 		int month = 0;
@@ -66,11 +66,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void updateResultT(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String userId = request.getParameter("userId");
+		String resNum = request.getParameter("resNum");
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		AdminMapper mapper = sql.getMapper(AdminMapper.class);
-		int result = mapper.updateResultT(userId);
+		int result = mapper.updateResultT(resNum);
 		sql.close();
 
 		response.setContentType("texet/html; charset=UTF-8");
@@ -88,11 +88,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void updateResultF(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String userId = request.getParameter("userId");
+		String resNum = request.getParameter("resNum");
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		AdminMapper mapper = sql.getMapper(AdminMapper.class);
-		int result = mapper.updateResultF(userId);
+		int result = mapper.updateResultF(resNum);
 		sql.close();
 
 		response.setContentType("texet/html; charset=UTF-8");
@@ -109,11 +109,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void updateResultN(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String userId = request.getParameter("userId");
+		String resNum = request.getParameter("resNum");
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		AdminMapper mapper = sql.getMapper(AdminMapper.class);
-		int result = mapper.updateResultN(userId);
+		int result = mapper.updateResultN(resNum);
 		sql.close();
 
 		response.setContentType("texet/html; charset=UTF-8");
