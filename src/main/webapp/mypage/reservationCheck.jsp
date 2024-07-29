@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
-<%@ include file="../include/header.jsp" %>
+<%@ include file="../include/header.jsp" %> <!-- 헤더를 포함하여 공통 레이아웃 유지 -->
 <body>
     <div class="jinseok-wrap">
         <div class="sum">
@@ -31,13 +31,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="reservation" items="${nextMonthReservations}">
+                            <c:forEach var="reservation" items="${nextMonthReservations}"> <!-- nextMonthReservations 변수 반복 -->
                                 <tr class="accordion-toggle" data-toggle="collapse" data-target="#collapse${reservation.resNum}" aria-expanded="false" aria-controls="collapse${reservation.resNum}">
                                     <td>${reservation.resNum}</td>
                                     <td>${reservation.userName}</td>
                                     <td>${reservation.resDate}</td>
                                     <td>${reservation.locaId}</td>
-                                    <td>${reservation.resResult}</td>
+                                    <td class="resResult">${reservation.resResult}</td> <!-- 상태값이 W, T, F 중 하나 -->
                                 </tr>
                                 <tr id="collapse${reservation.resNum}" class="collapse">
                                     <td colspan="5">
@@ -71,13 +71,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="reservation" items="${allReservations}">
+                            <c:forEach var="reservation" items="${allReservations}"> <!-- allReservations 변수 반복 -->
                                 <tr class="accordion-toggle" data-toggle="collapse" data-target="#collapseAll${reservation.resNum}" aria-expanded="false" aria-controls="collapseAll${reservation.resNum}">
                                     <td>${reservation.resNum}</td>
                                     <td>${reservation.userName}</td>
                                     <td>${reservation.resDate}</td>
                                     <td>${reservation.locaId}</td>
-                                    <td>${reservation.resResult}</td>
+                                    <td class="resResult">${reservation.resResult}</td> <!-- 상태값이 W, T, F 중 하나 -->
                                 </tr>
                                 <tr id="collapseAll${reservation.resNum}" class="collapse">
                                     <td colspan="5">
@@ -99,21 +99,31 @@
             </div>
         </div>
     </div>
-<%@ include file="../include/footer.jsp" %>
-   <script>
-        $(document).ready(function() {
-            $('.accordion-toggle').click(function(event) {
-                if ($(this).is('button') || $(this).closest('button').length > 0) {
-                    return;
-                }
-                $(this).next('.collapse').collapse('toggle');
-            });
-
-            $('.modify').click(function(event) {
-                event.stopPropagation();
-                $(this).closest('tr').next('.collapse').collapse('hide');
-            });
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery 로드 -->
+<script>
+    $(document).ready(function() { <!-- DOMContentLoaded와 동일하게 사용 -->
+        $('.accordion-toggle').click(function(event) {
+            if ($(this).is('button') || $(this).closest('button').length > 0) {
+                return;
+            }
+            $(this).next('.collapse').collapse('toggle'); <!-- 클릭 시 collapse 클래스 토글 -->
         });
-    </script>
-</body>
-</html>
+
+        $('.modify').click(function(event) {
+            event.stopPropagation();
+            $(this).closest('tr').next('.collapse').collapse('hide'); <!-- 수정 버튼 클릭 시 토글 해제 -->
+        });
+
+        $('.resResult').each(function() {
+            var status = $(this).text(); <!-- 상태 값을 읽어옴 -->
+            if (status === 'W') {
+                $(this).text('수락 대기중'); <!-- 상태값이 W인 경우 텍스트 변경 -->
+            } else if (status === 'T') {
+                $(this).text('수락됨'); <!-- 상태값이 T인 경우 텍스트 변경 -->
+            } else {
+                $(this).text('거절됨'); <!-- 그 외의 경우 텍스트 변경 -->
+            }
+        });
+    });
+</script>
+<%@ include file="../include/footer.jsp" %>
