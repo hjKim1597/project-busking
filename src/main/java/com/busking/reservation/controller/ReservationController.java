@@ -58,6 +58,8 @@ public class ReservationController extends HttpServlet {
             handleReservationPost(request, response);
         } else if (command.equals("/reservation/submitReservation.reservation")) {
             handleCreateReservation(request, response);
+        } else if(command.equals("/reservation/locationSearch.reservation")) {
+        	handleLocationSearch(request, response);
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "페이지를 찾을 수 없습니다");
         }
@@ -195,7 +197,14 @@ public class ReservationController extends HttpServlet {
         }
     }
 
+    private void handleLocationSearch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String search_text = request.getParameter("search_text");
+        String locaPlace = request.getParameter("locaPlace");
 
+        List<ReservationLocationDTO> searchResults = service.searchLocations(search_text, locaPlace);
+        request.setAttribute("locations", searchResults);
+        request.getRequestDispatcher("/reservation/reservation.jsp").forward(request, response);
+    }
 
 
 }

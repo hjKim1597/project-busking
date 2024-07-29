@@ -4,7 +4,10 @@ import com.busking.mypage.model.UserJoinDTO;
 import com.busking.util.mybatis.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ReservationDAO {
     private SqlSessionFactory sqlSessionFactory;
@@ -58,6 +61,19 @@ public class ReservationDAO {
         try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
             ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);
             return mapper.getUserById(userId);
+        }
+    }
+    
+    public List<ReservationLocationDTO> searchLocations(String searchText, String locaPlace) {
+        if (sqlSessionFactory == null) {
+            throw new IllegalStateException("SqlSessionFactory is null.");
+        }
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);
+            Map<String, Object> params = new HashMap<>();
+            params.put("searchText", searchText);
+            params.put("locaPlace", locaPlace);
+            return mapper.searchLocations(params);
         }
     }
 }

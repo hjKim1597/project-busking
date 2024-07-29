@@ -42,5 +42,15 @@
     	INSERT INTO RESERVATIONS (USER_ID, LOCA_ID, RES_DATE, RES_REGDATE, RES_COUNT, RES_CONTENT, RES_AMP, RES_RESULT, RES_TIME)
     	VALUES (#{userId}, #{locaId}, #{resDate}, CURRENT_DATE, #{resCount}, #{resContent}, #{resAmp}, 'F', #{resTime})
 	</insert>
+	
+    <select id="searchLocations" parameterType="map" resultType="com.busking.reservation.model.ReservationLocationDTO">
+        SELECT L.LOCA_ID, L.LOCA_NAME, L.LOCA_INFO, L.LOCA_PIC_PATH, L.LOCA_PLACE, M.MANAGER_EMAIL
+        FROM LOCATIONS L 
+        LEFT JOIN MANAGER M ON L.LOCA_PLACE = M.LOCA_PLACE
+        WHERE (#{locaPlace} = '*' OR L.LOCA_PLACE = #{locaPlace})
+          AND (L.LOCA_NAME LIKE '%' || #{searchText} || '%' 
+           OR L.LOCA_INFO LIKE '%' || #{searchText} || '%')
+        ORDER BY L.LOCA_ID
+    </select>
 
 </mapper>
