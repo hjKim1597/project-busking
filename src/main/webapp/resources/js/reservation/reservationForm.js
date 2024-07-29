@@ -12,6 +12,8 @@ window.onload = function() {
             document.getElementById('rating').value = index + 1; // Save the rating value
         });
     });
+    
+     initializeCalendar();
 };
 
 
@@ -48,74 +50,66 @@ function validateForm() {
     return true;
 }
 
-// 달력 script
-// 날짜 객체 생성
-var date = new Date();
-// 달력 연도
-var calendarYear = date.getFullYear();
-// 달력 월
-var calendarMonth = date.getMonth() + 1;
-// 달력 일
-var calendarToday = date.getDate();
+// Function to initialize calendar for the next month
+function initializeCalendar() {
+    var date = new Date();
+    var nextMonth = new Date(date.getFullYear(), date.getMonth() + 1); // Calculate next month
 
-var monthLastDate = new Date(calendarYear, calendarMonth, 0);
-// 달력 월의 마지막 일
-var calendarMonthLastDate = monthLastDate.getDate();
+    var calendarYear = nextMonth.getFullYear();
+    var calendarMonth = nextMonth.getMonth() + 1; // Adjust to 1-based index for display
 
-var monthStartDay = new Date(calendarYear, date.getMonth(), 1);
-// 달력 월의 시작 요일
-var calendarMonthStartDay = monthStartDay.getDay();
+    var monthLastDate = new Date(calendarYear, calendarMonth, 0);
+    var calendarMonthLastDate = monthLastDate.getDate();
+    var monthStartDay = new Date(calendarYear, calendarMonth - 1, 1);
+    var calendarMonthStartDay = monthStartDay.getDay();
 
-// 주 카운트
-var calendarWeekCount = Math.ceil((calendarMonthStartDay + calendarMonthLastDate) / 7);
+    var calendarWeekCount = Math.ceil((calendarMonthStartDay + calendarMonthLastDate) / 7);
 
-var html = "";
-html += "<table>";
-html += "<caption>" + calendarMonth + "월</caption>";
-html += "<thead>";
-html += "<tr>";
-html += "<th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>";
-html += "</tr>";
-html += "</thead>";
-html += "<tbody>";
-// 위치
-var calendarPos = 0;
-// 날짜
-var calendarDay = 0;
-for (var i = 0; i < calendarWeekCount; i++) {
+    var html = "";
+    html += "<table>";
+    html += "<caption>" + calendarMonth + "월</caption>";
+    html += "<thead>";
     html += "<tr>";
-    for (var j = 0; j < 7; j++) {
-        html += "<td>";
-        if (calendarMonthStartDay <= calendarPos && calendarDay < calendarMonthLastDate) {
-            calendarDay++;
-            html += "<span>" + calendarDay + "</span>";
-        }
-        html += "</td>";
-        calendarPos++;
-    }
+    html += "<th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>";
     html += "</tr>";
-}
-html += "</tbody>";
-html += "</table>";
-document.getElementById("calendar").innerHTML = html;
+    html += "</thead>";
+    html += "<tbody>";
 
-// 날짜 클릭 이벤트
-document.getElementById("calendar").addEventListener('click', (e) => {
-    if (e.target.tagName != "SPAN") return;
-    if (e.target.innerHTML == "") return;
+    var calendarPos = 0;
+    var calendarDay = 0;
+    for (var i = 0; i < calendarWeekCount; i++) {
+        html += "<tr>";
+        for (var j = 0; j < 7; j++) {
+            html += "<td>";
+            if (calendarMonthStartDay <= calendarPos && calendarDay < calendarMonthLastDate) {
+                calendarDay++;
+                html += "<span>" + calendarDay + "</span>";
+            }
+            html += "</td>";
+            calendarPos++;
+        }
+        html += "</tr>";
+    }
+    html += "</tbody>";
+    html += "</table>";
+    document.getElementById("calendar").innerHTML = html;
 
-    var calendarTdList = document.querySelectorAll("#calendar table tbody td");
+    document.getElementById("calendar").addEventListener('click', (e) => {
+        if (e.target.tagName != "SPAN") return;
+        if (e.target.innerHTML == "") return;
 
-    calendarTdList.forEach(function(td) {
-        td.classList.remove('selected');
+        var calendarTdList = document.querySelectorAll("#calendar table tbody td");
+
+        calendarTdList.forEach(function(td) {
+            td.classList.remove('selected');
+        });
+
+        e.target.parentElement.classList.add("selected");
+
+        var selectedDate = `${calendarYear}-${calendarMonth}-${e.target.innerHTML}`;
+        document.getElementById("selectedDate").value = selectedDate;
     });
-
-    e.target.parentElement.classList.add("selected");
-
-    // 클릭한 날짜 값
-    var selectedDate = `${calendarYear}-${calendarMonth}-${e.target.innerHTML}`;
-    document.getElementById("selectedDate").value = selectedDate;
-});
+}
 
 // 시간 클릭 이벤트
 function selectTime(startTime, endTime) {
