@@ -18,6 +18,7 @@ import com.busking.util.mybatis.MybatisUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class AdminServiceImpl implements AdminService {
 
@@ -33,7 +34,9 @@ public class AdminServiceImpl implements AdminService {
 		AdminMapper Admin = sql.getMapper(AdminMapper.class);
 
 		// String managerId = request.getParameter("managerId");
-		String managerId = "hangang02";
+//		String managerId = "hangang02";
+		HttpSession session =  request.getSession();
+		String managerId = (String)session.getAttribute("userId"); 
 		// String monthParam = request.getParameter("month");
 
 		int month = 0;
