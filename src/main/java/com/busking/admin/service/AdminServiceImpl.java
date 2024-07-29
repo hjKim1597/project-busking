@@ -1,6 +1,7 @@
 package com.busking.admin.service;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,27 +64,67 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void updateReservation(HttpServletRequest request, HttpServletResponse response)
+	public void updateResultT(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userId = request.getParameter("userId");
-		String result = request.getParameter("result");
-		
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
-		AdminMapper adminMapper = sql.getMapper(AdminMapper.class);
+		AdminMapper mapper = sql.getMapper(AdminMapper.class);
+		int result = mapper.updateResultT(userId);
+		sql.close();
 
-		Map<String, Object> params = new HashMap<>();
-		params.put("userId", userId);
-		params.put("result", result);
+		response.setContentType("texet/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
 
-		int rowsUpdated = adminMapper.updateResult(params);
-
-		response.setContentType("text/plain");
-		response.setCharacterEncoding("UTF-8");
-		if (rowsUpdated > 0) {
-			response.getWriter().write("Success");
-		} else {
-			response.getWriter().write("Fail");
+		out.println("<script>");
+		if (result != 0) {
+			out.println("alert('예약이 승인되었습니다.');");
 		}
+		out.println("location.href='adminPage.admin';");
+		out.println("</script>");
+
 	}
+
+	@Override
+	public void updateResultF(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String userId = request.getParameter("userId");
+
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		AdminMapper mapper = sql.getMapper(AdminMapper.class);
+		int result = mapper.updateResultF(userId);
+		sql.close();
+
+		response.setContentType("texet/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		out.println("<script>");
+		if (result != 0) {
+			out.println("alert('예약이 거절되었습니다.');");
+		}
+		out.println("location.href='adminPage.admin';");
+		out.println("</script>");
+	}
+
+	@Override
+	public void updateResultN(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String userId = request.getParameter("userId");
+
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		AdminMapper mapper = sql.getMapper(AdminMapper.class);
+		int result = mapper.updateResultN(userId);
+		sql.close();
+
+		response.setContentType("texet/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		out.println("<script>");
+		if (result != 0) {
+			out.println("alert('예약이 대기중으로 변경되었습니다.');");
+		}
+		out.println("location.href='adminPage.admin';");
+		out.println("</script>");
+	}
+
 }
