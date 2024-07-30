@@ -109,6 +109,11 @@
 													id="address" name="address" class="form-control"
 													value="${dto.userAddr }" required readonly>
 											</div>
+											<div class="form-group">
+												<label for="time">예약시간:</label> <input type="time"
+													id="time" name="time" class="form-control"
+													value="${dto.resTime }" required readonly>
+											</div>
 										</form>
 									</div>
 								</td>
