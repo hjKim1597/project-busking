@@ -131,7 +131,7 @@
 								<li><a
 									href="${pageContext.request.contextPath }/customer_center/customer_center_guide.customer">이용안내</a></li>
 								<li><a
-									href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.customer">자주묻는질문</a></li>
+									href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.customer">FAQ</a></li>
 							</ul></li>
 
 

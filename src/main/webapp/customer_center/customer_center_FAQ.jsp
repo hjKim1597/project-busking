@@ -32,7 +32,7 @@
 	                 </li>
 	                 <li class="nth3"><strong><a href="customer_center_guide.customer"><span>이용안내</span></a></strong>
 	                 </li>
-	                 <li class="nth4"><strong><a href="customer_center_FAQ.customer"><span>자주묻는질문(FAQ)</span></a></strong>
+	                 <li class="nth4"><strong><a href="customer_center_FAQ.customer"><span>FAQ</span></a></strong>
 	                 </li>
 	             </ul>
             </div>
@@ -42,7 +42,7 @@
 	        <!-- 공지사항 목록 -->
 	        <div class="board_list">
 	        	<div class="board_list_title">
-					<strong>자주묻는질문(FAQ)</strong>
+					<strong>FAQ</strong>
 				</div>
 	            <!-- 공지사항 목록 -->
 				<div class="board_list_box">

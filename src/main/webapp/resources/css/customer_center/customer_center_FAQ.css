@@ -1,5 +1,7 @@
 #change .board_nav {
     width: 135px;
+    	margin-right: 70px;
+    
 }
 
 #change .board_nav #board_nav_wrap {
@@ -35,6 +37,8 @@
 }
 #change .board_nav #board_nav_wrap {
     width: 135px;
+    	margin-right: 70px;
+    
 }
 #change .board_nav #board_nav_wrap > h1 {
 	font-weight: 550;
@@ -190,6 +194,8 @@ thead th, tbody td {
 }
 #change .board_nav #board_nav_wrap {
     width: 135px;
+    	margin-right: 70px;
+    
 }
 #change .board_nav #board_nav_wrap > h1 {
 	font-weight: 550;

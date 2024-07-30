@@ -30,7 +30,7 @@
                                     </li>
                                     <li class="nth3"><strong><a href="customer_center_guide.customer"><span>이용안내</span></a></strong>
                                     </li>
-                                    <li class="nth4"><strong><a href="customer_center_FAQ.customer"><span>자주묻는질문(FAQ)</span></a></strong>
+                                    <li class="nth4"><strong><a href="customer_center_FAQ.customer"><span>FAQ</span></a></strong>
                                     </li>
                                 </ul>
                             </nav>
@@ -48,7 +48,7 @@
                 <div class="service-board">
                     <div class="container">
                         <div class="page-header">
-                            <h2>자주묻는질문FAQ</h2>
+                            <h2>FAQ</h2>
                         </div>
                         <p></p>
 

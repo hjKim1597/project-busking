@@ -66,6 +66,8 @@ thead th, tbody td {
 
 #change .board_nav #board_nav_wrap {
 	width: 135px;
+	margin-right: 70px;
+	
 }
 
 #change .board_nav #board_nav_wrap>h1 {
@@ -79,7 +81,7 @@ thead th, tbody td {
 }
 
 #change .board .board_list {
-	margin-left: 170px;
+	/* margin-left: 170px; */
 	overflow: hidden;
 }
 
