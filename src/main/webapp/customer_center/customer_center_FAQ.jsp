@@ -42,7 +42,7 @@
 	        <!-- 공지사항 목록 -->
 	        <div class="board_list">
 	        	<div class="board_list_title">
-					<strong>공지사항</strong>
+					<strong>자주묻는질문(FAQ)</strong>
 				</div>
 	            <!-- 공지사항 목록 -->
 				<div class="board_list_box">
