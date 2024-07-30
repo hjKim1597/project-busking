@@ -35,24 +35,26 @@
 					<table class="board_list_table" id="layout1">
 		                <thead>
 		                    <tr>
-		                        <th class="nth1">글 번호</th>
-		                        <th class="nth2">신청자</th>
-		                        <th class="nth3">예약 날짜</th>
-		                        <th class="nth4">예약 시간</th>
-		                        <th class="nth5">장소</th>
+		                        <th class="nth1">장소</th>
+		                        <th class="nth2">예약 날짜</th>
+		                        <th class="nth3">시작 시간</th>
+		                        <th class="nth4">종료 시간</th>
+		                        <th class="nth5">신청자</th>
 		                        <th class="nth6">신청 날짜</th>
 		                    </tr>
 		                </thead>
                         <tbody>
 							<c:forEach var="dto" items="${resList}">
 							    <tr>
-							        <td>${dto.resNum }</td>
-							        <td>${dto.userId}</td>
-							        <td><a href="getResContent.customer?resNum=${dto.resNum }" style="width:30%;">
-							        	<fmt:formatDate value="${dto.resDate}" pattern="yyyy-MM-dd" />
-							        </a></td>
+							    	<td>${dto.locaName}</td>
+							    	<td>
+								        <a href="getResContent.customer?resNum=${dto.resNum }" style="width:30%;">
+								        	<fmt:formatDate value="${dto.resDate}" pattern="yyyy-MM-dd" />
+								        </a>
+							        </td>
 							        <td>${dto.resTime }</td>
-							        <td>${dto.locaName}</td>
+							        <td class="resLastTime" data-time="${dto.resTime }"></td>
+							        <td>${dto.userId}</td>
 							        <td><fmt:formatDate value="${dto.resRegdate}" pattern="yy.MM.dd"/></td>
 							    </tr>
 							</c:forEach>
@@ -65,7 +67,7 @@
 	                	<c:choose>
 		                	<c:when test="${!pageVO.first }">
 								<li id="page_first">
-									<a href="customer_center_index.customer">
+									<a href="customer_center_res.customer">
 										<i class="fa-solid fa-angles-left"></i>
 									</a>
 								</li>
@@ -136,7 +138,8 @@
 					</ul>
 				</div>
 				<!-- 검색 -->
-				<form action="customer_center_res.customer" method="post">
+				<!--
+ 				<form action="customer_center_res.customer" method="post">
 					<div class="board_search">
 						<select class="board_search_box" name="type">
 							<option value="all" selected>전체</option>
@@ -149,7 +152,8 @@
 							<input class="btn" type="submit" id="search_btn" value="검색">
 						</span>
 					</div>
-				</form>
+				</form> 
+				-->
 			</div>
 		</div>
 	</section>
@@ -163,6 +167,16 @@
 	    Array.from(pageItems)
 	    	 .filter(i => i.dataset.page == pageNum)
 	    	 .forEach(item => item.classList.add("active"));
+	    
+	    window.onload = function() {
+	    	var resLastTimes = document.querySelectorAll(".resLastTime");
+	    	resLastTimes.forEach(resLastTime => {
+	    		var time = resLastTime.dataset.time;
+	    		var hour = time.split(":")[0];
+	    		hour = parseInt(hour) + 3;
+	    		resLastTime.innerHTML = hour + ":" + time.split(":")[1];
+	    	});
+	    }
     
     </script>
    	

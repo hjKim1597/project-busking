@@ -35,37 +35,34 @@ public class BoardAuthenticationFilter extends MypageAuthenticationFilter {
 		HttpServletResponse response = (HttpServletResponse)res;
 		
 		HttpSession session = request.getSession();
-		String userId = (String)session.getAttribute("userId");
-		String subject = request.getParameter("subject");
 		
-		if(userId == null) {
-			
-			super.doFilter(request, response, chain);
-			return;
-			
-		} else if((boolean)session.getAttribute("adminCheck")) {
-			
+		boolean adminCheck = session.getAttribute("adminCheck") != null ? (boolean)session.getAttribute("adminCheck") : false;
+		
+		if(adminCheck) {
 			chain.doFilter(request, response);
 			return;
-			
-		} else {
-			
-			String writer = request.getParameter("writer");
-			
-			if(writer == null || !writer.equals(userId)) {
-				
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>");
-				out.println("alert('권한이 없습니다.');");
-				out.println("location.href='"+ request.getContextPath() +"/board/board_list.board"+ subject + "';");
-				out.println("</script>");
-				
-				return;
-			} 
-			
 		}
 		
+		String userId = (String)session.getAttribute("userId");
+		
+		if(userId == null) {
+			super.doFilter(request, response, chain);
+			return;
+		}
+		
+		String subject = request.getParameter("subject");
+		String writer = request.getParameter("writer");
+		
+		if(writer == null || !writer.equals(userId)) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('권한이 없습니다.');");
+			out.println("location.href='"+ request.getContextPath() +"/board/board_list.board"+ subject + "';");
+			out.println("</script>");
+			
+			return;
+		} 
 		
 		chain.doFilter(request, response);	
 		
