@@ -22,7 +22,9 @@
 <body>
 
      <!-- 중앙 레이아웃 -->
-    <section class="container customer-center-width" id="change">
+    <section class="container customer-center-width" id="change" style="margin-top: 150px; padding: 150px 50px 0 50px;
+    margin: 0 auto;
+    overflow: hidden;">
      	<!-- 좌측메뉴 -->
         <div class="board_nav">
             <div id="board_nav_wrap">
@@ -44,12 +46,10 @@
 	        <!-- 공지사항 목록 -->
 	        <div class="board_list">
 	        	<div class="board_list_title">
-					<strong>공지사항</strong>
 				</div>
 	            <!-- 이용안내 내용 -->
-            <div class="board">
-
-                <div class="service-board" style="margin-left: 140px;">
+	            
+	            <div class="service-board" style="margin-left: 140px;">
                     <div class="container">
                         <div class="page-header">
                             <h3>한강공원 버스킹(거리공연) 신청 개요</h3>
@@ -126,6 +126,9 @@
                 </div>
 
             </div>
+            <div class="board">
+
+                
 				
 				
 					

@@ -10,35 +10,11 @@
     <section class="container customer-center-width" id="change">
         <div class="row">
 
-			<!-- 좌측메뉴 -->
-			<div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 content">
-				<li class="col-xs-4 col-sm-4 col-lg-4 col-lg-4">
-					<section>
-						<div class="service_menu">
-							<nav>
-								<div class="span"></div>
-								<h1>고객센터</h1>
-								<ul class="menu">
-									<li class="nth1"><strong><a
-											href="customer_center_index.customer"><span>공지사항</span></a></strong></li>
-									<li class="nth2"><strong><a
-											href="customer_center_res.customer"><span>이달의 예약</span></a></strong>
-									</li>
-									<li class="nth3"><strong><a
-											href="customer_center_guide.customer"><span>이용안내</span></a></strong></li>
-									<li class="nth4"><strong><a
-											href="customer_center_FAQ.customer"><span>자주묻는질문(FAQ)</span></a></strong>
-									</li>
-								</ul>
-							</nav>
-						</div>
-					</section>
-				</li>
-			</div>
+			
 
 			<!-- 공지사항 게시판 > 게시글 내용 보는 곳 -->
 			<div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 board">
-				<div class="service-board">
+				<div class="service-board" >
 					<div class="container">
 						<div class="page-header">
 							<h2>공지사항</h2>
@@ -46,7 +22,7 @@
 						<p>게시글 내용 보는 페이지</p>
 
 						<!-- 글 내용 -->
-						<div class="panel panel-default">
+						<div class="panel panel-default" style="width:85%;">
 							<div class="panel-heading">${dto.noticeTitle }</div>
 							<div class="panel-body">
 								<p>${dto.noticeContent }</p>
