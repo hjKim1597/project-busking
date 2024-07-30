@@ -22,7 +22,7 @@
 	        </h1>
 	        <form class="board_write_content" action="board_editForm.boardFree?bno=${dto.freeNum }" method="post">
 	            <div class="form_group">
-	                <label class="title_text" for="title">뉴스 제목</label>
+	                <label class="title_text" for="title">제목</label>
 	                <input class="title_box" type="text" id="title" name="title" value="${dto.freeTitle }" required>
 	            </div>
 	            <div class="form_group">

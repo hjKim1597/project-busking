@@ -42,20 +42,20 @@
 	                        <!--데이터 받아오기-->
 	                        <c:forEach var="dto" items="${teamList }">
 								<tr>
-									<td>
+									<td class="nth1">
 										<c:set var="numberStr" value="${fn:substring(dto.teamNum, 5, 13)}" />
                         				<c:out value="${numberStr + 0}" />
 									</td>
-									<td>${dto.teamWriter }</td>
-									<td><a href="board_content.boardTeam?bno=${dto.teamNum }">${dto.teamTitle }</a></td>
-									<td><fmt:formatDate value="${dto.teamRegdate }" pattern="yy.MM.dd"/></td>
-									<td>
+									<td class="nth2">${dto.teamWriter }</td>
+									<td class="nth3"><a href="board_content.boardTeam?bno=${dto.teamNum }">${dto.teamTitle }</a></td>
+									<td class="nth4"><fmt:formatDate value="${dto.teamRegdate }" pattern="yy.MM.dd"/></td>
+									<td class="nth5">
 										<c:choose>
 											<c:when test="${dto.teamCount == 6 }">기타</c:when>
 											<c:otherwise>${dto.teamCount }명</c:otherwise>
 										</c:choose>
 									</td>
-									<td>
+									<td class="nth6">
 										${dto.teamResult == 'T' ? '모집중' : '모집완료' }
 									</td>
 								</tr>

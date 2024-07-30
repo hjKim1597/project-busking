@@ -36,11 +36,11 @@
 	                        <option value="5">5</option>
 	                        <option value="6">기타</option>
 	                    </select>
-	                        <select class="title_box" name="teamResult" required style="height: 40px; width: 110px;">
-	                            <option id="board_option" value="">모집 상태</option>
-	                            <option value="T">모집 중</option>
-	                            <option value="F">모집 완료</option>
-	                        </select>
+                        <select class="title_box" name="teamResult" required style="height: 40px; width: 110px;">
+                            <option id="board_option" value="">모집 상태</option>
+                            <option value="T">모집 중</option>
+                            <option value="F">모집 완료</option>
+                        </select>
 	                </div>
 	            </div>
 	            

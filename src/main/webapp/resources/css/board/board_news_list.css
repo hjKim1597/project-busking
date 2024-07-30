@@ -203,24 +203,33 @@ thead th, tbody td {
     height: 40px;
 }
 
-.wrap_board_news > .wrap_board_news_list .board_news_list_content th.nth1 {
+.wrap_board_news > .wrap_board_news_list .board_news_list_content th.nth1,
+.wrap_board_news > .wrap_board_news_list .board_news_list_content td.nth1 {
     width: 10%;
 }
 
-.wrap_board_news > .wrap_board_news_list .board_news_list_content th.nth2 {
+.wrap_board_news > .wrap_board_news_list .board_news_list_content th.nth2,
+.wrap_board_news > .wrap_board_news_list .board_news_list_content td.nth2 {
     width: 10%;
+
 }
 
-.wrap_board_news > .wrap_board_news_list .board_news_list_content th.nth3 {
+.wrap_board_news > .wrap_board_news_list .board_news_list_content th.nth3,
+.wrap_board_news > .wrap_board_news_list .board_news_list_content td.nth3 {
     width: 60%;
+	max-width: 456px;
 }
 
-.wrap_board_news > .wrap_board_news_list .board_news_list_content th.nth4 {
+.wrap_board_news > .wrap_board_news_list .board_news_list_content th.nth4,
+.wrap_board_news > .wrap_board_news_list .board_news_list_content td.nth4 {
     width: 10%;
+
 }
 
-.wrap_board_news > .wrap_board_news_list .board_news_list_content th.nth5 {
+.wrap_board_news > .wrap_board_news_list .board_news_list_content th.nth5,
+.wrap_board_news > .wrap_board_news_list .board_news_list_content td.nth5 {
     width: 10%;
+
 }
 
 .wrap_board_news_list .page_nav {

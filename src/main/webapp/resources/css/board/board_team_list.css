@@ -199,16 +199,22 @@
 
 .wrap_board_team > .wrap_board_team_list .board_team_list_content td {height: 40px;}
 
-.wrap_board_team > .wrap_board_team_list .board_team_list_content th.nth1 {width: 10%;}
+.wrap_board_team > .wrap_board_team_list .board_team_list_content th.nth1, 
+.wrap_board_team > .wrap_board_team_list .board_team_list_content td.nth1 {width: 10%;}
 
-.wrap_board_team > .wrap_board_team_list .board_team_list_content th.nth2 {width: 10%}
+.wrap_board_team > .wrap_board_team_list .board_team_list_content th.nth2, 
+.wrap_board_team > .wrap_board_team_list .board_team_list_content td.nth2 {width: 10%;}
 
-.wrap_board_team > .wrap_board_team_list .board_team_list_content th.nth3 {width: 40%}
+.wrap_board_team > .wrap_board_team_list .board_team_list_content th.nth3,
+.wrap_board_team > .wrap_board_team_list .board_team_list_content td.nth3 {width: 40%; max-width: 304px;}
 
-.wrap_board_team > .wrap_board_team_list .board_team_list_content th.nth4 {width: 10%}
+.wrap_board_team > .wrap_board_team_list .board_team_list_content th.nth4,
+.wrap_board_team > .wrap_board_team_list .board_team_list_content td.nth4 {width: 10%;}
 
+.wrap_board_team > .wrap_board_team_list .board_team_list_content th.nth5,
 .wrap_board_team > .wrap_board_team_list .board_team_list_content th.nth5 {width: 10%;}
 
+.wrap_board_team > .wrap_board_team_list .board_team_list_content th.nth6,
 .wrap_board_team > .wrap_board_team_list .board_team_list_content th.nth6 {width: 10%;}
 
 .wrap_board_team_list .page_nav {

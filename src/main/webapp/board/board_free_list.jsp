@@ -44,14 +44,14 @@
 							<!--데이터 받아오기-->
 							<c:forEach var="dto" items="${freeList }">
 								<tr>
-									<td>
+									<td class="nth1">
 										<c:set var="numberStr" value="${fn:substring(dto.freeNum, 5, 13)}" />
                         				<c:out value="${numberStr + 0}" />
                         			</td>
-									<td>${dto.freeWriter }</td>
-									<td><a href="board_content.boardFree?bno=${dto.freeNum }">${dto.freeTitle }</a></td>
-									<td><fmt:formatDate value="${dto.freeRegdate }" pattern="yy.MM.dd" /></td>
-									<td>${dto.freeHit }</td>
+									<td class="nth2">${dto.freeWriter }</td>
+									<td class="nth3"><a href="board_content.boardFree?bno=${dto.freeNum }">${dto.freeTitle }</a></td>
+									<td class="nth4"><fmt:formatDate value="${dto.freeRegdate }" pattern="yy.MM.dd" /></td>
+									<td class="nth5">${dto.freeHit }</td>
 								</tr>
 							</c:forEach>
 

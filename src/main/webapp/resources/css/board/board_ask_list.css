@@ -440,6 +440,18 @@ thead th, tbody td {
 	text-align: center;
     cursor: pointer;
 }
+#board_ask_list_wrap .submit-comment.edit,
+#board_ask_list_wrap .submit-comment.delete {
+    width: 75px;
+    height: 27.5px; /* 높이를 텍스트 입력창에 맞춤 */
+    margin-bottom: 5px;
+    background-color: #5FD7FF;
+    color: white;
+    border: none;
+    border-radius: 3px;
+	text-align: center;
+    cursor: pointer;
+}
 .comList {
 	width: 100%
 }
