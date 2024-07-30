@@ -8,7 +8,7 @@
         <div class="login-wrap">
             <div class="login-wrap-border">
                 <p>로그인</p>
-                <form action="${pageContext.request.contextPath}/userjoin/login.mypage" method="post">
+                <form action="${pageContext.request.contextPath}/userjoin/login.mypage" method="post" onsubmit="saveId()">
                     <div class="input-group id">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                       <input id="userId" type="text" class="form-control" name="userId" placeholder="아이디를 입력하세요." required>
@@ -18,7 +18,7 @@
                       <input id="userPw" type="password" class="form-control" name="userPw" placeholder="비밀번호를 입력하세요." required>
                     </div>
                     <div class="checkbox">
-                        <label><input type="checkbox" id="keepLogin" name="keepLogin"><p style="font-size: 12px; line-height: 20px;">로그인 상태 유지</p></label>
+                        <label><input type="checkbox" id="rememberId" name="rememberId"><p style="font-size: 12px; line-height: 20px;">아이디 저장하기</p></label>
                     </div>
                     <input type="submit" class="jinseok-button" value="로그인">
                     <div class="sub-wrap" style="color: #a0a0a0;">
@@ -34,40 +34,32 @@
                 <div class="icon-all">
                     <a href="https://www.naver.com/"><img src="../resources/img/Naver.png" alt=""></a>
                     <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk"><img src="../resources/img/Kakao.png" alt=""></a>
-                    <a href="https://www.google.com/"class="google"><img src="../resources/img/web_neutral_sq_na@4x.png" alt=""></a>
+                    <a href="https://www.google.com/" class="google"><img src="../resources/img/web_neutral_sq_na@4x.png" alt=""></a>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        document.getElementById("loginForm").onsubmit = function() {
-            if (document.getElementById("keepLogin").checked) {
-                setCookie("keepLogin", "true", 7); // 7일 동안 유지되는 쿠키 설정
+        var userId = document.getElementById('userId');
+        var rememberId = document.getElementById("rememberId");
+
+        function saveId() {
+            if (rememberId.checked) {
+                localStorage.setItem("userId", userId.value);
             } else {
-                setCookie("keepLogin", "true", -1); // 쿠키 제거
+                localStorage.removeItem("userId");
             }
-        };
-
-        function setCookie(name, value, days) {
-            var expires = "";
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
         }
 
-        function getCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for(var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        function loadId() {
+            var savedId = localStorage.getItem("userId");
+            if (savedId) {
+                document.getElementById('userId').value = savedId;
+                document.getElementById('rememberId').checked = true;
             }
-            return null;
         }
+
+        window.onload = loadId;
     </script>
 <%@ include file="../include/footer.jsp" %>
 </body>
