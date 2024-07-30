@@ -20,6 +20,8 @@ public interface ReservationMapper {
     UserJoinDTO getUserById(String userId); // 사용자 정보 가져오기
     
     List<ReservationLocationDTO> searchLocations(Map<String, Object> paramss);
+
+	String getResResult(String resNum);
     
     
 }

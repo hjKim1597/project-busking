@@ -23,8 +23,4 @@ public interface AdminMapper {
 	public String getStatus(String resNum);
 
 	
-
-	/*
-	 * // 글 개수 조회 public int getTotal();
-	 */
 }

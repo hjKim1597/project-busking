@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.admin.model.AdminMapper;
 import com.busking.admin.model.AdminPageDTO;
+import com.busking.reservation.model.ReservationMapper;
 import com.busking.util.mybatis.MybatisUtil;
 /*import com.busking.util.paging.PageVO;*/
 
@@ -50,32 +51,25 @@ public class AdminServiceImpl implements AdminService {
 		String monthTarget = String.format("%02d", month);
 		
 
-		// 매퍼 메서드 호출
+		
 		Map<String, Object> params = new HashMap<>();
 		params.put("managerId", managerId);
-		params.put("month", monthTarget); // 2자리 숫자로 포맷
-
+		params.put("month", monthTarget); 
 		ArrayList<AdminPageDTO> getList = Admin.getList(params);
 
-		// request.setAttribute("pageVO", pageVO);
+
 
 
 		request.setAttribute("getList", getList);
 		request.getRequestDispatcher("adminPage.jsp").forward(request, response);
-		// 페이징 코드
-		// request
-		/* String page = (String) request.getAttribute("page"); */
-		/* int pageNum = Integer.parseInt(page); */
 
-		// int total = Admin.getTotal();
-		// PageVO pageVO = new PageVO(pageNum, total);
 
 	}
 
 	@Override
 	public void updateResultT(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String resNum = request.getParameter("resNum");  // 이부분 바꾸기
+		String resNum = request.getParameter("resNum");
  
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		AdminMapper mapper = sql.getMapper(AdminMapper.class);
@@ -136,22 +130,10 @@ public class AdminServiceImpl implements AdminService {
 		out.println("location.href='adminPage.admin';");
 		out.println("</script>");
 	}
+
 	
-	@Override
-	public void getStatus(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String resNum = request.getParameter("resNum");
-
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		AdminMapper mapper = sql.getMapper(AdminMapper.class);
-		String status = mapper.getStatus(resNum);
-		sql.close();
-
-		response.setContentType("text/plain; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.print(status);
-		out.flush();
-	}
+	
+	
 	
 
 }
