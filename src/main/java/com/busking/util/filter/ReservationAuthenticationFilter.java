@@ -15,7 +15,8 @@ import jakarta.servlet.http.HttpSession;
 
 
 @WebFilter({"/reservation/reservationPost.reservation",
-			"/reservation/submitReservation.reservation"
+			"/reservation/submitReservation.reservation",
+			"/reservation/addReview.reservation"
 })
 
 public class ReservationAuthenticationFilter implements Filter {
