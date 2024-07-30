@@ -6,11 +6,11 @@ public class ReservationReviewDTO {
 
     private int locaCmtNum;
     private String locaContent;
-    private Timestamp locaCmtRegdate; // 필드명 수정
+    private Timestamp locaCmtRegdate; 
     private int locaScore;
     private String userId;
     private int locaId;
-    private float avgScore; // avgScore는 float로 변경 (평균 점수는 소수점이 포함될 수 있음)
+    private float avgScore; 
      
     public ReservationReviewDTO() {        
     }

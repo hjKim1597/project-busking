@@ -68,7 +68,7 @@
 				<div class="col-md-4 preview-box">
 					<div class="preview-title">
 						<!-- 공지게시판 -->
-						<h3>
+						<h3 class="board-border">
 							<a
 								href="${pageContext.request.contextPath }/customer_center/customer_center_index.customer">공지사항</a>
 						</h3>
@@ -80,7 +80,7 @@
 									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
 										<a
-										href="${pageContext.request.contextPath }/customer_center/customer_center?noticeNum=${dto.noticeNum }"
+										href="${pageContext.request.contextPath }/customer_center/getContent.customer?noticeNum=${dto.noticeNum }"
 										class="truncate with-style">${dto.noticeTitle}</a>
 
 									</td>
@@ -98,7 +98,7 @@
 				<div class="col-md-4 preview-box">
 					<div class="preview-title">
 						<!-- 소식게시판 -->
-						<h3>
+						<h3  class="board-border">
 							<a
 								href="${pageContext.request.contextPath }/board/board_list.boardNews">소식게시판</a>
 						</h3>
@@ -129,7 +129,7 @@
 				<div class="col-md-4 preview-box">
 					<div class="preview-title">
 						<!-- FAQ게시판 -->
-						<h3>
+						<h3 class="board-border">
 							<a
 								href="${pageContext.request.contextPath }/customer_center/customer_center_FAQ.customer">FAQ</a>
 

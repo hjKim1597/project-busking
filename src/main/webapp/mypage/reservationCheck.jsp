@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="container res-list">
-                    <h2>예약 전체 내역</h2>
+                    <h2>전체 예약 내역</h2>
                     <hr>
                     <table class="table table-striped">
                         <thead>

@@ -13,7 +13,7 @@
 	             <ul class="menu">
 	                 <li class="nth1"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
 	                 </li>
-	                 <li class="nth2 active"><strong><a href="customer_center_res.customer"><span>이달의 예약</span></a></strong>
+	                 <li class="nth2"><strong><a href="customer_center_res.customer"><span>이달의 예약</span></a></strong>
 	                 </li>
 	                 <li class="nth3"><strong><a href="customer_center_guide.customer"><span>이용안내</span></a></strong>
 	                 </li>

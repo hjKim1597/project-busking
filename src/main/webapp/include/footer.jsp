@@ -45,7 +45,7 @@
         </div>
         <div class="footer-bottom">
             <div class="footer-info">
-                <p>(팀명) / 서울특별시 강남구 테헤란로7길 7 에스코빌딩 5~7층 / 백수민, 김명석, 김호진, 심유정, 이진석</p>
+                <p>모여락 / 서울특별시 강남구 테헤란로7길 7 에스코빌딩 5~7층 / 백수민, 김명석, 김호진, 심유정, 이진석</p>
                 <p>모여락(樂) 사이트의 모든 콘텐츠, 정보, UI, HTML 소스 등에 대한 무단 복제, 전송, 배포, 크롤링, 스크래핑 등의 행위를 거부하며, 이러한 행위는 관련 법령에 의해
                     엄격히 금지됩니다.</p>
                 <p><a href="https://icons8.kr/icons" class="footer-icon">Designed by Agency. Icons by Icons8</a> |

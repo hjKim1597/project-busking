@@ -89,13 +89,7 @@ public class UserJoinServiceImpl implements UserJoinService {
             session.setAttribute("userId", userId);
             session.setAttribute("adminCheck", adminCheck);
             
-            // 로그인 상태 유지 쿠키 설정
-            String keepLogin = request.getParameter("keepLogin");
-            if ("on".equals(keepLogin)) {
-                Cookie loginCookie = new Cookie("keepLogin", "true");
-                loginCookie.setMaxAge(7 * 24 * 60 * 60); // 7일 동안 유지
-                response.addCookie(loginCookie);
-            }
+            
             response.sendRedirect(request.getContextPath() + "/index.main");
         } else {
             response.setContentType("text/html; charset=UTF-8;");

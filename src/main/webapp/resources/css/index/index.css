@@ -22,7 +22,7 @@
 		width: 1170px;
 	}
 	.index-footer-top {
-		margin: 0 15%;
+		margin: 15px 10%;
 	}
 	.location-pic {
 		margin-top: 200px;
@@ -116,8 +116,21 @@
 		margin-top: 0;
 	}
 	.navbar-collapse {
-	border-bottom: 1px solid #e3e3e3;
-}
+		border-bottom: 1px solid #e3e3e3;
+	}
+	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:focus,
+		.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
+		background-color: #999;
+	}
+	.navbar-inverse .navbar-nav>li>a:hover {
+		color: #999;
+	}
+
+	.index-logo {
+		
+		margin-left: 60px;
+		margin-top: 5px;
+	}
 }
 
 /* 1032이하 디자인 */
@@ -126,9 +139,24 @@
 		margin-top: 125px;
 	}
 }
+/* 1061이하 로그인 회원가입 버튼 아래로 내려오는것 방지 */
+@media ( max-width :1061px) {
+}
 
 /* ----------------------------------------------header---------------------------------------------- */
 .index-header {
+	position: relative;
+}
+
+.index-logo {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	left: 50px;
+	top: 20px;
+}
+
+.hea-rightpd {
 	padding: 0 80px;
 }
 
@@ -142,7 +170,7 @@
 }
 
 .navbar-brand {
-	padding: 27px 50px 15px 0px;
+	padding: 27px 50px 15px 80px;
 	font-size: 23px
 }
 
@@ -160,7 +188,7 @@
 
 .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover
 	{
-	color: #000;
+	color: #999;
 }
 
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover
@@ -178,6 +206,7 @@
 	margin-right: 0px;
 	float: left;
 	margin-right: 30px;
+	margin-left: 30px;
 }
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
@@ -224,6 +253,9 @@
 	color: #fff;
 }
 
+.dropdown-menu {
+	padding: 0;
+}
 /* 로그인 완료시 프로필 사진 */
 .index-top-right>ul>li>a>img {
 	border-radius: 50%;
@@ -277,7 +309,6 @@
 }
 
 @media ( max-width :767px) {
-	
 	.navbar-collapse {
 		border-bottom: 1px solid #e3e3e3;
 	}
@@ -462,6 +493,11 @@
 	margin-bottom: 50px;
 }
 
+.board-border {
+	border-top: 1px solid #e3e3e3;
+	padding-top: 7px;
+}
+
 .truncate {
 	display: block;
 	max-width: 99%;
@@ -624,7 +660,7 @@ to {
 }
 
 .index-footer>.footer-mid {
-	padding: 15px 25%;
+	padding: 15px 10%;
 	color: #999;
 	width: 100%;
 	overflow: hidden;

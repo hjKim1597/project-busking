@@ -134,6 +134,7 @@ var infowindow = new kakao.maps.InfoWindow({
     position: markerPosition,
     content: '<div style="padding:5px;">' + locaName + '<br><a href="https://map.kakao.com/link/map/' + locaName + ',' + locaY + ',' + locaX + '" style="color:blue" target="_blank">지도보기</a> <a href="https://map.kakao.com/link/to/' + locaName + ',' + locaY + ',' + locaX + '" style="color:blue" target="_blank">길찾기</a></div>'
 });
+
 // 부트스트랩 탭 이벤트 리스너
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     if (e.target.id === 'map-tab') {
@@ -158,7 +159,3 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         infowindow.open(map, marker);
     }
 });
-/*var timeBtn = document.querySelector(".time-btn");
-timeBtn.addEventListener("click", function() {
-	timeBtn
-})*/

@@ -20,23 +20,26 @@
             <h3 class="title">회원가입</h3>
             <div class="user-join">
                 <form id="form_userInfo" action="${pageContext.request.contextPath}/userjoin/signup.mypage" method="post" onsubmit="combineAddress()">
+                <div class="form-group pw-margin" style="margin-bottom: 15px">
                     <label for="userId">아이디</label>
                     <div class="input-group id-content">
-                        <input type="text" class="form-control write-box" id="userId" placeholder="6~20자 영문, 숫자" name="userId" required="required">
-                        <div class="input-group-btn">
-                            <button type="button" class="btn btn-default" onclick="checkUserId()">중복확인</button>
-                        </div>
+	                    <input type="text" class="form-control write-box" id="userId" placeholder="6~20자 영문, 숫자" name="userId" required="required">
+	                    <div class="input-group-btn">
+	                        <button type="button" class="btn btn-default" onclick="checkUserId()">중복확인</button>
+	                    </div>
                     </div>
-                    <div class="success-message hideMessage message-good">사용할 수 있는 아이디입니다</div>
-                    <div class="failure-message hideMessage message-bad">아이디는 6~20글자이어야 합니다</div>
-                    <div class="failure-message2 hideMessage message-bad">영어 또는 숫자만 가능합니다</div>
+	                <div class="success-message hideMessage message-good">사용할 수 있는 아이디입니다</div>
+	                <div class="failure-message hideMessage message-bad">아이디는 6~20글자이어야 합니다</div>
+	                <div class="failure-message2 hideMessage message-bad">영어 또는 숫자만 가능합니다</div>
+                </div>
+	                
                     <div class="form-group">
                         <label for="userPw">비밀번호</label>
                         <input type="password" class="form-control write-box" id="userPw" name="userPw" placeholder="8~12자 영문, 숫자" required="required">
+	                    <div class="password-success-message hideMessage message-good">사용할 수 있는 비밀번호입니다</div>
+	                    <div class="password-failure-message hideMessage message-bad">비밀번호는 8~12글자이어야 합니다</div>
+	                    <div class="password-failure-message2 hideMessage message-bad">영어와 숫자만 가능합니다</div>
                     </div>
-                    <div class="password-success-message hideMessage message-good">사용할 수 있는 비밀번호입니다</div>
-                    <div class="password-failure-message hideMessage message-bad">비밀번호는 8~12글자이어야 합니다</div>
-                    <div class="password-failure-message2 hideMessage message-bad">영어와 숫자만 가능합니다</div>
                     <div class="form-group">
                         <label for="userName">이름</label>
                         <input type="text" class="form-control write-box" id="userName" name="userName" required="required">
@@ -71,7 +74,7 @@
                             <option>여성</option>
                         </select>
                     </div>
-                    <input type="submit" class="jinseok-button" value="회원가입" id="submit-btn"></input>
+                    <input type="submit" class="jinseok-button" value="회원가입" onclick="validateForm()" id="submit-btn"></input>
                 </form>
             </div>
         </div>
@@ -98,11 +101,10 @@
                 isUserIdChecked = false; // 중복 확인 실패
                 return;
             }
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "${pageContext.request.contextPath}/userjoin/checkUserId.mypage?userId=" + userId, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    var result = xhr.responseText;
+
+            fetch(`${pageContext.request.contextPath}/userjoin/checkUserId.mypage?userId=` + userId)
+                .then(response => response.text())
+                .then(result => {
                     if (result === "사용할 수 있는 아이디입니다.") {
                         alert(result);
                         isUserIdChecked = true; // 중복 확인 성공
@@ -112,9 +114,10 @@
                         document.getElementById("userId").focus();
                         isUserIdChecked = false; // 중복 확인 실패
                     }
-                }
-            };
-            xhr.send();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
 
         function validateForm() {
