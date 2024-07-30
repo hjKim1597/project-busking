@@ -9,7 +9,7 @@ public interface BoardAskMapper {
 	public ArrayList<BoardAskDTO> getList(Map<String, Object> map);
 	
 	// 글 개수 조회
-	public int getTotal();
+	public int getTotal(Map<String, Object> map);
 	
 	// 글 작성
 	public void write(BoardAskDTO dto);

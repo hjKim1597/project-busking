@@ -50,7 +50,27 @@
 	</select>
 	
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM BOARD_TEAM WHERE TEAM_DELETED = 'F' 
+		SELECT COUNT(*) 
+        FROM BOARD_TEAM 
+        WHERE TEAM_DELETED = 'F' 
+		<if test="type != null and type != ''">
+			<choose>
+				<when test="type == 'title'">
+					AND TEAM_TITLE LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'content'">
+					AND TEAM_CONTENT LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'writer'">
+					AND TEAM_WRITER LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'all'">
+					AND (TEAM_TITLE LIKE '%' || #{target} || '%' 
+					OR TEAM_CONTENT LIKE '%' || #{target} || '%' 
+					OR TEAM_WRITER LIKE '%' || #{target} || '%') 
+				</when>
+			</choose>
+		</if>
 	</select>
 	
 	<insert id="write" parameterType="com.busking.board.model.BoardTeamDTO">

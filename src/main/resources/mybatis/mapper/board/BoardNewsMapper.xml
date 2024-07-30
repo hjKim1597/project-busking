@@ -50,7 +50,27 @@
     </select>
 	
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM BOARD_NEWS WHERE NEWS_DELETED = 'F' 
+		SELECT COUNT(*) 
+        FROM BOARD_NEWS 
+        WHERE NEWS_DELETED = 'F' 
+		<if test="type != null and type != ''">
+			<choose>
+				<when test="type == 'title'">
+					AND NEWS_TITLE LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'content'">
+					AND NEWS_CONTENT LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'writer'">
+					AND NEWS_WRITER LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'all'">
+					AND (NEWS_TITLE LIKE '%' || #{target} || '%' 
+					OR NEWS_CONTENT LIKE '%' || #{target} || '%' 
+					OR NEWS_WRITER LIKE '%' || #{target} || '%') 
+				</when>
+			</choose>
+		</if>
 	</select>
 	
 	<insert id="write" parameterType="com.busking.board.model.BoardNewsDTO">

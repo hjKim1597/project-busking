@@ -70,7 +70,7 @@
 	                	<c:choose>
 		                	<c:when test="${!pageVO.first }">
 								<li id="page_first">
-									<a href="board_list.boardTeam">
+									<a href="board_list.boardTeam?type=${type }&target=${target }">
 										<i class="fa-solid fa-angles-left"></i>
 									</a>
 								</li>
@@ -86,7 +86,7 @@
 						<c:choose>
 							<c:when test="${!pageVO.first }">
 								<li id="page_prev">
-									<a href="board_list.boardTeam?page=${pageVO.pageNum - 1 }">
+									<a href="board_list.boardTeam?page=${pageVO.pageNum - 1 }&type=${type }&target=${target }">
 										<i class="fa-solid fa-angle-left"></i>
 									</a>
 								</li>
@@ -102,14 +102,14 @@
 						
 						<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
 							<li class="page_li" data-page="${i }">
-								<a href="board_list.boardTeam?page=${i }" title="1페이지">${i }</a>
+								<a href="board_list.boardTeam?page=${i }&type=${type }&target=${target }" title="1페이지">${i }</a>
 							</li>
 						</c:forEach>
 						
 						<c:choose>
 		                	<c:when test="${!pageVO.last }">
 								<li id="page_next">
-									<a href="board_list.boardTeam?page=${pageVO.pageNum + 1}">
+									<a href="board_list.boardTeam?page=${pageVO.pageNum + 1}&type=${type }&target=${target }">
 										<i class="fa-solid fa-angle-right"></i>
 									</a>
 								</li>
@@ -125,7 +125,7 @@
 						<c:choose>
 							<c:when test="${!pageVO.last }">
 								<li id="page_last">
-									<a href="board_list.boardTeam?page=${pageVO.realEndPage }">
+									<a href="board_list.boardTeam?page=${pageVO.realEndPage }&type=${type }&target=${target }">
 										<i class="fa-solid fa-angles-right"></i>
 									</a>
 								</li>
@@ -143,18 +143,20 @@
                             <button value="글쓰기">작성</button>  
                         </form>    
                     </div>                     
-                <div class="board_team_search">
-                    <select class="board_team_search_box">
-                        <option value="notice">전체</option>
-                        <option value="writer">작성자</option>
-                        <option value="title">제목</option>
-                        <option value="content">내용</option>
-                    </select>
-                    <input placeholder="검색어를 입력해 주세요" type="text">
-                    <span>
-                        <button class="btn" onclick="실행할JS함수/검색기능" type="submit">검색</button>
-                    </span>
-                </div>
+	                <form action="board_list.boardTeam" method="post">
+						<div class="board_team_search">
+							<select class="board_search_box" name="type">
+								<option value="all" selected>전체</option>
+								<option value="writer">작성자</option>
+								<option value="title">제목</option>
+								<option value="content">내용</option>
+							</select> 
+							<input placeholder="검색어를 입력해 주세요" type="text" name="target" required> 
+							<span>
+								<input class="btn" type="submit" id="search_btn" value="검색">
+							</span>
+						</div>
+					</form>
                 </div>                
             </div>
         </div>
