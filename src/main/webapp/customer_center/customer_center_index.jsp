@@ -57,17 +57,40 @@
 							</tr>
 						</c:forEach>
 					</tbody>
-					
+
 				</table>
-				
+
+
+				<c:if test="${sessionScope.isAdmin}">
+					<h1>글쓰기</h1>
+					<form action="regist.customer" method="post">
+						<label for="title">제목:</label> <input type="text"
+							name="noticeTitle" id="title" required> <br> <label
+							for="content">내용:</label>
+						<textarea name="noticeContent" id="content" required></textarea>
+						<br>
+						<button type="submit">작성</button>
+					</form>
+				</c:if>
+
+				<c:if test="${param.error != null}">
+					<script>
+				        alert('${param.error}');
+				    </script>
+				</c:if>
+
+
+<!--  -->
 				<div class="page_nav" id="page_num123">
-				<form action="customer_center_index_write.jsp" class="right">
-					<button value="글쓰기" onclick="">작성</button>
-				</form>
+					<form action="regist.customer" class="right">
+						<button value="글쓰기" onclick="">작성</button>
+					</form>
 				</div>
-			
+
+
+
 			</div>
-			
+
 			<!-- 페이지 번호 -->
 			<div class="page_nav">
 				<ul class="center">
@@ -155,8 +178,8 @@
 					</span>
 				</div>
 			</form>
-			
-			
+
+
 		</div>
 	</div>
 </section>
