@@ -128,8 +128,8 @@
 
 	.index-logo {
 		
-		margin-left: 60px;
-		margin-top: 5px;
+		margin-left: 40%;
+		margin-top: 0px;
 	}
 }
 
@@ -146,14 +146,14 @@
 /* ----------------------------------------------header---------------------------------------------- */
 .index-header {
 	position: relative;
-}
+} 
 
 .index-logo {
-	width: 60px;
-	height: 60px;
+	width: 120px;
+	height: 120px;
 	position: absolute;
-	left: 50px;
-	top: 20px;
+	left: 20px;
+	top: -5px;
 }
 
 .hea-rightpd {
@@ -258,14 +258,14 @@
 	padding: 0;
 }
 /* 로그인 완료시 프로필 사진 */
-.index-top-right>ul>li>a>img {
+/* .index-top-right>ul>li>a>img {
 	border-radius: 50%;
 	width: 32px;
 	height: 32px;
 	position: absolute;
 	right: 2%;
 	top: 40%;
-}
+} */
 
 .index-top-right>ul>li {
 	display: inline;
@@ -569,7 +569,7 @@
 	width: 100%;
 	height: 5%;
 	background-color: rgba(0, 0, 0, 0.7);
-}
+} 
 
 .result img {
 	width: 100%;

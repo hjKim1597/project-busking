@@ -59,11 +59,10 @@
 							class="icon-bar"></span>
 					</button>
 
-					<a class="navbar-brand index-menu">
-						<div class="index-logo">
-							<img src="${pageContext.request.contextPath }/resources/img/index/icon123.png" alt="결과" class="main-image" width="100%">
-						</div>
-					</a>
+					<a class="navbar-brand index-menu"
+						><span class="index-logo">
+						<img src="${pageContext.request.contextPath }/resources/img/index/icon124.png"
+								alt="로고"></span></a>
 
 				</div>
 				<div class="collapse navbar-collapse main-color mobile-navbar hea-rightpd"
