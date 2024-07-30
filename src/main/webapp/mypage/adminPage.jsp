@@ -1,3 +1,4 @@
+<%@page import="com.busking.admin.model.AdminPageDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -109,10 +110,19 @@
 													id="address" name="address" class="form-control"
 													value="${dto.userAddr }" required readonly>
 											</div>
+											
+											
+											
+											
 											<div class="form-group">
-												<label for="time">예약시간:</label> <input type="time"
+												<label for="time">예약시작시간:</label> <input type="text"
 													id="time" name="time" class="form-control"
-													value="${dto.resTime }" required readonly>
+													value="${dto.resTime}"required readonly>
+											</div>
+											<div class="form-group">
+												<label for="time">예약종료시간:</label> <input type="text"
+													id="endTime" name="endTime" class="form-control newResTime"
+													data-time="${dto.resTime}" required readonly>
 											</div>
 										</form>
 									</div>
@@ -162,6 +172,8 @@
 	        })
 	        .catch(error => console.error('Error:', error));
 	}
+	
+	
 
 
 
@@ -186,7 +198,23 @@ $(document).ready(function() {
 		}
 	});
 	
-	
+    $('.newResTime').each(function() {
+        var timeStr = $(this).data('time');
+        if (timeStr) {
+            var timeParts = timeStr.split(':');
+            var hours = parseInt(timeParts[0], 10);
+            var minutes = parseInt(timeParts[1], 10);
+
+            hours += 3;
+
+            if (hours >= 24) {
+                hours -= 24; 
+            }
+
+            var newTimeStr = ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2);
+            $(this).val(newTimeStr);
+        }
+    });
 }); 
 
 
