@@ -49,7 +49,11 @@ public class BoardCommentController extends HttpServlet {
 			service = new BoardCommentServiceImpl();
 			service.getCommentTeamList(request, response);
 			
-		} else if(command.equals("/board/board_comment_free_write.comment")) {
+		} else if(command.equals("/board/board_comment_ask_list.comment")) {
+			service = new BoardCommentServiceImpl();
+			service.getCommentAskList(request, response);
+			
+		}  else if(command.equals("/board/board_comment_free_write.comment")) {
 			service = new BoardCommentServiceImpl();
 			service.writeCommentFree(request, response);
 			
@@ -60,6 +64,22 @@ public class BoardCommentController extends HttpServlet {
 		} else if(command.equals("/board/board_comment_team_write.comment")) {
 			service = new BoardCommentServiceImpl();
 			service.writeCommentTeam(request, response);
+			
+		} else if(command.equals("/board/board_comment_ask_write.comment")) {
+			service = new BoardCommentServiceImpl();
+			service.writeCommentAsk(request, response);
+			
+		} else if(command.equals("/board/board_comment_free_reply.comment")) {
+			service = new BoardCommentServiceImpl();
+			service.writeReplyFree(request, response);
+			
+		} else if(command.equals("/board/board_comment_news_reply.comment")) {
+			service = new BoardCommentServiceImpl();
+			service.writeReplyNews(request, response);
+			
+		} else if(command.equals("/board/board_comment_team_reply.comment")) {
+			service = new BoardCommentServiceImpl();
+			service.writeReplyTeam(request, response);
 			
 		}
 	}

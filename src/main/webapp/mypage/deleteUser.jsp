@@ -10,7 +10,7 @@
                 <ul>
                     <li><span class="nav-title">마이페이지</span></li>
                     <li><a href="${pageContext.request.contextPath}/mypage/getUserInfo.userinfo">내 정보</a></li>
-                    <li><a href="${pageContext.request.contextPath}/mypage/getUserInfo.userinfo">예약 현황</a></li>
+                    <li><a href="${pageContext.request.contextPath}/mypage/reservationInfo.userinfo">예약 현황</a></li>
                     <li><a href="${pageContext.request.contextPath}/mypage/deleteUserPage.userinfo" class="tap">회원 탈퇴</a></li>
                 </ul>
             </div>

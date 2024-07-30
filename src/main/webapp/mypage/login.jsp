@@ -8,7 +8,7 @@
         <div class="login-wrap">
             <div class="login-wrap-border">
                 <p>로그인</p>
-                <form action="${pageContext.request.contextPath}/userjoin/login.mypage" method="post">
+                <form action="${pageContext.request.contextPath}/userjoin/login.mypage" method="post" onsubmit="saveId()">
                     <div class="input-group id">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                       <input id="userId" type="text" class="form-control" name="userId" placeholder="아이디를 입력하세요." required>
@@ -18,57 +18,97 @@
                       <input id="userPw" type="password" class="form-control" name="userPw" placeholder="비밀번호를 입력하세요." required>
                     </div>
                     <div class="checkbox">
-                        <label><input type="checkbox" id="keepLogin" name="keepLogin"><p style="font-size: 12px; line-height: 20px;">로그인 상태 유지</p></label>
+                        <label><input type="checkbox" id="rememberId" name="rememberId"><p style="font-size: 12px; line-height: 20px;">아이디 저장하기</p></label>
                     </div>
                     <input type="submit" class="jinseok-button" value="로그인">
                     <div class="sub-wrap" style="color: #a0a0a0;">
-                        <a href="${pageContext.request.contextPath}/mypage/findIdPw.jsp">비밀번호 찾기</a> | 
-                        <a href="${pageContext.request.contextPath}/mypage/findIdPw.jsp">아이디 찾기</a> |
-                        <a href="${pageContext.request.contextPath}/mypage/signup.jsp">회원가입</a>
+                        <a href="${pageContext.request.contextPath}/userjoin/findIdPw.mypage">비밀번호 찾기</a> | 
+                        <a href="${pageContext.request.contextPath}/userjoin/findIdPw.mypage">아이디 찾기</a> |
+                        <a href="${pageContext.request.contextPath}/userjoin/signupPage.mypage">회원가입</a>
                     </div>
                 </form>
             </div>
             
-            <p>sns 연동 로그인</p>
+            <p>sns 소셜 로그인</p>
             <div class="social-login">
                 <div class="icon-all">
-                    <a href=""><img src="../resources/img/Naver.png" alt=""></a>
-                    <a href=""><img src="../resources/img/Kakao.png" alt=""></a>
-                    <a href=""class="google"><img src="../resources/img/web_neutral_sq_na@4x.png" alt=""></a>
+                    <a href="https://www.naver.com/"><img src="../resources/img/Naver.png" alt=""></a>
+                    <a href="#" id="kakao-login-btn"><img src="../resources/img/Kakao.png" alt="카카오 로그인 버튼"></a>
+                    <a href="https://www.google.com/" class="google"><img src="../resources/img/web_neutral_sq_na@4x.png" alt=""></a>
                 </div>
             </div>
         </div>
     </div>
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    
     <script>
-        document.getElementById("loginForm").onsubmit = function() {
-            if (document.getElementById("keepLogin").checked) {
-                setCookie("keepLogin", "true", 7); // 7일 동안 유지되는 쿠키 설정
-            } else {
-                setCookie("keepLogin", "true", -1); // 쿠키 제거
-            }
-        };
+    Kakao.init('6f8deabbc9ba8cfe2fbfc4a7e6092af4');
 
-        function setCookie(name, value, days) {
-            var expires = "";
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
+    function kakaoLogin() {
+        Kakao.Auth.login({
+            success: function(authObj) {
+                Kakao.API.request({
+                    url: '/v2/user/me',
+                    success: function(res) {
+                        var kakaoId = res.id;
+                        var kakaoEmail = res.kakao_account.email;
+                        var kakaoNickname = res.properties.nickname;
 
-        function getCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for(var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                        // 서버로 사용자 정보 전송
+                        fetch('${pageContext.request.contextPath}/kakaoLogin', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id: kakaoId,
+                                email: kakaoEmail,
+                                nickname: kakaoNickname
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                window.location.href = '${pageContext.request.contextPath}/index.main';
+                            } else {
+                                alert('카카오 로그인에 실패했습니다.');
+                            }
+                        });
+                    },
+                    fail: function(error) {
+                        console.log(error);
+                    }
+                });
+            },
+            fail: function(err) {
+                console.log(err);
             }
-            return null;
+        });
+    }
+
+    document.getElementById('kakao-login-btn').addEventListener('click', kakaoLogin);
+
+    var userId = document.getElementById('userId');
+    var rememberId = document.getElementById("rememberId");
+
+    function saveId() {
+        if (rememberId.checked) {
+            localStorage.setItem("userId", userId.value);
+        } else {
+            localStorage.removeItem("userId");
         }
-    </script>
+    }
+
+    function loadId() {
+        var savedId = localStorage.getItem("userId");
+        if (savedId) {
+            document.getElementById('userId').value = savedId;
+            document.getElementById('rememberId').checked = true;
+        }
+    }
+
+    window.onload = loadId;
+</script>
 <%@ include file="../include/footer.jsp" %>
 </body>
 </html>

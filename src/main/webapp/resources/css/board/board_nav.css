@@ -28,14 +28,14 @@
     float: left;
     padding: 20px 10px; 
     overflow: hidden; 
-    width: 125px;
+    width: 135px;
     background-color: #F0F7FD;
 }
 
 .board_nav #board_nav_wrap h1 {
     font-family: 'nanumsquare';
     font-size: 24px;
-    font-weight: 600;
+    /* font-weight: 600; */
     letter-spacing: -1px;
     display: block;
     padding: 0 15px 15px;

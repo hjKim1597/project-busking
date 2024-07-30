@@ -8,18 +8,25 @@
 <mapper namespace="com.busking.board.model.BoardFAQMapper">
 
 	<select id="getList" resultType="com.busking.board.model.FAQDTO">
-
-		SELECT FAQ_NUM, USER_ID, FAQ_TITLE, FAQ_REGDATE
-		FROM FAQ
-		ORDER BY FAQ_NUM DESC
+	
+		SELECT FAQ_NUM, USER_ID, FAQ_TITLE, FAQ_REGDATE 
+        FROM ( 
+        	SELECT FAQ_NUM, USER_ID, FAQ_TITLE, FAQ_REGDATE, ROWNUM AS RN   
+			FROM FAQ 
+			ORDER BY FAQ_NUM DESC 
+	    ) 
+        WHERE RN > (#{pageNum} - 1) * #{amount} 
+        AND #{pageNum} * #{amount} >= RN 
 	</select>
 
 	<insert id="regist"
 		parameterType="com.busking.board.model.FAQDTO">
 
 		INSERT INTO FAQ(FAQ_NUM,
-		USER_ID, FAQ_TITLE, FAQ_REGDATE, MANAGER_ID)
-		VALUES (BOARD_FAQ_SEQ.NEXTVAL, #{userId}, #{faqTitle}, 
+		USER_ID, FAQ_TITLE, FAQ_CONTENT,
+		FAQ_REGDATE, MANAGER_ID)
+		VALUES (BOARD_FAQ_SEQ.NEXTVAL, #{userId},
+		#{faqTitle}, #{faqContent},
 		SYSDATE, #{managerId})
 
 	</insert>
@@ -30,21 +37,16 @@
 	</select>
 
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM FAQ
+		SELECT COUNT(*) FROM FAQ 
 	</select>
 
-	<update id="increaseHit" parameterType="string">
-		UPDATE FAQ SET FAQ_HIT =
-		FAQ_HIT + 1 WHERE FAQ_NUM = #{faqNum}
-	</update>
 
 	<!-- 글 수정 -->
 	<update id="update"
 		parameterType="com.busking.board.model.FAQDTO">
 		UPDATE FAQ
-		SETFAQ_TITLE = #{faqTitle}
-		,FAQ_CONTENT =
-		#{faqContent}
+		SET FAQ_TITLE = #{faqTitle} 
+		,FAQ_CONTENT = #{faqContent}
 		WHERE FAQ_NUM = #{faqNum}
 	</update>
 

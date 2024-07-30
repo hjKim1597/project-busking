@@ -1,5 +1,7 @@
 package com.busking.mypage.model;
 
-public interface ReservationCheckMapper {
+import java.util.List;
 
+public interface ReservationCheckMapper {
+    List<ReservationCheckDTO> getReservationInfo(String userId);
 }

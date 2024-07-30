@@ -4,6 +4,10 @@ import java.io.IOException;
 
 import com.busking.board.service.BoardCustomerService;
 import com.busking.board.service.BoardCustomerServiceImpl;
+import com.busking.board.service.BoardFAQService;
+import com.busking.board.service.BoardFAQServiceImpl;
+import com.busking.board.service.BoardResService;
+import com.busking.board.service.BoardResServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -38,7 +42,8 @@ public class BoardCustomerController extends HttpServlet {
 
 		// BoardService 선언해두기
 		BoardCustomerService service;
-		//BoardFAQService faq_service;
+		BoardFAQService faq_service;
+		BoardResService res_service;
 
 		if (command.equals("/customer_center/customer_center_index.customer")) {
 			// 누르면 데이터가 필요하면 서비스
@@ -59,17 +64,10 @@ public class BoardCustomerController extends HttpServlet {
 			// response.sendRedirect(request.getContextPath() +
 			// "/customer_center_index.jsp");
 
-			// 이달의 예약
-		} else if (command.equals("/customer_center/customer_center_month.customer")) {
-			response.sendRedirect("customer_center_month.jsp");
-			System.out.println("달력 화면 이동");
-
-			// 이용안내
 		} else if (command.equals("/customer_center/customer_center_guide.customer")) {
 			response.sendRedirect("customer_center_guide.jsp");
 			System.out.println("안내 화면 이동");
 
-			// 자주묻는질문FAQ
 		} else if (command.equals("/customer_center/registForm.customer")) {
 			// 글 등록
 
@@ -107,10 +105,59 @@ public class BoardCustomerController extends HttpServlet {
 		}
 
 		//
-		// FAQ-----------------------------------------------------
+		//
+		// FAQ-------------------------------------------------------------------
 
 		else if (command.equals("/customer_center/customer_center_FAQ.customer")) {
-			
+
+			// 서비스 영역을 거쳐서 목록을 가져간다
+			faq_service = new BoardFAQServiceImpl();
+			faq_service.getList(request, response);
+
+			System.out.println("FAQ 화면 이동");
+
+		} else if (command.equals("/customer_center/getFAQContent.customer")) {
+			// 글 상세 내용
+
+			System.out.println("글 내용보기 화면 이동 요청");
+
+			faq_service = new BoardFAQServiceImpl();
+			faq_service.getContent(request, response);
+
+		} else if (command.equals("/customer_center/registFAQForm.customer")) {
+			// 글 등록
+
+			faq_service = new BoardFAQServiceImpl();
+			faq_service.regist(request, response);
+
+			System.out.println("글 등록화면 이동");
+
+		} else if (command.equals("/customer_center/modifyFAQ.customer")) {
+
+			faq_service = new BoardFAQServiceImpl();
+			faq_service.modify(request, response);
+
+		} else if (command.equals("/customer_center/updateFAQ.customer")) {
+
+			faq_service = new BoardFAQServiceImpl();
+			faq_service.update(request, response);
+
+		}
+		// 삭제 기능
+		else if (command.equals("/customer_center/deleteFAQ.customer")) {
+
+			System.out.println("삭제 기능 컨트롤러");
+
+			faq_service = new BoardFAQServiceImpl();
+			faq_service.delete(request, response);
+		}
+
+		// Res-----------------------------------------------------
+
+		
+
+			else if (command.equals("/customer_center/customer_center_res.customer")) {
+
 			// 누르면 데이터가 필요하면 서비스
 			// 아니면 리다이렉트
 			// 페이징용 page 값 추가
@@ -120,22 +167,50 @@ public class BoardCustomerController extends HttpServlet {
 			request.setAttribute("page", page);
 
 			// 서비스 영역을 거쳐서 목록을 가져간다
-			service = new BoardFAQServiceImpl();
-			service.getList(request, response);
-
-			System.out.println("FAQ 화면 이동");
-
-
-		} else if (command.equals("/customer_center/FAQ_insert.customer")) {
+			res_service = new BoardResServiceImpl();
+			res_service.getList(request, response);
 			
-			service = new BoardFAQServiceImpl();
-			service.regist(request, response);
 
-			System.out.println("FAQ insert");
+			System.out.println("Res 화면 이동");
 
 			
+		} else if (command.equals("/customer_center/getResContent.customer")) {
+			// 글 상세 내용
+
+			System.out.println("글 내용보기 화면 이동 요청");
+
+			res_service = new BoardResServiceImpl();
+			res_service.getContent(request, response);
+
+		} else if (command.equals("/customer_center/registResForm.customer")) {
+			// 글 등록
+
+			res_service = new BoardResServiceImpl();
+			res_service.regist(request, response);
+
+			System.out.println("글 등록화면 이동");
+
+		} else if (command.equals("/customer_center/modifyRes.customer")) {
+
+			res_service = new BoardResServiceImpl();
+			res_service.modify(request, response);
+
+		} else if (command.equals("/customer_center/updateRes.customer")) {
+
+			res_service = new BoardResServiceImpl();
+			res_service.update(request, response);
 
 		}
+		// 삭제 기능
+		else if (command.equals("/customer_center/deleteRes.customer")) {
 
+			System.out.println("삭제 기능 컨트롤러");
+
+			res_service = new BoardResServiceImpl();
+			res_service.delete(request, response);
+		}
+		
+		
+		
 	}
 }

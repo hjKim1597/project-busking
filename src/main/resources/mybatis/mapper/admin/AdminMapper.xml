@@ -5,72 +5,52 @@
 <mapper namespace="com.busking.admin.model.AdminMapper">
 
 	<select id="getList"
-		parameterType="com.busking.util.paging.PageVO"
 		resultType="com.busking.admin.model.AdminPageDTO">
 
-		SELECT R.USER_ID, U.USER_NAME, R.RES_DATE, L.LOCA_NAME AS RES_LOCA,
-		R.RES_AMP, R.RES_CONTENT, R.RES_COUNT,
-		U.USER_PNO, U.USER_EMAIL, U.USER_ADDR, M.MANAGER_ID, M.MANAGER_PW
-		FROM RESERVATIONS R
-		JOIN USERS U ON R.USER_ID = U.USER_ID
-		JOIN LOCATIONS L ON R.LOCA_ID = L.LOCA_ID
-		JOIN MANAGER M ON L.LOCA_ID = M.LOCA_ID
-		WHERE M.MANAGER_ID = 'TEST'
-		AND R.RES_REGDATE LIKE '24/07/%'
-		AND ROWNUM &lt;= #{page};
+		SELECT
+			R.RES_NUM AS RES_NUM,
+			R.USER_ID AS USER_ID,
+			U.USER_NAME AS USER_NAME,
+			R.RES_DATE AS RES_DATE,
+			L.LOCA_NAME AS LOCA_NAME,
+			R.RES_AMP AS RES_AMP,
+			R.RES_CONTENT AS RES_CONTENT,
+			R.RES_COUNT AS RES_COUNT,
+			U.USER_PNO AS USER_PNO,
+			U.USER_EMAIL AS USER_EMAIL,
+			U.USER_ADDR AS USER_ADDR,
+			M.MANAGER_ID AS MANAGER_ID,
+			R.RES_RESULT AS RES_RESULT 
+		FROM
+			RESERVATIONS R
+			JOIN USERS U ON R.USER_ID = U.USER_ID
+			JOIN LOCATIONS L ON R.LOCA_ID = L.LOCA_ID
+			JOIN MANAGER M ON L.LOCA_PLACE = M.LOCA_PLACE
+		WHERE M.MANAGER_ID = #{managerId, jdbcType=VARCHAR}
+		AND R.RES_DATE LIKE CONCAT('24/', CONCAT(#{month, jdbcType=VARCHAR}, '/%'))
+		ORDER BY R.RES_DATE ASC,
+		R.RES_REGDATE ASC 
+		
+
 	</select>
 
-	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM BUSKING
-	</select>
+
+	<update id="updateResultT" parameterType="String">
+		UPDATE RESERVATIONS SET RES_RESULT = 'T' WHERE RES_NUM = #{resNum}
+	</update>
 
 
+	<update id="updateResultF" parameterType="String">
+		UPDATE RESERVATIONS SET RES_RESULT = 'F' WHERE RES_NUM = #{resNum}
+	</update>
 
 
+	<update id="updateResultN" parameterType="String">
+		UPDATE RESERVATIONS SET RES_RESULT = 'W' WHERE RES_NUM = #{resNum}
+	</update>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<!-- 확정리스트 -->
-	<!-- <select id="getConfirmList" parameterType="com.busking.util.paging.PageVO" 
-		resultType="com.busking.reservation.model.ReservationBuskingDTO"> SELECT 
-		DATE_NUM, RES_DATE, RES_LOCA FROM ( SELECT ROWNUM RN, B.* FROM BUSKING B 
-		ORDER BY DATE_NUM DESC ) WHERE RN > (#{pageNum} - 1) * #{amount} and #{pageNum} 
-		* #{amount} >= RN </select> <select id="getTotal" resultType="int"> SELECT 
-		COUNT(*) FROM BUSKING </select> -->
-
-
-	<!-- 상세정보 조회 -->
-	<!-- <select id="getDetailList" parameterType="com.busking.util.paging.PageVO" 
-		resultType="com.busking.reservation.model.ReservationsDTO"> SELECT RES_AMP, 
-		RES_CONTENT, RES_COUNT FROM ( SELECT ROWNUM RN, R.* FROM RESERVATIONS R ORDER 
-		BY DATE_NUM DESC ) WHERE RN > (#{pageNum} - 1) * #{amount} and #{pageNum} 
-		* #{amount} >= RN </select> <select id="getTotal" resultType="int"> SELECT 
-		COUNT(*) FROM RESERVATIONS </select> -->
-
-	<!-- 예약 회원 개인정보 조회 -->
-	<!-- <select id="getDetailList" parameterType="com.busking.util.paging.PageVO" 
-		resultType="com.busking.mypage.UserJoinDTO"> SELECT USER_ID, USER_NAME, USER_PNO, 
-		USER_EMAIL, USER_ADDR FROM ( SELECT ROWNUM RN, U.* FROM USERS U ORDER BY 
-		DATE_NUM DESC ) WHERE RN > (#{pageNum} - 1) * #{amount} and #{pageNum} * 
-		#{amount} >= RN </select> <select id="getTotal" resultType="int"> SELECT 
-		COUNT(*) FROM USERS </select> -->
-
-
+	
 
 
 </mapper>

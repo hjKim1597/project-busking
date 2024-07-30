@@ -41,12 +41,11 @@ public class MypageController extends HttpServlet {
         } else if (command.equals("/mypage/updateUserInfo.userinfo")) {
             mypageService.updateUserInfo(request, response);
         } else if (command.equals("/mypage/deleteUser.userinfo")) {
-        	mypageService.deleteUser(request, response);
+            mypageService.deleteUser(request, response);
         } else if (command.equals("/mypage/deleteUserPage.userinfo")) {
             request.getRequestDispatcher("/mypage/deleteUser.jsp").forward(request, response);
-        } else if (command.equals("/mypage/logout.userinfo")) {
-            request.getSession().invalidate();
-            response.sendRedirect(request.getContextPath() + "/index.main");
+        } else if (command.equals("/mypage/reservationInfo.userinfo")) {
+            mypageService.getReservationInfo(request, response);
         }
     }
 }

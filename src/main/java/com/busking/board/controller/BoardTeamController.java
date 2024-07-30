@@ -38,10 +38,6 @@ public class BoardTeamController extends HttpServlet {
 		BoardTeamService service;
 		
 		if(command.equals("/board/board_list.boardTeam")) {
-			String page = request.getParameter("page");
-			if(page == null) page = "1";
-			request.setAttribute("page", page);
-			
 			service = new BoardTeamServiceImpl();
 			service.getList(request, response);
 			

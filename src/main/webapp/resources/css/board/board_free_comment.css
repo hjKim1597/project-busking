@@ -10,17 +10,17 @@
 * {font-family: 'NanumSquareNeo';}
 
 @media (min-width:1200px) {
-    .resForm-wrap {
+    #board_comment_wrap {
         width: 1170px;
     }
 }
 @media (min-width:992px) and (max-width:1199px) {
-    .resForm-wrap {
+    #board_comment_wrap {
         width: 970px;
     }
 }
 @media (min-width:768px) and (max-width:991px) {
-    .resForm-wrap {
+    #board_comment_wrap {
         width: 750px;
     } 
 }
@@ -85,11 +85,73 @@ body {
     padding: 5px;
 }
 
-#board_comment_wrap .board_comment_inner .board_comment_list .board_comment_list_box .board_comment_content {
+#board_comment_wrap .board_comment_inner .board_comment_list .board_comment_list_box > .board_comment_content {
     padding: 10px 40px 25px 40px;
     font-size: 18px;
     line-height: 35px;
     letter-spacing: 0.5px;
+}
+
+#board_comment_wrap .board_comment_inner .board_comment_list .reply {
+	background-color: white;
+    border: 1px solid rgb(231, 231, 231);
+	margin-top: 0;
+}
+.reply .board_comment_header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.reply .board_comment_header .reply_img {
+	padding: 20px;
+}
+.reply .board_comment_header .reply_img > img {
+	width: 30px;
+}
+.reply .board_comment_header .board_comment_info {
+	display: inline-block;
+	padding: 20px 0;
+}
+.reply .board_comment_header .board_comment_info .writer {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 15px;
+}
+.reply .board_comment_header .board_comment_info .date {
+    font-size: 12px;
+    color: gray;
+} 
+.reply .board_comment_header .board_comment_content {
+    padding: 20px 10px;
+    flex-basis: 70%;
+}
+.reply .board_comment_header .board_comment_content > p {
+    font-size: 16px;
+	letter-spacing: 0.5px;
+	width: 100%;
+	height: auto;
+	margin: 0;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+
+}
+.reply .board_comment_header .reply_like {
+    padding: 20px 15px;
+}
+.reply .board_comment_header .reply_like .board_comment_like {
+    border: none;
+    background-color: white;
+}
+.reply .board_comment_header .reply_like .board_comment_like img {
+    width: 30px;
+    padding: 2px;
+}
+
+.reply .board_comment_header .reply_like .board_comment_like span {
+    font-size: 17px;
+    padding: 5px;
 }
 
 #board_comment_wrap .board_comment_inner > form .board_comment_button {
@@ -126,3 +188,43 @@ body {
     /* box-shadow: 0 0 100px rgba(140, 201, 161, 0.5); */
 
 }
+
+.comment-section {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.comment-section .comment {
+    width: 100%;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.comment-section .comment textarea {
+    width: calc(100% - 115px);
+    height: 60px;
+    border: 1px solid #c9cccef3;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 14px;
+    resize: none;
+    margin-right: 10px;
+    float: left;
+}
+
+.comment-section .comment textarea:focus {
+    border: 2px solid #5FD7FF; /* 하늘색 보더 */
+    outline: none; /* 기본 outline 제거 */
+}
+
+.comment-section .comment .submit-comment {
+    width: 75px;
+    height: 60px; /* 높이를 텍스트 입력창에 맞춤 */
+    background-color: #5FD7FF;
+    color: white;
+    border: none;
+    border-radius: 3px;
+	text-align: center;
+    cursor: pointer;
+}
+

@@ -2,10 +2,12 @@ package com.busking.board.model;
 
 import java.util.ArrayList;
 
+import com.busking.util.paging.PageVO;
+
 public interface BoardFAQMapper {
 	
 	// 글 목록 조회
-		public ArrayList<FAQDTO> getList();
+		public ArrayList<FAQDTO> getList(PageVO pageVO);
 
 		// 글 작성
 		public void regist(FAQDTO dto);

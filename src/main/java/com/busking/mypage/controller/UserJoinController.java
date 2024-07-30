@@ -45,12 +45,19 @@ public class UserJoinController extends HttpServlet {
             userJoinService.checkUserId(userId, response);
         } else if(command.equals("/userjoin/login.mypage")) {
             userJoinService.login(request, response);
-        } else if(command.equals("/userjoin/userInfo.mypage")) {
-        	userJoinService.userInfo(request, response);
-        } else if (command.equals("/mypage/findId.mypage")) {
+        } else if (command.equals("/userjoin/findId.mypage")) {
         	userJoinService.findUserId(request, response);
-        } else if (command.equals("/mypage/findPw.mypage")) {
+        } else if (command.equals("/userjoin/findPw.mypage")) {
         	userJoinService.findUserPw(request, response);
+        } else if (command.equals("/userjoin/loginPage.mypage")) {
+            request.getRequestDispatcher("/mypage/login.jsp").forward(request, response);
+        } else if (command.equals("/userjoin/signupPage.mypage")) {
+            request.getRequestDispatcher("/mypage/signup.jsp").forward(request, response);
+        } else if (command.equals("/userjoin/findIdPw.mypage")) {
+            request.getRequestDispatcher("/mypage/findIdPw.jsp").forward(request, response);
+        } else if (command.equals("/userjoin/logout.mypage")) {
+            request.getSession().invalidate();
+            response.sendRedirect(request.getContextPath() + "/index.main");
         }
     }
 }

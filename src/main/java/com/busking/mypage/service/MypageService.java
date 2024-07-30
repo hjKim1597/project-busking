@@ -10,4 +10,5 @@ public interface MypageService {
     void updateUserInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
     void getUserInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	void getReservationInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

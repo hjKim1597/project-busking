@@ -19,4 +19,6 @@ public interface BoardNewsService {
 	void getBefore(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
 	void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
+	void like(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

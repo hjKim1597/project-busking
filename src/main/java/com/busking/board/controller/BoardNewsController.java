@@ -2,9 +2,8 @@ package com.busking.board.controller;
 
 import java.io.IOException;
 
-import com.busking.board.service.BoardFreeServiceImpl;
-import com.busking.board.service.BoardNewsService;
 import com.busking.board.service.BoardNewsServiceImpl;
+import com.busking.board.service.BoardNewsService;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -39,10 +38,6 @@ public class BoardNewsController extends HttpServlet {
 		BoardNewsService service;
 		
 		if(command.equals("/board/board_list.boardNews")) {
-			String page = request.getParameter("page");
-			if(page == null) page = "1";
-			request.setAttribute("page", page);
-			
 			service = new BoardNewsServiceImpl();
 			service.getList(request, response);
 			
@@ -68,6 +63,10 @@ public class BoardNewsController extends HttpServlet {
 		} else if(command.equals("/board/board_delete.boardNews")) {
 			service = new BoardNewsServiceImpl();
 			service.delete(request, response);
+			
+		} else if(command.equals("/board/board_like.boardNews")) {
+			service = new BoardNewsServiceImpl();
+			service.like(request, response);
 			
 		}
 	}

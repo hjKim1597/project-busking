@@ -5,20 +5,74 @@
 	
 <mapper namespace="com.busking.board.model.BoardFreeMapper">
 
-	<select id="getList" parameterType="com.busking.util.paging.PageVO" resultType="com.busking.board.model.BoardFreeDTO">
-		
-		SELECT FREE_NUM, FREE_TITLE, FREE_WRITER, FREE_REGDATE, FREE_HIT 
-		FROM (
-			SELECT ROWNUM RN,
-			       B.* 
-			FROM BOARD_FREE B 
-			ORDER BY FREE_NUM DESC 
-		) 
-		WHERE RN > (#{pageNum} - 1) * #{amount} and #{pageNum} * #{amount} >= RN 				
-	</select>
+    <select id="getList" parameterType="hashMap" resultType="com.busking.board.model.BoardFreeDTO">
+        SELECT FREE_NUM, FREE_TITLE, FREE_WRITER, FREE_REGDATE, FREE_HIT 
+        FROM ( 
+        	SELECT A.*, ROWNUM AS RN 
+        	FROM (
+        		SELECT B.* 
+	            FROM BOARD_FREE B 
+	            WHERE FREE_DELETED = 'F' 
+	            AND 1 = 1 
+	            <choose>
+	            	<when test="type != null and type != ''">
+		                <choose>
+		                    <when test="type == 'title'">
+		                    	/*+ INDEX(B IDX_BOARD_FREE_TITLE) */ 
+		                        AND B.FREE_TITLE LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'content'">
+		                        AND B.FREE_CONTENT LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'writer'">
+		                    	 /*+ INDEX(B IDX_BOARD_FREE_WRITER) */ 
+		                        AND B.FREE_WRITER LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'all'">
+		                    	 /*+ INDEX(B PK_IDX_BOARD_FREE) */ 
+		                        AND (B.FREE_TITLE LIKE '%' || #{target} || '%' 
+		                             OR B.FREE_CONTENT LIKE '%' || #{target} || '%' 
+		                             OR B.FREE_WRITER LIKE '%' || #{target} || '%') 
+		                    </when>
+		                </choose>
+		            </when>
+		            <otherwise>
+		            	/*+ INDEX(B PK_IDX_BOARD_FREE) */ 
+		            </otherwise>
+	            </choose>
+            
+            	ORDER BY FREE_NUM DESC 
+            ) A  	
+        ) 
+        WHERE RN > (#{page.pageNum} - 1) * #{page.amount} 
+        AND #{page.pageNum} * #{page.amount} >= RN
+ 
+    </select>
 	
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM BOARD_FREE 
+		
+		SELECT COUNT(*) 
+        FROM BOARD_FREE 
+        WHERE FREE_DELETED = 'F' 
+		<if test="type != null and type != ''">
+			<choose>
+				<when test="type == 'title'">
+					AND FREE_TITLE LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'content'">
+					AND FREE_CONTENT LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'writer'">
+					AND FREE_WRITER LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'all'">
+					AND (FREE_TITLE LIKE '%' || #{target} || '%' 
+					OR FREE_CONTENT LIKE '%' || #{target} || '%' 
+					OR FREE_WRITER LIKE '%' || #{target} || '%') 
+				</when>
+			</choose>
+		</if>
+
 	</select>
 	
 	<insert id="write" parameterType="com.busking.board.model.BoardFreeDTO">
@@ -30,7 +84,7 @@
 		VALUES('FREE_' || LPAD(BOARD_FREE_SEQ.NEXTVAL, 8, '0'),
 		       #{freeWriter},
 		       #{freeTitle},
-		       #{freeContent},
+		       #{freeContent, jdbcType=CLOB},
 		       SYSDATE)
 	</insert>
 	
@@ -38,20 +92,21 @@
 		SELECT FREE_TITLE, FREE_LIKE_COUNT, FREE_WRITER, FREE_REGDATE, FREE_CONTENT, FREE_HIT, FREE_CMT_COUNT 
 		FROM BOARD_FREE 
 		WHERE FREE_NUM = #{freeNum}
+
 	</select>
 	
 	<update id="increaseHit" parameterType="String">
 		UPDATE BOARD_FREE SET FREE_HIT = FREE_HIT + 1 WHERE FREE_NUM = #{freeNum}
 	</update>
 	
-	<delete id="delete" parameterType="String">
-		DELETE FROM BOARD_FREE WHERE FREE_NUM = #{freeNum}
-	</delete>
+	<update id="delete" parameterType="String">
+		UPDATE BOARD_FREE SET FREE_DELETED = 'T' WHERE FREE_NUM = #{freeNum}
+	</update>
 	
 	<update id="edit" parameterType="com.busking.board.model.BoardFreeDTO">
 		UPDATE BOARD_FREE 
 		SET FREE_TITLE = #{freeTitle}, 
-		    FREE_CONTENT = #{freeContent} 
+		    FREE_CONTENT = #{freeContent, jdbcType=CLOB} 
 		WHERE FREE_NUM = #{freeNum}
 	</update>
 	

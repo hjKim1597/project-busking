@@ -1,6 +1,4 @@
-@charset "UTF-8";
-
-@import url(default.css);
+@import url(../default.css);
 
 @font-face {
     font-family: 'NanumSquareNeo';
@@ -15,12 +13,12 @@
 * {font-family: 'NanumSquareNeo';}
 
 @media (min-width:1200px) {
-    .resForm-wrap {
+    #board_content {
         width: 1170px;
     }
 }
 @media (min-width:992px) and (max-width:1199px) {
-    .resForm-wrap {
+    #board_content {
         width: 970px;
     }
     
@@ -44,7 +42,7 @@
 }
 
 @media (max-width:991px) {
-    .resForm-wrap {
+    #board_content {
         width: 750px;
     }
 
@@ -68,8 +66,8 @@
 }
 
 #board_content {
-    width: 100%; 
-    padding: 100px;
+    padding: 150px 50px 0 50px;
+    margin: 0 auto;
 }
 
 #board_content .board_nav {
@@ -79,7 +77,7 @@
 
 #board_content .board_content_box {
     width: 100%;
-    max-height: 100%;  
+    /* max-height: 100%; */
 }
 
 #board_content .board_content_box .inner_box {
@@ -87,9 +85,9 @@
     margin-left: 190px;
 }
 
-#board_content .board_content_box .inner_box .inner {
+/* #board_content .board_content_box .inner_box .inner {
     padding: 0px 80px;
-}
+} */
 
 /*색상참고 #98FF98 #98FB98 #90EE90 #3CB371 #00FA9A #228B22 #32CD32 #00FF7F #006400 #7FFF00
 */
@@ -155,19 +153,64 @@
 #board_content .board_content_box .inner_box .inner .inner_mid .content {
     margin-top: 30px;
     padding: 10px;
+    width: 100%;
+    min-height: 300px;
     font-size: 18px;
     line-height: 38px;
     letter-spacing: 0.5px;
-    width: 100%;
-    height: 300px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_mid .like_container {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    /* border: 2px solid #000000; */
+    width: 200px;
+    /* border-radius: 20px; */
+    margin-top: 15px;
+}
+
+#board_content .board_content_box .inner_box .inner .inner_mid .like_container .like_button {
+    background-color: rgb(255, 255, 255);
+    /* width: 50px; */
+    border: 0px;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* #board_content .board_content_box .inner_box .inner_mid .like_container .like_button img {
+    width: 25px; 
+    height: 25px;
+}
+ */
+#board_content .board_content_box .inner_box .inner_mid .like_container .like_button i {
+	font-size: 25px;
+    width: 25px; 
+    height: 25px;
+    color: black;
+}
+#board_content .board_content_box .inner_box .inner_mid .like_container .like_button i.like {
+	color: red;
+}
+#board_content .board_content_box .inner_box .inner .inner_mid .like_container .like_count {
+    margin-left: 15px; 
+    font-size: 18px; 
+    display: flex;
+    align-items: center; 
+    height: 30px; 
 }
 
 #board_content .board_content_box .inner_box .inner .inner_bottom {
     /* display: flex; */
     writing-mode: 100%;
     align-items: center;
+    line-height: 40px;
     padding: 10px;
     font-size: 17px;
+    margin-bottom: 20px;
 }
 
 #board_content .board_content_box .inner_box .inner .inner_bottom .inner_bottom_left div {
@@ -232,17 +275,22 @@
     margin-right: 10px;
     border: 1px solid rgb(209, 209, 209);
 }
-
 #board_content .board_content_box .inner_box .inner .comment_box {
-    background-color: #F0F7FD;
+	/* background-color: #F0F7FD; */
 	padding-bottom: 20px;
+	position: relative;
 }
 #board_content .board_content_box .inner_box .inner .comment_box > iframe {
 	width: 100%;
-	height: auto;
-    max-height: none; /* 높이 제한 해제 */
-	overflow: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #F0F7FD;
+/* 	height: auto;
+    max-height: none; 높이 제한 해제
+	overflow: auto; */
 }
+
 
 .team_container {
     /* border: 1px solid #d8dde2; */
@@ -259,7 +307,7 @@
     display: flex;
 }
 
-.team_container .team_count_box .team_count {
+.team_container .team_count {
     border-radius: 10px;
     width: 75px;
     height: 35px;

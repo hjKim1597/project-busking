@@ -1,35 +1,57 @@
-/**
- * 
- */
-document.addEventListener('DOMContentLoaded', function() {
+/*window.onload = function() {
+    document.getElementById('form1').addEventListener('submit', function(event) {
+        var privacyPolicyChecked = document.getElementById('privacy-policy').checked;
+        var reservationConfirmationChecked = document.getElementById('reservation-confirmation').checked;
 
-    // 제출 버튼 클릭 이벤트 핸들러
-    document.getElementById('submitAll').addEventListener('click', function(event) {
-        event.preventDefault(); // 기본 제출 이벤트 방지
+        var resContent = document.getElementById('res-content').value.trim();
+        var resCount = document.getElementById('res-count').value.trim();
 
-        // 임시 폼 생성
-        var tempForm = document.createElement('form');
-        tempForm.method = 'post';
-        tempForm.action = '#'; // 서버 엔드포인트로 변경
+        if (!privacyPolicyChecked || !reservationConfirmationChecked) {
+            alert('약관에 동의해야 합니다.');
+            event.preventDefault();
+            return;
+        } 
 
-        // 각 폼의 입력값을 임시 폼에 추가
-        var forms = document.querySelectorAll('#form-container form');
-        forms.forEach(function(form) {
-            var inputs = form.querySelectorAll('input');
-            inputs.forEach(function(input) {
-                var hiddenInput = document.createElement('input');
-                hiddenInput.type = 'hidden';
-                hiddenInput.name = input.name;
-                hiddenInput.value = input.value;
-                tempForm.appendChild(hiddenInput);
-            });
-        });
+        if (resContent === '' || resCount === '') {
+            alert('모든 필드를 작성해야 합니다.');
+            event.preventDefault();
+            return;
+        }
+        
+        alert("예약 신청이 접수되었습니다.");
+    });
+};*/
 
-        // 임시 폼을 body에 추가하고 제출
-        document.body.appendChild(tempForm);
-        tempForm.submit();
+document.addEventListener("DOMContentLoaded", function() {
 
-        alert('예약이 성공적으로 접수 되었습니다.');
-    
+    var form = document.getElementById('form1');
+
+    // 모든 submit 이벤트 리스너 제거
+    form.replaceWith(form.cloneNode(true));
+    form = document.getElementById('form1');
+
+    form.addEventListener('submit', function(event) {
+        var privacyPolicyChecked = document.getElementById('privacy-policy').checked;
+        var reservationConfirmationChecked = document.getElementById('reservation-confirmation').checked;
+
+        var resContent = document.getElementById('res-content').value.trim();
+        var resCount = document.getElementById('res-count').value.trim();
+
+
+        if (!privacyPolicyChecked || !reservationConfirmationChecked) {
+            alert('약관에 동의해야 합니다.');
+            event.preventDefault();
+            return;
+        } 
+
+        if (resContent === '' || resCount === '') {
+            alert('모든 필드를 작성해야 합니다.');
+            event.preventDefault();
+            return;
+        }
+
+        if (!confirm("예약 신청을 하시겠습니까? (이후 내용은 수정할 수 없습니다)")) {
+            event.preventDefault();
+        }
     });
 });

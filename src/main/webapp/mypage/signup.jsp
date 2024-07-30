@@ -19,24 +19,27 @@
         <div class="sum">
             <h3 class="title">회원가입</h3>
             <div class="user-join">
-                <form id="form_userInfo" action="${pageContext.request.contextPath}/userjoin/signup.mypage" method="post" onsubmit="combineAddress()">
+                <form id="form_userInfo" action="${pageContext.request.contextPath}/userjoin/signup.mypage" method="post" onsubmit="return validateForm()">
+                <div class="form-group pw-margin" style="margin-bottom: 15px">
                     <label for="userId">아이디</label>
                     <div class="input-group id-content">
-                        <input type="text" class="form-control write-box" id="userId" placeholder="6~20자 영문, 숫자" name="userId" required="required">
-                        <div class="input-group-btn">
-                            <button type="button" class="btn btn-default" onclick="checkUserId()">중복확인</button>
-                        </div>
+	                    <input type="text" class="form-control write-box" id="userId" placeholder="6~20자 영문, 숫자" name="userId" required="required">
+	                    <div class="input-group-btn">
+	                        <button type="button" class="btn btn-default" onclick="checkUserId()">중복확인</button>
+	                    </div>
                     </div>
-                    <div class="success-message hideMessage message-good">사용할 수 있는 아이디입니다</div>
-                    <div class="failure-message hideMessage message-bad">아이디는 6~20글자이어야 합니다</div>
-                    <div class="failure-message2 hideMessage message-bad">영어 또는 숫자만 가능합니다</div>
+	                <div class="success-message hideMessage message-good">사용할 수 있는 아이디입니다</div>
+	                <div class="failure-message hideMessage message-bad">아이디는 6~20글자이어야 합니다</div>
+	                <div class="failure-message2 hideMessage message-bad">영어 또는 숫자만 가능합니다</div>
+                </div>
+	                
                     <div class="form-group">
                         <label for="userPw">비밀번호</label>
                         <input type="password" class="form-control write-box" id="userPw" name="userPw" placeholder="8~12자 영문, 숫자" required="required">
+	                    <div class="password-success-message hideMessage message-good">사용할 수 있는 비밀번호입니다</div>
+	                    <div class="password-failure-message hideMessage message-bad">비밀번호는 8~12글자이어야 합니다</div>
+	                    <div class="password-failure-message2 hideMessage message-bad">영어와 숫자만 가능합니다</div>
                     </div>
-                    <div class="password-success-message hideMessage message-good">사용할 수 있는 비밀번호입니다</div>
-                    <div class="password-failure-message hideMessage message-bad">비밀번호는 8~12글자이어야 합니다</div>
-                    <div class="password-failure-message2 hideMessage message-bad">영어와 숫자만 가능합니다</div>
                     <div class="form-group">
                         <label for="userName">이름</label>
                         <input type="text" class="form-control write-box" id="userName" name="userName" required="required">
@@ -69,7 +72,6 @@
                             <option>없음</option>
                             <option>남성</option>
                             <option>여성</option>
-                            <option>변화</option>
                         </select>
                     </div>
                     <input type="submit" class="jinseok-button" value="회원가입" id="submit-btn"></input>
@@ -79,6 +81,9 @@
     </div>
     
     <script>
+        var isUserIdChecked = false; // 중복 확인 여부를 저장하는 변수
+        var isPasswordValid = false; // 비밀번호 유효성 검사를 저장하는 변수
+
         function combineAddress() {
             var addr1 = document.querySelector('input[name="addr1"]').value;
             var addr2 = document.querySelector('input[name="addr2"]').value;
@@ -92,28 +97,47 @@
             var userId = document.getElementById('userId').value;
             if (userId.length < 6 || userId.length > 20 || !/^[A-Za-z0-9]+$/.test(userId)) {
                 alert('아이디는 6~20자 영문, 숫자만 가능합니다.');
+                document.getElementById('userId').value = ''; // 아이디 칸을 지움
+                isUserIdChecked = false; // 중복 확인 실패
                 return;
             }
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "${pageContext.request.contextPath}/userjoin/checkUserId.mypage?userId=" + userId, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    var result = xhr.responseText;
+
+            fetch(`${pageContext.request.contextPath}/userjoin/checkUserId.mypage?userId=` + userId)
+                .then(response => response.text())
+                .then(result => {
                     if (result === "사용할 수 있는 아이디입니다.") {
                         alert(result);
+                        isUserIdChecked = true; // 중복 확인 성공
                     } else {
                         alert(result);
+                        document.getElementById('userId').value = ''; // 아이디 칸을 지움
                         document.getElementById("userId").focus();
+                        isUserIdChecked = false; // 중복 확인 실패
                     }
-                }
-            };
-            xhr.send();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
-		
-        //연락처 숫자만 입력하게끔
+
+        function validateForm() {
+            if (!isUserIdChecked) {
+                alert('아이디 중복 확인을 해주세요.');
+                return false;
+            }
+            if (!isPasswordValid) {
+                alert('비밀번호는 8~12자 영문, 숫자만 가능합니다.');
+                return false;
+            }
+            combineAddress();
+            return true;
+        }
+
+        // 연락처 숫자만 입력하게끔
         document.getElementById('userPno').addEventListener('input', function(e) {
-        	this.value = this.value.replace(/[^0-9]/g, '');  // 숫자만 입력 가능
-    	});
+            this.value = this.value.replace(/[^0-9]/g, '');  // 숫자만 입력 가능
+        });
+
         // 아이디 입력창 정보 가져오기
         var elInputUsername = document.querySelector('#userId'); // input#userId
         // 성공 메시지 정보 가져오기
@@ -122,7 +146,7 @@
         var elFailureMessage = document.querySelector('.failure-message'); // div.failure-message.hideMessage
         // 실패 메시지2 정보 가져오기 (영어 또는 숫자)
         var elFailureMessageTwo = document.querySelector('.failure-message2'); // div.failure-message2.hideMessage
-        
+
         // 영어와 숫자만 있는지 확인하는 함수
         function onlyNumberAndEnglish(str) {
             return /^[A-Za-z0-9]+$/.test(str);
@@ -183,18 +207,21 @@
                     elPasswordSuccessMessage.classList.add('hideMessage');
                     elPasswordFailureMessage.classList.add('hideMessage');
                     elPasswordFailureMessageTwo.classList.remove('hideMessage'); // 영어와 숫자만 가능합니다
+                    isPasswordValid = false;
                 }
                 // 글자 수가 8~12글자가 아닐 경우
                 else if (!pwLength(elInputPassword.value)) {
                     elPasswordSuccessMessage.classList.add('hideMessage'); // 성공 메시지가 가려져야 함
                     elPasswordFailureMessage.classList.remove('hideMessage'); // 비밀번호는 8~12글자이어야 합니다
                     elPasswordFailureMessageTwo.classList.add('hideMessage'); // 실패 메시지2가 가려져야 함
+                    isPasswordValid = false;
                 }
                 // 조건을 모두 만족할 경우
                 else {
                     elPasswordSuccessMessage.classList.remove('hideMessage'); // 사용할 수 있는 비밀번호입니다
                     elPasswordFailureMessage.classList.add('hideMessage'); // 실패 메시지가 가려져야 함
                     elPasswordFailureMessageTwo.classList.add('hideMessage'); // 실패 메시지2가 가려져야 함
+                    isPasswordValid = true;
                 }
             }
             // 값을 입력하지 않은 경우 (지웠을 때)
@@ -203,6 +230,7 @@
                 elPasswordSuccessMessage.classList.add('hideMessage');
                 elPasswordFailureMessage.classList.add('hideMessage');
                 elPasswordFailureMessageTwo.classList.add('hideMessage');
+                isPasswordValid = false;
             }
         }
     </script>
@@ -243,3 +271,5 @@
         }
     </script>
 <%@ include file="../include/footer.jsp" %>
+</body>
+</html>

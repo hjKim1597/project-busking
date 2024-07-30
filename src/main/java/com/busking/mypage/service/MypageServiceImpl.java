@@ -2,10 +2,15 @@ package com.busking.mypage.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.busking.mypage.model.ReservationCheckDTO;
+import com.busking.mypage.model.ReservationCheckMapper;
 import com.busking.mypage.model.UserJoinDTO;
 import com.busking.mypage.model.UserJoinMapper;
 import com.busking.util.mybatis.MybatisUtil;
@@ -43,6 +48,9 @@ public class MypageServiceImpl implements MypageService {
         response.setContentType("text/html; charset=UTF-8;");
         PrintWriter out = response.getWriter();
         if (result == 1) {
+            // 세션의 사용자 정보 업데이트
+            HttpSession session = request.getSession();
+            session.setAttribute("user", dto);
             out.println("<script>");
             out.println("alert('정보가 성공적으로 업데이트 되었습니다.');");
             out.println("location.href='" + request.getContextPath() + "/mypage/getUserInfo.userinfo';");
@@ -74,9 +82,10 @@ public class MypageServiceImpl implements MypageService {
             response.sendRedirect(request.getContextPath() + "/mypage/login.jsp");
         }
     }
+    
     @Override
     public void deleteUser(HttpServletRequest request, HttpServletResponse response)
-    		throws ServletException, IOException {
+            throws ServletException, IOException {
         HttpSession session = request.getSession();
         UserJoinDTO dto = (UserJoinDTO) session.getAttribute("user");
         String inputPw = request.getParameter("userPw");
@@ -89,15 +98,18 @@ public class MypageServiceImpl implements MypageService {
             int result = mapper.deleteUser(userId);
             sqlSession.close();
 
+            PrintWriter out = response.getWriter();
+            response.setContentType("text/html; charset=UTF-8;");
             if (result == 1) {
                 session.invalidate();
-                response.sendRedirect(request.getContextPath() + "/mypage/login.jsp");
+                out.println("<script>");
+                out.println("alert('정상적으로 회원 탈퇴가 완료되었습니다.');");
+                out.println("location.href='../index.main';");
+                out.println("</script>");
             } else {
-                response.setContentType("text/html; charset=UTF-8;");
-                PrintWriter out = response.getWriter();
                 out.println("<script>");
                 out.println("alert('회원 탈퇴에 실패했습니다. 다시 시도해주세요.');");
-                out.println("location.href='deleteUser.jsp';");
+                out.println("location.href='deleteUserPage.userinfo';");
                 out.println("</script>");
             }
         } else {
@@ -107,6 +119,30 @@ public class MypageServiceImpl implements MypageService {
             out.println("alert('비밀번호가 일치하지 않습니다.');");
             out.println("location.href='deleteUser.jsp';");
             out.println("</script>");
+        }
+    }
+
+    @Override
+    public void getReservationInfo(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String userId = (String) session.getAttribute("userId");
+
+        if (userId != null) {
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            ReservationCheckMapper mapper = sqlSession.getMapper(ReservationCheckMapper.class);
+            List<ReservationCheckDTO> allReservations = mapper.getReservationInfo(userId);
+            sqlSession.close();
+
+            List<ReservationCheckDTO> nextMonthReservations = allReservations.stream()
+                    .filter(reservation -> reservation.getResDate().toLocalDate().getMonthValue() == java.time.LocalDate.now().plusMonths(1).getMonthValue())
+                    .collect(Collectors.toList());
+
+            request.setAttribute("allReservations", allReservations);
+            request.setAttribute("nextMonthReservations", nextMonthReservations);
+            request.getRequestDispatcher("/mypage/reservationCheck.jsp").forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/userjoin/loginPage.mypage");
         }
     }
 }

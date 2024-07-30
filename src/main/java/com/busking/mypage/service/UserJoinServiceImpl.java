@@ -69,45 +69,38 @@ public class UserJoinServiceImpl implements UserJoinService {
     }
     @Override
     public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String userId = request.getParameter("userId");
-    	String userPw = request.getParameter("userPw");
-    	
-    	UserJoinDTO dto = new UserJoinDTO();
-    	dto.setUserId(userId);
-    	dto.setUserPw(userPw);
-    	SqlSession sqlSession = sqlSessionFactory.openSession(true);
-    	UserJoinMapper mapper = sqlSession.getMapper(UserJoinMapper.class);
-    	UserJoinDTO user = mapper.login(dto);
-    	
-    	if (user != null) {
-    		
+        String userId = request.getParameter("userId");
+        String userPw = request.getParameter("userPw");
+
+        UserJoinDTO dto = new UserJoinDTO();
+        dto.setUserId(userId);
+        dto.setUserPw(userPw);
+
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        UserJoinMapper mapper = sqlSession.getMapper(UserJoinMapper.class);
+        UserJoinDTO user = mapper.login(dto);
+
+        if (user != null) {
+            boolean adminCheck = mapper.adminCheck(userId);
+
             // 세션에 사용자 정보 저장
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("userId", userId);
+            session.setAttribute("adminCheck", adminCheck);
             
-            // 로그인 상태 유지 쿠키 설정
-            String keepLogin = request.getParameter("keepLogin");
-            if ("on".equals(keepLogin)) {
-                Cookie loginCookie = new Cookie("keepLogin", "true");
-                loginCookie.setMaxAge(7 * 24 * 60 * 60); // 7일 동안 유지
-                response.addCookie(loginCookie);
-            }
+            
             response.sendRedirect(request.getContextPath() + "/index.main");
         } else {
             response.setContentType("text/html; charset=UTF-8;");
             PrintWriter out = response.getWriter();
             out.println("<script>");
             out.println("alert('로그인에 실패했습니다. 아이디와 비밀번호를 확인해주세요.');");
-            out.println("location.href='" + request.getContextPath() + "/mypage/login.jsp';");
+            out.println("location.href='" + request.getContextPath() + "/userjoin/loginPage.mypage';");
             out.println("</script>");
         }
     }
-    @Override
-    public void userInfo(HttpServletRequest request, HttpServletResponse response)
-    		throws ServletException, IOException {
-    	
-    }
+
     @Override
     public void findUserId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
@@ -147,4 +140,6 @@ public class UserJoinServiceImpl implements UserJoinService {
         out.print(foundPw != null ? foundPw : "정보가 일치하지 않습니다.");
         out.flush();
     }
+
+
 }

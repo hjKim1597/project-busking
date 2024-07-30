@@ -39,7 +39,15 @@
 	                    <div class="like_container">
 	                        <button class="like_button" onclick="location.href='board_like.boardFree?bno=${dto.freeNum }'">
 	                            <!-- <img src="../resources/img/board_img/like.png" alt="좋아요"> -->
-	                            <i class=${like = 'T' ? "fa-solid fa-heart like" : "fa-light fa-heart"}></i>
+	                            <c:choose>
+	                            	<c:when test="${like == 'T' }">
+	                            		<i class="fa-solid fa-heart like"></i>
+	                            	</c:when>
+		                            <c:otherwise>
+			                            <i class="fa-regular fa-heart"></i>
+		                            </c:otherwise>
+	                            </c:choose>
+	                            
 	                        </button>
 	                        <span class="like_count" id="likeCount">${dto.freeLikeCount }</span>
 	                    </div>
@@ -65,15 +73,24 @@
 	                    </div>
 	                </div>
 					<div class="comment_box">
-		                <iframe src="board_comment_free_list.comment?bno=${dto.freeNum }" frameborder="0" scrolling="no"></iframe>
+		                <iframe  id="dynamicIframe" src="board_comment_free_list.comment?bno=${dto.freeNum }" frameborder="0" scrolling="no"></iframe>
 					</div>
 	            </div>
 	        </div>
 	    </div>
 	</section>
-		<script>
+	<script>
+	
+		var date = new Date();
+		var regdate = '${regdate}';
+		
+		if((date - regdate) > 86400000) {
+			var newSpan = document.querySelector('.inner_top .title .new');
+			newSpan.style.display = "none";
+		}
+
 
 	</script>
-	
 	<script src="${pageContext.request.contextPath }/resources/js/board/board_content.js"></script>
+	
 <%@ include file="../include/footer.jsp" %>

@@ -1,14 +1,12 @@
- @charset "UTF-8";
+@charset "UTF-8";
 @import url(../default.css);
-
 * {
     letter-spacing: 0.5px;
     box-sizing: border-box;
-    font-family: 'NanumSquare';
 }
 .resForm-wrap {
     margin: 0 auto; 
-    margin-top: 100px;
+    margin-top: 160px;
     transition: 0.3s ease-in-out;
 }
 
@@ -121,6 +119,7 @@
 .resForm-mid .resForm-mid-left {
     float: left;
     width: 50%;
+    margin-left: 50px;
 }
 .resForm-mid .resForm-mid-left #calendar {
 	width: 100%;
@@ -334,21 +333,26 @@
 .cmt-star .star i {
     font-size: 18px;
     font-weight: 900;
-    color: gold; /* 필요에 따라 색상을 조정*/
+    color: #e2e2e2; /* 필요에 따라 색상을 조정*/
     cursor: pointer; /* 클릭 가능한 아이콘임을 표시 */
 }
 
 /* 마우스를 올리면 해당 별과 이전 별들을 채워진 상태로 변경 */
-.cmt-star .star:hover i,
-.cmt-star .star:hover ~ .star i {
+.cmt-star .star:hover i.checked,
+.cmt-star .star:hover ~ .star i.checked {
     color: gold; /* 필요에 따라 색상을 조정 */
 }
 
-/* 클릭된 별과 그 이전 별들을 채워진 상태로 유지 */
-.cmt-star .star.selected i,
-.cmt-star .star.selected ~ .star i {
-    color: gold; /* 필요에 따라 색상을 조정 */
+/* 선택된 별과 그 이전 별들이 채워진 상태로 변경 */
+.cmt-star .star i.checked {
+    color: gold; /* 선택된 별 색상 */
 }
+
+/* 선택된 별 스타일
+.cmt-star .star.checked i {
+    color: gold; 선택된 별 색상
+} */
+
 
 .loca-cmt-box .cmt-top-box .cmt-text {
     resize: none;
@@ -417,6 +421,7 @@
 }
 .cmt-list-top .cmt-list-right > p {
     display: inline-block;
+    font-size: larger;
 }
 .cmt-list-content {
     padding: 10px 20px 25px 20px;
@@ -430,6 +435,16 @@
     line-height: 30px;
     letter-spacing: 0.5px;
     font-family: 'NanumSquareNeo';
+}
+
+.cmt-star ul {
+    list-style: none;
+    padding: 0;
+}
+.cmt-star li {
+    display: inline;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 
@@ -551,3 +566,118 @@
     background-color: #5fd7ff; 
     border-radius: 3px;
     border: 1px solid #5fd7ff;
+}
+
+/* 예약버튼 디자인 */
+
+.resForm-mid-button {
+	margin-top: 35px;
+	text-align: center;
+}
+
+.resForm-mid-button > button {
+	border: 1px solid #ebebeb;
+    background-color: white;
+    width: 70%;
+    padding: 18px 10px;
+    letter-spacing: 0.5px;
+    font-size: 17px;
+    color: rgb(70, 70, 70);
+}
+
+.resForm-mid-button > button.btn1,
+.resForm-mid-button > button.btn2,
+.resForm-mid-button > button.btn3 {
+    border-bottom: none;
+}
+
+.resForm-mid-button button.btn1:hover,
+.resForm-mid-button button.btn2:hover,
+.resForm-mid-button button.btn3:hover {
+	background-color: #5fd7ff41;
+	border: 1px solid #5fd7ff;
+	border-bottom: 1px solid #5fd7ff;
+	box-shadow: 0 4px 0 0 #5fd7ff;
+}
+
+.resForm-mid-button button.btn4:hover {
+	background-color: #5fd7ff41;
+	border: 1px solid #5fd7ff;
+	/* box-shadow: 0 1px 0 0 #5fd7ff; */
+}
+
+
+.resForm-mid-button button.btn1 .selected:hover,
+.resForm-mid-button button.btn2 .selected:hover,
+.resForm-mid-button button.btn3 .selected:hover {
+	/* background-color: #5fd7ff; */
+	color: black;
+	border: 1px solid #5fd7ff;
+	border-bottom: 1px solid #5fd7ff;
+	box-shadow: 0 4px 0 0 #5fd7ff; 
+ 	font-weight: 600px;
+}
+
+.resForm-mid-button button.btn4 .selected:hover {
+	color: black;
+	border: 1px solid #5fd7ff;
+	box-shadow: 0 4px 0 0 #5fd7ff;
+	font-weight: 600; 
+}
+
+.resForm-mid-button button.btn1.selected,
+.resForm-mid-button button.btn2.selected,
+.resForm-mid-button button.btn3.selected {
+	background-color: #5fd7ff;
+	color: white;
+	border: 1px solid #5fd7ff;
+	border-bottom: 1px solid #5fd7ff;
+	box-shadow: 0 4px 0 0 #5fd7ff;
+}
+
+.resForm-mid-button button.btn4.selected {
+	background-color: #5fd7ff;
+	color: white;
+	border: 1px solid #5fd7ff;
+	/* box-shadow: 0 4px 0 0 #5fd7ff; */
+}
+
+/* 오버레이스타일*/
+#photo-overlay {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed; /* 화면에 고정 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 불투명 검정 배경 */
+    z-index: 1000; /* 가장 위에 표시 */
+    justify-content: center;
+    align-items: center;
+}
+
+#photo-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border: 2px solid white;
+}
+
+/* 닫기 버튼 스타일링 */
+#photo-overlay .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#photo-overlay .close-btn:hover,
+#photo-overlay .close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+

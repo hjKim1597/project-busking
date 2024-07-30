@@ -3,10 +3,14 @@ package com.busking.board.service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.busking.board.model.BoardNewsDTO;
+import com.busking.board.model.BoardNewsMapper;
 import com.busking.board.model.BoardNewsDTO;
 import com.busking.board.model.BoardNewsMapper;
 import com.busking.util.mybatis.MybatisUtil;
@@ -25,8 +29,12 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 	public void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// request
-		String page = (String)request.getAttribute("page");
+		String page = request.getParameter("page");
+		if(page == null) page = "1";
 		int pageNum = Integer.parseInt(page);
+		
+		String type = request.getParameter("type");
+		String target = request.getParameter("target");
 		
 		// DTO
 		ArrayList<BoardNewsDTO> list = new ArrayList<>();
@@ -34,15 +42,40 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardNewsMapper mapper = sql.getMapper(BoardNewsMapper.class);
-		int total = mapper.getTotal();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("type", type);
+		map.put("target", target);
+		int total = mapper.getTotal(map);
 		PageVO pageVO = new PageVO(pageNum, total);
-		list = mapper.getList(pageVO);
+		map.put("page", pageVO);
+		
+		list = mapper.getList(map);
 		sql.close();
 		
 		// response
-		request.setAttribute("newsList", list);
-		request.setAttribute("pageVO", pageVO);
-		request.getRequestDispatcher("board_news_list.jsp").forward(request, response);
+		if(list.size() == 0 && type != null) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('검색 결과가 없습니다.');");
+			out.println("location.href='board_list.boardNews';");
+			out.println("</script>");
+			return;
+		} else if(type == null){
+			request.setAttribute("newsList", list);
+			request.setAttribute("pageVO", pageVO);
+			request.getRequestDispatcher("board_news_list.jsp").forward(request, response);
+			return;
+		} else {
+			request.setAttribute("newsList", list);
+			request.setAttribute("pageVO", pageVO);
+			request.setAttribute("type", type);
+			request.setAttribute("target", target);
+			request.getRequestDispatcher("board_news_list.jsp").forward(request, response);
+			return;
+		}
+
 	}
 	
 	@Override
@@ -77,9 +110,14 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		
 		// request
 		String bno = request.getParameter("bno");
+		HttpSession session = request.getSession();
+		String userId = session.getAttribute("userId") != null ? (String)session.getAttribute("userId") : "";
 		
 		// DTO
 		BoardNewsDTO dto = new BoardNewsDTO();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userId", userId);
+		map.put("boardNum",	bno);
 		
 		// Mybatis
 		SqlSession sql = sqlSessionFactory.openSession(true);
@@ -88,10 +126,12 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		mapper.increaseHit(bno);
 		dto = mapper.getContent(bno);
 		dto.setNewsNum(bno);
+		String like = mapper.checkLike(map) == 1 ? "T" : "F";
 		sql.close();
 		
 		// response
 		request.setAttribute("dto", dto);
+		request.setAttribute("like", like);
 		request.getRequestDispatcher("board_news_content.jsp").forward(request, response);
 		
 	}
@@ -177,6 +217,43 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		}
 		out.println("location.href='board_content.boardNews?bno=" + bno + "';");
 		out.println("</script>");
+		
+	}
+	
+	@Override
+	public void like(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		// request
+		String bno = request.getParameter("bno");
+		
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		
+		// DTO
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userId", userId);
+		map.put("boardNum",	bno);
+		
+		Map<String, String> mapLike = new HashMap<String, String>();
+		mapLike.put("boardNum", bno);
+		
+		// Mybatis
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		BoardNewsMapper mapper = sql.getMapper(BoardNewsMapper.class);
+		String like = mapper.checkLike(map) == 1 ? "F" : "T";
+		if(like.equals("T")) {
+			mapper.insertLike(map);
+		} else {
+			mapper.deleteLike(map);
+		}
+		String likeCount = String.valueOf(mapper.getTotalLike(bno));
+		mapLike.put("likeCount", likeCount);
+		mapper.updateLikeCount(mapLike);
+		sql.close();
+		
+		// response
+		request.setAttribute("like", like);
+		request.getRequestDispatcher("board_content.boardNews?bno=" + bno).forward(request, response);
 		
 	}
 

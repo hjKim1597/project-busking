@@ -42,17 +42,20 @@
 	                        <!--데이터 받아오기-->
 	                        <c:forEach var="dto" items="${teamList }">
 								<tr>
-									<td>${dto.teamNum }</td>
-									<td>${dto.teamWriter }</td>
-									<td><a href="board_content.boardTeam?bno=${dto.teamNum }">${dto.teamTitle }</a></td>
-									<td><fmt:formatDate value="${dto.teamRegdate }" pattern="yy.MM.dd"/></td>
-									<td>
+									<td class="nth1">
+										<c:set var="numberStr" value="${fn:substring(dto.teamNum, 5, 13)}" />
+                        				<c:out value="${numberStr + 0}" />
+									</td>
+									<td class="nth2">${dto.teamWriter }</td>
+									<td class="nth3"><a href="board_content.boardTeam?bno=${dto.teamNum }">${dto.teamTitle }</a></td>
+									<td class="nth4"><fmt:formatDate value="${dto.teamRegdate }" pattern="yy.MM.dd"/></td>
+									<td class="nth5">
 										<c:choose>
 											<c:when test="${dto.teamCount == 6 }">기타</c:when>
 											<c:otherwise>${dto.teamCount }명</c:otherwise>
 										</c:choose>
 									</td>
-									<td>
+									<td class="nth6">
 										${dto.teamResult == 'T' ? '모집중' : '모집완료' }
 									</td>
 								</tr>
@@ -64,39 +67,113 @@
                 
                     <div class="page_nav">
                         <ul class="center">
-                            <li id="page_first"><a href="board_list.boardTeam"><img src="../resources/img/board_img/ico_first.gif" alt="처음페이지"></a></li>
-                            <c:if test="${pageVO.prev }">
-	                            <li id="page_prev"><a href="board_list.boardTeam?page=${pageVO.pageNum - 1 }"><img src="../resources/img/board_img/ico_prev.gif" alt="이전페이지"></a></li>                            
-                            </c:if>
-                            <c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
-                            	<li class="page_li" data-page="${i }"><a href="board_list.boardTeam?page=${i }" title="1페이지">${i }</a></li>	
-                            </c:forEach>
-                            <c:if test="${pageVO.next }">
-	                            <li id="page_next"><a href="board_list.boardTeam?page=${pageVO.pageNum + 1 }"><img src="../resources/img/board_img/ico_next.gif" alt="다음페이지"></a></li>
-                            </c:if>
-                            <li id="page_last"><a href="board_list.boardTeam?page=${pageVO.endPage }"><img src="../resources/img/board_img/ico_last.gif" alt="마지막페이지"></a></li>
-                        </ul>
+	                	<c:choose>
+		                	<c:when test="${!pageVO.first }">
+								<li id="page_first">
+									<a href="board_list.boardTeam?type=${type }&target=${target }">
+										<i class="fa-solid fa-angles-left"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_first">
+									<div class="page_link">
+										<i class="fa-solid fa-angles-left" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${!pageVO.first }">
+								<li id="page_prev">
+									<a href="board_list.boardTeam?page=${pageVO.pageNum - 1 }&type=${type }&target=${target }">
+										<i class="fa-solid fa-angle-left"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_prev">
+									<div class="page_link">
+										<i class="fa-solid fa-angle-left" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						
+						<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+							<li class="page_li" data-page="${i }">
+								<a href="board_list.boardTeam?page=${i }&type=${type }&target=${target }" title="1페이지">${i }</a>
+							</li>
+						</c:forEach>
+						
+						<c:choose>
+		                	<c:when test="${!pageVO.last }">
+								<li id="page_next">
+									<a href="board_list.boardTeam?page=${pageVO.pageNum + 1}&type=${type }&target=${target }">
+										<i class="fa-solid fa-angle-right"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_next">
+									<div class="page_link">
+										<i class="fa-solid fa-angle-right" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${!pageVO.last }">
+								<li id="page_last">
+									<a href="board_list.boardTeam?page=${pageVO.realEndPage }&type=${type }&target=${target }">
+										<i class="fa-solid fa-angles-right"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_last">
+									<div class="page_link">
+										<i class="fa-solid fa-angles-right" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</ul>
                         <form action="board_write.boardTeam" class="right">
                             <button value="글쓰기">작성</button>  
                         </form>    
                     </div>                     
-                <div class="board_team_search">
-                    <select class="board_team_search_box">
-                        <option value="notice">전체</option>
-                        <option value="writer">작성자</option>
-                        <option value="title">제목</option>
-                        <option value="content">내용</option>
-                    </select>
-                    <input placeholder="검색어를 입력해 주세요" type="text">
-                    <span>
-                        <button class="btn" onclick="실행할JS함수/검색기능" type="submit">검색</button>
-                    </span>
-                </div>
+	                <form action="board_list.boardTeam" method="post">
+						<div class="board_team_search">
+							<select class="board_search_box" name="type">
+								<option value="all" selected>전체</option>
+								<option value="writer">작성자</option>
+								<option value="title">제목</option>
+								<option value="content">내용</option>
+							</select> 
+							<input placeholder="검색어를 입력해 주세요" type="text" name="target" required> 
+							<span>
+								<input class="btn" type="submit" id="search_btn" value="검색">
+							</span>
+						</div>
+					</form>
                 </div>                
             </div>
         </div>
     </section>
     
-	<script src="${pageContext.request.contextPath }/resources/js/board/board_list.js"></script>
+	<script>
+	window.onload = function() {
+		var pageNum = '${pageVO.pageNum}';
+		console.log(pageNum);
+		var pageUl = document.querySelector(".page_nav .center");
+		
+		var pageItems = pageUl.querySelectorAll(".page_li");
+		Array.from(pageItems)
+			 .filter(i => i.dataset.page == pageNum)
+			 .forEach(item => item.classList.add("active"));
+			 	
+	}
+	</script>
 
 <%@ include file="../include/footer.jsp" %>

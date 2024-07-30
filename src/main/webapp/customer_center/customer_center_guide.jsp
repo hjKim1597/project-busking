@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,21 +9,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_index.css">
 
-    <!-- 부트스트랩 css링크 -->
-    <link rel="stylesheet" href="../resources/css/customer_center/bootstrap.min.css">
-    <!-- 제이쿼리(부스트랩보다 먼저 링크) -->
-    <script src="../resources/js/customer_center_js/jquery-3.7.1.min.js"></script>
-    <!-- 부트스트랩 js링크 -->
-    <script src="../resources/js/customer_center_js/bootstrap.min.js"></script>
-
+   
     <!-- 커스터마이징 한 css 디자인 추가 -->
-    <link rel="stylesheet" href="../resources/css/custom-reset.css">
-    <link rel="stylesheet" href="../resources/css/center_default.css">
+    <link rel="stylesheet" href="../resources/css/customer_center_board_free_list.css">
 
-    <!-- header,footer -->
-    <link rel="stylesheet" href="../resources/css/customer_center/customer_center_header_footer.css">
 
 </head>
 
@@ -29,38 +21,35 @@
 
 <body>
 
-    <!-- 레이아웃 -->
-    <section class="container customer-center-width" id="change">
-        <div class="row">
-
-            <!-- 좌측메뉴 -->
-            <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 content">
-                <li class="col-xs-4 col-sm-4 col-lg-4 col-lg-4">
-                    <section>
-                        <div class="service_menu">
-                            <nav>
-                                <div class="span"></div>
-                                <h1>고객센터</h1>
-                                <ul class="menu">
-                                    <li class="nth1"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
-                                    </li>
-                                    <li class="nth2"><strong><a href="customer_center_month.customer"><span>이달의예약</span></a></strong>
-                                    </li>
-                                    <li class="nth3"><strong><a href="customer_center_guide.customer"><span>이용안내</span></a></strong>
-                                    </li>
-                                    <li class="nth4"><strong><a href="customer_center_FAQ.customer"><span>자주묻는질문(FAQ)</span></a></strong>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </section>
-                </li>
+     <!-- 중앙 레이아웃 -->
+    <section class="container customer-center-width" id="change" style="margin-top: 150px; padding: 150px 50px 0 50px;
+    margin: 0 auto;
+    overflow: hidden;">
+     	<!-- 좌측메뉴 -->
+        <div class="board_nav">
+            <div id="board_nav_wrap">
+	             <h1>고객센터</h1>
+	             <ul class="menu">
+	                 <li class="nth1"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
+	                 </li>
+	                 <li class="nth2"><strong><a href="customer_center_res.customer"><span>이달의 예약</span></a></strong>
+	                 </li>
+	                 <li class="nth3"><strong><a href="customer_center_guide.customer"><span>이용안내</span></a></strong>
+	                 </li>
+	                 <li class="nth4"><strong><a href="customer_center_FAQ.customer"><span>FAQ</span></a></strong>
+	                 </li>
+	             </ul>
             </div>
-
-            <!-- 이용안내 내용 -->
-            <div class="col-xs-12 col-sm-12 col-lg-12 col-lg-12 board">
-
-                <div class="service-board">
+        </div>
+        <!-- 공지사항 게시판 -->
+        <div class="board">
+	        <!-- 공지사항 목록 -->
+	        <div class="board_list">
+	        	<div class="board_list_title">
+				</div>
+	            <!-- 이용안내 내용 -->
+	            
+	            <div class="service-board" style="margin-left: 140px;">
                     <div class="container">
                         <div class="page-header">
                             <h3>한강공원 버스킹(거리공연) 신청 개요</h3>
@@ -137,12 +126,23 @@
                 </div>
 
             </div>
-        </div>
-    </section>
+            <div class="board">
 
+                
+				
+				
+					
+				
+			</div>
+		</div>
+	</section>
     
 <%@ include file="../include/footer.jsp"%>
 
+
+
+            
+            
 </body>
 
 

@@ -5,20 +5,72 @@
 	
 <mapper namespace="com.busking.board.model.BoardNewsMapper">
 
-	<select id="getList" parameterType="com.busking.util.paging.PageVO" resultType="com.busking.board.model.BoardNewsDTO">
-		
-		SELECT NEWS_NUM, NEWS_TITLE, NEWS_WRITER, NEWS_REGDATE, NEWS_HIT 
-		FROM (
-			SELECT ROWNUM RN,
-			       N.* 
-			FROM BOARD_NEWS N 
-			ORDER BY NEWS_NUM DESC 
-		) 
-		WHERE RN > (#{pageNum} - 1) * #{amount} and #{pageNum} * #{amount} >= RN 				
-	</select>
+    <select id="getList" parameterType="hashMap" resultType="com.busking.board.model.BoardNewsDTO">
+        SELECT NEWS_NUM, NEWS_TITLE, NEWS_WRITER, NEWS_REGDATE, NEWS_HIT 
+        FROM ( 
+        	SELECT A.*, ROWNUM AS RN 
+        	FROM (
+        		SELECT B.* 
+	            FROM BOARD_NEWS B 
+	            WHERE NEWS_DELETED = 'F' 
+	            AND 1 = 1 
+	            <choose>
+	            	<when test="type != null and type != ''">
+		                <choose>
+		                    <when test="type == 'title'">
+		                    	/*+ INDEX(B IDX_BOARD_NEWS_TITLE) */ 
+		                        AND B.NEWS_TITLE LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'content'">
+		                        AND B.NEWS_CONTENT LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'writer'">
+		                    	 /*+ INDEX(B IDX_BOARD_NEWS_WRITER) */ 
+		                        AND B.NEWS_WRITER LIKE '%' || #{target} || '%' 
+		                    </when>
+		                    <when test="type == 'all'">
+		                    	 /*+ INDEX(B PK_IDX_BOARD_NEWS) */ 
+		                        AND (B.NEWS_TITLE LIKE '%' || #{target} || '%' 
+		                             OR B.NEWS_CONTENT LIKE '%' || #{target} || '%' 
+		                             OR B.NEWS_WRITER LIKE '%' || #{target} || '%') 
+		                    </when>
+		                </choose>
+		            </when>
+		            <otherwise>
+		            	/*+ INDEX(B PK_IDX_BOARD_NEWS) */ 
+		            </otherwise>
+	            </choose>
+            
+            	ORDER BY NEWS_NUM DESC 
+            ) A  	
+        ) 
+        WHERE RN > (#{page.pageNum} - 1) * #{page.amount} 
+        AND #{page.pageNum} * #{page.amount} >= RN
+ 
+    </select>
 	
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM BOARD_NEWS 
+		SELECT COUNT(*) 
+        FROM BOARD_NEWS 
+        WHERE NEWS_DELETED = 'F' 
+		<if test="type != null and type != ''">
+			<choose>
+				<when test="type == 'title'">
+					AND NEWS_TITLE LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'content'">
+					AND NEWS_CONTENT LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'writer'">
+					AND NEWS_WRITER LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'all'">
+					AND (NEWS_TITLE LIKE '%' || #{target} || '%' 
+					OR NEWS_CONTENT LIKE '%' || #{target} || '%' 
+					OR NEWS_WRITER LIKE '%' || #{target} || '%') 
+				</when>
+			</choose>
+		</if>
 	</select>
 	
 	<insert id="write" parameterType="com.busking.board.model.BoardNewsDTO">
@@ -30,28 +82,29 @@
 		VALUES('NEWS_' || LPAD(BOARD_NEWS_SEQ.NEXTVAL, 8, '0'),
 		       #{newsWriter},
 		       #{newsTitle},
-		       #{newsContent},
-		       SYSDATE) 
+		       #{newsContent, jdbcType=CLOB},
+		       SYSDATE)
 	</insert>
 	
-	<select id="getContent" resultType="com.busking.board.model.BoardNewsDTO" parameterType="String">
+	<select  id="getContent" resultType="com.busking.board.model.BoardNewsDTO" parameterType="String">
 		SELECT NEWS_TITLE, NEWS_LIKE_COUNT, NEWS_WRITER, NEWS_REGDATE, NEWS_CONTENT, NEWS_HIT, NEWS_CMT_COUNT 
 		FROM BOARD_NEWS 
 		WHERE NEWS_NUM = #{newsNum}
+
 	</select>
 	
 	<update id="increaseHit" parameterType="String">
 		UPDATE BOARD_NEWS SET NEWS_HIT = NEWS_HIT + 1 WHERE NEWS_NUM = #{newsNum}
 	</update>
 	
-	<delete id="delete" parameterType="String">
-		DELETE FROM BOARD_NEWS WHERE NEWS_NUM = #{newsNum}
-	</delete>
+	<update id="delete" parameterType="String">
+		UPDATE BOARD_NEWS SET NEWS_DELETED = 'T' WHERE NEWS_NUM = #{newsNum}
+	</update>
 	
 	<update id="edit" parameterType="com.busking.board.model.BoardNewsDTO">
 		UPDATE BOARD_NEWS 
 		SET NEWS_TITLE = #{newsTitle}, 
-		    NEWS_CONTENT = #{newsContent}
+		    NEWS_CONTENT = #{newsContent, jdbcType=CLOB} 
 		WHERE NEWS_NUM = #{newsNum}
 	</update>
 	
@@ -60,5 +113,28 @@
 		SET NEWS_CMT_COUNT = #{newsCmtCount} 
 		WHERE NEWS_NUM = #{newsNum} 
 	</update>
+	
+	<insert id="insertLike">
+		INSERT INTO LIKES(LIKE_NUM, USER_ID, BOARD_NUM) 
+		VALUES(LIKES_SEQ.NEXTVAL, #{userId}, #{boardNum})
+	</insert> 
+	
+	<delete id="deleteLike">
+		DELETE FROM LIKES WHERE USER_ID = #{userId} AND BOARD_NUM = #{boardNum} 
+	</delete>
+	
+	<update id="updateLikeCount">
+		UPDATE BOARD_NEWS 
+		SET NEWS_LIKE_COUNT = TO_NUMBER(#{likeCount}) 
+		WHERE NEWS_NUM = #{boardNum}  
+	</update>
+	
+	<select id="getTotalLike" resultType="int">
+		SELECT COUNT(*) FROM LIKES WHERE BOARD_NUM = #{boardNum} 
+	</select>
+	
+	<select id="checkLike" resultType="int">
+		SELECT COUNT(*) FROM LIKES WHERE USER_ID = #{userId} AND BOARD_NUM = #{boardNum}
+	</select>
 
 </mapper>

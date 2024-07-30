@@ -3,13 +3,16 @@ package com.busking.board.service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.BoardCustomerDTO;
 import com.busking.board.model.BoardCustomerMapper;
-
+import com.busking.board.model.BoardNewsDTO;
+import com.busking.board.model.BoardNewsMapper;
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
 
@@ -29,10 +32,10 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 
 		// request
 
-		// 페이지 번호 받아오기
-		String page = (String) request.getAttribute("page");
+	    // 페이지 번호 받아오기
+		String page = request.getParameter("page");
+		if(page == null) page = "1";
 		int pageNum = Integer.parseInt(page);
-		System.out.println(pageNum);
 
 		// DTO
 
@@ -41,18 +44,70 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
 
 		// 화면에 리스트 내보내기
-		ArrayList<BoardCustomerDTO> noticeList = boardMapper.getList();
-		System.out.println("화면에 리스트 나타내기 " + noticeList);
+		ArrayList<BoardCustomerDTO> noticeList = new ArrayList<>();
 
 		int total = boardMapper.getTotal(); // 페이징 용 전체 글 개수 가져오기
 		PageVO pageVO = new PageVO(pageNum, total); // 페이징용 PageVO 객체 생성
+		noticeList = boardMapper.getList(pageVO);
 
 		sql.close();
 
 		// response
-		request.setAttribute("page", pageVO); // PageVO 객체 넘기기
+		request.setAttribute("pageVO", pageVO); // PageVO 객체 넘기기
 		request.setAttribute("noticeList", noticeList);
 		request.getRequestDispatcher("customer_center_index.jsp").forward(request, response);
+
+		
+//		// request
+//		String page = request.getParameter("page");
+//		if (page == null)
+//			page = "1";
+//		int pageNum = Integer.parseInt(page);
+//
+//		String type = request.getParameter("type");
+//		String target = request.getParameter("target");
+//
+//		// DTO
+//		ArrayList<BoardCustomerDTO> list = new ArrayList<>();
+//
+//		// Mapper
+//		SqlSession sql = sqlSessionFactory.openSession(true);
+//		BoardCustomerMapper mapper = sql.getMapper(BoardCustomerMapper.class);
+//		int total = mapper.getTotal();
+//		PageVO pageVO = new PageVO(pageNum, total);
+//
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("type", type);
+//		map.put("target", target);
+//		map.put("page", pageVO);
+//
+//		list = mapper.getList(map);
+//		sql.close();
+//
+//		// response
+//		if (list.size() == 0 && type != null) {
+//			response.setContentType("text/html; charset=UTF-8");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>");
+//			out.println("alert('검색 결과가 없습니다.');");
+//			out.println("location.href='customer_center_index.customer';");
+//			out.println("</script>");
+//			return;
+//			
+//		} else if (type == null) {
+//			request.setAttribute("noticeList", list);
+//			request.setAttribute("pageVO", pageVO);
+//			request.getRequestDispatcher("customer_center_index.customer").forward(request, response);
+//			return;
+//			
+//		} else {
+//			request.setAttribute("noticeList", list);
+//			request.setAttribute("pageVO", pageVO);
+//			request.getRequestDispatcher("customer_center_index.customer?type=" + type + "&target=" + target).forward(request,
+//					response);
+//			return;
+//		}
+		
 
 	}
 
@@ -67,9 +122,10 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		String managerId = "관리자"; // 관리자 아이디 고정
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
+		String resTime = request.getParameter("resTime");
 
 		// DTO
-		BoardCustomerDTO dto = new BoardCustomerDTO(0, managerId, noticeTitle, noticeContent, null, 0);
+		BoardCustomerDTO dto = new BoardCustomerDTO(0, managerId, noticeTitle, noticeContent, null, 0, resTime);
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
@@ -136,11 +192,12 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		String managerId = "관리자"; // 관리자 아이디 고정
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
+		String resTime = request.getParameter("resTime");
 
 		int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
 
 		// DTO
-		BoardCustomerDTO dto = new BoardCustomerDTO(noticeNum, managerId, noticeTitle, noticeContent, null, 0);
+		BoardCustomerDTO dto = new BoardCustomerDTO(noticeNum, managerId, noticeTitle, noticeContent, null, 0, resTime);
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
@@ -186,18 +243,8 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 
 		System.out.println("삭제 여부  " + result);
 
-		
-		
 		response.sendRedirect("customer_center_index.customer");
 
-		
 	}
 
-	
-
-	//FAQ-------------------------------------------------------
-	
-	
-	
-	
 }
