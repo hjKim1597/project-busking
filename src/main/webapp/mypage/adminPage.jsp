@@ -43,13 +43,28 @@
 								<td>${dto.locaName }</td>
 								<!--공연장소  -->
 
-								<td id="status${dto.userId}" class="btnStatus">상태</td>
+								<td id="status${dto.userId}" class="btnStatus">
+									<c:choose>
+										<c:when test="${dto.resResult == 'T'}">
+											승인됨
+										</c:when>
+										<c:when test="${dto.resResult == 'F'}">
+											거절됨
+										</c:when>
+										<c:when test="${dto.resResult == 'W'}">
+											대기중
+										</c:when>
+										<c:otherwise>
+											에러
+										</c:otherwise>
+									</c:choose>
+								</td>
 								<!-- 상태 -->
 								<td class="status-btn">
 
 									<button class="approve" data-rno="${dto.resNum }" onclick="handleApprove(${dto.resNum})">승인</button>
 									<button class="reject" data-rno="${dto.resNum }" onclick="handleReject(${dto.resNum})">거절</button> 
-									<%-- <button class="modify" data-rno="${dto.resNum }" onclick="handleModify(${dto.resNum})">수정하기</button> --%>
+									
 
 								</td>
 							</tr>
@@ -101,20 +116,10 @@
 						</c:forEach>
 
 
-						<!-- 승인거절버튼기능 -->
-
-
-						<!-- 예약 내용 끝 -->
-
-
-
+				
 					</tbody>
 				</table>
-				<!-- <div class="pagination">
-					<button class="prev">이전</button>
-					<span>1 / 10</span>
-					<button class="next">다음</button>
-				</div> -->
+				
 			</div>
 		</div>
 	</div>
@@ -168,8 +173,6 @@ $(document).ready(function() {
 	$('tbody tr').each(function() {
 		var status = $(this).find('td:nth-child(5)').text().trim();
 		if (status === '승인됨') {
-			$(this).find('.approve').hide();
-			$(this).find('.reject').hide();
 			$(this).find('.modify').show();
 		} else if (status === '대기 중') {
 			$(this).find('.approve').show();
@@ -177,7 +180,13 @@ $(document).ready(function() {
 			$(this).find('.modify').hide();
 		}
 	});
+	
+	
 }); 
+
+
+
+
 
 </script>
 

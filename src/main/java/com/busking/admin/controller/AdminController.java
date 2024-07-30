@@ -60,12 +60,11 @@ public class AdminController extends HttpServlet {
 		} else if (command.equals("/mypage/adminPageN.admin")) {
 			service = new AdminServiceImpl();
 			service.updateResultN(request, response);
-
-			/*
-			 * String page = request.getParameter("page"); if(page == null) page = "1";
-			 * request.setAttribute("page", page);
-			 */
-
-		}
+		} 
+	
+		
+		
+		
+		
 	}
 }
