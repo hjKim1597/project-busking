@@ -29,6 +29,23 @@
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+	rel="stylesheet">
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css"
+	rel="stylesheet">
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+	integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+    Kakao.init('6f8deabbc9ba8cfe2fbfc4a7e6092af4'); // 카카오 앱 키로 초기화
+</script>
 </head>
 <body>
 
@@ -122,15 +139,19 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 
-                    <% if (session.getAttribute("user") != null) { %>
-                        <% boolean adminCheck = (Boolean) session.getAttribute("adminCheck"); %>
-                        <li><a href="<%= adminCheck ? request.getContextPath() + "/mypage/adminPage.admin" : "#" %>">${user.userName}님 환영합니다</a></li>
-                        <li><a href="${pageContext.request.contextPath}/userjoin/logout.mypage" class="header-right"><span class="glyphicon glyphicon-off"></span> 로그아웃</a></li>
-                        <% } else { %>
-                            <li><a href="${pageContext.request.contextPath}/userjoin/loginPage.mypage" class="header-right"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
-                            <li><a href="${pageContext.request.contextPath}/userjoin/signupPage.mypage" class="header-right"><span class="glyphicon glyphicon-log-in"></span> 회원가입</a></li>
-                        <% } %>
-                    </ul>
+					    <% if (session.getAttribute("user") != null) { %>
+					        <% 
+					            Boolean adminCheckObj = (Boolean) session.getAttribute("adminCheck");
+					            boolean adminCheck = (adminCheckObj != null) ? adminCheckObj : false;
+					        %>
+					        <li><a href="<%= adminCheck ? request.getContextPath() + "/mypage/adminPage.admin" : "#" %>">${session.getAttribute("userName")}님 환영합니다</a></li>
+					        <li><a href="${pageContext.request.contextPath}/userjoin/logout.mypage" class="header-right"><span class="glyphicon glyphicon-off"></span> 로그아웃</a></li>
+					    <% } else { %>
+					        <li><a href="${pageContext.request.contextPath}/userjoin/loginPage.mypage" class="header-right"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
+					        <li><a href="${pageContext.request.contextPath}/userjoin/signupPage.mypage" class="header-right"><span class="glyphicon glyphicon-log-in"></span> 회원가입</a></li>
+					    <% } %>
+				
+					</ul>
 
 				</div>
 			</div>
