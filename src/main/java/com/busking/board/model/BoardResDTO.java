@@ -60,9 +60,6 @@ public class BoardResDTO {
 		return resNum;
 	}
 
-
-
-
 	public void setResNum(int resNum) {
 		this.resNum = resNum;
 	}

@@ -32,10 +32,10 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 
 		// request
 
-		// 페이지 번호 받아오기
-		String page = (String) request.getAttribute("page");
+	    // 페이지 번호 받아오기
+		String page = request.getParameter("page");
+		if(page == null) page = "1";
 		int pageNum = Integer.parseInt(page);
-		System.out.println(pageNum);
 
 		// DTO
 
@@ -44,16 +44,16 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
 
 		// 화면에 리스트 내보내기
-		ArrayList<BoardCustomerDTO> noticeList = boardMapper.getList();
-		System.out.println("화면에 리스트 나타내기 " + noticeList);
+		ArrayList<BoardCustomerDTO> noticeList = new ArrayList<>();
 
 		int total = boardMapper.getTotal(); // 페이징 용 전체 글 개수 가져오기
 		PageVO pageVO = new PageVO(pageNum, total); // 페이징용 PageVO 객체 생성
+		noticeList = boardMapper.getList(pageVO);
 
 		sql.close();
 
 		// response
-		request.setAttribute("page", pageVO); // PageVO 객체 넘기기
+		request.setAttribute("pageVO", pageVO); // PageVO 객체 넘기기
 		request.setAttribute("noticeList", noticeList);
 		request.getRequestDispatcher("customer_center_index.jsp").forward(request, response);
 

@@ -10,10 +10,19 @@
 	<select id="getList"
 		resultType="com.busking.board.model.BoardCustomerDTO">
 
-		SELECT NOTICE_NUM, MANAGER_ID, NOTICE_TITLE,
-		NOTICE_REGDATE, NOTICE_HIT
+<!-- 		SELECT NOTICE_NUM, MANAGER_ID, NOTICE_TITLE, NOTICE_REGDATE, NOTICE_HIT
 		FROM NOTICE
-		ORDER BY NOTICE_NUM DESC
+		ORDER BY NOTICE_NUM DESC -->
+		
+		SELECT * 
+        FROM ( 
+        	SELECT NOTICE_NUM, MANAGER_ID, NOTICE_TITLE, NOTICE_REGDATE, NOTICE_HIT, ROWNUM AS RN  
+			FROM NOTICE 
+			ORDER BY NOTICE_NUM DESC 
+	    ) 
+        WHERE RN > (#{pageNum} - 1) * #{amount} 
+        AND #{pageNum} * #{amount} >= RN 
+        
 	</select>
 
 	<insert id="regist"

@@ -3,11 +3,13 @@ package com.busking.board.model;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.busking.util.paging.PageVO;
+
 
 public interface BoardCustomerMapper {
 
 	// 글 목록 조회
-	public ArrayList<BoardCustomerDTO> getList();
+	public ArrayList<BoardCustomerDTO> getList(PageVO page);
 
 
 	// 글 작성

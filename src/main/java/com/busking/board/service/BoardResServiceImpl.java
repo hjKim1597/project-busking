@@ -3,6 +3,8 @@ package com.busking.board.service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -28,37 +30,27 @@ public class BoardResServiceImpl implements BoardResService {
 	@Override
 	public void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 글 목록
-
-		// request
-		
-		// 페이지 번호 받아오기
-		String page = (String) request.getAttribute("page");
+	    // 페이지 번호 받아오기
+		String page = request.getParameter("page");
+		if(page == null) page = "1";
 		int pageNum = Integer.parseInt(page);
-		System.out.println(pageNum);
 
-		// DTO
+	    // SQL 세션 열기
+	    SqlSession sql = sqlSessionFactory.openSession(true);
+	    BoardResMapper resMapper = sql.getMapper(BoardResMapper.class);
 
-		// 호출하기
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		BoardResMapper resMapper = sql.getMapper(BoardResMapper.class);
-		
-		
-		// 화면에 리스트 내보내기
-		ArrayList<BoardResDTO> resList = resMapper.getList();
-		System.out.println("화면에 리스트 나타내기 " + resList);
+	    // 화면에 리스트 내보내기
+	    ArrayList<BoardResDTO> resList = new ArrayList<>();
+	    int total = resMapper.getTotal(); // 페이징 용 전체 글 개수 가져오기
+	    PageVO pageVO = new PageVO(pageNum, total); // 페이징용 PageVO 객체 생성
+	    
+	    resList = resMapper.getList(pageVO);
+	    sql.close();
 
-		int total = resMapper.getTotal(); // 페이징 용 전체 글 개수 가져오기
-		PageVO pageVO = new PageVO(pageNum, total); // 페이징용 PageVO 객체 생성
-		
-		
-		
-		sql.close();
-
-		// response
-		request.setAttribute("page", pageVO); // PageVO 객체 넘기기
-		request.setAttribute("resList", resList);
-		request.getRequestDispatcher("customer_center_res_temp.jsp").forward(request, response);
+	    // response
+	    request.setAttribute("pageVO", pageVO); // PageVO 객체 넘기기
+	    request.setAttribute("resList", resList);
+	    request.getRequestDispatcher("customer_center_res.jsp").forward(request, response);
 
 	}
 

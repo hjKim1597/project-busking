@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
-<%@ include file="../include/header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>   
+<%@ include file="../include/header.jsp" %>
 
     <!-- 중앙 레이아웃 -->
     <section class="container customer-center-width" id="change">
@@ -44,95 +43,94 @@
 		                    </tr>
 		                </thead>
                         <tbody>
-							<!--데이터 받아오기-->
-	                        <c:forEach var="dto" items="${resList }}">
-								<tr>
-									<td>${dto.resNum }</td>
-									<td>${dto.userId }</td>																
-									<td><a href="getResContent.customer?resNum=${dto.resNum }">${dto.resDate }</a></td>
-									<td>${dto.locaName }</td>
-									<td><fmt:formatDate value="${dto.resRegdate }" pattern="yy.MM.dd"/></td>
-								</tr>
+							<c:forEach var="dto" items="${resList}">
+							    <tr>
+							        <td>${dto.resNum }</td>
+							        <td>${dto.userId}</td>
+							        <td><a href="getResContent.customer?resNum=${dto.resNum }">${dto.resDate}</a></td>
+							        <td>${dto.locaName}</td>
+							        <td><fmt:formatDate value="${dto.resRegdate}" pattern="yy.MM.dd"/></td>
+							    </tr>
 							</c:forEach>
 						</tbody>
 					</table>
 				</div>
 				<!-- 페이지 번호 -->
 				<div class="page_nav">
-		                <ul class="center">
-		                	<c:choose>
-			                	<c:when test="${!pageVO.first }">
-									<li id="page_first">
-										<a href="customer_center_index.customer">
-											<i class="fa-solid fa-angles-left"></i>
-										</a>
-									</li>
-								</c:when>
-								<c:otherwise>
-									<li id="page_first">
-										<div class="page_link">
-											<i class="fa-solid fa-angles-left" style="color: #daeede;"></i>
-										</div>
-									</li>
-								</c:otherwise>
-							</c:choose>
-							<c:choose>
-								<c:when test="${!pageVO.first }">
-									<li id="page_prev">
-										<a href="customer_center_res.customer?page=${pageVO.pageNum - 1 }">
-											<i class="fa-solid fa-angle-left"></i>
-										</a>
-									</li>
-								</c:when>
-								<c:otherwise>
-									<li id="page_prev">
-										<div class="page_link">
-											<i class="fa-solid fa-angle-left" style="color: #daeede;"></i>
-										</div>
-									</li>
-								</c:otherwise>
-							</c:choose>
-							
-							<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
-								<li class="page_li" data-page="${i }">
-									<a href="customer_center_res.customer?page=${i }" title="1페이지">${i }</a>
+	                <ul class="center">
+	                	<c:choose>
+		                	<c:when test="${!pageVO.first }">
+								<li id="page_first">
+									<a href="customer_center_index.customer">
+										<i class="fa-solid fa-angles-left"></i>
+									</a>
 								</li>
-							</c:forEach>
-							
-							<c:choose>
-			                	<c:when test="${!pageVO.last }">
-									<li id="page_next">
-										<a href="customer_center_res.customer?page=${pageVO.pageNum + 1}">
-											<i class="fa-solid fa-angle-right"></i>
-										</a>
-									</li>
-								</c:when>
-								<c:otherwise>
-									<li id="page_next">
-										<div class="page_link">
-											<i class="fa-solid fa-angle-right" style="color: #daeede;"></i>
-										</div>
-									</li>
-								</c:otherwise>
-							</c:choose>
-							<c:choose>
-								<c:when test="${!pageVO.last }">
-									<li id="page_last">
-										<a href="customer_center_res.customer?page=${pageVO.realEndPage }">
-											<i class="fa-solid fa-angles-right"></i>
-										</a>
-									</li>
-								</c:when>
-								<c:otherwise>
-									<li id="page_last">
-										<div class="page_link">
-											<i class="fa-solid fa-angles-right" style="color: #daeede;"></i>
-										</div>
-									</li>
-								</c:otherwise>
-							</c:choose>
-						</ul>
-					</div>
+							</c:when>
+							<c:otherwise>
+								<li id="page_first">
+									<div class="page_link">
+										<i class="fa-solid fa-angles-left" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${!pageVO.first }">
+								<li id="page_prev">
+									<a href="customer_center_res.customer?page=${pageVO.pageNum - 1 }">
+										<i class="fa-solid fa-angle-left"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_prev">
+									<div class="page_link">
+										<i class="fa-solid fa-angle-left" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						
+						<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+							<li class="page_li" data-page="${i }">
+								<a href="customer_center_res.customer?page=${i }" title="1페이지">${i }</a>
+							</li>
+						</c:forEach>
+						
+						<c:choose>
+		                	<c:when test="${!pageVO.last }">
+								<li id="page_next">
+									<a href="customer_center_res.customer?page=${pageVO.pageNum + 1}">
+										<i class="fa-solid fa-angle-right"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_next">
+									<div class="page_link">
+										<i class="fa-solid fa-angle-right" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${!pageVO.last }">
+								<li id="page_last">
+									<a href="customer_center_res.customer?page=${pageVO.realEndPage }">
+										<i class="fa-solid fa-angles-right"></i>
+									</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li id="page_last">
+									<div class="page_link">
+										<i class="fa-solid fa-angles-right" style="color: #daeede;"></i>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</ul>
+				</div>
 				<!-- 검색 -->
 				<form action="customer_center_res.customer" method="post">
 					<div class="board_search">
