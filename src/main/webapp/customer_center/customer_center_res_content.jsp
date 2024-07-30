@@ -53,7 +53,7 @@
                             <div class="panel-heading">예약 내용</div>
                             <div class="panel-body">
                            		<p>${dto.resContent }</p>
-                           		<p>${dto.resDate }</p>
+                           		<p><fmt:formatDate value="${dto.resDate}" pattern="yyyy-MM-dd" /></p>
                            		<p>${dto.resTime }</p>
                            		<p>${dto.resAmp }</p>
                            		<p>${dto.locaName }</p>
