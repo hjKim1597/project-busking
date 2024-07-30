@@ -30,6 +30,7 @@
 	    ) 
         WHERE RN > (#{pageNum} - 1) * #{amount} 
         AND #{pageNum} * #{amount} >= RN 
+        ORDER BY LOCA_NAME DESC, RES_DATE DESC
 		
 	</select>
 
