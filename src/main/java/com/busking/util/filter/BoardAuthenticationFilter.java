@@ -36,14 +36,20 @@ public class BoardAuthenticationFilter extends MypageAuthenticationFilter {
 		
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
+		String subject = request.getParameter("subject");
 		
 		if(userId == null) {
 			
 			super.doFilter(request, response, chain);
 			return;
+			
+		} else if((boolean)session.getAttribute("adminCheck")) {
+			
+			chain.doFilter(request, response);
+			return;
+			
 		} else {
 			
-			String subject = request.getParameter("subject");
 			String writer = request.getParameter("writer");
 			
 			if(writer == null || !writer.equals(userId)) {
@@ -56,7 +62,7 @@ public class BoardAuthenticationFilter extends MypageAuthenticationFilter {
 				out.println("</script>");
 				
 				return;
-			}
+			} 
 			
 		}
 		
