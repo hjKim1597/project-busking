@@ -21,16 +21,14 @@
 
 <body>
 
-    <!-- 레이아웃 -->
-        <section class="container customer-center-width" id="change" style="margin-top: 125px;">
-
-
-            <!-- 좌측메뉴 -->
+     <!-- 중앙 레이아웃 -->
+    <section class="container customer-center-width" id="change">
+     	<!-- 좌측메뉴 -->
         <div class="board_nav">
             <div id="board_nav_wrap">
 	             <h1>고객센터</h1>
 	             <ul class="menu">
-	                 <li class="nth1 active"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
+	                 <li class="nth1"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
 	                 </li>
 	                 <li class="nth2"><strong><a href="customer_center_res.customer"><span>이달의 예약</span></a></strong>
 	                 </li>
@@ -41,8 +39,14 @@
 	             </ul>
             </div>
         </div>
-
-            <!-- 이용안내 내용 -->
+        <!-- 공지사항 게시판 -->
+        <div class="board">
+	        <!-- 공지사항 목록 -->
+	        <div class="board_list">
+	        	<div class="board_list_title">
+					<strong>공지사항</strong>
+				</div>
+	            <!-- 이용안내 내용 -->
             <div class="board">
 
                 <div class="service-board" style="margin-left: 140px;">
@@ -122,12 +126,20 @@
                 </div>
 
             </div>
-        
-    </section>
-
+				
+				
+					
+				
+			</div>
+		</div>
+	</section>
     
 <%@ include file="../include/footer.jsp"%>
 
+
+
+            
+            
 </body>
 
 

@@ -12,7 +12,7 @@
             <div id="board_nav_wrap">
 	             <h1>고객센터</h1>
 	             <ul class="menu">
-	                 <li class="nth1 active"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
+	                 <li class="nth1"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
 	                 </li>
 	                 <li class="nth2"><strong><a href="customer_center_res.customer"><span>이달의 예약</span></a></strong>
 	                 </li>
