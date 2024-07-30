@@ -44,29 +44,14 @@ public class BoardCustomerController extends HttpServlet {
 		BoardCustomerService service;
 		BoardFAQService faq_service;
 		BoardResService res_service;
-
-
 		
-        
-        
+		// 누르면 데이터가 필요하면 서비스
+		// 아니면 리다이렉트
+		// 서비스 영역을 거쳐서 목록을 가져간다
 		if (command.equals("/customer_center/customer_center_index.customer")) {
-			// 누르면 데이터가 필요하면 서비스
-			// 아니면 리다이렉트
-			// 페이징용 page 값 추가
-			String page = request.getParameter("page");
-			if (page == null)
-				page = "1";
-			request.setAttribute("page", page);
-
-			// 서비스 영역을 거쳐서 목록을 가져간다
 			service = new BoardCustomerServiceImpl();
 			service.getList(request, response);
-
 			System.out.println("공지 화면 이동");
-
-			// response.sendRedirect("customer_center_index.jsp");
-			// response.sendRedirect(request.getContextPath() +
-			// "/customer_center_index.jsp");
 
 		} else if (command.equals("/customer_center/customer_center_guide.customer")) {
 			response.sendRedirect("customer_center_guide.jsp");
@@ -74,13 +59,11 @@ public class BoardCustomerController extends HttpServlet {
 
 		} else if (command.equals("/customer_center/regist.customer")) {
 			// 글 등록
-
 			response.sendRedirect("customer_center_index_write.jsp");
 			System.out.println("글 작성으로 이동 체크");
 
 		} else if (command.equals("/customer_center/registForm.customer")) {
 			// 글 등록
-
 			service = new BoardCustomerServiceImpl();
 			service.regist(request, response);
 
@@ -88,30 +71,25 @@ public class BoardCustomerController extends HttpServlet {
 
 		} else if (command.equals("/customer_center/getContent.customer")) {
 			// 글 상세 내용
-
-			System.out.println("글 내용보기 화면 이동 요청");
-
 			service = new BoardCustomerServiceImpl();
 			service.getContent(request, response);
+			System.out.println("글 내용보기 화면 이동 요청");
 
 		} else if (command.equals("/customer_center/modify.customer")) {
-
 			service = new BoardCustomerServiceImpl();
 			service.modify(request, response);
 
 		} else if (command.equals("/customer_center/update.customer")) {
-
 			service = new BoardCustomerServiceImpl();
 			service.update(request, response);
 
 		}
 		// 삭제 기능
 		else if (command.equals("/customer_center/delete.customer")) {
-
-			System.out.println("삭제 기능 컨트롤러");
-
 			service = new BoardCustomerServiceImpl();
 			service.delete(request, response);
+			System.out.println("삭제 기능 컨트롤러");
+			
 		}
 
 		//
@@ -161,28 +139,15 @@ public class BoardCustomerController extends HttpServlet {
 			faq_service = new BoardFAQServiceImpl();
 			faq_service.delete(request, response);
 		}
-
+		
+		//
+		//
 		// Res-----------------------------------------------------
 
-		
-
-			else if (command.equals("/customer_center/customer_center_res.customer")) {
-
-			// 누르면 데이터가 필요하면 서비스
-			// 아니면 리다이렉트
-			// 페이징용 page 값 추가
-			String page = request.getParameter("page");
-			if (page == null)
-				page = "1";
-			request.setAttribute("page", page);
-
-			// 서비스 영역을 거쳐서 목록을 가져간다
+		else if (command.equals("/customer_center/customer_center_res.customer")) {
 			res_service = new BoardResServiceImpl();
 			res_service.getList(request, response);
-			
-
 			System.out.println("Res 화면 이동");
-
 			
 		} else if (command.equals("/customer_center/getResContent.customer")) {
 			// 글 상세 내용
