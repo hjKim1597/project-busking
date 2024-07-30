@@ -58,7 +58,7 @@
 					</button>
 					<a class="navbar-brand index-menu"
 						><div class="index-logo"><img
-								src="${pageContext.request.contextPath }/resources/img/index/icon123.png"
+								src="${pageContext.request.contextPath }/resources/img/index/icon7.png"
 								alt="결과" class="main-image" width="100%"></div></a>
 				</div>
 				<div class="collapse navbar-collapse main-color mobile-navbar hea-rightpd"

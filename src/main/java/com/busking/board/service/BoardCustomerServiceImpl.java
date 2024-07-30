@@ -122,9 +122,10 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		String managerId = "관리자"; // 관리자 아이디 고정
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
+		String resTime = request.getParameter("resTime");
 
 		// DTO
-		BoardCustomerDTO dto = new BoardCustomerDTO(0, managerId, noticeTitle, noticeContent, null, 0);
+		BoardCustomerDTO dto = new BoardCustomerDTO(0, managerId, noticeTitle, noticeContent, null, 0, resTime);
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
@@ -191,11 +192,12 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 		String managerId = "관리자"; // 관리자 아이디 고정
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
+		String resTime = request.getParameter("resTime");
 
 		int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
 
 		// DTO
-		BoardCustomerDTO dto = new BoardCustomerDTO(noticeNum, managerId, noticeTitle, noticeContent, null, 0);
+		BoardCustomerDTO dto = new BoardCustomerDTO(noticeNum, managerId, noticeTitle, noticeContent, null, 0, resTime);
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);

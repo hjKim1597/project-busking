@@ -123,13 +123,16 @@ thead th, tbody td {
 	width: 10%;
 }
 #change .board .board_list_box .board_list_table > thead > tr > th.nth3 {
-	width: 60%;
+	width: 25%;
 }
 #change .board .board_list_box .board_list_table > thead > tr > th.nth4 {
-	width: 10%;
+	width: 20%;
 }
 #change .board .board_list_box .board_list_table > thead > tr > th.nth5 {
-	width: 10%;
+	width: 20%;
+}
+#change .board .board_list_box .board_list_table > thead > tr > th.nth6 {
+	width: 15%;
 }
 
 /* 페이지 버튼 */

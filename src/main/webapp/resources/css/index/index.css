@@ -387,7 +387,7 @@
 
 .index-content>.carousel>.carousel-inner>.item>a>img {
 	z-index: 0;
-	margin-top: 120px;
+	margin-top: 120px !important; 
 }
 
 .carousel-inner>.item>.carousel-caption>.banner-left {
