@@ -36,7 +36,7 @@
                             </div>
 
                             <!-- 글 내용 -->
-                            <div class="form-group">
+                            <div class="form-group" >
                                 <label for="comment">글 내용</label>
                                 <textarea class="form-control" id="comment" name="content" placeholder="내용을 입력해주세요"></textarea>
                             </div>
@@ -57,13 +57,8 @@
                                 </div>
 
                                 <div class="board-button">
-                                    <%-- <a href="${pageContext.request.contextPath }/customer_center/customer_center_index.customer">
-                                    <button type="button"
-                                            class="btn btn-default">
-                                            완료
-                                    </button>
-                                    
-                                    </a> --%>
+                                
+                                   
                                     
                                     <input type="submit" value="완료" class="btn btn-default">
                                     

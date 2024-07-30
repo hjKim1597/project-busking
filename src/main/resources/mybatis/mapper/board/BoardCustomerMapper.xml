@@ -30,11 +30,9 @@
 
 
 
-		INSERT INTO FAQ(FAQ_NUM, USER_ID, FAQ_PW, FAQ_TITLE, FAQ_CONTENT,
-		FAQ_REGDATE, FAQ_REPLY, MANAGER_ID)
-		VALUES(BOARD_FAQ_SEQ.NEXTVAL,
-		#{userId}, #{faqPw}, #{faqTitle}, #{faqContent}, SYSDATE, #{faqReply},
-		#{managerId})
+		INSERT INTO NOTICE(NOTICE_NUM, MANAGER_ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE,
+		NOTICE_HIT)
+		VALUES(BOARD_NOTICE_SEQ.NEXTVAL, #{managerId}, #{noticeTitle}, #{noticeContent},SYSDATE, #{noticeHit})
 
 
 	</insert>
