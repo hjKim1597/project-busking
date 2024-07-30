@@ -37,9 +37,10 @@
 		                    <tr>
 		                        <th class="nth1">글 번호</th>
 		                        <th class="nth2">신청자</th>
-		                        <th class="nth3">예약 날짜 및 시간</th>
-		                        <th class="nth4">장소</th>
-		                        <th class="nth5">신청 날짜</th>
+		                        <th class="nth3">예약 날짜</th>
+		                        <th class="nth4">예약 시간</th>
+		                        <th class="nth5">장소</th>
+		                        <th class="nth6">신청 날짜</th>
 		                    </tr>
 		                </thead>
                         <tbody>
@@ -47,7 +48,10 @@
 							    <tr>
 							        <td>${dto.resNum }</td>
 							        <td>${dto.userId}</td>
-							        <td><a href="getResContent.customer?resNum=${dto.resNum }">${dto.resDate}</a></td>
+							        <td><a href="getResContent.customer?resNum=${dto.resNum }" style="width:30%;">
+							        	<fmt:formatDate value="${dto.resDate}" pattern="yyyy-MM-dd" />
+							        </a></td>
+							        <td>${dto.resTime }</td>
 							        <td>${dto.locaName}</td>
 							        <td><fmt:formatDate value="${dto.resRegdate}" pattern="yy.MM.dd"/></td>
 							    </tr>

@@ -1,6 +1,6 @@
 package com.busking.board.model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class BoardCustomerDTO {
 
@@ -9,8 +9,9 @@ public class BoardCustomerDTO {
 	private String managerId;
 	private String noticeTitle;
 	private String noticeContent;
-	private Timestamp noticeRegdate;
+	private Date noticeRegdate;
 	private int noticeHit;
+	private String resTime; 
 
 	// 생성자
 	public BoardCustomerDTO() {
@@ -18,7 +19,7 @@ public class BoardCustomerDTO {
 	}
 
 	public BoardCustomerDTO(int noticeNum, String managerId, String noticeTitle, String noticeContent,
-			Timestamp noticeRegdate, int noticeHit) {
+			Date noticeRegdate, int noticeHit, String resTime) {
 		super();
 		this.noticeNum = noticeNum;
 		this.managerId = managerId;
@@ -26,9 +27,9 @@ public class BoardCustomerDTO {
 		this.noticeContent = noticeContent;
 		this.noticeRegdate = noticeRegdate;
 		this.noticeHit = noticeHit;
+		this.resTime = resTime;
 	}
 
-	//getter setter
 	public int getNoticeNum() {
 		return noticeNum;
 	}
@@ -61,11 +62,11 @@ public class BoardCustomerDTO {
 		this.noticeContent = noticeContent;
 	}
 
-	public Timestamp getNoticeRegdate() {
+	public Date getNoticeRegdate() {
 		return noticeRegdate;
 	}
 
-	public void setNoticeRegdate(Timestamp noticeRegdate) {
+	public void setNoticeRegdate(Date noticeRegdate) {
 		this.noticeRegdate = noticeRegdate;
 	}
 
@@ -76,7 +77,14 @@ public class BoardCustomerDTO {
 	public void setNoticeHit(int noticeHit) {
 		this.noticeHit = noticeHit;
 	}
-	
+
+	public String getResTime() {
+		return resTime;
+	}
+
+	public void setResTime(String resTime) {
+		this.resTime = resTime;
+	}
 	
 	
 
