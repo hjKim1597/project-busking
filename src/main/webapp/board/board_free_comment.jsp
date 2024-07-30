@@ -41,10 +41,12 @@
 				                        <div class="writer">${dto.comFreeWriter }</div>
 				                        <div class="date"><fmt:formatDate value="${dto.comFreeRegdate }" pattern="yy.MM.dd"/></div>
 				                    </div>
+				                    <!-- 
 				                    <button class="board_comment_like" onclick="location.href='board_comment_like.comment?comNum=${dto.comFreeNum}'">
 				                        <img src="../resources/img/board_img/like.png" alt="">
 				                        <span class="like_count" id="likeCount1">${dto.comFreeLikeCount }</span>
 				                    </button>
+				                     -->
 				                </div>
 				                <div class="board_comment_content">
 				                    ${dto.comFreeContent }
@@ -76,10 +78,12 @@
 				                    	<p>${dto.comFreeContent }</p>
 				                	</div>
 				                	<div class="reply_like">
+				                		<!-- 
 					                    <button class="board_comment_like" onclick="location.href='board_comment_like.comment?comNum=${dto.comFreeNum}'">
 					                        <img src="../resources/img/board_img/like.png" alt="like">
 					                        <span class="like_count" id="likeCount1">${dto.comFreeLikeCount }</span>
 					                    </button>
+					                    -->
 				                    </div>
 				                </div>
 				                

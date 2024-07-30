@@ -40,10 +40,12 @@
 				                        <div class="writer">${dto.comTeamWriter }</div>
 				                        <div class="date"><fmt:formatDate value="${dto.comTeamRegdate }" pattern="yy.MM.dd"/></div>
 				                    </div>
+				                    <!-- 
 				                    <button class="board_comment_like" onclick="location.href='board_comment_like.comment?comNum=${dto.comTeamNum}'">
 				                        <img src="../resources/img/board_img/like.png" alt="">
 				                        <span class="like_count" id="likeCount1">${dto.comTeamLikeCount }</span>
 				                    </button>
+				                     -->
 				                </div>
 				                <div class="board_comment_content">
 				                    ${dto.comTeamContent }
@@ -74,12 +76,16 @@
 				                    <div class="board_comment_content">
 				                    	<p>${dto.comTeamContent }</p>
 				                	</div>
+				                	
 				                	<div class="reply_like">
+				                		<!-- 
 					                    <button class="board_comment_like" onclick="location.href='board_comment_like.comment?comNum=${dto.comTeamNum}'">
 					                        <img src="../resources/img/board_img/like.png" alt="like">
 					                        <span class="like_count" id="likeCount1">${dto.comTeamLikeCount }</span>
 					                    </button>
+					                     -->
 				                    </div>
+				                   
 				                </div>
 				                
 				        	</div>
