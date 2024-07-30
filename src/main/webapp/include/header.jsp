@@ -63,7 +63,7 @@
 					<a class="navbar-brand index-menu"
 						>사이트 명</a>
 				</div>
-				<div class="collapse navbar-collapse main-color mobile-navbar"
+				<div class="collapse navbar-collapse main-color mobile-navbar hea-rightpd"
 					id="myNavbar">
 					<ul class="nav navbar-nav">
 

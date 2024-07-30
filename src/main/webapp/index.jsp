@@ -80,7 +80,7 @@
 									<td class="index-board-bottom "
 										style="border-bottom: 1px solid #e3e3e3; margin: 20px 0">
 										<a
-										href="${pageContext.request.contextPath }/customer_center/customer_center?noticeNum=${dto.noticeNum }"
+										href="${pageContext.request.contextPath }/customer_center/getContent.customer?noticeNum=${dto.noticeNum }"
 										class="truncate with-style">${dto.noticeTitle}</a>
 
 									</td>
