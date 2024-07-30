@@ -8,6 +8,7 @@
 		resultType="com.busking.admin.model.AdminPageDTO">
 
 		SELECT
+			R.RES_TIME AS RES_TIME,
 			R.RES_NUM AS RES_NUM,
 			R.USER_ID AS USER_ID,
 			U.USER_NAME AS USER_NAME,

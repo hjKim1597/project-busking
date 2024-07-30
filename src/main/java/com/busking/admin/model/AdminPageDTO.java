@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class AdminPageDTO {
 	
+	private String resTime;
 	private String resNum;
 	private String userId;
 	private String userName;
@@ -12,7 +13,7 @@ public class AdminPageDTO {
 	private String resAmp;
 	private String resContent;
 	private int resCount;
-	private int userPno;
+	private String userPno;
 	private String userEmail;
 	private String userAddr;
 	private String manangerId;
@@ -27,10 +28,11 @@ public class AdminPageDTO {
 
 
 
-	public AdminPageDTO(String resNum, String userId, String userName, Date resDate, String locaName, String resAmp,
-			String resContent, int resCount, int userPno, String userEmail, String userAddr, String manangerId,
-			String locaId, String locaPlace, String resResult) {
+	public AdminPageDTO(String resTime, String resNum, String userId, String userName, Date resDate, String locaName,
+			String resAmp, String resContent, int resCount, String userPno, String userEmail, String userAddr,
+			String manangerId, String locaId, String locaPlace, String resResult) {
 		super();
+		this.resTime = resTime;
 		this.resNum = resNum;
 		this.userId = userId;
 		this.userName = userName;
@@ -46,6 +48,18 @@ public class AdminPageDTO {
 		this.locaId = locaId;
 		this.locaPlace = locaPlace;
 		this.resResult = resResult;
+	}
+
+
+
+	public String getResTime() {
+		return resTime;
+	}
+
+
+
+	public void setResTime(String resTime) {
+		this.resTime = resTime;
 	}
 
 
@@ -146,13 +160,13 @@ public class AdminPageDTO {
 
 
 
-	public int getUserPno() {
+	public String getUserPno() {
 		return userPno;
 	}
 
 
 
-	public void setUserPno(int userPno) {
+	public void setUserPno(String userPno) {
 		this.userPno = userPno;
 	}
 
@@ -228,7 +242,8 @@ public class AdminPageDTO {
 		this.resResult = resResult;
 	}
 
-	
 
+
+	
 	
 }
