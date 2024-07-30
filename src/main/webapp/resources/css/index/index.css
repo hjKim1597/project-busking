@@ -22,7 +22,7 @@
 		width: 1170px;
 	}
 	.index-footer-top {
-		margin: 0 15%;
+		margin: 15px 10%;
 	}
 	.location-pic {
 		margin-top: 200px;
@@ -125,6 +125,12 @@
 	.navbar-inverse .navbar-nav>li>a:hover {
 		color: #999;
 	}
+
+	.index-logo {
+		
+		margin-left: 60px;
+		margin-top: 5px;
+	}
 }
 
 /* 1032이하 디자인 */
@@ -138,6 +144,18 @@
 }
 
 /* ----------------------------------------------header---------------------------------------------- */
+.index-header {
+	position: relative;
+}
+
+.index-logo {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	left: 50px;
+	top: 20px;
+}
+
 .hea-rightpd {
 	padding: 0 80px;
 }
@@ -161,8 +179,6 @@
 	background-color: white;
 	color: #9d9d9d;
 }
-
-
 
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus,
 	.navbar-inverse .navbar-nav>.open>a:hover {
@@ -477,6 +493,11 @@
 	margin-bottom: 50px;
 }
 
+.board-border {
+	border-top: 1px solid #e3e3e3;
+	padding-top: 7px;
+}
+
 .truncate {
 	display: block;
 	max-width: 99%;
@@ -570,8 +591,7 @@
 }
 
 /* 애니메이션 정의 */
-@
-keyframes fadeIn {from { opacity:0;
+@keyframes fadeIn {from { opacity:0;
 	margin-left: -100px;
 }
 
@@ -640,7 +660,7 @@ to {
 }
 
 .index-footer>.footer-mid {
-	padding: 15px 25%;
+	padding: 15px 10%;
 	color: #999;
 	width: 100%;
 	overflow: hidden;
