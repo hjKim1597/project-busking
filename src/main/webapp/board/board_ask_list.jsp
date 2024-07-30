@@ -204,17 +204,6 @@ document.querySelectorAll('.post').forEach(post => {
     });
 });
 
-/* <div class="comment">
-    <div class="info">
-        <div class="writer">${dto.comFreeWriter }</div>
-        <div class="date"><fmt:formatDate value="${dto.comFreeRegdate }" pattern="yy.MM.dd"/></div>
-    </div>
-    <div class="comment_content">
-    	<p>${dto.comFreeContent }</p>
-	</div>
-</div> */
-
-
 window.onload = function() {
 	var pageNum = '${pageVO.pageNum}';
 	console.log(pageNum);

@@ -9,8 +9,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.busking.board.model.FAQDTO;
 import com.busking.board.model.BoardFAQMapper;
-import com.busking.board.model.BoardFAQMapper;
-import com.busking.board.model.FAQDTO;
 import com.busking.util.mybatis.MybatisUtil;
 import com.busking.util.paging.PageVO;
 
@@ -31,30 +29,27 @@ public class BoardFAQServiceImpl implements BoardFAQService {
 		// request
 		
 		// 페이지 번호 받아오기
-		String page = (String) request.getAttribute("page");
+		String page = request.getParameter("page");
+		if(page == null) page = "1";
 		int pageNum = Integer.parseInt(page);
-		System.out.println(pageNum);
 
 		// DTO
-
 
 		// 호출하기
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardFAQMapper FAQMapper = sql.getMapper(BoardFAQMapper.class);
-		
 
 		// 화면에 리스트 내보내기
-		ArrayList<FAQDTO> faqList = FAQMapper.getList();
-		System.out.println("화면에 리스트 나타내기 " + faqList);
+		ArrayList<FAQDTO> faqList = new ArrayList<>();
 
 		int total = FAQMapper.getTotal(); // 페이징 용 전체 글 개수 가져오기
 		PageVO pageVO = new PageVO(pageNum, total); // 페이징용 PageVO 객체 생성
+		System.out.println(pageVO.getStartPage());
+		faqList = FAQMapper.getList(pageVO);
 
-		
 		sql.close();
-
 		// response
-		request.setAttribute("page", pageVO); // PageVO 객체 넘기기
+		request.setAttribute("pageVO", pageVO); // PageVO 객체 넘기기
 		request.setAttribute("faqList", faqList);
 		request.getRequestDispatcher("customer_center_FAQ.jsp").forward(request, response);
 

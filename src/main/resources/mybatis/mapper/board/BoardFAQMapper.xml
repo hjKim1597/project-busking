@@ -8,11 +8,15 @@
 <mapper namespace="com.busking.board.model.BoardFAQMapper">
 
 	<select id="getList" resultType="com.busking.board.model.FAQDTO">
-
-		SELECT FAQ_NUM, USER_ID,
-		FAQ_TITLE, FAQ_REGDATE
-		FROM FAQ
-		ORDER BY FAQ_NUM DESC
+	
+		SELECT FAQ_NUM, USER_ID, FAQ_TITLE, FAQ_REGDATE 
+        FROM ( 
+        	SELECT FAQ_NUM, USER_ID, FAQ_TITLE, FAQ_REGDATE, ROWNUM AS RN   
+			FROM FAQ 
+			ORDER BY FAQ_NUM DESC 
+	    ) 
+        WHERE RN > (#{pageNum} - 1) * #{amount} 
+        AND #{pageNum} * #{amount} >= RN 
 	</select>
 
 	<insert id="regist"
@@ -33,7 +37,7 @@
 	</select>
 
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM FAQ
+		SELECT COUNT(*) FROM FAQ 
 	</select>
 
 

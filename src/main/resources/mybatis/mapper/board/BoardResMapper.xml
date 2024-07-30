@@ -57,7 +57,7 @@
 	</select>
 
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM RESERVATIONS 
+		SELECT COUNT(*) FROM RESERVATIONS WHERE RES_RESULT = 'T' 
 	</select>
 
 
