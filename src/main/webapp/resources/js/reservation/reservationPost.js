@@ -23,7 +23,14 @@
 };*/
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('form1').addEventListener('submit', function(event) {
+
+    var form = document.getElementById('form1');
+
+    // 모든 submit 이벤트 리스너 제거
+    form.replaceWith(form.cloneNode(true));
+    form = document.getElementById('form1');
+
+    form.addEventListener('submit', function(event) {
         var privacyPolicyChecked = document.getElementById('privacy-policy').checked;
         var reservationConfirmationChecked = document.getElementById('reservation-confirmation').checked;
 
