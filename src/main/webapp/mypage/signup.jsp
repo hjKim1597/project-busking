@@ -19,7 +19,7 @@
         <div class="sum">
             <h3 class="title">회원가입</h3>
             <div class="user-join">
-                <form id="form_userInfo" action="${pageContext.request.contextPath}/userjoin/signup.mypage" method="post" onsubmit="combineAddress()">
+                <form id="form_userInfo" action="${pageContext.request.contextPath}/userjoin/signup.mypage" method="post" onsubmit="return validateForm()">
                 <div class="form-group pw-margin" style="margin-bottom: 15px">
                     <label for="userId">아이디</label>
                     <div class="input-group id-content">
@@ -74,7 +74,7 @@
                             <option>여성</option>
                         </select>
                     </div>
-                    <input type="submit" class="jinseok-button" value="회원가입" onclick="validateForm()" id="submit-btn"></input>
+                    <input type="submit" class="jinseok-button" value="회원가입" id="submit-btn"></input>
                 </form>
             </div>
         </div>
@@ -271,3 +271,5 @@
         }
     </script>
 <%@ include file="../include/footer.jsp" %>
+</body>
+</html>

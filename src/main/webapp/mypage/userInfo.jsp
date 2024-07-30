@@ -28,7 +28,7 @@
             <div class="user-info">
                 <p>내 정보</p>
                 <div class="info-content">
-                    <form id="userInfoForm" action="${pageContext.request.contextPath}/mypage/updateUserInfo.userinfo" method="post">
+                    <form id="userInfoForm" action="${pageContext.request.contextPath}/mypage/updateUserInfo.userinfo" method="post" onsubmit="return validateForm()">
                         <div class="form-group">
                             <label for="usr">아이디 (변경불가)</label>
                             <input readonly type="text" class="form-control" id="usr" name="userId" value="${userInfo.userId}">
@@ -107,6 +107,9 @@
         function combineAddress() {
             var postcode = document.querySelector('input[name="postcode"]').value;
             document.getElementById('userAddr').value = postcode;
+        }
+        //비밀번호
+        function validateForm() {
             if (!isPasswordValid) {
                 alert('비밀번호는 8~12자 영문, 숫자만 가능합니다.');
                 return false;
