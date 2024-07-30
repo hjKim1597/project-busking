@@ -45,6 +45,10 @@ public class BoardCustomerController extends HttpServlet {
 		BoardFAQService faq_service;
 		BoardResService res_service;
 
+
+		
+        
+        
 		if (command.equals("/customer_center/customer_center_index.customer")) {
 			// 누르면 데이터가 필요하면 서비스
 			// 아니면 리다이렉트
@@ -67,6 +71,12 @@ public class BoardCustomerController extends HttpServlet {
 		} else if (command.equals("/customer_center/customer_center_guide.customer")) {
 			response.sendRedirect("customer_center_guide.jsp");
 			System.out.println("안내 화면 이동");
+
+		} else if (command.equals("/customer_center/regist.customer")) {
+			// 글 등록
+
+			response.sendRedirect("customer_center_index_write.jsp");
+			System.out.println("글 작성으로 이동 체크");
 
 		} else if (command.equals("/customer_center/registForm.customer")) {
 			// 글 등록
@@ -208,7 +218,19 @@ public class BoardCustomerController extends HttpServlet {
 
 			res_service = new BoardResServiceImpl();
 			res_service.delete(request, response);
-		}
+		} else if (command.equals("/customer_center/regist.customer")) {
+			
+			Boolean isAdmin = (Boolean) request.getSession().getAttribute("isAdmin");
+
+            if (isAdmin != null && isAdmin) {
+                // 관리자라면 글쓰기 처리
+                service = new BoardCustomerServiceImpl();
+                service.regist(request, response);
+            } else {
+                // 관리자 아님, 에러 처리
+                response.sendRedirect("customer_center_index.customer?error=관리자만 글을 쓸 수 있습니다.");
+            }
+        }
 		
 		
 		

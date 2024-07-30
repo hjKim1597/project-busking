@@ -48,8 +48,7 @@
         FROM LOCATIONS L 
         LEFT JOIN MANAGER M ON L.LOCA_PLACE = M.LOCA_PLACE
         WHERE (#{locaPlace} = '*' OR L.LOCA_PLACE = #{locaPlace})
-          AND (L.LOCA_NAME LIKE '%' || #{searchText} || '%' 
-           OR L.LOCA_INFO LIKE '%' || #{searchText} || '%')
+          AND (L.LOCA_NAME LIKE '%' || #{searchText} || '%')
         ORDER BY L.LOCA_ID
     </select>
 
