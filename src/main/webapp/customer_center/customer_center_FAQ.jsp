@@ -77,7 +77,7 @@
 		                	<c:choose>
 			                	<c:when test="${!pageVO.first }">
 									<li id="page_first">
-										<a href="customer_center_index.customer">
+										<a href="customer_center_FAQ.customer">
 											<i class="fa-solid fa-angles-left"></i>
 										</a>
 									</li>
@@ -93,7 +93,7 @@
 							<c:choose>
 								<c:when test="${!pageVO.first }">
 									<li id="page_prev">
-										<a href="customer_center_index.customer?page=${pageVO.pageNum - 1 }">
+										<a href="customer_center_FAQ.customer?page=${pageVO.pageNum - 1 }">
 											<i class="fa-solid fa-angle-left"></i>
 										</a>
 									</li>
@@ -109,14 +109,14 @@
 							
 							<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
 								<li class="page_li" data-page="${i }">
-									<a href="customer_center_index.customer?page=${i }" title="1페이지">${i }</a>
+									<a href="customer_center_FAQ.customer?page=${i }" title="1페이지">${i }</a>
 								</li>
 							</c:forEach>
 							
 							<c:choose>
 			                	<c:when test="${!pageVO.last }">
 									<li id="page_next">
-										<a href="customer_center_index.customer?page=${pageVO.pageNum + 1}">
+										<a href="customer_center_FAQ.customer?page=${pageVO.pageNum + 1}">
 											<i class="fa-solid fa-angle-right"></i>
 										</a>
 									</li>
@@ -132,7 +132,7 @@
 							<c:choose>
 								<c:when test="${!pageVO.last }">
 									<li id="page_last">
-										<a href="customer_center_index.customer?page=${pageVO.realEndPage }">
+										<a href="customer_center_FAQ.customer?page=${pageVO.realEndPage }">
 											<i class="fa-solid fa-angles-right"></i>
 										</a>
 									</li>

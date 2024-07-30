@@ -45,7 +45,23 @@
     </select>
 	
 	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM BOARD_ASK WHERE ASK_DELETED = 'F'  
+		SELECT COUNT(*) 
+        FROM BOARD_ASK  
+        WHERE ASK_DELETED = 'F' 
+		<if test="type != null and type != ''">
+			<choose>
+				<when test="type == 'content'">
+					AND ASK_CONTENT LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'writer'">
+					AND ASK_WRITER LIKE '%' || #{target} || '%' 
+				</when>
+				<when test="type == 'all'">
+					AND (ASK_CONTENT LIKE '%' || #{target} || '%' 
+					OR ASK_WRITER LIKE '%' || #{target} || '%') 
+				</when>
+			</choose>
+		</if>
 	</select>
 	
 	<insert id="write" parameterType="com.busking.board.model.BoardAskDTO">

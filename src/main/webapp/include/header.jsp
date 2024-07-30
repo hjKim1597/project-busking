@@ -8,41 +8,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Busking</title>
 
 <!-- 부트스트랩 css 링크 -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css">
 <!-- 제이쿼리(부트스트랩보다 먼저 링크해야함) -->
-<script
-	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
 <!-- 부트스트랩 js링크 -->
-<script
-	src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/index/index.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/board/board_nav.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/index.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/board/board_nav.css">
 
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
-	rel="stylesheet">
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <!-- 웹폰트 -->
-<link
-	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
-	rel="stylesheet">
-<link
-	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css"
-	rel="stylesheet">
-<link
-	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-	integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
@@ -56,10 +41,13 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand index-menu"
-						><div class="index-logo"><img
-								src="${pageContext.request.contextPath }/resources/img/index/icon123.png"
-								alt="결과" class="main-image" width="100%"></div></a>
+
+					<a class="navbar-brand index-menu">
+						<div class="index-logo">
+							<img src="${pageContext.request.contextPath }/resources/img/index/icon123.png" alt="결과" class="main-image" width="100%">
+						</div>
+					</a>
+
 				</div>
 				<div class="collapse navbar-collapse main-color mobile-navbar hea-rightpd"
 					id="myNavbar">

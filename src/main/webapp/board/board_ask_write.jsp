@@ -16,21 +16,23 @@
 			</ul>
 		</div>
 	</nav>
-    <div class="board_write_box">
-        <h1>
-            <strong>Q & A</strong>
-        </h1>
-        <form class="board_write_content" action="board_writeForm.boardAsk" method="post">
-            <div class="form_group">
-                <label class="content_text" for="content">질문</label>
-                <textarea id="content" name="content" class="form-control" rows="5" placeholder="*질문 내용을 구체적으로 입력해주세요" required></textarea>
-            </div>
-            <div class="button_box">
-                <button type="button" class="button_cancle" onclick="history.back()">취소</button>
-                <input type="submit" class="button_registration" value="등록">
-            </div>
-        </form>
-    </div>
+	<div class="board_write">
+	    <div class="board_write_box">
+	        <h1>
+	            <strong>Q & A</strong>
+	        </h1>
+	        <form class="board_write_content" action="board_writeForm.boardAsk" method="post">
+	            <div class="form_group">
+	                <label class="content_text" for="content">질문</label>
+	                <textarea id="content" name="content" class="form-control" rows="5" placeholder="*질문 내용을 구체적으로 입력해주세요" required></textarea>
+	            </div>
+	            <div class="button_box">
+	                <button type="button" class="button_cancle" onclick="history.back()">취소</button>
+	                <input type="submit" class="button_registration" value="등록">
+	            </div>
+	        </form>
+	    </div>
+	</div>
 </section>
 
 

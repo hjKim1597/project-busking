@@ -42,12 +42,12 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		// Mapper
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardNewsMapper mapper = sql.getMapper(BoardNewsMapper.class);
-		int total = mapper.getTotal();
-		PageVO pageVO = new PageVO(pageNum, total);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("type", type);
 		map.put("target", target);
+		int total = mapper.getTotal(map);
+		PageVO pageVO = new PageVO(pageNum, total);
 		map.put("page", pageVO);
 		
 		list = mapper.getList(map);
@@ -70,7 +70,9 @@ public class BoardNewsServiceImpl implements BoardNewsService {
 		} else {
 			request.setAttribute("newsList", list);
 			request.setAttribute("pageVO", pageVO);
-			request.getRequestDispatcher("board_news_list.jsp?type=" + type + "&target=" + target).forward(request, response);
+			request.setAttribute("type", type);
+			request.setAttribute("target", target);
+			request.getRequestDispatcher("board_news_list.jsp").forward(request, response);
 			return;
 		}
 

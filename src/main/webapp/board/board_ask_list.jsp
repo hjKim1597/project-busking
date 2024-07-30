@@ -71,7 +71,7 @@
 		                	<c:choose>
 			                	<c:when test="${!pageVO.first }">
 									<li id="page_first">
-										<a href="board_list.boardAsk">
+										<a href="board_list.boardAsk?type=${type }&target=${target }">
 											<i class="fa-solid fa-angles-left"></i>
 										</a>
 									</li>
@@ -87,7 +87,7 @@
 							<c:choose>
 								<c:when test="${!pageVO.first }">
 									<li id="page_prev">
-										<a href="board_list.boardAsk?page=${pageVO.pageNum - 1 }">
+										<a href="board_list.boardAsk?page=${pageVO.pageNum - 1 }&type=${type }&target=${target }">
 											<i class="fa-solid fa-angle-left"></i>
 										</a>
 									</li>
@@ -103,14 +103,14 @@
 							
 							<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
 								<li class="page_li" data-page="${i }">
-									<a href="board_list.boardAsk?page=${i }" title="1페이지">${i }</a>
+									<a href="board_list.boardAsk?page=${i }&type=${type }&target=${target }" title="1페이지">${i }</a>
 								</li>
 							</c:forEach>
 							
 							<c:choose>
 			                	<c:when test="${!pageVO.last }">
 									<li id="page_next">
-										<a href="board_list.boardAsk?page=${pageVO.pageNum + 1}">
+										<a href="board_list.boardAsk?page=${pageVO.pageNum + 1}&type=${type }&target=${target }">
 											<i class="fa-solid fa-angle-right"></i>
 										</a>
 									</li>
@@ -126,7 +126,7 @@
 							<c:choose>
 								<c:when test="${!pageVO.last }">
 									<li id="page_last">
-										<a href="board_list.boardAsk?page=${pageVO.realEndPage }">
+										<a href="board_list.boardAsk?page=${pageVO.realEndPage }&type=${type }&target=${target }">
 											<i class="fa-solid fa-angles-right"></i>
 										</a>
 									</li>
@@ -203,17 +203,6 @@ document.querySelectorAll('.post').forEach(post => {
         .catch(error => console.error('오류:', error));
     });
 });
-
-/* <div class="comment">
-    <div class="info">
-        <div class="writer">${dto.comFreeWriter }</div>
-        <div class="date"><fmt:formatDate value="${dto.comFreeRegdate }" pattern="yy.MM.dd"/></div>
-    </div>
-    <div class="comment_content">
-    	<p>${dto.comFreeContent }</p>
-	</div>
-</div> */
-
 
 window.onload = function() {
 	var pageNum = '${pageVO.pageNum}';
