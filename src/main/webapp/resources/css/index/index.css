@@ -371,13 +371,23 @@
 	text-shadow: none;
 }
 
+/* 배너 */
+
+.carousel-indicatior {
+	bottom: 0px;
+}
+
 #myCarousel {
 	margin-bottom: 80px;
 }
 
+/* .carousel-inner {
+	margin-top: 30px;
+} */
+
 .index-content>.carousel>.carousel-inner>.item>a>img {
 	z-index: 0;
-	margin-top: 126px;
+	margin-top: 120px;
 }
 
 .carousel-inner>.item>.carousel-caption>.banner-left {
@@ -680,4 +690,10 @@ to {
 .footer-bottom>.footer-info>p>.footer-icon {
 	color: #999;
 	text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+    .carousel-indicators {
+        bottom: 0px;
+    }
 }
