@@ -55,4 +55,14 @@
         FROM MANAGER
         WHERE MANAGER_ID = #{userId}
     </select>
+    <!-- 카카오 -->
+     <select id="findUserById" parameterType="String" resultType="com.busking.mypage.model.UserJoinDTO">
+        SELECT USER_ID, USER_EMAIL, USER_NAME, USER_PW, USER_PNO, USER_ADDR, USER_GENDER
+        FROM USERS
+        WHERE USER_ID = #{userId}
+    </select>
+    <!-- <insert id="signup" parameterType="com.busking.mypage.model.UserJoinDTO">
+        INSERT INTO USERS (USER_ID, USER_PW, USER_NAME, USER_EMAIL, USER_PNO, USER_ADDR, USER_GENDER)
+        VALUES (#{userId}, #{userPw}, #{userName}, #{userEmail}, #{userPno}, #{userAddr}, #{userGender})
+    </insert> -->
 </mapper>

@@ -1,6 +1,7 @@
 package com.busking.mypage.model;
 
 public interface UserJoinMapper {
+    UserJoinDTO findUserById(String kakaoId);
     int signup(UserJoinDTO userJoinDTO);
     int checkUserId(String userId);
     UserJoinDTO login(UserJoinDTO userJoinDTO);

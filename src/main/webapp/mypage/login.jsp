@@ -33,34 +33,82 @@
             <div class="social-login">
                 <div class="icon-all">
                     <a href="https://www.naver.com/"><img src="../resources/img/Naver.png" alt=""></a>
-                    <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk"><img src="../resources/img/Kakao.png" alt=""></a>
+                    <a href="#" id="kakao-login-btn"><img src="../resources/img/Kakao.png" alt="카카오 로그인 버튼"></a>
                     <a href="https://www.google.com/" class="google"><img src="../resources/img/web_neutral_sq_na@4x.png" alt=""></a>
                 </div>
             </div>
         </div>
     </div>
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    
     <script>
-        var userId = document.getElementById('userId');
-        var rememberId = document.getElementById("rememberId");
+    Kakao.init('6f8deabbc9ba8cfe2fbfc4a7e6092af4');
 
-        function saveId() {
-            if (rememberId.checked) {
-                localStorage.setItem("userId", userId.value);
-            } else {
-                localStorage.removeItem("userId");
+    function kakaoLogin() {
+        Kakao.Auth.login({
+            success: function(authObj) {
+                Kakao.API.request({
+                    url: '/v2/user/me',
+                    success: function(res) {
+                        var kakaoId = res.id;
+                        var kakaoEmail = res.kakao_account.email;
+                        var kakaoNickname = res.properties.nickname;
+
+                        // 서버로 사용자 정보 전송
+                        fetch('${pageContext.request.contextPath}/kakaoLogin', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id: kakaoId,
+                                email: kakaoEmail,
+                                nickname: kakaoNickname
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                window.location.href = '${pageContext.request.contextPath}/index.main';
+                            } else {
+                                alert('카카오 로그인에 실패했습니다.');
+                            }
+                        });
+                    },
+                    fail: function(error) {
+                        console.log(error);
+                    }
+                });
+            },
+            fail: function(err) {
+                console.log(err);
             }
-        }
+        });
+    }
 
-        function loadId() {
-            var savedId = localStorage.getItem("userId");
-            if (savedId) {
-                document.getElementById('userId').value = savedId;
-                document.getElementById('rememberId').checked = true;
-            }
-        }
+    document.getElementById('kakao-login-btn').addEventListener('click', kakaoLogin);
 
-        window.onload = loadId;
-    </script>
+    var userId = document.getElementById('userId');
+    var rememberId = document.getElementById("rememberId");
+
+    function saveId() {
+        if (rememberId.checked) {
+            localStorage.setItem("userId", userId.value);
+        } else {
+            localStorage.removeItem("userId");
+        }
+    }
+
+    function loadId() {
+        var savedId = localStorage.getItem("userId");
+        if (savedId) {
+            document.getElementById('userId').value = savedId;
+            document.getElementById('rememberId').checked = true;
+        }
+    }
+
+    window.onload = loadId;
+</script>
 <%@ include file="../include/footer.jsp" %>
 </body>
 </html>
