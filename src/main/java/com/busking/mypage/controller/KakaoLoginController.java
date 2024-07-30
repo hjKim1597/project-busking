@@ -61,6 +61,9 @@ public class KakaoLoginController extends HttpServlet {
         // 세션에 사용자 정보 저장
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
+        session.setAttribute("userId", user.getUserId());
+        session.setAttribute("userEmail", user.getUserEmail());
+        session.setAttribute("userName", user.getUserName());
 
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
