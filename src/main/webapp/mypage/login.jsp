@@ -29,7 +29,7 @@
                 </form>
             </div>
             
-            <p>홈페이지 바로가기</p>
+            <p>sns 소셜 로그인</p>
             <div class="social-login">
                 <div class="icon-all">
                     <a href="https://www.naver.com/"><img src="../resources/img/Naver.png" alt=""></a>

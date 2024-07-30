@@ -100,11 +100,7 @@ public class UserJoinServiceImpl implements UserJoinService {
             out.println("</script>");
         }
     }
-    @Override
-    public void userInfo(HttpServletRequest request, HttpServletResponse response)
-    		throws ServletException, IOException {
-    	
-    }
+
     @Override
     public void findUserId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
@@ -145,8 +141,5 @@ public class UserJoinServiceImpl implements UserJoinService {
         out.flush();
     }
 
-	public UserJoinDTO findUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

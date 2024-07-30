@@ -45,8 +45,6 @@ public class UserJoinController extends HttpServlet {
             userJoinService.checkUserId(userId, response);
         } else if(command.equals("/userjoin/login.mypage")) {
             userJoinService.login(request, response);
-        } else if(command.equals("/userjoin/userInfo.mypage")) {
-        	userJoinService.userInfo(request, response);
         } else if (command.equals("/userjoin/findId.mypage")) {
         	userJoinService.findUserId(request, response);
         } else if (command.equals("/userjoin/findPw.mypage")) {
