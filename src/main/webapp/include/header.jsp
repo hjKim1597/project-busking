@@ -1,3 +1,4 @@
+<%@page import="com.busking.mypage.model.UserJoinDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -137,19 +138,18 @@
 
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-
 					    <% if (session.getAttribute("user") != null) { %>
 					        <% 
 					            Boolean adminCheckObj = (Boolean) session.getAttribute("adminCheck");
 					            boolean adminCheck = (adminCheckObj != null) ? adminCheckObj : false;
+					            UserJoinDTO user = (UserJoinDTO) session.getAttribute("user"); // 세션에서 User 객체 가져오기
 					        %>
-					        <li><a href="<%= adminCheck ? request.getContextPath() + "/mypage/adminPage.admin" : "#" %>">${session.getAttribute("userName")}님 환영합니다</a></li>
+					        <li><a href="<%= adminCheck ? request.getContextPath() + "/mypage/adminPage.admin" : "#" %>"><%= user.getUserName() %>님 환영합니다</a></li>
 					        <li><a href="${pageContext.request.contextPath}/userjoin/logout.mypage" class="header-right"><span class="glyphicon glyphicon-off"></span> 로그아웃</a></li>
 					    <% } else { %>
 					        <li><a href="${pageContext.request.contextPath}/userjoin/loginPage.mypage" class="header-right"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
 					        <li><a href="${pageContext.request.contextPath}/userjoin/signupPage.mypage" class="header-right"><span class="glyphicon glyphicon-log-in"></span> 회원가입</a></li>
 					    <% } %>
-				
 					</ul>
 
 				</div>
