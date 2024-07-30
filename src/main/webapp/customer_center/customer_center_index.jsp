@@ -57,6 +57,7 @@
 						</tbody>
 					</table>
 				</div>
+				
 				<!-- 페이지 번호 -->
 				<div class="page_nav">
 		                <ul class="center">
@@ -133,6 +134,7 @@
 							</c:choose>
 						</ul>
 					</div>
+					
 				<!-- 검색 -->
 				<form action="customer_center_index.customer" method="post">
 					<div class="board_search">
