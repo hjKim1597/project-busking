@@ -19,19 +19,14 @@
 <%@ include file="../include/header.jsp"%>
 
 
-
-<!-- 레이아웃 -->
-s
-<section class="container customer-center-width" id="change">
-	<div class="row">
-
-		<!-- 좌측메뉴 -->
-		<!-- 좌측메뉴 -->
+   <!-- 중앙 레이아웃 -->
+    <section class="container customer-center-width" id="change">
+     	<!-- 좌측메뉴 -->
         <div class="board_nav">
             <div id="board_nav_wrap">
 	             <h1>고객센터</h1>
 	             <ul class="menu">
-	                 <li class="nth1 active"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
+	                 <li class="nth1"><strong><a href="customer_center_index.customer"><span>공지사항</span></a></strong>
 	                 </li>
 	                 <li class="nth2"><strong><a href="customer_center_res.customer"><span>이달의 예약</span></a></strong>
 	                 </li>
@@ -42,54 +37,50 @@ s
 	             </ul>
             </div>
         </div>
-
-
-		<!-- 게시판 -->
-		<div class="board">
-			<!-- 공지사항 목록 -->
-			<div class="board_list">
-				<div class="board_list_title">
+        <!-- 공지사항 게시판 -->
+        <div class="board">
+	        <!-- 공지사항 목록 -->
+	        <div class="board_list">
+	        	<div class="board_list_title">
 					<strong>공지사항</strong>
 				</div>
-				<!-- 공지사항 목록 -->
+	            <!-- 공지사항 목록 -->
 				<div class="board_list_box">
 
 					<table class="board_list_table" id="layout1">
-
-						<div id="board_font">
-							<thead>
-								<tr>
-									<th class="nth1">글 번호</th>
-									<th class="nth2">작성자</th>
-									<th class="nth3">제목</th>
-									<th class="nth4">날짜</th>
-								</tr>
-							</thead>
-							<tbody>
-								<!--데이터 받아오기-->
-								<c:forEach var="dto" items="${faqList }">
-									<tr>
-										<td>${dto.faqNum }</td>
-										<td>${dto.userId }</td>
-										<td><a
-											href="getFAQContent.customer?faqNum=${dto.faqNum }">${dto.faqTitle }</a></td>
-										<td><fmt:formatDate value="${dto.faqRegdate }"
-												pattern="yy.MM.dd" /></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</div>
+		                <thead>
+		                    <tr>
+		                        <th class="nth1">글 번호</th>
+		                        <th class="nth2">작성자</th>
+		                        <th class="nth3">제목</th>
+		                        <th class="nth4">날짜</th>
+		                    </tr>
+		                </thead>
+                        <tbody>
+							<!--데이터 받아오기-->
+						<c:forEach var="dto" items="${faqList }">
+							<tr>
+								<td>${dto.faqNum }</td>
+								<td>${dto.userId }</td>
+								<td><a href="getFAQContent.customer?faqNum=${dto.faqNum }">${dto.faqTitle }</a></td>
+								<td><fmt:formatDate value="${dto.faqRegdate }"
+										pattern="yy.MM.dd" /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
 					</table>
-
-					<!-- 페이지 번호 -->
-					<div class="page_nav">
-						<ul class="center">
-							<c:choose>
-								<c:when test="${!pageVO.first }">
-									<li id="page_first"><a
-										href="customer_center_index.customer"> <i
-											class="fa-solid fa-angles-left"></i>
-									</a></li>
+				</div>
+				
+				<!-- 페이지 번호 -->
+				<div class="page_nav">
+		                <ul class="center">
+		                	<c:choose>
+			                	<c:when test="${!pageVO.first }">
+									<li id="page_first">
+										<a href="customer_center_index.customer">
+											<i class="fa-solid fa-angles-left"></i>
+										</a>
+									</li>
 								</c:when>
 								<c:otherwise>
 									<li id="page_first">
@@ -101,10 +92,11 @@ s
 							</c:choose>
 							<c:choose>
 								<c:when test="${!pageVO.first }">
-									<li id="page_prev"><a
-										href="customer_center_index.customer?page=${pageVO.pageNum - 1 }">
+									<li id="page_prev">
+										<a href="customer_center_index.customer?page=${pageVO.pageNum - 1 }">
 											<i class="fa-solid fa-angle-left"></i>
-									</a></li>
+										</a>
+									</li>
 								</c:when>
 								<c:otherwise>
 									<li id="page_prev">
@@ -114,19 +106,20 @@ s
 									</li>
 								</c:otherwise>
 							</c:choose>
-
-							<c:forEach var="i" begin="${pageVO.startPage }"
-								end="${pageVO.endPage }" step="1">
-								<li class="page_li" data-page="${i }"><a
-									href="customer_center_index.customer?page=${i }" title="1페이지">${i }</a></li>
+							
+							<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+								<li class="page_li" data-page="${i }">
+									<a href="customer_center_index.customer?page=${i }" title="1페이지">${i }</a>
+								</li>
 							</c:forEach>
-
+							
 							<c:choose>
-								<c:when test="${!pageVO.last }">
-									<li id="page_next"><a
-										href="customer_center_index.customer?page=${pageVO.pageNum + 1}">
+			                	<c:when test="${!pageVO.last }">
+									<li id="page_next">
+										<a href="customer_center_index.customer?page=${pageVO.pageNum + 1}">
 											<i class="fa-solid fa-angle-right"></i>
-									</a></li>
+										</a>
+									</li>
 								</c:when>
 								<c:otherwise>
 									<li id="page_next">
@@ -138,10 +131,11 @@ s
 							</c:choose>
 							<c:choose>
 								<c:when test="${!pageVO.last }">
-									<li id="page_last"><a
-										href="customer_center_index.customer?page=${pageVO.realEndPage }">
+									<li id="page_last">
+										<a href="customer_center_index.customer?page=${pageVO.realEndPage }">
 											<i class="fa-solid fa-angles-right"></i>
-									</a></li>
+										</a>
+									</li>
 								</c:when>
 								<c:otherwise>
 									<li id="page_last">
@@ -153,28 +147,16 @@ s
 							</c:choose>
 						</ul>
 					</div>
-
-
-					<!-- 검색 -->
-					<form action="customer_center_index.customer" method="post">
-						<div class="board_search">
-							<select class="board_search_box" name="type">
-								<option value="all" selected>전체</option>
-								<option value="writer">작성자</option>
-								<option value="title">제목</option>
-								<option value="content">내용</option>
-							</select> <input placeholder="검색어를 입력해 주세요" type="text" name="target"
-								required> <span> <input class="btn" type="submit"
-								id="search_btn" value="검색">
-							</span>
-						</div>
-					</form>
-
-
-				</div>
+					
+				
+				
 			</div>
 		</div>
-</section>
+	</section>
+
+
+
+
 
 
 
