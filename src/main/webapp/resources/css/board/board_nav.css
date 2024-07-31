@@ -9,18 +9,41 @@
     .resForm-wrap {
         width: 1170px;
     }
+    
+    #change2{
+    	margin-left: 140px;
+    }
 }
 @media (min-width:992px) and (max-width:1199px) {
     .resForm-wrap {
         width: 970px;
+        
+    }
+    #change2{
+    	margin-left: 140px;
     }
 }
 @media (max-width:991px) {
     .resForm-wrap {
         width: 750px;
     } 
+    #change2{
+    	
+    }
 }
     
+    
+    @media (max-width:768px) {
+    .board_nav #board_nav_wrap {
+        display: none;
+        
+    } 
+    #change2{
+    	margin-left: -10px;
+    }
+    
+}
+
 
 .board_nav #board_nav_wrap {
     font-family: 'nanumsquare';

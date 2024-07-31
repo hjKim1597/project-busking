@@ -49,7 +49,7 @@
 				</div>
 	            <!-- 이용안내 내용 -->
 	            
-	            <div class="service-board" style="margin-left: 230px;">
+	            <div class="service-board" id="change2" style="">
                     <div class="container">
                         <div class="page-header">
                             <h3>한강공원 버스킹(거리공연) 신청 개요</h3>

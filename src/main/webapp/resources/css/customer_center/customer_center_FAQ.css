@@ -207,7 +207,7 @@ thead th, tbody td {
     margin: 0 auto;
 }
 #change .board .board_list{
-    margin-left: 170px;
+    /* margin-left: 170px; */
     overflow: hidden;
 }
 

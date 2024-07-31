@@ -50,6 +50,15 @@ thead th, tbody td {
 	}
 }
 
+
+ @media (max-width:768px) {
+    #change .board_nav {
+        border: 1px solid red;
+        display:none;
+    } 
+}
+
+
 /* 중앙 레이아웃 */
 #change {
 	padding: 150px 50px 0 50px;
@@ -61,7 +70,7 @@ thead th, tbody td {
 #change .board_nav {
 	/* border: 1px solid red; */
 	float: left;
-	display: block;
+	/* display: block; */
 }
 
 #change .board_nav #board_nav_wrap {
