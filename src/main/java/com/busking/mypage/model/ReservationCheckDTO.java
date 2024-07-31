@@ -15,9 +15,14 @@ public class ReservationCheckDTO {
     private String userPno;
     private String userEmail;
     private String resTime;
-	
+    private String locaName;
+    
+    public ReservationCheckDTO() {
+	}
+
 	public ReservationCheckDTO(int resNum, String userName, Date resDate, int locaId, String resResult, String resAmp,
-			String resContent, int resCount, String userAddr, String userPno, String userEmail, String resTime) {
+			String resContent, int resCount, String userAddr, String userPno, String userEmail, String resTime,
+			String locaName) {
 		super();
 		this.resNum = resNum;
 		this.userName = userName;
@@ -31,8 +36,8 @@ public class ReservationCheckDTO {
 		this.userPno = userPno;
 		this.userEmail = userEmail;
 		this.resTime = resTime;
+		this.locaName = locaName;
 	}
-	
 
 	public int getResNum() {
 		return resNum;
@@ -130,5 +135,15 @@ public class ReservationCheckDTO {
 		this.resTime = resTime;
 	}
 
+	public String getLocaName() {
+		return locaName;
+	}
+
+	public void setLocaName(String locaName) {
+		this.locaName = locaName;
+	}
+
+    
+	
 	
 }

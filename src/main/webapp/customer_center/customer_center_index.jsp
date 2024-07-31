@@ -172,9 +172,10 @@
 						<option value="writer">작성자</option>
 						<option value="title">제목</option>
 						<option value="content">내용</option>
-					</select> <input placeholder="검색어를 입력해 주세요" type="text" name="target"
-						required> <span> <input class="btn" type="submit"
-						id="search_btn" value="검색">
+					</select> 
+					<input placeholder="검색어를 입력해 주세요" type="text" name="target" required> 
+						<span> 
+						<input class="btn" type="submit" id="search_btn" value="검색">
 					</span>
 				</div>
 			</form>
