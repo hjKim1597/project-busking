@@ -132,13 +132,7 @@
 	
 	<insert id="writeReplyFree">
 	    <selectKey keyProperty="comFreeLeft" resultType="int" order="BEFORE">
-	        SELECT 
-	            CASE 
-	                WHEN (SELECT COUNT(*) FROM COMMENT_FREE WHERE COM_FREE_REPLY = #{comFreeReply}) != 0 
-	                THEN (SELECT MAX(COM_FREE_LEFT) FROM COMMENT_FREE WHERE COM_FREE_REPLY = #{comFreeReply}) 
-	                ELSE (SELECT COM_FREE_LEFT FROM COMMENT_FREE WHERE COM_FREE_NUM = #{comFreeReply}) 
-	            END AS comFreeLeft 
-	        FROM DUAL 
+	        SELECT COM_FREE_RIGHT FROM COMMENT_FREE WHERE COM_FREE_NUM = #{comFreeReply}
 	    </selectKey>
 	
 	    INSERT INTO COMMENT_FREE( 
@@ -158,8 +152,8 @@
 	        #{comFreeBno}, 
 	        #{comFreeReply}, 
 	        #{comFreeGroup}, 
-	        #{comFreeLeft} + 1,  
-	        #{comFreeLeft} + 2, 
+	        #{comFreeLeft} - 2,  
+	        #{comFreeLeft} - 1, 
 	        #{comFreeDepth} + 1  
 	    ) 
 	</insert>
