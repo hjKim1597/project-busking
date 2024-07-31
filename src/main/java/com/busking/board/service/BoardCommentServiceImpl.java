@@ -271,10 +271,11 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		// request
 		String bno = request.getParameter("bno");
 		String reply = request.getParameter("reply");
+		String group = request.getParameter("group");
 		String content = request.getParameter("content");
-		
-		System.out.println(reply + ", " + bno);
-		
+		String depthParam = request.getParameter("depth");
+		int depth = 0;
+		if(depthParam != null) depth = Integer.parseInt(depthParam);
 		HttpSession session = request.getSession();
 		String writer = (String)session.getAttribute("userId");
 		
@@ -284,6 +285,8 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		dto.setComFreeContent(content);
 		dto.setComFreeWriter(writer);
 		dto.setComFreeReply(reply);
+		dto.setComFreeGroup(group);
+		dto.setComFreeDepth(depth);
 		
 		BoardFreeDTO dtoFree = new BoardFreeDTO();
 		dtoFree.setFreeNum(bno);
@@ -293,6 +296,8 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		BoardCommentMapper mapper = sql.getMapper(BoardCommentMapper.class);
 		BoardFreeMapper mapperFree = sql.getMapper(BoardFreeMapper.class);
 		
+		mapper.updateReplyFreeLeft(dto);
+		mapper.updateReplyFreeRight(dto);
 		mapper.writeReplyFree(dto);
 		int total = mapper.getCommentFreeCount(bno);
 		dtoFree.setFreeCmtCount(total);

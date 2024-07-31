@@ -12,12 +12,14 @@ public class CommentFreeDTO {
 	private int comFreeLikeCount;
 	private String comFreeReply;
 	private String comFreeGroup;
+	private int comFreeLeft;
+	private int comFreeDepth;
 	
 	public CommentFreeDTO() {
 	}
 
 	public CommentFreeDTO(String comFreeNum, String comFreeWriter, String comFreeContent, Timestamp comFreeRegdate,
-			String comFreeBno, int comFreeLikeCount, String comFreeReply, String comFreeGroup) {
+			String comFreeBno, int comFreeLikeCount, String comFreeReply, String comFreeGroup, int comFreeLeft, int comFreeDepth) {
 		super();
 		this.comFreeNum = comFreeNum;
 		this.comFreeWriter = comFreeWriter;
@@ -27,6 +29,24 @@ public class CommentFreeDTO {
 		this.comFreeLikeCount = comFreeLikeCount;
 		this.comFreeReply = comFreeReply;
 		this.comFreeGroup = comFreeGroup;
+		this.comFreeLeft = comFreeLeft;
+		this.comFreeDepth = comFreeDepth;
+	}
+
+	public int getComFreeDepth() {
+		return comFreeDepth;
+	}
+
+	public void setComFreeDepth(int comFreeDepth) {
+		this.comFreeDepth = comFreeDepth;
+	}
+
+	public int getComFreeLeft() {
+		return comFreeLeft;
+	}
+
+	public void setComFreeLeft(int comFreeLeft) {
+		this.comFreeLeft = comFreeLeft;
 	}
 
 	public String getComFreeNum() {

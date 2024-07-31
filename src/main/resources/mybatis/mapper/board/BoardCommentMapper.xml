@@ -6,10 +6,10 @@
 <mapper namespace="com.busking.board.model.BoardCommentMapper">
 
 	<select id="getCommentFreeList" parameterType="String" resultType="com.busking.board.model.CommentFreeDTO">
-		SELECT COM_FREE_NUM, COM_FREE_WRITER, COM_FREE_CONTENT, COM_FREE_REGDATE, COM_FREE_LIKE_COUNT, COM_FREE_REPLY, COM_FREE_GROUP 
+		SELECT COM_FREE_NUM, COM_FREE_WRITER, COM_FREE_CONTENT, COM_FREE_REGDATE, COM_FREE_LIKE_COUNT, COM_FREE_REPLY, COM_FREE_GROUP, COM_FREE_DEPTH  
 		FROM COMMENT_FREE 
 		WHERE COM_FREE_BNO = #{comFreeBno} 
-		ORDER BY COM_FREE_GROUP, COM_FREE_NUM
+		ORDER BY COM_FREE_GROUP, COM_FREE_LEFT 
 	</select>
 	
 	<select id="getCommentNewsList" parameterType="String" resultType="com.busking.board.model.CommentNewsDTO">
@@ -98,22 +98,72 @@
 	<select id="getCommentTeamCount" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM COMMENT_TEAM WHERE COM_TEAM_BNO = #{comTeamBno} 
 	</select>
+		
+	<update id="updateReplyFreeLeft">
+	    <selectKey keyProperty="comFreeLeft" resultType="int" order="BEFORE">
+	        SELECT 
+	            CASE  
+	                WHEN (SELECT COUNT(*) FROM COMMENT_FREE WHERE COM_FREE_REPLY = #{comFreeReply}) != 0 
+	                THEN (SELECT MAX(COM_FREE_LEFT) FROM COMMENT_FREE WHERE COM_FREE_REPLY = #{comFreeReply})  
+	                ELSE (SELECT COM_FREE_LEFT FROM COMMENT_FREE WHERE COM_FREE_NUM = #{comFreeReply})  
+	            END AS comFreeLeft 
+	        FROM DUAL 
+	    </selectKey>
+	    UPDATE COMMENT_FREE 
+	    SET COM_FREE_LEFT = COM_FREE_LEFT + 2 
+	    WHERE COM_FREE_GROUP = #{comFreeGroup} AND COM_FREE_LEFT > #{comFreeLeft} 
+	</update>
 	
-	<insert id="writeReplyFree" parameterType="com.busking.board.model.CommentFreeDTO">
-		INSERT INTO COMMENT_FREE(COM_FREE_NUM,  
-		                         COM_FREE_WRITER,  
-		                         COM_FREE_CONTENT,  
-		                         COM_FREE_BNO, 
-		                         COM_FREE_REPLY, 
-		                         COM_FREE_GROUP) 
-		VALUES('CF_' || LPAD(COMMENT_FREE_SEQ.NEXTVAL, 8, '0'), 
-		       #{comFreeWriter},  
-		       #{comFreeContent}, 
-		       #{comFreeBno}, 
-		       #{comFreeReply}, 
-		       #{comFreeReply})	
+	<update id="updateReplyFreeRight">
+	    <selectKey keyProperty="comFreeLeft" resultType="int" order="BEFORE">
+	        SELECT 
+	            CASE 
+	                WHEN (SELECT COUNT(*) FROM COMMENT_FREE WHERE COM_FREE_REPLY = #{comFreeReply}) != 0 
+	                THEN (SELECT MAX(COM_FREE_LEFT) FROM COMMENT_FREE WHERE COM_FREE_REPLY = #{comFreeReply}) 
+	                ELSE (SELECT COM_FREE_LEFT FROM COMMENT_FREE WHERE COM_FREE_NUM = #{comFreeReply}) 
+	            END AS comFreeLeft 
+	        FROM DUAL 
+	    </selectKey>
+	    UPDATE COMMENT_FREE 
+	    SET COM_FREE_RIGHT = COM_FREE_RIGHT + 2 
+	    WHERE COM_FREE_GROUP = #{comFreeGroup} AND COM_FREE_RIGHT >= #{comFreeLeft} 
+	</update>
+
+	
+	<insert id="writeReplyFree">
+	    <selectKey keyProperty="comFreeLeft" resultType="int" order="BEFORE">
+	        SELECT 
+	            CASE 
+	                WHEN (SELECT COUNT(*) FROM COMMENT_FREE WHERE COM_FREE_REPLY = #{comFreeReply}) != 0 
+	                THEN (SELECT MAX(COM_FREE_LEFT) FROM COMMENT_FREE WHERE COM_FREE_REPLY = #{comFreeReply}) 
+	                ELSE (SELECT COM_FREE_LEFT FROM COMMENT_FREE WHERE COM_FREE_NUM = #{comFreeReply}) 
+	            END AS comFreeLeft 
+	        FROM DUAL 
+	    </selectKey>
+	
+	    INSERT INTO COMMENT_FREE( 
+	        COM_FREE_NUM,  
+	        COM_FREE_WRITER,  
+	        COM_FREE_CONTENT,  
+	        COM_FREE_BNO, 
+	        COM_FREE_REPLY, 
+	        COM_FREE_GROUP, 
+	        COM_FREE_LEFT, 
+	        COM_FREE_RIGHT,
+	        COM_FREE_DEPTH)  
+	    VALUES ( 
+	        'CF_' || LPAD(COMMENT_FREE_SEQ.NEXTVAL, 8, '0'), 
+	        #{comFreeWriter},  
+	        #{comFreeContent}, 
+	        #{comFreeBno}, 
+	        #{comFreeReply}, 
+	        #{comFreeGroup}, 
+	        #{comFreeLeft} + 1,  
+	        #{comFreeLeft} + 2, 
+	        #{comFreeDepth} + 1  
+	    ) 
 	</insert>
-	
+
 	<insert id="writeReplyNews" parameterType="com.busking.board.model.CommentNewsDTO">
 		INSERT INTO COMMENT_NEWS(COM_NEWS_NUM,  
 		                         COM_NEWS_WRITER,  

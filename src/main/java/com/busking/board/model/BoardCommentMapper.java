@@ -30,6 +30,8 @@ public interface BoardCommentMapper {
 	public int getCommentTeamCount(String comTeamBno);
 	
 	// 대댓글 등록
+	public void updateReplyFreeLeft(CommentFreeDTO dto);
+	public void updateReplyFreeRight(CommentFreeDTO dto);
 	public void writeReplyFree(CommentFreeDTO dto);
 	
 	public void writeReplyNews(CommentNewsDTO dto);

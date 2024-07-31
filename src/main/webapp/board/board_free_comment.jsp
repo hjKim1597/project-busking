@@ -57,7 +57,9 @@
 				                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="content" required></textarea>
 				                            <input class="submit-comment" value="등록" type="submit">
 				                            <input type="hidden" value="${bno }" name="bno">
+				                            <input type="hidden" value="${dto.comFreeNum }" name="group">
 				                            <input type="hidden" value="${dto.comFreeNum }" name="reply">
+				                            <input type="hidden" value="${dto.comFreeDepth }" name="depth">
 				                            <input type="hidden" value="free" name="subject">
 				                        </div>
 			                   		</form>
@@ -67,6 +69,7 @@
 		                <c:otherwise>
 		                   	<div class="reply">
 		                   		<div class="board_comment_header">
+		                   			<div class="reply_trim" data-depth="${dto.comFreeDepth }"></div>
 		                   			<div class="reply_img">
 		                   				<img src="../resources/img/board_img/ico_reply.png" alt="reply">
 		                   			</div>
@@ -86,6 +89,19 @@
 					                    -->
 				                    </div>
 				                </div>
+				                <div class="comment-section" style="display: none">
+						            <form action="board_comment_free_reply.comment" method="post">
+				                        <div class="comment">
+				                            <textarea rows="2" cols="50" placeholder="댓글을 입력하세요" name="content" required></textarea>
+				                            <input class="submit-comment" value="등록" type="submit">
+				                            <input type="hidden" value="${bno }" name="bno">
+				                            <input type="hidden" value="${dto.comFreeGroup }" name="group">
+				                            <input type="hidden" value="${dto.comFreeNum }" name="reply">
+				                            <input type="hidden" value="${dto.comFreeDepth }" name="depth">
+				                            <input type="hidden" value="free" name="subject">
+				                        </div>
+			                   		</form>
+			                   	</div>
 				                
 				        	</div>
 	                   	</c:otherwise>
@@ -106,7 +122,7 @@
 	    </div>
 	</section>
 	<script>
-		document.querySelectorAll('.board_comment_list_box').forEach(box => {
+		document.querySelectorAll('.board_comment_list_box,.reply').forEach(box => {
 		    box.addEventListener('click', () => {
 		        const commentSection = box.querySelector('.comment-section');
 		        if(commentSection == null) return;
@@ -119,6 +135,16 @@
 		        event.stopPropagation();
 		    });
 		});
+		
+		window.onload = function() {
+			var replyDepths = document.querySelectorAll(".reply_trim");
+			replyDepths.forEach(reply => {
+				var depth = parseInt(reply.dataset.depth, 10);
+				var indentation = 20 * depth; 
+				
+				reply.style.marginLeft = indentation + 'px';
+			})
+		}
 		
 	</script>
 
