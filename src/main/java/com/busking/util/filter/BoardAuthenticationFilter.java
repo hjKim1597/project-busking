@@ -14,13 +14,10 @@ import jakarta.servlet.http.HttpSession;
 
 @WebFilter({
 	"/board/board_edit.boardNews"
-	,"/board/board_editForm.boardNews"
 	,"/board/board_delete.boardNews"
 	,"/board/board_edit.boardFree"
-	,"/board/board_editForm.boardFree"
 	,"/board/board_delete.boardFree"
 	,"/board/board_edit.boardTeam"
-	,"/board/board_editForm.boardTeam"
 	,"/board/board_delete.boardTeam"
 	,"/board/board_edit.boardAsk"
 	,"/board/board_delete.boardAsk"
