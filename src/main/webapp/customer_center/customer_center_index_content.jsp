@@ -38,24 +38,35 @@
 								<div class="board-button">
 									
                                    
-                     				
+                     				<% if (request.getParameter("error") != null) { %>
+									    <div class="alert alert-danger">
+									        <%= request.getParameter("error") %>
+									    </div>
+									<% } %>
                      				<input type="button" class="btn btn-default" value="수정" onclick="location.href='modify.customer?noticeNum=${dto.noticeNum}';">
                                     
                                             
                                     
 								</div>
-
-								<div class="board-button">
-									<%-- 
-									<a href="delete.customer">
-										<button type="button" class="btn btn-default"
-											onclick="location.href='delete.customer?noticeNum=${dto.noticeNum}';">삭제</button>
-									</a> 
-									--%>
+									<script>
+									    function checkAdminAndDelete(noticeNum) {
+									        // Fetching the admin status using a server-side variable
+									        var isAdmin = '<%= (session.getAttribute("adminCheck") != null && (Boolean) session.getAttribute("adminCheck")) ? "true" : "false" %>';
 									
-									<input type="submit" class="btn btn-default" value="삭제" onclick="location.href='delete.customer?noticeNum=${dto.noticeNum}';">
+									        if (isAdmin === "true") {
+									            if (confirm("정말로 삭제하시겠습니까?")) {
+									                location.href = 'delete.customer?noticeNum=' + noticeNum;
+									            }
+									        } else {
+									            alert("관리자만 삭제할 수 있습니다.");
+									        }
+									    }
+									</script>
 									
-								</div>
+									<!-- 삭제 버튼 수정 -->
+									<div class="board-button">
+									    <input type="button" class="btn btn-default" value="삭제" onclick="checkAdminAndDelete('${dto.noticeNum}');">
+									</div>
 							</div>
 
 						</div>
