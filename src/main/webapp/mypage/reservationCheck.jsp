@@ -36,7 +36,7 @@
                                     <td>${reservation.resNum}</td>
                                     <td>${reservation.userName}</td>
                                     <td>${reservation.resDate}</td>
-                                    <td>${reservation.locaId}</td>
+                                    <td>${reservation.locaName}</td>
                                     <td class="resResult">${reservation.resResult}</td>
                                 </tr>
                                 <tr id="collapse${reservation.resNum}" class="collapse">
@@ -76,7 +76,7 @@
                                     <td>${reservation.resNum}</td>
                                     <td>${reservation.userName}</td>
                                     <td>${reservation.resDate}</td>
-                                    <td>${reservation.locaId}</td>
+                                    <td>${reservation.locaName}</td>
                                     <td class="resResult">${reservation.resResult}</td>
                                 </tr>
                                 <tr id="collapseAll${reservation.resNum}" class="collapse">
