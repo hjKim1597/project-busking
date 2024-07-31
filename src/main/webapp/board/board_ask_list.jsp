@@ -41,13 +41,14 @@
 		                    </div>
 		                    <div class="comment-section" style="display: none">
 			                    <c:choose>
-			                    	<c:when test="${sessionScope.userId == dto.askWriter }">
+			                    	<c:when test="${sessionScope.userId == dto.askWriter || sessionScope.adminCheck }">
 			                        	<form action="board_edit.boardAsk" method="post">
 					                        <div class="comment">
 					                            <textarea rows="2" cols="50" placeholder="수정할 내용을 입력하세요" name="content" required></textarea>
 					                            <input type="submit" class="submit-comment edit" value="수정">
-					                            <input type="button" class="submit-comment delete" value="삭제" onclick="location.href='board_delete.boardAsk?bno=${dto.askNum}';">
+					                            <input type="button" class="submit-comment delete" value="삭제" onclick="location.href='board_delete.boardAsk?subject=Ask&bno=${dto.askNum}&writer=${dto.askWriter }';">
 					                            <input type="hidden" value="${dto.askNum }" name="bno">
+					                            <input type="hidden" value="${dto.askWriter }" name="writer">
 					                        </div>
 			                    		</form>
 			                        </c:when>
