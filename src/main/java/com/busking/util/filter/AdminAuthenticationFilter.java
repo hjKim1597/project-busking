@@ -16,34 +16,40 @@ import jakarta.servlet.http.HttpSession;
 
 import com.busking.mypage.model.UserJoinDTO;
 
-@WebFilter({"/customer_center/regist.customer"})
+@WebFilter({"/customer_center/regist.customer", "/customer_center/modify.customer"})
 public class AdminAuthenticationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
             throws IOException, ServletException {
 		
-		HttpServletRequest request = (HttpServletRequest) req; HttpServletResponse
-		response = (HttpServletResponse) res;
-		
+		HttpServletRequest request = (HttpServletRequest) req; 
+		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession();
-		boolean adminCheck = false;
-		if(session.getAttribute("adminCheck") != null) {
-			adminCheck = (boolean)session.getAttribute("adminCheck");
-		}
-       
-       if(!adminCheck) {
-    	   response.setContentType("text/html; charset=UTF-8;");
-           PrintWriter out = response.getWriter();
-           out.println("<script>");
-           out.println("alert('관리자만 가능한 서비스 입니다');");
-           out.println("location.href='" + request.getContextPath() + "/customer_center/customer_center_index.customer';");
-           out.println("</script>");
+		
+Boolean adminCheck = (Boolean) session.getAttribute("adminCheck");
+        
+        if (adminCheck == null || !adminCheck) {
+            if (request.getRequestURI().endsWith("/delete.customer")) {
+                response.setContentType("text/html; charset=UTF-8;");
+                PrintWriter out = response.getWriter();
+                out.println("<script>");
+                out.println("alert('관리자만 삭제할 수 있습니다.');");
+                out.println("location.href='" + request.getContextPath() + "/customer_center/customer_center_index.customer';");
+                out.println("</script>");
+                return;
+            }
+            
+            response.setContentType("text/html; charset=UTF-8;");
+            PrintWriter out = response.getWriter();
+            out.println("<script>");
+            out.println("alert('관리자만 접근할 수 있습니다.');");
+            out.println("location.href='" + request.getContextPath() + "/customer_center/customer_center_index.customer';");
+            out.println("</script>");
+            return;
+        }
 
-           return; 
-       }
-
-        chain.doFilter(request, response); // 다음 필터로 연결
+        chain.doFilter(request, response);// 다음 필터로 연결
     }
 
     @Override

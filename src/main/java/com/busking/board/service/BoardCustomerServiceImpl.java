@@ -19,6 +19,7 @@ import com.busking.util.paging.PageVO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class BoardCustomerServiceImpl implements BoardCustomerService {
 
@@ -165,20 +166,39 @@ public class BoardCustomerServiceImpl implements BoardCustomerService {
 	@Override
 	public void modify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String noticeNum = request.getParameter("noticeNum");
+//		String noticeNum = request.getParameter("noticeNum");
+//
+//		SqlSession sql = sqlSessionFactory.openSession(true);
+//		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
+//		BoardCustomerDTO dto = boardMapper.getContent(noticeNum);
+//		sql.close(); // 마이바티스 세션 종료
+//
+//		System.out.println(dto.getNoticeNum());
+//
+//		// dto를 request에 담고 forward 화면으로 이동
+//		request.setAttribute("dto", dto);
+//		request.getRequestDispatcher("customer_center_index_content_modify.jsp").forward(request, response);
+//		;
 
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
-		BoardCustomerDTO dto = boardMapper.getContent(noticeNum);
-		sql.close(); // 마이바티스 세션 종료
+		HttpSession session = request.getSession();
+	    Boolean isAdmin = (Boolean) session.getAttribute("adminCheck");
 
-		System.out.println(dto.getNoticeNum());
+	    if (isAdmin != null && isAdmin) {
+	        String noticeNum = request.getParameter("noticeNum");
 
-		// dto를 request에 담고 forward 화면으로 이동
-		request.setAttribute("dto", dto);
-		request.getRequestDispatcher("customer_center_index_content_modify.jsp").forward(request, response);
-		;
+	        SqlSession sql = sqlSessionFactory.openSession(true);
+	        BoardCustomerMapper boardMapper = sql.getMapper(BoardCustomerMapper.class);
+	        BoardCustomerDTO dto = boardMapper.getContent(noticeNum);
+	        sql.close(); // 마이바티스 세션 종료
 
+	        // dto를 request에 담고 forward 화면으로 이동
+	        request.setAttribute("dto", dto);
+	        request.getRequestDispatcher("customer_center_index_content_modify.jsp").forward(request, response);
+	    } else {
+	        // 관리자 인증 실패 시 경고 메시지와 리다이렉트
+	        response.sendRedirect(request.getContextPath() + "/customer_center/customer_center_index.customer?error=관리자만 수정할 수 있습니다");
+	    }
+	    
 	}
 
 	// update

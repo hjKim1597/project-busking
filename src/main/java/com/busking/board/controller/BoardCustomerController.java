@@ -76,6 +76,8 @@ public class BoardCustomerController extends HttpServlet {
 			System.out.println("글 내용보기 화면 이동 요청");
 
 		} else if (command.equals("/customer_center/modify.customer")) {
+			
+
 			service = new BoardCustomerServiceImpl();
 			service.modify(request, response);
 
@@ -86,9 +88,14 @@ public class BoardCustomerController extends HttpServlet {
 		}
 		// 삭제 기능
 		else if (command.equals("/customer_center/delete.customer")) {
-			service = new BoardCustomerServiceImpl();
-			service.delete(request, response);
-			System.out.println("삭제 기능 컨트롤러");
+			// Check admin status before allowing delete
+	        Boolean isAdmin = (Boolean) request.getSession().getAttribute("adminCheck");
+	        if (isAdmin != null && isAdmin) {
+	            service = new BoardCustomerServiceImpl();
+	            service.delete(request, response);
+	        } else {
+	            response.sendRedirect("customer_center/customer_center_index.customer?error=관리자만 삭제할 수 있습니다.");
+	        }
 			
 		}
 
