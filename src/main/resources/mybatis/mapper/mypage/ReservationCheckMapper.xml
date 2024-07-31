@@ -15,11 +15,14 @@
             U.USER_ADDR, 
             U.USER_PNO, 
             U.USER_EMAIL, 
-            R.RES_TIME
+            R.RES_TIME,
+            L.LOCA_NAME
         FROM 
             RESERVATIONS R
         JOIN 
             USERS U ON R.USER_ID = U.USER_ID
+        JOIN
+        	LOCATIONS L ON R.LOCA_ID = L.LOCA_ID
         WHERE 
             U.USER_ID = #{userId, jdbcType=VARCHAR}
     </select>
